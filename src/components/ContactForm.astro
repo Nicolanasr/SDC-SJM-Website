@@ -1,194 +1,52 @@
 ---
 import { siteConfig } from '../data/siteConfig';
+import { MapPin, Clock, ArrowRight } from 'lucide-astro';
+import T from './T.astro';
 ---
 
-<div class="relative overflow-hidden rounded-3xl bg-sand-100 border border-cedar-800/15 shadow-tactile p-6 sm:p-10">
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-    
-    <!-- Left Column: WhatsApp Redirection & Group Contacts -->
-    <div class="lg:col-span-5 space-y-6">
-      <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-900 border border-emerald-300">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Quickest Response</span>
-        </div>
-        
-        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-cedar-950 mt-2">
-          Chat Directly on WhatsApp
-        </h3>
-        
-        <p class="text-stone-700 text-sm leading-relaxed mt-2">
-          For fast registration questions, unit placement, or weekly meeting directions, send a direct WhatsApp message to our leadership team.
-        </p>
-      </div>
+<div class="rounded-3xl bg-white border border-stone-200 p-8 sm:p-12 text-center max-w-2xl mx-auto shadow-sm">
+  <div class="space-y-4">
+    <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.768-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
+      </svg>
+    </div>
 
-      <!-- Prominent WhatsApp Action Card -->
+    <h3 class="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+      <T en="Have a question or planning to visit?" ar="هل لديكم أي استفسار أو تخططون لزيارتنا؟" />
+    </h3>
+
+    <p class="text-sm text-stone-600 leading-relaxed max-w-lg mx-auto">
+      <T 
+        en="Whether you want to confirm meeting times, ask about unit placement for your child, or just say hello—send a WhatsApp message to our leaders." 
+        ar="سواء كنتم ترغبون بالتأكد من المواعيد، أو معرفة القسم الأنسب لطفلكم، أو إلقاء التحية—يسعد قادتنا استقبال رسالتكم عبر واتساب." 
+      />
+    </p>
+
+    <!-- Direct WhatsApp CTA Button -->
+    <div class="pt-2">
       <a 
         href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="group flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-md hover:shadow-lg transition-all"
+        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-sm transition-all hover:scale-105"
       >
-        <div class="flex items-center gap-3.5">
-          <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
-            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.767-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-xs uppercase font-bold tracking-wider opacity-90">Open WhatsApp</div>
-            <div class="text-base font-bold">{siteConfig.contact.phoneDisplay}</div>
-          </div>
-        </div>
-
-        <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
-          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </div>
+        <span class="lang-en">Message Us on WhatsApp ({siteConfig.contact.phoneDisplay})</span>
+        <span class="lang-ar">راسل قادتنا على واتساب ({siteConfig.contact.phoneDisplay})</span>
+        <ArrowRight class="w-4 h-4 rtl:rotate-180" />
       </a>
-
-      <!-- Direct Details List -->
-      <div class="bg-white rounded-2xl p-5 border border-cedar-800/10 space-y-3.5 text-xs sm:text-sm">
-        <div class="flex items-start gap-3 text-stone-700">
-          <svg class="w-5 h-5 text-cedar-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-          </svg>
-          <div>
-            <span class="font-bold text-stone-900 block">Meeting Point</span>
-            <span>Near Antoch Saint Jean Marc UNESCO Se7a, Byblos</span>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3 text-stone-700">
-          <svg class="w-5 h-5 text-cedar-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <div>
-            <span class="font-bold text-stone-900 block">Weekly Schedule</span>
-            <span>Every Saturday, 3:00 PM – 4:30 PM</span>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3 text-stone-700">
-          <svg class="w-5 h-5 text-cedar-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          <div>
-            <span class="font-bold text-stone-900 block">Email Inquiries</span>
-            <span class="break-all">{siteConfig.contact.email}</span>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- Right Column: Clean Web Contact Form -->
-    <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-cedar-800/10 shadow-sm">
-      <div class="border-b border-stone-200 pb-4 mb-6">
-        <h4 class="font-serif font-bold text-xl text-cedar-950">
-          Send an Online Inquiry
-        </h4>
-        <p class="text-xs text-stone-500 mt-1">
-          Fill out the details below and our secretariat will get back to you shortly.
-        </p>
-      </div>
-
-      <form 
-        id="inquiry-form" 
-        class="space-y-4"
-        action={`https://formspree.io/f/placeholder`}
-        method="POST"
-      >
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label for="parent-name" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
-              Parent or Scout Name *
-            </label>
-            <input 
-              type="text" 
-              id="parent-name" 
-              name="name" 
-              required
-              placeholder="e.g. Jean Dupont"
-              class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-cedar-700 focus:border-transparent bg-sand-50"
-            />
-          </div>
-
-          <div>
-            <label for="contact-phone" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
-              Phone / WhatsApp Number *
-            </label>
-            <input 
-              type="tel" 
-              id="contact-phone" 
-              name="phone" 
-              required
-              placeholder="+961 XX XXXXXX"
-              class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-cedar-700 focus:border-transparent bg-sand-50"
-            />
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label for="scout-age" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
-              Child's Age / Section
-            </label>
-            <select 
-              id="scout-age" 
-              name="section"
-              class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-cedar-700 focus:border-transparent bg-sand-50"
-            >
-              <option value="Gramiz / Zahrat (4-11)">Gramiz & Zahrat (Ages 4–11)</option>
-              <option value="Kochefe / Mourchidet (11-16)">Kochefe & Mourchidet (Ages 11–16)</option>
-              <option value="Jouwele / Mounjidet (16-24)">Jouwele & Mounjidet (Ages 16–24)</option>
-              <option value="General Volunteer">Volunteer / Leader</option>
-              <option value="General Inquiry">General Question</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="contact-email" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
-              Email (Optional)
-            </label>
-            <input 
-              type="email" 
-              id="contact-email" 
-              name="email" 
-              placeholder="name@example.com"
-              class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-cedar-700 focus:border-transparent bg-sand-50"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label for="contact-message" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
-            Your Message or Question
-          </label>
-          <textarea 
-            id="contact-message" 
-            name="message" 
-            rows="3" 
-            placeholder="Tell us about your child or ask any question about joining our troop..."
-            class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-cedar-700 focus:border-transparent bg-sand-50"
-          ></textarea>
-        </div>
-
-        <div class="pt-2 flex flex-col sm:flex-row gap-3 items-center justify-between">
-          <button 
-            type="submit" 
-            class="btn-scout-primary w-full sm:w-auto text-sm"
-          >
-            Send Inquiry
-          </button>
-          
-          <span class="text-xs text-stone-500 text-center sm:text-right">
-            We respect your privacy. No spam.
-          </span>
-        </div>
-      </form>
+    <!-- Quiet Location / Time Note -->
+    <div class="pt-6 border-t border-stone-100 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-stone-500">
+      <span class="flex items-center gap-1.5">
+        <MapPin class="w-3.5 h-3.5 text-stone-400" />
+        <T en="UNESCO Se7a, Byblos" ar="ساحة بيبلوس الأثرية، جبيل" />
+      </span>
+      <span class="flex items-center gap-1.5">
+        <Clock class="w-3.5 h-3.5 text-stone-400" />
+        <T en="Saturdays 3:00 – 4:30 PM" ar="كل سبت ٣:٠٠ – ٤:٣٠ بعد الظهر" />
+      </span>
     </div>
-
   </div>
 </div>

@@ -1,6 +1,10 @@
 export interface SiteConfig {
   groupName: string;
   tagline: string;
+  arabicGroupName: string;
+  arabicTagline: string;
+  arabicFullTitle: string;
+  siteUrl: string;
   parish: string;
   foundingDate: string;
   foundedYear: number;
@@ -10,6 +14,7 @@ export interface SiteConfig {
     locationName: string;
     locationDetails: string;
     googleMapsQuery: string;
+    googleMapsEmbedUrl: string;
   };
   contact: {
     phoneDisplay: string;
@@ -28,6 +33,10 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   groupName: "Scout Des Cèdres",
   tagline: "Groupe Saint Jean Marc",
+  arabicGroupName: "كشافة الأرز",
+  arabicTagline: "فوج القديس يوحنا مرقس",
+  arabicFullTitle: "جمعية كشافة الأرز - فوج القديس يوحنا مرقس - جبيل",
+  siteUrl: "https://scout-saint-jeanmarc.org",
   parish: "Paroisse Saint Jean Marc",
   foundingDate: "May 5, 1977",
   foundedYear: 1977,

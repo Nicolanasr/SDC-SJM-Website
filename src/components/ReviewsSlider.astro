@@ -1,5 +1,10 @@
 ---
 import { scoutReviews } from '../data/reviews';
+import T from './T.astro';
+
+// Triple array for seamless infinite buffer
+const infiniteReviews = [...scoutReviews, ...scoutReviews, ...scoutReviews];
+const realCount = scoutReviews.length;
 ---
 
 <section class="py-16 sm:py-24 bg-[#FAF7F2] overflow-hidden border-t border-stone-200">
@@ -9,10 +14,13 @@ import { scoutReviews } from '../data/reviews';
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
       <div>
         <h2 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-tight">
-          Good days make great stories
+          <T en="Good days make great stories" ar="أيام لا تُنسى وحكايات تدوم" />
         </h2>
         <p class="text-stone-600 text-sm sm:text-base mt-2 max-w-xl">
-          From first-timers to seasoned patrol leaders, our youth and parents share their journey with Saint Jean Marc.
+          <T 
+            en="From first-timers to seasoned patrol leaders, our youth and parents share their journey with Saint Jean Marc." 
+            ar="من الصغار في سبتهم الأول إلى قادة الطلائع والأهل، تجارب حقيقية من قلب الفوج." 
+          />
         </p>
       </div>
 
@@ -22,7 +30,7 @@ import { scoutReviews } from '../data/reviews';
             ★★★★★
           </div>
           <span class="text-xs sm:text-sm font-bold text-stone-800">
-            Excellent • 49 Years of Stories
+            <T en="Excellent • 49 Years of Stories" ar="ممتاز • ٤٩ عاماً من الذكريات" />
           </span>
         </div>
 
@@ -34,7 +42,7 @@ import { scoutReviews } from '../data/reviews';
             class="w-10 h-10 rounded-full border border-stone-300 bg-white hover:bg-stone-100 flex items-center justify-center text-stone-700 transition-colors shadow-sm focus:outline-none"
             aria-label="Previous Story"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -44,7 +52,7 @@ import { scoutReviews } from '../data/reviews';
             class="w-10 h-10 rounded-full bg-cedar-800 hover:bg-cedar-900 text-white flex items-center justify-center transition-colors shadow-sm focus:outline-none"
             aria-label="Next Story"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -60,7 +68,7 @@ import { scoutReviews } from '../data/reviews';
       id="reviews-track" 
       class="flex items-center transition-transform duration-500 ease-out"
     >
-      {scoutReviews.map((review, idx) => (
+      {infiniteReviews.map((review, idx) => (
         <div 
           class="review-slide shrink-0 transition-all duration-500 px-3 sm:px-4 cursor-pointer"
           data-index={idx}
@@ -87,7 +95,7 @@ import { scoutReviews } from '../data/reviews';
                 </div>
 
                 <blockquote class="text-stone-800 text-base sm:text-lg leading-relaxed font-normal">
-                  "{review.quote}"
+                  <T en={`"${review.quote}"`} ar={`"${review.quoteAr}"`} />
                 </blockquote>
 
                 <div class="pt-4 border-t border-stone-300/70">
@@ -95,7 +103,7 @@ import { scoutReviews } from '../data/reviews';
                     {review.name}
                   </div>
                   <div class="text-xs text-stone-600 font-medium mt-0.5">
-                    {review.role}
+                    <T en={review.role} ar={review.roleAr} />
                   </div>
                 </div>
               </div>
@@ -135,30 +143,41 @@ import { scoutReviews } from '../data/reviews';
 </section>
 
 <script>
-  let activeIndex = 0;
   const viewport = document.getElementById('carousel-viewport');
   const track = document.getElementById('reviews-track');
   const slides = document.querySelectorAll<HTMLElement>('.review-slide');
   const dots = document.querySelectorAll('.dot-indicator');
   const prevBtn = document.getElementById('review-prev');
   const nextBtn = document.getElementById('review-next');
-  const total = slides.length;
+  
+  const realCount = dots.length;
+  // Start at the middle set of cloned slides
+  let activeIndex = realCount;
+  let isMoving = false;
 
-  function updateCarousel(idx: number) {
-    if (idx < 0) idx = total - 1;
-    if (idx >= total) idx = 0;
-    activeIndex = idx;
-
-    if (!viewport || !track || slides.length === 0) return;
-
+  function getTargetOffset(idx: number): number {
+    if (!viewport || !track || slides.length === 0) return 0;
     const viewportWidth = viewport.clientWidth;
-    const activeSlide = slides[activeIndex];
-    const slideWidth = activeSlide.offsetWidth;
+    const slide = slides[idx];
+    if (!slide) return 0;
+    const slideWidth = slide.offsetWidth;
+    const slideCenterInTrack = slide.offsetLeft + (slideWidth / 2);
+    return (viewportWidth / 2) - slideCenterInTrack;
+  }
 
-    const slideCenterInTrack = activeSlide.offsetLeft + (slideWidth / 2);
-    const targetOffset = (viewportWidth / 2) - slideCenterInTrack;
+  function updateVisuals(animate = true) {
+    if (!track || slides.length === 0) return;
 
-    track.style.transform = `translateX(${targetOffset}px)`;
+    if (animate) {
+      track.style.transition = 'transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1)';
+    } else {
+      track.style.transition = 'none';
+    }
+
+    const offset = getTargetOffset(activeIndex);
+    track.style.transform = `translateX(${offset}px)`;
+
+    const currentReal = activeIndex % realCount;
 
     slides.forEach((slide, i) => {
       const cardInner = slide.querySelector('.review-card-inner') as HTMLElement;
@@ -166,7 +185,7 @@ import { scoutReviews } from '../data/reviews';
         slide.style.opacity = '1';
         slide.style.transform = 'scale(1)';
         if (cardInner) {
-          cardInner.style.boxShadow = '0 10px 30px -5px rgba(0, 0, 0, 0.1)';
+          cardInner.style.boxShadow = '0 10px 30px -5px rgba(0, 0, 0, 0.12)';
         }
       } else {
         slide.style.opacity = '0.45';
@@ -178,7 +197,7 @@ import { scoutReviews } from '../data/reviews';
     });
 
     dots.forEach((dot, i) => {
-      if (i === activeIndex) {
+      if (i === currentReal) {
         dot.classList.remove('w-2', 'bg-stone-300');
         dot.classList.add('w-8', 'bg-cedar-800');
       } else {
@@ -188,21 +207,59 @@ import { scoutReviews } from '../data/reviews';
     });
   }
 
-  window.addEventListener('load', () => updateCarousel(0));
-  window.addEventListener('resize', () => updateCarousel(activeIndex));
-  setTimeout(() => updateCarousel(0), 100);
+  function goTo(idx: number) {
+    if (isMoving) return;
+    isMoving = true;
+    activeIndex = idx;
+    updateVisuals(true);
+  }
 
-  prevBtn?.addEventListener('click', () => updateCarousel(activeIndex - 1));
-  nextBtn?.addEventListener('click', () => updateCarousel(activeIndex + 1));
+  track?.addEventListener('transitionend', () => {
+    isMoving = false;
+
+    // Seamless infinite reset when entering outer buffer
+    if (activeIndex >= realCount * 2) {
+      activeIndex = activeIndex - realCount;
+      updateVisuals(false);
+    } else if (activeIndex < realCount) {
+      activeIndex = activeIndex + realCount;
+      updateVisuals(false);
+    }
+  });
+
+  prevBtn?.addEventListener('click', () => goTo(activeIndex - 1));
+  nextBtn?.addEventListener('click', () => goTo(activeIndex + 1));
 
   slides.forEach((slide, idx) => {
-    slide.addEventListener('click', () => updateCarousel(idx));
+    slide.addEventListener('click', () => goTo(idx));
   });
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
-      const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
-      updateCarousel(idx);
+      const targetReal = parseInt(dot.getAttribute('data-index') || '0', 10);
+      const currentReal = activeIndex % realCount;
+      const diff = targetReal - currentReal;
+      goTo(activeIndex + diff);
     });
   });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  viewport?.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  viewport?.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) goTo(activeIndex + 1);
+      else goTo(activeIndex - 1);
+    }
+  }, { passive: true });
+
+  // Initial centering
+  window.addEventListener('load', () => updateVisuals(false));
+  window.addEventListener('resize', () => updateVisuals(false));
+  setTimeout(() => updateVisuals(false), 50);
 </script>

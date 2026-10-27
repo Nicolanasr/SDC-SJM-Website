@@ -1,58 +1,115 @@
 ---
 import { siteConfig } from '../data/siteConfig';
+import { MapPin, Clock, Check, ExternalLink } from 'lucide-astro';
+import T from './T.astro';
 ---
 
-<div class="my-12 rounded-3xl bg-cedar-950 text-sand-50 p-8 sm:p-12 lg:p-14 border border-cedar-900 shadow-sm">
+<div class="my-10 rounded-3xl bg-cedar-950 text-sand-50 p-6 sm:p-10 lg:p-12 border border-cedar-900 shadow-sm">
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
     
-    <!-- Left Details -->
-    <div class="lg:col-span-7 space-y-4">
-      <span class="text-xs uppercase tracking-widest font-bold text-gold-400 font-sans block">
-        WHEN & WHERE WE MEET
-      </span>
+    <!-- Left: Schedule, Location & Easy 1-Step Process -->
+    <div class="lg:col-span-6 space-y-5">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-cedar-900 text-gold-400 border border-cedar-800">
+        <T en="WEEKLY GATHERINGS • AGES 4–24" ar="اللقاءات الأسبوعية • الأعمار ٤–٢٤" />
+      </div>
 
-      <h3 class="text-3xl sm:text-4xl font-black text-sand-50 tracking-tight leading-tight">
-        Every Saturday, 3:00 to 4:30 PM.
-      </h3>
+      <div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+          <T en="Every Saturday, 3:00 to 4:30 PM." ar="كل نهار سبت، من ٣:٠٠ حتى ٤:٣٠ بعد الظهر." />
+        </h2>
+      </div>
 
       <div class="space-y-2 text-sand-200 text-sm sm:text-base leading-relaxed">
-        <p class="font-medium">
-          Gathering location: <strong class="text-white">{siteConfig.meetingSchedule.locationName}</strong>
-        </p>
-        <p class="text-sand-300 text-sm">
-          {siteConfig.meetingSchedule.locationDetails}
-        </p>
-        <p class="text-xs text-sand-400 pt-1">
-          Open to all age units. Parents are warmly invited to drop by and meet the chefs.
-        </p>
+        <div class="flex items-start gap-2.5">
+          <MapPin class="w-5 h-5 text-gold-400 shrink-0 mt-0.5" />
+          <div>
+            <strong class="text-white block">
+              <T en={siteConfig.meetingSchedule.locationName} ar="باحة وقاعة مار يوحنا مرقس" />
+            </strong>
+            <span class="text-sand-300 text-xs sm:text-sm">
+              <T en={siteConfig.meetingSchedule.locationDetails} ar="قرب أنطش مار يوحنا مرقس، ساحة بيبلوس الأثرية، جبيل، لبنان" />
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Easy joining points & Parent peace of mind -->
+      <div class="pt-2 border-t border-cedar-900/80 space-y-2.5 text-xs sm:text-sm text-sand-200">
+        <div class="flex items-center gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0">
+            <Check class="w-3.5 h-3.5" />
+          </span>
+          <span class="lang-en"><strong>Open to all schools:</strong> Open to every child in Byblos and surrounding towns, regardless of their school.</span>
+          <span class="lang-ar"><strong>مفتوح لجميع الطلاب:</strong> نرحب بكل طفل وشاب من قضاء جبيل والبلدات المجاورة أياً كانت مدرستهم.</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0">
+            <Check class="w-3.5 h-3.5" />
+          </span>
+          <span class="lang-en"><strong>One family drop-off:</strong> All ages (4 to 24) meet at the same time, saving parents multiple Saturday trips.</span>
+          <span class="lang-ar"><strong>موعد موحد لجميع الأخوة:</strong> تلتقي كافة الفروع في التوقيت نفسه، مما يوفر على الأهل مشقة التنقلات المتكررة.</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0">
+            <Check class="w-3.5 h-3.5" />
+          </span>
+          <span class="lang-en"><strong>Zero gear needed:</strong> Come in sneakers and play clothes. No uniform or fees required on day one.</span>
+          <span class="lang-ar"><strong>لا حاجة لشراء ثياب خاصة:</strong> يكفي الحضور بحذاء رياضي وثياب مريحة دون أي تكلفة أو تسجيل مسبق.</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0">
+            <Check class="w-3.5 h-3.5" />
+          </span>
+          <span class="lang-en"><strong>Trained leadership:</strong> Red Cross certified first-aiders, mature chefs who grew up in the troop, and parish chaplain oversight.</span>
+          <span class="lang-ar"><strong>إشراف قيادي مؤهل:</strong> قادة وقائدات حائزون على شهادات إسعاف أولي من الصليب الأحمر، بمرافقة مرشدنا الديني الكاهن.</span>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="pt-3 flex flex-wrap gap-3 items-center">
+        <a 
+          href={`https://maps.google.com/?q=${siteConfig.meetingSchedule.googleMapsQuery}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-sand-50 text-cedar-950 font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors"
+        >
+          <T en="Open in Google Maps" ar="فتح في خرائط Google" />
+          <ExternalLink class="w-4 h-4 rtl:rotate-180" />
+        </a>
+
+        <a 
+          href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent('Hello! Can you help me find the meeting location at Saint Jean Marc this Saturday?')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-md hover:scale-105"
+          aria-label="Message on WhatsApp"
+        >
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.768-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
+          </svg>
+        </a>
       </div>
     </div>
 
-    <!-- Right Actions -->
-    <div class="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
-      <a 
-        href={`https://maps.google.com/?q=${siteConfig.meetingSchedule.googleMapsQuery}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-sand-50 text-cedar-950 font-bold text-sm hover:bg-white transition-colors text-center"
-      >
-        <span>Open in Google Maps</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        </svg>
-      </a>
-
-      <a 
-        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent('Hello! Can you help me find the meeting location at Saint Jean Marc this Saturday?')}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors text-center"
-      >
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.768-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
-        </svg>
-        <span>Message Us on WhatsApp</span>
-      </a>
+    <!-- Right: Embedded Google Map (Pure Google Map, no sketch) -->
+    <div class="lg:col-span-6">
+      <div class="w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-cedar-800 bg-stone-900 shadow-md">
+        <iframe 
+          src={siteConfig.meetingSchedule.googleMapsEmbedUrl} 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Scout Des Cedres Saint Jean Marc Location Map"
+          class="w-full h-full"
+        ></iframe>
+      </div>
+      <div class="mt-2.5 flex items-center justify-between text-xs text-sand-400">
+        <span>UNESCO Se7a, Old Byblos</span>
+        <span class="font-mono text-gold-400">4JCW+F8J, Jbeil</span>
+      </div>
     </div>
 
   </div>

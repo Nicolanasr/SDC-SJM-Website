@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../data/siteConfig';
+import T from './T.astro';
 ---
 
 <footer class="bg-cedar-950 text-sand-100 pt-16 pb-12 border-t border-cedar-900">
@@ -16,54 +17,57 @@ import { siteConfig } from '../data/siteConfig';
           </div>
           <div>
             <div class="font-serif font-bold text-lg text-sand-50 leading-tight">
-              {siteConfig.groupName}
+              <T en={siteConfig.groupName} ar={siteConfig.arabicGroupName} />
             </div>
             <div class="text-xs uppercase tracking-wider text-gold-400 font-medium">
-              {siteConfig.tagline}
+              <T en={siteConfig.tagline} ar={siteConfig.arabicTagline} />
             </div>
           </div>
         </div>
         <p class="text-sm text-sand-200/80 leading-relaxed">
-          Founded on May 5, 1977. Serving youth through fellowship, outdoor woodcraft, personal character, and civic service at Saint Jean Marc, Byblos.
+          <T 
+            en="Founded on May 5, 1977. Serving youth through fellowship, outdoor woodcraft, personal character, and civic service at Saint Jean Marc, Byblos." 
+            ar="تأسس الفوج في ٥ أيار ١٩٧٧. تنشئة أجيال على روح الأخوة، مهارات الخلاء، بناء الشخصية، وخدمة المجتمع في رعية مار يوحنا مرقس، جبيل." 
+          />
         </p>
         <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-cedar-900 text-gold-400 border border-cedar-800">
-          Toujours Prêt • Always Prepared
+          <T en="Toujours Prêt • Always Prepared" ar="كن مستعداً • Toujours Prêt" />
         </div>
       </div>
 
       <!-- Quick Navigation -->
       <div>
         <h4 class="text-sm font-bold uppercase tracking-wider text-gold-400 mb-4 font-sans">
-          Explore
+          <T en="Explore" ar="روابط سريعة" />
         </h4>
         <ul class="space-y-2.5 text-sm text-sand-200/80 font-medium">
-          <li><a href="/" class="hover:text-sand-50 transition-colors">Home</a></li>
-          <li><a href="/#history" class="hover:text-sand-50 transition-colors">Our 1977 Heritage</a></li>
-          <li><a href="/sections" class="hover:text-sand-50 transition-colors">Sections & Age Units</a></li>
-          <li><a href="/events" class="hover:text-sand-50 transition-colors">Upcoming Events & Camps</a></li>
-          <li><a href="/leadership" class="hover:text-sand-50 transition-colors">Leadership Hierarchy Tree</a></li>
-          <li><a href="/gallery" class="hover:text-sand-50 transition-colors">Photo Albums & Lightbox</a></li>
-          <li><a href="/#faq" class="hover:text-sand-50 transition-colors">Parent FAQ</a></li>
+          <li><a href="/" class="hover:text-sand-50 transition-colors"><T en="Home" ar="الرئيسية" /></a></li>
+          <li><a href="/#history" class="hover:text-sand-50 transition-colors"><T en="Our 1977 Heritage" ar="تاريخنا منذ ١٩٧٧" /></a></li>
+          <li><a href="/sections" class="hover:text-sand-50 transition-colors"><T en="Sections & Age Units" ar="الأقسام حسب العمر" /></a></li>
+          <li><a href="/events" class="hover:text-sand-50 transition-colors"><T en="Upcoming Events & Camps" ar="المخيمات والنشاطات" /></a></li>
+          <li><a href="/leadership" class="hover:text-sand-50 transition-colors"><T en="Leadership Hierarchy Tree" ar="القادة ومجلس الفوج" /></a></li>
+          <li><a href="/gallery" class="hover:text-sand-50 transition-colors"><T en="Photo Albums & Lightbox" ar="معرض الصور" /></a></li>
+          <li><a href="/#faq" class="hover:text-sand-50 transition-colors"><T en="Parent FAQ" ar="أسئلة شائعة للأهل" /></a></li>
         </ul>
       </div>
 
       <!-- Weekly Meeting Schedule -->
       <div>
         <h4 class="text-sm font-bold uppercase tracking-wider text-gold-400 mb-4 font-sans">
-          Weekly Gathering
+          <T en="Weekly Gathering" ar="اللقاء الأسبوعي" />
         </h4>
         <div class="bg-cedar-900/60 p-4 rounded-xl border border-cedar-800/80 space-y-2 text-sm">
           <div class="font-bold text-sand-100 flex items-center gap-2">
             <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
             </svg>
-            <span>{siteConfig.meetingSchedule.day}</span>
+            <T en={siteConfig.meetingSchedule.day} ar="كل نهار سبت" />
           </div>
           <div class="text-gold-300 font-semibold text-xs">
-            {siteConfig.meetingSchedule.time}
+            <T en={siteConfig.meetingSchedule.time} ar="٣:٠٠ – ٤:٣٠ بعد الظهر" />
           </div>
           <p class="text-xs text-sand-300/80 leading-relaxed pt-1">
-            {siteConfig.meetingSchedule.locationDetails}
+            <T en={siteConfig.meetingSchedule.locationDetails} ar="قرب أنطش مار يوحنا مرقس، ساحة بيبلوس الأثرية، جبيل، لبنان" />
           </p>
           <div class="pt-2">
             <a 
@@ -72,8 +76,8 @@ import { siteConfig } from '../data/siteConfig';
               rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold-300 underline font-semibold"
             >
-              <span>View location on Google Maps</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <T en="View location on Google Maps" ar="عرض الموقع على خرائط Google" />
+              <svg class="w-3.5 h-3.5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </a>
@@ -84,7 +88,7 @@ import { siteConfig } from '../data/siteConfig';
       <!-- Contact & WhatsApp -->
       <div>
         <h4 class="text-sm font-bold uppercase tracking-wider text-gold-400 mb-4 font-sans">
-          Get In Touch
+          <T en="Get In Touch" ar="تواصل معنا" />
         </h4>
         <ul class="space-y-3 text-sm text-sand-200/80">
           <li class="flex items-center gap-3">
@@ -95,9 +99,9 @@ import { siteConfig } from '../data/siteConfig';
               class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-800/80 hover:bg-emerald-700 text-white font-semibold text-xs border border-emerald-600 transition-colors"
             >
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.767-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.768-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
               </svg>
-              <span>Direct WhatsApp Chat</span>
+              <T en="Direct WhatsApp Chat" ar="محادثة واتساب مباشرة" />
             </a>
           </li>
           <li>
@@ -117,7 +121,7 @@ import { siteConfig } from '../data/siteConfig';
             </a>
           </li>
           <li class="pt-2 text-xs text-sand-400">
-            Paroisse Saint Jean Marc, Byblos (Jbeil), Lebanon
+            <T en="Paroisse Saint Jean Marc, Byblos (Jbeil), Lebanon" ar="رعية مار يوحنا مرقس، جبيل، لبنان" />
           </li>
         </ul>
       </div>
@@ -127,12 +131,15 @@ import { siteConfig } from '../data/siteConfig';
     <!-- Bottom Copyright & Scout Signoff -->
     <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-sand-300/70 gap-4">
       <div>
-        © 1977 – {new Date().getFullYear()} {siteConfig.groupName} – {siteConfig.tagline}. All rights reserved.
+        <span class="lang-en">© 1977 – {new Date().getFullYear()} {siteConfig.groupName} – {siteConfig.tagline}. All rights reserved.</span>
+        <span class="lang-ar">© ١٩٧٧ – {new Date().getFullYear()} {siteConfig.arabicFullTitle}. جميع الحقوق محفوظة.</span>
       </div>
       <div class="flex items-center gap-4 text-xs font-medium">
-        <span>Scouts du Liban / Les Scouts des Cèdres</span>
+        <T en="Scouts du Liban / Les Scouts des Cèdres" ar="جمعية كشافة الأرز - لبنان" />
         <span>•</span>
-        <a href="#top" class="hover:text-sand-100 underline">Back to Top ↑</a>
+        <a href="#top" class="hover:text-sand-100 underline">
+          <T en="Back to Top ↑" ar="العودة للأعلى ↑" />
+        </a>
       </div>
     </div>
   </div>

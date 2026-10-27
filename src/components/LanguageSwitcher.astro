@@ -1,0 +1,41 @@
+---
+---
+
+<button
+  id="lang-toggle-btn"
+  type="button"
+  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200/80 transition-all cursor-pointer shadow-2xs"
+  aria-label="Switch Language / تغيير اللغة"
+>
+  <span class="lang-en font-mono text-[11px] uppercase tracking-wider text-cedar-900 flex items-center gap-1">
+    <span>EN</span>
+    <span class="text-stone-300">/</span>
+    <span class="text-stone-400 font-sans">عربي</span>
+  </span>
+  <span class="lang-ar font-mono text-[11px] uppercase tracking-wider text-cedar-900 flex items-center gap-1" dir="rtl">
+    <span class="text-stone-400 font-sans">EN</span>
+    <span class="text-stone-300">/</span>
+    <span>عربي</span>
+  </span>
+</button>
+
+<script>
+  function setupLangToggle() {
+    const buttons = document.querySelectorAll('#lang-toggle-btn, .lang-toggle-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const current = document.documentElement.lang || 'en';
+        const next = current === 'ar' ? 'en' : 'ar';
+        document.documentElement.lang = next;
+        document.documentElement.dir = next === 'ar' ? 'rtl' : 'ltr';
+        try {
+          localStorage.setItem('sdc_lang', next);
+        } catch (e) {}
+      });
+    });
+  }
+
+  // Run on first load & after view transitions if any
+  setupLangToggle();
+  document.addEventListener('astro:after-swap', setupLangToggle);
+</script>

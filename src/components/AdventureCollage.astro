@@ -1,4 +1,6 @@
 ---
+import T from './T.astro';
+
 // Collage photos mapped to their respective album routes
 const collage = {
   main: {
@@ -60,10 +62,10 @@ const collage = {
   <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
     <div>
       <h2 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
-        This is what adventure looks like
+        <T en="This is what adventure looks like" ar="هكذا تبدو المغامرة الكشفية الحقيقية" />
       </h2>
       <p class="text-stone-600 text-sm sm:text-base mt-1">
-        Click any photo to open its respective scout album collection.
+        <T en="Click any photo to open its respective scout album collection." ar="اضغط على أي صورة لتصفح ألبوم الصور الخاص بها." />
       </p>
     </div>
 
@@ -71,7 +73,7 @@ const collage = {
       href="/gallery" 
       class="text-xs font-bold uppercase tracking-wider text-cedar-800 hover:text-cedar-950 underline self-start sm:self-auto"
     >
-      Browse all albums →
+      <T en="Browse all albums →" ar="تصفح جميع الألبومات ←" />
     </a>
   </div>
 

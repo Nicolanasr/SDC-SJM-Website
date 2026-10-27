@@ -14,6 +14,7 @@ export interface GalleryAlbum {
   count: number;
   coverImage: string;
   description: string;
+  category: "camps" | "woodcraft" | "hikes" | "ceremonies";
 }
 
 export const galleryAlbums: GalleryAlbum[] = [
@@ -23,6 +24,7 @@ export const galleryAlbums: GalleryAlbum[] = [
     count: 6,
     coverImage: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1000&q=80",
     description: "Living 10 days in the high mountains of Lebanon under canvas tents, building our own kitchen and table structures.",
+    category: "camps",
   },
   {
     id: "pioneering",
@@ -30,6 +32,7 @@ export const galleryAlbums: GalleryAlbum[] = [
     count: 4,
     coverImage: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1000&q=80",
     description: "Rope lashings, timber watchtowers, bridges, and campfire cooking setups crafted by the patrols.",
+    category: "woodcraft",
   },
   {
     id: "hikes-expeditions",
@@ -37,6 +40,7 @@ export const galleryAlbums: GalleryAlbum[] = [
     count: 5,
     coverImage: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1000&q=80",
     description: "From the Cedars of God to the trails of Mount Lebanon and Byblos coastal hills.",
+    category: "hikes",
   },
   {
     id: "parish-ceremonies",
@@ -44,6 +48,7 @@ export const galleryAlbums: GalleryAlbum[] = [
     count: 4,
     coverImage: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=80",
     description: "May 5 anniversary celebrations, scout promise investitures, and parish solemn masses.",
+    category: "ceremonies",
   },
 ];
 

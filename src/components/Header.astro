@@ -1,5 +1,7 @@
 ---
 import { siteConfig } from '../data/siteConfig';
+import T from './T.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 
 const currentPath = Astro.url.pathname;
 ---
@@ -10,15 +12,18 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center gap-2">
       <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
       <span class="font-medium text-stone-200">
-        Weekly meetings every Saturday, 3:00 – 4:30 PM for all ages (4–24) at Saint Jean Marc, Byblos
+        <T 
+          en="Weekly meetings every Saturday, 3:00 – 4:30 PM for all ages (4–24) at Saint Jean Marc, Byblos" 
+          ar="اللقاء الأسبوعي: كل سبت من ٣:٠٠ حتى ٤:٣٠ بعد الظهر لجميع الأعمار في باحة مار يوحنا مرقس، جبيل"
+        />
       </span>
     </div>
     <a 
       href="/#meeting" 
       class="shrink-0 inline-flex items-center gap-1 font-bold text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors text-xs"
     >
-      <span>Meeting Details</span>
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      <T en="Meeting Details" ar="تفاصيل اللقاء" />
+      <svg class="w-3.5 h-3.5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
     </a>
   </div>
 </div>
@@ -32,16 +37,15 @@ const currentPath = Astro.url.pathname;
         <!-- Stylized Scout Cedar Insignia -->
         <div class="w-11 h-11 rounded-full bg-cedar-800 text-sand-50 flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-cedar-700 transition-colors">
           <svg class="w-6 h-6 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
-            <!-- Stylized Cedar Tree -->
             <path d="M12 2L6 8h3.5L5 14h4.5L3 20h18l-6.5-6h4.5L14.5 8H18L12 2zM11 20v2h2v-2h-2z" />
           </svg>
         </div>
         <div>
           <div class="font-serif font-bold text-lg sm:text-xl text-cedar-950 leading-tight">
-            {siteConfig.groupName}
+            <T en={siteConfig.groupName} ar={siteConfig.arabicGroupName} />
           </div>
-          <div class="text-xs uppercase tracking-wider text-cedar-700 font-semibold flex items-center gap-1.5">
-            <span>{siteConfig.tagline}</span>
+          <div class="text-xs uppercase tracking-wider text-cedar-700 font-semibold">
+            <T en={siteConfig.tagline} ar={siteConfig.arabicTagline} />
           </div>
         </div>
       </a>
@@ -52,76 +56,94 @@ const currentPath = Astro.url.pathname;
           href="/#history" 
           class="px-3 py-2 rounded-full hover:text-cedar-900 hover:bg-stone-200/50 transition-colors"
         >
-          History
+          <T en="History" ar="تاريخنا" />
         </a>
         <a 
           href="/sections" 
           class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/sections') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
         >
-          Sections (Units)
+          <T en="Sections" ar="الأقسام" />
         </a>
         <a 
           href="/events" 
           class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/events') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
         >
-          Events
+          <T en="Camps & Events" ar="المخيمات" />
         </a>
         <a 
           href="/leadership" 
           class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/leadership') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
         >
-          Leadership
+          <T en="Leadership" ar="القادة" />
         </a>
         <a 
           href="/gallery" 
           class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/gallery') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
         >
-          Gallery
+          <T en="Gallery" ar="الصور" />
         </a>
         <a 
           href="/blog" 
           class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/blog') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
         >
-          Field Notes
+          <T en="Field Notes" ar="المقالات" />
         </a>
       </nav>
 
-      <!-- Action Button (Contact) -->
-      <div class="hidden lg:flex items-center space-x-3">
+      <!-- Action Button & Language Switcher -->
+      <div class="hidden md:flex items-center space-x-3">
+        <LanguageSwitcher />
+
         <a 
           href="/#contact" 
           class="btn-scout-primary text-xs uppercase tracking-wider !py-2 !px-4"
         >
-          Join Group
+          <T en="Join Group" ar="انتسب إلينا" />
         </a>
       </div>
 
-      <!-- Mobile Hamburger Button -->
-      <button 
-        id="mobile-menu-btn" 
-        type="button" 
-        class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-cedar-900 hover:bg-stone-200/60 focus:outline-none focus:ring-2 focus:ring-cedar-700"
-        aria-label="Toggle navigation menu"
-      >
-        <svg id="menu-icon-bars" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+      <!-- Mobile Right Controls (Switcher + Hamburger) -->
+      <div class="md:hidden flex items-center gap-2">
+        <LanguageSwitcher />
+
+        <button 
+          id="mobile-menu-btn" 
+          type="button" 
+          class="inline-flex items-center justify-center p-2 rounded-lg text-cedar-900 hover:bg-stone-200/60 focus:outline-none focus:ring-2 focus:ring-cedar-700 cursor-pointer"
+          aria-label="Toggle navigation menu"
+        >
+          <svg id="menu-icon-bars" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
 
     </div>
   </div>
 
   <!-- Mobile Dropdown Navigation -->
   <div id="mobile-menu" class="hidden md:hidden border-t border-stone-200 bg-[#FAF7F2] px-4 pt-3 pb-6 space-y-2 shadow-lg">
-    <a href="/#history" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Our History</a>
-    <a href="/sections" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Sections (Units)</a>
-    <a href="/events" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Events & Camps</a>
-    <a href="/leadership" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Leadership Tree</a>
-    <a href="/gallery" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Photo Gallery</a>
-    <a href="/blog" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Field Notes (Blog)</a>
+    <a href="/#history" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">
+      <T en="Our History" ar="تاريخنا منذ ١٩٧٧" />
+    </a>
+    <a href="/sections" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">
+      <T en="Sections & Age Units" ar="الأقسام حسب العمر" />
+    </a>
+    <a href="/events" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">
+      <T en="Events & Camps" ar="المخيمات والنشاطات" />
+    </a>
+    <a href="/leadership" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">
+      <T en="Scout Leadership" ar="القادة ومجلس الفوج" />
+    </a>
+    <a href="/gallery" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">
+      <T en="Photo Gallery" ar="معرض الصور" />
+    </a>
+    <a href="/blog" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">
+      <T en="Field Notes (Blog)" ar="مقالات ودليل الأهل" />
+    </a>
     
     <div class="pt-3 border-t border-stone-200 flex flex-col gap-2.5">
       <a 
@@ -131,12 +153,12 @@ const currentPath = Astro.url.pathname;
         class="flex items-center justify-center gap-2 py-2.5 rounded-full font-bold text-sm bg-emerald-600 text-white shadow-sm"
       >
         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.767-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.768-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
         </svg>
-        <span>Message on WhatsApp</span>
+        <T en="Message on WhatsApp" ar="راسلنا عبر واتساب" />
       </a>
       <a href="/#contact" class="btn-scout-primary text-center py-2.5 text-sm">
-        Register / Join
+        <T en="Join This Saturday" ar="انضم إلينا هذا السبت" />
       </a>
     </div>
   </div>

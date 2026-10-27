@@ -1,5 +1,6 @@
 ---
 import { historyTimeline } from '../data/history';
+import T from './T.astro';
 ---
 
 <section id="history" class="py-20 sm:py-28 bg-[#FAF7F2] border-t border-stone-200">
@@ -7,17 +8,20 @@ import { historyTimeline } from '../data/history';
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
       
       <!-- Left Column (Sticky heading like screenshot) -->
-      <div class="lg:col-span-5 lg:sticky lg:top-28 space-y-4">
+      <div class="lg:col-span-5 lg:sticky lg:top-28 space-y-4 self-start">
         <span class="text-xs uppercase tracking-widest font-bold text-stone-500 font-sans block">
-          GROUP HISTORY
+          <T en="GROUP HISTORY" ar="تاريخ الفوج الكشفي" />
         </span>
         
         <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 tracking-tight leading-[1.08]">
-          Forty-nine years of showing up.
+          <T en="Forty-nine years of showing up." ar="تسعة وأربعون عاماً من الثبات والحضور." />
         </h2>
 
         <p class="text-stone-600 text-base sm:text-lg leading-relaxed pt-2 max-w-md">
-          The group began in the courtyard of Saint Jean Marc with twelve boys and one borrowed tent. It has kept meeting every season since, passing the same habits of brotherhood, woodcraft, and civic duty from one generation of leaders to the next.
+          <T 
+            en="The group began in the courtyard of Saint Jean Marc with twelve boys and one borrowed tent. It has kept meeting every season since, passing the same habits of brotherhood, woodcraft, and civic duty from one generation of leaders to the next." 
+            ar="انطلق الفوج في باحة مار يوحنا مرقس باثني عشر فتى وخيمة واحدة مستعارة. ومنذ ذلك الحين لم يتوقف لقاء واحد، متوارثاً قيم الأخوّة، ريادة الخلاء، والخدمة العامة من جيل قادة إلى جيل." 
+          />
         </p>
 
         <div class="pt-4">
@@ -25,8 +29,8 @@ import { historyTimeline } from '../data/history';
             href="/leadership" 
             class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cedar-800 hover:text-cedar-950 underline"
           >
-            <span>Meet the volunteer leadership</span>
-            <span>→</span>
+            <T en="Meet the volunteer leadership" ar="تعرف على القادة المتطوعين" />
+            <span class="rtl:rotate-180">→</span>
           </a>
         </div>
       </div>
@@ -45,10 +49,10 @@ import { historyTimeline } from '../data/history';
             <!-- Content -->
             <div class="sm:col-span-9 space-y-1.5">
               <h3 class="text-xl sm:text-2xl font-bold text-stone-900 tracking-tight">
-                {item.title}
+                <T en={item.title} ar={item.titleAr} />
               </h3>
               <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
-                {item.description}
+                <T en={item.description} ar={item.descriptionAr} />
               </p>
             </div>
           </div>

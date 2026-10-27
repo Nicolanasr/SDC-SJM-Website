@@ -1,0 +1,12 @@
+---
+interface Props {
+  en: string;
+  ar: string;
+  class?: string;
+  as?: string;
+}
+
+const { en, ar, class: className = '', as: Tag = 'span' } = Astro.props;
+---
+<Tag class={`${className} lang-en`}>{en}</Tag>
+<Tag class={`${className} lang-ar`} dir="rtl">{ar}</Tag>
