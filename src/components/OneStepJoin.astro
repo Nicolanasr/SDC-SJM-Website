@@ -4,18 +4,18 @@ import { ArrowRight, Check } from 'lucide-astro';
 import T from './T.astro';
 ---
 
-<section class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="rounded-3xl bg-white border border-stone-200 p-6 sm:p-10 lg:p-12 shadow-sm">
-    <div class="max-w-3xl space-y-3">
+<section class="py-8 sm:py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="rounded-3xl bg-white border border-stone-200 p-5 sm:p-10 lg:p-12 shadow-sm">
+    <div class="max-w-3xl space-y-2 sm:space-y-3">
       <span class="text-xs uppercase tracking-widest font-bold text-amber-700 block font-sans">
         <T en="ZERO PAPERWORK TO START" ar="الانتساب سهل وبسيط" />
       </span>
 
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight leading-tight">
+      <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight leading-tight">
         <T en="Joining takes one Saturday afternoon." ar="الانضمام إلينا يحتاج بعد ظهر سبت واحد فقط." />
       </h2>
 
-      <p class="text-stone-600 text-base sm:text-lg leading-relaxed pt-1">
+      <p class="text-stone-600 text-sm sm:text-lg leading-relaxed pt-0.5 sm:pt-1">
         <T 
           en="There are no registration portals, entry exams, or upfront commitments. Here is how your child's first Saturday works:" 
           ar="لا استمارات معقدة ولا امتحانات ولا التزامات مسبقة. هكذا تسير أول زيارة لطفلكم:" 
@@ -24,7 +24,7 @@ import T from './T.astro';
     </div>
 
     <!-- 3 Minimal Steps -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 mt-4 border-t border-stone-100">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 pt-6 sm:pt-8 mt-3 sm:mt-4 border-t border-stone-100">
       <div class="space-y-2">
         <div class="text-xs font-bold text-amber-700 uppercase tracking-wider font-mono">
           <T en="01 • Sneaker Day" ar="٠١ • حذاء رياضي عادي" />
@@ -72,14 +72,14 @@ import T from './T.astro';
     </div>
 
     <!-- Minimal Action Row -->
-    <div class="mt-8 pt-6 border-t border-stone-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div class="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-stone-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div class="flex items-center gap-4 text-xs font-medium text-stone-500">
         <span class="flex items-center gap-1.5">
-          <Check class="w-4 h-4 text-emerald-600" />
+          <Check class="w-4 h-4 text-emerald-600 shrink-0" />
           <T en="No tryout fees" ar="دون أي رسوم للتجربة" />
         </span>
         <span class="flex items-center gap-1.5">
-          <Check class="w-4 h-4 text-emerald-600" />
+          <Check class="w-4 h-4 text-emerald-600 shrink-0" />
           <T en="All ages (4–24)" ar="لكل الأعمار (٤–٢٤)" />
         </span>
       </div>
@@ -88,7 +88,7 @@ import T from './T.astro';
         href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent('Hello! We plan to drop by this Saturday at 3:00 PM with our child.')}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-4 py-2.5 rounded-full border border-emerald-300 transition-colors"
+        class="inline-flex items-center justify-center gap-2 text-xs uppercase tracking-wider font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-4 py-2.5 rounded-full border border-emerald-300 transition-colors w-full sm:w-auto text-center"
       >
         <T en="Tell Us You're Coming (WhatsApp)" ar="أخبرنا بزيارتك عبر واتساب" />
         <ArrowRight class="w-3.5 h-3.5 rtl:rotate-180" />

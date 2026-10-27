@@ -18,7 +18,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
 <Layout title={`${siteConfig.groupName} – ${siteConfig.tagline}`}>
   
   <!-- HERO SECTION (Full Background Group Photo with Overlay) -->
-  <section class="relative min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] flex items-center bg-stone-900 overflow-hidden">
+  <section class="relative min-h-[520px] sm:min-h-[640px] lg:min-h-[720px] flex items-center bg-stone-900 overflow-hidden">
     
     <!-- Background Whole Group Photo -->
     <div class="absolute inset-0 z-0">
@@ -33,11 +33,11 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
     </div>
 
     <!-- Content on top of background -->
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 w-full">
-      <div class="max-w-3xl space-y-5">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-28 w-full">
+      <div class="max-w-3xl space-y-4 sm:space-y-5">
         
         <!-- Eyebrow Badge -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-stone-900/80 text-amber-400 border border-stone-700/80 backdrop-blur-sm">
+        <div class="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-stone-900/80 text-amber-400 border border-stone-700/80 backdrop-blur-sm">
           <T 
             en="SCOUT DES CÈDRES • GROUPE SAINT JEAN MARC • BYBLOS" 
             ar="جمعية كشافة الأرز • فوج القديس يوحنا مرقس • جبيل" 
@@ -45,7 +45,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
         </div>
 
         <!-- Headline -->
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.05]">
+        <h1 class="text-3xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] sm:leading-[1.05]">
           <T 
             en="Forty-nine years of Saturday afternoons, mountain camps, and showing up." 
             ar="تسعة وأربعون عاماً من لقاءات بعد ظهر السبت، ومخيمات الجبال، والالتزام الحقيقي." 
@@ -53,7 +53,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
         </h1>
 
         <!-- Subtitle -->
-        <p class="text-sand-200 text-lg sm:text-xl leading-relaxed max-w-2xl font-normal pt-1">
+        <p class="text-sand-200 text-sm sm:text-xl leading-relaxed max-w-2xl font-normal pt-1">
           <T 
             en="Since May 5, 1977, we have gathered every Saturday afternoon in the courtyard of Saint Jean Marc. No screens, no pretensions—just young people learning to build with their hands, hike the valleys of Lebanon, and look out for each other." 
             ar="منذ ٥ أيار ١٩٧٧، نلتقي كل بعد ظهر سبت في باحة مار يوحنا مرقس. بعيداً عن الشاشات والاصطناع—شباب وشابات يبنون بأيديهم، يستكشفون وديان لبنان، ويكبرون بروح الأخوّة والمسؤولية." 
@@ -61,8 +61,8 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
         </p>
 
         <!-- Actions -->
-        <div class="pt-3 flex flex-wrap gap-4 items-center">
-          <a href="/#meeting" class="btn-scout-gold text-sm shadow-lg">
+        <div class="pt-2 sm:pt-3 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+          <a href="/#meeting" class="btn-scout-gold text-xs sm:text-sm shadow-lg text-center justify-center">
             <T en="Join This Saturday (3:00 – 4:30 PM)" ar="شاركنا هذا السبت (٣:٠٠ – ٤:٣٠ بعد الظهر)" />
           </a>
 
@@ -70,9 +70,9 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
             href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage)}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-bold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-sm transition-all"
+            class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-sm transition-all text-center"
           >
-            <svg class="w-4 h-4 fill-emerald-400" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 fill-emerald-400 shrink-0" viewBox="0 0 24 24">
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.768-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
             </svg>
             <T en="Message on WhatsApp" ar="راسلنا عبر واتساب" />
@@ -93,16 +93,16 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   <HistoryTimeline />
 
   <!-- SECTIONS / UNITS (With Photos for Each Age Section) -->
-  <section class="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+  <section class="py-12 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
       <div>
         <span class="text-xs uppercase tracking-widest font-bold text-stone-500 block font-sans">
           <T en="OUR THREE BRANCHES" ar="فروع الفوج الكشفي" />
         </span>
-        <h2 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mt-1">
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight mt-1">
           <T en="A section for every age." ar="قسم مخصص لكل فئة عمرية." />
         </h2>
-        <p class="text-stone-600 text-sm sm:text-base mt-2 max-w-xl">
+        <p class="text-stone-600 text-sm sm:text-base mt-1.5 max-w-xl">
           <T 
             en="From four-year-old cubs exploring the forest to twenty-four-year-old rovers leading community service in Byblos." 
             ar="من الصغار بعمر ٤ سنوات يستكشفون الغابة إلى الجوالة بعمر ٢٤ سنة في خدمة مجتمع بيبلوس ووديانها."
@@ -110,14 +110,14 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
         </p>
       </div>
 
-      <a href="/sections" class="btn-scout-outline text-xs uppercase tracking-wider">
+      <a href="/sections" class="btn-scout-outline text-xs uppercase tracking-wider self-start md:self-auto">
         <T en="View Full Section Guide →" ar="دليل الأقسام الكامل ←" />
       </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
       {sectionsData.map(section => (
-        <div class="bg-white rounded-3xl p-5 sm:p-6 border border-stone-200 shadow-sm flex flex-col justify-between hover:border-stone-400 transition-colors">
+        <div class="bg-white rounded-3xl p-4 sm:p-6 border border-stone-200 shadow-sm flex flex-col justify-between hover:border-stone-400 transition-colors">
           <div class="space-y-4">
             
             <!-- Section Image -->
@@ -181,16 +181,16 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   <AdventureCollage />
 
   <!-- UPCOMING CAMPS & EVENTS (Authentic Scout Editorial Style) -->
-  <section class="py-20 sm:py-28 bg-[#FAF7F2] border-t border-stone-200">
+  <section class="py-12 sm:py-24 bg-[#FAF7F2] border-t border-stone-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Header Bar -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
         <div>
           <span class="text-xs uppercase tracking-widest font-bold text-stone-500 block font-sans">
             <T en="ANNUAL CAMPS & TRADITIONS" ar="المخيمات والتقاليد السنوية" />
           </span>
-          <h2 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mt-1">
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight mt-1">
             <T en="Life under canvas." ar="الحياة تحت الخيمة." />
           </h2>
         </div>
@@ -204,9 +204,9 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
       </div>
 
       <!-- 3 Authentic Scout Event Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
         {upcomingEvents.slice(0, 3).map(event => (
-          <div class="bg-white rounded-3xl border border-stone-200 p-5 sm:p-6 shadow-sm hover:border-stone-400 transition-all flex flex-col justify-between">
+          <div class="bg-white rounded-3xl border border-stone-200 p-4 sm:p-6 shadow-sm hover:border-stone-400 transition-all flex flex-col justify-between">
             <div class="space-y-4">
               <!-- Photo with organic date tag -->
               <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden bg-stone-200 relative">
@@ -272,16 +272,16 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   </section>
 
   <!-- BLOG / FIELD NOTES SECTION -->
-  <section class="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-stone-200">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+  <section class="py-12 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-stone-200">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
       <div>
         <span class="text-xs uppercase tracking-widest font-bold text-stone-500 block font-sans">
           <T en="CHRONICLES & GUIDES" ar="مقالات ودليل الأهل" />
         </span>
-        <h2 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mt-1">
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight mt-1">
           <T en="Field Notes from the Troop" ar="دفتر يوميات الفوج" />
         </h2>
-        <p class="text-stone-600 text-sm sm:text-base mt-2 max-w-xl">
+        <p class="text-stone-600 text-sm sm:text-base mt-1.5 max-w-xl">
           <T 
             en="Stories of woodcraft, parenting advice for sleepaway camps, and reflections on our 49-year heritage in Byblos." 
             ar="قصص ريادة الخلاء، نصائح للأهل حول المخيمات، وذكريات ٤٩ عاماً من التراث الكشفي في جبيل." 
@@ -289,12 +289,12 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
         </p>
       </div>
 
-      <a href="/blog" class="btn-scout-outline text-xs uppercase tracking-wider">
+      <a href="/blog" class="btn-scout-outline text-xs uppercase tracking-wider self-start md:self-auto">
         <T en="Read All Field Notes →" ar="قراءة جميع المقالات ←" />
       </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
       {blogPosts.map(post => (
         <article class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md hover:border-stone-400 transition-all flex flex-col justify-between">
           <div>
@@ -307,7 +307,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
               />
             </a>
 
-            <div class="p-6 space-y-2.5">
+            <div class="p-4 sm:p-6 space-y-2.5">
               <div class="flex items-center justify-between text-xs font-bold text-stone-500">
                 <span class="px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-700 uppercase tracking-wider text-[10px]">
                   {post.category}
@@ -315,7 +315,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
                 <span>{post.readTime}</span>
               </div>
 
-              <h3 class="text-xl font-bold text-stone-900 tracking-tight leading-snug">
+              <h3 class="text-lg sm:text-xl font-bold text-stone-900 tracking-tight leading-snug">
                 <a href={`/blog/${post.slug}`} class="hover:text-cedar-800 transition-colors">
                   {post.title}
                 </a>
@@ -327,7 +327,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
             </div>
           </div>
 
-          <div class="px-6 pb-6 pt-2 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+          <div class="px-4 pb-4 sm:px-6 sm:pb-6 pt-2 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
             <span>{post.date}</span>
             <a href={`/blog/${post.slug}`} class="font-bold text-cedar-800 hover:text-cedar-950 uppercase tracking-wider text-[11px] underline">
               <T en="Read Article →" ar="قراءة المقال ←" />
@@ -339,17 +339,17 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   </section>
 
   <!-- LEADERSHIP SECTION LINK -->
-  <section class="py-16 bg-[#FAF7F2] border-t border-stone-200">
+  <section class="py-10 sm:py-16 bg-[#FAF7F2] border-t border-stone-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-stone-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="bg-white rounded-3xl p-5 sm:p-10 lg:p-12 border border-stone-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
         <div>
           <span class="text-xs uppercase tracking-widest font-bold text-stone-500 block font-sans">
             <T en="VOLUNTEER LEADERSHIP" ar="القيادة التطوعية" />
           </span>
-          <h2 class="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight mt-1">
+          <h2 class="text-xl sm:text-3xl font-black text-stone-900 tracking-tight mt-1">
             <T en="The chefs and cheftaines behind the troop." ar="القادة والقائدات في خدمة الفوج." />
           </h2>
-          <p class="text-stone-600 text-sm max-w-xl mt-1">
+          <p class="text-stone-600 text-xs sm:text-sm max-w-xl mt-1 leading-relaxed">
             <T 
               en="100% volunteer-run. Meet the chefs, cheftaines, chaplain, and maitrise who dedicate their Saturday afternoons to Saint Jean Marc." 
               ar="فوج تطوعي ١٠٠٪. تعرفوا على القادة، المرشد الروحي، ومجلس الفوج الذين يكرسون سبتهم لخدمة أطفالنا في مار يوحنا مرقس." 
@@ -357,7 +357,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
           </p>
         </div>
 
-        <a href="/leadership" class="btn-scout-primary text-xs uppercase tracking-wider shrink-0">
+        <a href="/leadership" class="btn-scout-primary text-xs uppercase tracking-wider shrink-0 w-full sm:w-auto text-center justify-center">
           <T en="Meet the Leaders →" ar="تعرف على القادة ←" />
         </a>
       </div>
@@ -365,12 +365,12 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   </section>
 
   <!-- PARENT FAQS ACCORDION -->
-  <section id="faq" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center space-y-2 mb-12">
+  <section id="faq" class="py-12 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center space-y-1.5 sm:space-y-2 mb-8 sm:mb-12">
       <span class="text-xs uppercase tracking-widest font-bold text-stone-500 font-sans block">
         <T en="FREQUENT QUESTIONS" ar="الأسئلة الشائعة" />
       </span>
-      <h2 class="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
+      <h2 class="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight">
         <T en="What parents ask us most." ar="أبرز ما يسأله الأهل." />
       </h2>
     </div>
@@ -381,20 +381,20 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
         <div class="faq-item group">
           <button 
             type="button" 
-            class="faq-toggle w-full py-6 text-left flex items-center justify-between gap-6 focus:outline-none cursor-pointer"
+            class="faq-toggle w-full py-4 sm:py-6 text-left flex items-center justify-between gap-4 sm:gap-6 focus:outline-none cursor-pointer"
             aria-expanded={idx === 0 ? "true" : "false"}
           >
-            <span class="text-lg sm:text-xl font-bold text-stone-900 group-hover:text-cedar-800 transition-colors">
+            <span class="text-base sm:text-xl font-bold text-stone-900 group-hover:text-cedar-800 transition-colors">
               <T en={faq.question} ar={faq.questionAr} />
             </span>
-            <span class="faq-icon-wrapper w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center shrink-0 text-stone-600 group-hover:border-cedar-800 group-hover:text-cedar-800 transition-all">
-              <svg class="faq-icon w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span class="faq-icon-wrapper w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-stone-300 flex items-center justify-center shrink-0 text-stone-600 group-hover:border-cedar-800 group-hover:text-cedar-800 transition-all">
+              <svg class="faq-icon w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={idx === 0 ? "M20 12H4" : "M12 4v16m8-8H4"} />
               </svg>
             </span>
           </button>
 
-          <div class={`faq-answer overflow-hidden transition-all duration-300 pb-6 text-stone-600 text-sm sm:text-base leading-relaxed max-w-3xl ${idx === 0 ? '' : 'hidden'}`}>
+          <div class={`faq-answer overflow-hidden transition-all duration-300 pb-4 sm:pb-6 text-stone-600 text-sm sm:text-base leading-relaxed max-w-3xl ${idx === 0 ? '' : 'hidden'}`}>
             <T en={faq.answer} ar={faq.answerAr} />
           </div>
         </div>
@@ -431,15 +431,15 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   </section>
 
   <!-- CONTACT & WHATSAPP -->
-  <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-stone-200">
-    <div class="text-center max-w-xl mx-auto space-y-2 mb-12">
+  <section id="contact" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-stone-200">
+    <div class="text-center max-w-xl mx-auto space-y-1.5 sm:space-y-2 mb-8 sm:mb-12">
       <span class="text-xs uppercase tracking-widest font-bold text-stone-500 font-sans block">
         <T en="GET IN TOUCH" ar="تواصل معنا" />
       </span>
-      <h2 class="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
+      <h2 class="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight">
         <T en="Drop by or send a message." ar="تفضلوا بزيارتنا أو راسلونا." />
       </h2>
-      <p class="text-stone-600 text-sm">
+      <p class="text-stone-600 text-xs sm:text-sm">
         <T 
           en="We answer all questions about registration, uniforms, and joining the Saint Jean Marc family." 
           ar="نجيب على كافة استفساراتكم حول التسجيل، الزي الكشفي، والانضمام إلى عائلة مار يوحنا مرقس." 

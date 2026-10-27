@@ -4,7 +4,7 @@ import { MapPin, Clock, ArrowRight } from 'lucide-astro';
 import T from './T.astro';
 ---
 
-<div class="rounded-3xl bg-white border border-stone-200 p-8 sm:p-12 text-center max-w-2xl mx-auto shadow-sm">
+<div class="rounded-3xl bg-white border border-stone-200 p-5 sm:p-10 lg:p-12 text-center max-w-2xl mx-auto shadow-sm">
   <div class="space-y-4">
     <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
       <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -29,7 +29,7 @@ import T from './T.astro';
         href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-sm transition-all hover:scale-105"
+        class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-sm transition-all hover:scale-105 w-full sm:w-auto text-center"
       >
         <span class="lang-en">Message Us on WhatsApp ({siteConfig.contact.phoneDisplay})</span>
         <span class="lang-ar">راسل قادتنا على واتساب ({siteConfig.contact.phoneDisplay})</span>

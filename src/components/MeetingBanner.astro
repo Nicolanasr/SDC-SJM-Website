@@ -4,17 +4,17 @@ import { MapPin, Clock, Check, ExternalLink } from 'lucide-astro';
 import T from './T.astro';
 ---
 
-<div class="my-10 rounded-3xl bg-cedar-950 text-sand-50 p-6 sm:p-10 lg:p-12 border border-cedar-900 shadow-sm">
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+<div class="my-6 sm:my-10 rounded-3xl bg-cedar-950 text-sand-50 p-5 sm:p-10 lg:p-12 border border-cedar-900 shadow-sm">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
     
     <!-- Left: Schedule, Location & Easy 1-Step Process -->
-    <div class="lg:col-span-6 space-y-5">
+    <div class="lg:col-span-6 space-y-4 sm:space-y-5">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-cedar-900 text-gold-400 border border-cedar-800">
         <T en="WEEKLY GATHERINGS • AGES 4–24" ar="اللقاءات الأسبوعية • الأعمار ٤–٢٤" />
       </div>
 
       <div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
           <T en="Every Saturday, 3:00 to 4:30 PM." ar="كل نهار سبت، من ٣:٠٠ حتى ٤:٣٠ بعد الظهر." />
         </h2>
       </div>
@@ -35,33 +35,33 @@ import T from './T.astro';
 
       <!-- Easy joining points & Parent peace of mind -->
       <div class="pt-2 border-t border-cedar-900/80 space-y-2.5 text-xs sm:text-sm text-sand-200">
-        <div class="flex items-center gap-2.5">
-          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0">
+        <div class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0 mt-0.5">
             <Check class="w-3.5 h-3.5" />
           </span>
-          <span class="lang-en"><strong>Open to all schools:</strong> Open to every child in Byblos and surrounding towns, regardless of their school.</span>
-          <span class="lang-ar"><strong>مفتوح لجميع الطلاب:</strong> نرحب بكل طفل وشاب من قضاء جبيل والبلدات المجاورة أياً كانت مدرستهم.</span>
+          <span class="lang-en leading-snug"><strong>Open to all schools:</strong> Open to every child in Byblos and surrounding towns, regardless of their school.</span>
+          <span class="lang-ar leading-snug"><strong>مفتوح لجميع الطلاب:</strong> نرحب بكل طفل وشاب من قضاء جبيل والبلدات المجاورة أياً كانت مدرستهم.</span>
         </div>
-        <div class="flex items-center gap-2.5">
-          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0">
+        <div class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0 mt-0.5">
             <Check class="w-3.5 h-3.5" />
           </span>
-          <span class="lang-en"><strong>One family drop-off:</strong> All ages (4 to 24) meet at the same time, saving parents multiple Saturday trips.</span>
-          <span class="lang-ar"><strong>موعد موحد لجميع الأخوة:</strong> تلتقي كافة الفروع في التوقيت نفسه، مما يوفر على الأهل مشقة التنقلات المتكررة.</span>
+          <span class="lang-en leading-snug"><strong>One family drop-off:</strong> All ages (4 to 24) meet at the same time, saving parents multiple Saturday trips.</span>
+          <span class="lang-ar leading-snug"><strong>موعد موحد لجميع الأخوة:</strong> تلتقي كافة الفروع في التوقيت نفسه، مما يوفر على الأهل مشقة التنقلات المتكررة.</span>
         </div>
-        <div class="flex items-center gap-2.5">
-          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0">
+        <div class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0 mt-0.5">
             <Check class="w-3.5 h-3.5" />
           </span>
-          <span class="lang-en"><strong>Zero gear needed:</strong> Come in sneakers and play clothes. No uniform or fees required on day one.</span>
-          <span class="lang-ar"><strong>لا حاجة لشراء ثياب خاصة:</strong> يكفي الحضور بحذاء رياضي وثياب مريحة دون أي تكلفة أو تسجيل مسبق.</span>
+          <span class="lang-en leading-snug"><strong>Zero gear needed:</strong> Come in sneakers and play clothes. No uniform or fees required on day one.</span>
+          <span class="lang-ar leading-snug"><strong>لا حاجة لشراء ثياب خاصة:</strong> يكفي الحضور بحذاء رياضي وثياب مريحة دون أي تكلفة أو تسجيل مسبق.</span>
         </div>
-        <div class="flex items-center gap-2.5">
-          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0">
+        <div class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-900/80 text-emerald-300 flex items-center justify-center shrink-0 mt-0.5">
             <Check class="w-3.5 h-3.5" />
           </span>
-          <span class="lang-en"><strong>Trained leadership:</strong> Red Cross certified first-aiders, mature chefs who grew up in the troop, and parish chaplain oversight.</span>
-          <span class="lang-ar"><strong>إشراف قيادي مؤهل:</strong> قادة وقائدات حائزون على شهادات إسعاف أولي من الصليب الأحمر، بمرافقة مرشدنا الديني الكاهن.</span>
+          <span class="lang-en leading-snug"><strong>Trained leadership:</strong> Red Cross certified first-aiders, mature chefs who grew up in the troop, and parish chaplain oversight.</span>
+          <span class="lang-ar leading-snug"><strong>إشراف قيادي مؤهل:</strong> قادة وقائدات حائزون على شهادات إسعاف أولي من الصليب الأحمر، بمرافقة مرشدنا الديني الكاهن.</span>
         </div>
       </div>
 

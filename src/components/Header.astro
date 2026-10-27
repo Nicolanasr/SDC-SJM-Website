@@ -7,8 +7,8 @@ const currentPath = Astro.url.pathname;
 ---
 
 <!-- Top Announcement Banner (Hidden once scrolled) -->
-<div class="bg-cedar-950 text-sand-100 text-xs py-2 px-4 border-b border-cedar-800/60">
-  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+<div class="bg-cedar-950 text-sand-100 text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 border-b border-cedar-800/60">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-2 text-center sm:text-left">
     <div class="flex items-center gap-2">
       <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
       <span class="font-medium text-stone-200">
@@ -20,7 +20,7 @@ const currentPath = Astro.url.pathname;
     </div>
     <a 
       href="/#meeting" 
-      class="shrink-0 inline-flex items-center gap-1 font-bold text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors text-xs"
+      class="shrink-0 inline-flex items-center gap-1 font-bold text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors text-[11px] sm:text-xs"
     >
       <T en="Meeting Details" ar="تفاصيل اللقاء" />
       <svg class="w-3.5 h-3.5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
@@ -30,21 +30,21 @@ const currentPath = Astro.url.pathname;
 
 <header class="sticky top-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-cedar-800/10 transition-all">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
+    <div class="flex items-center justify-between h-16 sm:h-20">
       
       <!-- Brand Logo & Name -->
-      <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-cedar-600 rounded-lg p-1">
+      <a href="/" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-cedar-600 rounded-lg p-0.5 sm:p-1">
         <!-- Stylized Scout Cedar Insignia -->
-        <div class="w-11 h-11 rounded-full bg-cedar-800 text-sand-50 flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-cedar-700 transition-colors">
-          <svg class="w-6 h-6 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-cedar-800 text-sand-50 flex items-center justify-center font-bold text-base sm:text-lg shadow-sm group-hover:bg-cedar-700 transition-colors shrink-0">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2L6 8h3.5L5 14h4.5L3 20h18l-6.5-6h4.5L14.5 8H18L12 2zM11 20v2h2v-2h-2z" />
           </svg>
         </div>
         <div>
-          <div class="font-serif font-bold text-lg sm:text-xl text-cedar-950 leading-tight">
+          <div class="font-serif font-bold text-base sm:text-xl text-cedar-950 leading-tight">
             <T en={siteConfig.groupName} ar={siteConfig.arabicGroupName} />
           </div>
-          <div class="text-xs uppercase tracking-wider text-cedar-700 font-semibold">
+          <div class="text-[10px] sm:text-xs uppercase tracking-wider text-cedar-700 font-semibold truncate max-w-[150px] sm:max-w-none">
             <T en={siteConfig.tagline} ar={siteConfig.arabicTagline} />
           </div>
         </div>

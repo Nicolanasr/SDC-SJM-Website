@@ -7,16 +7,16 @@ const infiniteReviews = [...scoutReviews, ...scoutReviews, ...scoutReviews];
 const realCount = scoutReviews.length;
 ---
 
-<section class="py-16 sm:py-24 bg-[#FAF7F2] overflow-hidden border-t border-stone-200">
+<section class="py-12 sm:py-20 bg-[#FAF7F2] overflow-hidden border-t border-stone-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Header Bar matching screenshot -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-6 sm:mb-10">
       <div>
-        <h2 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-tight">
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight leading-tight">
           <T en="Good days make great stories" ar="أيام لا تُنسى وحكايات تدوم" />
         </h2>
-        <p class="text-stone-600 text-sm sm:text-base mt-2 max-w-xl">
+        <p class="text-stone-600 text-sm sm:text-base mt-1.5 max-w-xl">
           <T 
             en="From first-timers to seasoned patrol leaders, our youth and parents share their journey with Saint Jean Marc." 
             ar="من الصغار في سبتهم الأول إلى قادة الطلائع والأهل، تجارب حقيقية من قلب الفوج." 
@@ -24,7 +24,7 @@ const realCount = scoutReviews.length;
         </p>
       </div>
 
-      <div class="flex items-center gap-6">
+      <div class="flex flex-wrap items-center justify-between sm:justify-end gap-3 sm:gap-6 w-full sm:w-auto">
         <div class="flex items-center gap-2">
           <div class="flex text-amber-500 text-sm tracking-tight">
             ★★★★★
@@ -39,7 +39,7 @@ const realCount = scoutReviews.length;
           <button 
             id="review-prev" 
             type="button" 
-            class="w-10 h-10 rounded-full border border-stone-300 bg-white hover:bg-stone-100 flex items-center justify-center text-stone-700 transition-colors shadow-sm focus:outline-none"
+            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-300 bg-white hover:bg-stone-100 flex items-center justify-center text-stone-700 transition-colors shadow-sm focus:outline-none"
             aria-label="Previous Story"
           >
             <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +49,7 @@ const realCount = scoutReviews.length;
           <button 
             id="review-next" 
             type="button" 
-            class="w-10 h-10 rounded-full bg-cedar-800 hover:bg-cedar-900 text-white flex items-center justify-center transition-colors shadow-sm focus:outline-none"
+            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-cedar-800 hover:bg-cedar-900 text-white flex items-center justify-center transition-colors shadow-sm focus:outline-none"
             aria-label="Next Story"
           >
             <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,20 +63,20 @@ const realCount = scoutReviews.length;
   </div>
 
   <!-- Full-bleed carousel track showing peeked left & right cards -->
-  <div class="relative w-full overflow-hidden py-4" id="carousel-viewport">
+  <div class="relative w-full overflow-hidden py-2 sm:py-4" id="carousel-viewport">
     <div 
       id="reviews-track" 
       class="flex items-center transition-transform duration-500 ease-out"
     >
       {infiniteReviews.map((review, idx) => (
         <div 
-          class="review-slide shrink-0 transition-all duration-500 px-3 sm:px-4 cursor-pointer"
+          class="review-slide shrink-0 transition-all duration-500 px-2 sm:px-4 cursor-pointer"
           data-index={idx}
-          style="width: min(880px, 88vw);"
+          style="width: min(880px, 92vw);"
         >
           <!-- Review Card matching media_1792752761857.png with prominent large photo -->
-          <div class="review-card-inner rounded-[2rem] bg-[#F4EFE6] border border-stone-300/80 p-5 sm:p-7 lg:p-8 shadow-sm transition-all duration-300">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
+          <div class="review-card-inner rounded-[1.75rem] sm:rounded-[2rem] bg-[#F4EFE6] border border-stone-300/80 p-4 sm:p-7 lg:p-8 shadow-sm transition-all duration-300">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 lg:gap-10 items-center">
               
               <!-- Left Camp Photo (Bigger, taller, matching screenshot) -->
               <div class="md:col-span-6 rounded-2xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-full md:min-h-[340px] lg:min-h-[380px] bg-stone-300 shadow-sm relative">

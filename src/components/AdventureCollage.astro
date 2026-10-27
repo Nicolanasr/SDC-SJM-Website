@@ -57,11 +57,11 @@ const collage = {
 };
 ---
 
-<section class="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-12 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   
-  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-8">
     <div>
-      <h2 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
+      <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight">
         <T en="This is what adventure looks like" ar="هكذا تبدو المغامرة الكشفية الحقيقية" />
       </h2>
       <p class="text-stone-600 text-sm sm:text-base mt-1">
@@ -78,15 +78,15 @@ const collage = {
   </div>
 
   <!-- Exact Collage Grid Matching media_1792751517669.jpg -->
-  <div class="space-y-4 sm:space-y-6">
+  <div class="space-y-3 sm:space-y-6">
     
     <!-- Top Row: Big Main Photo on Left + 2 Stacked Photos on Right -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-6 items-stretch">
       
       <!-- Big Focal Photo (Left ~58%) -> Opens Grand Summer Camps Album -->
       <a 
         href={collage.main.albumHref} 
-        class="lg:col-span-7 group relative rounded-3xl overflow-hidden bg-stone-200 border border-stone-200 shadow-sm aspect-[4/3] lg:aspect-auto lg:min-h-[460px] block"
+        class="lg:col-span-7 group relative rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-200 border border-stone-200 shadow-sm aspect-[4/3] lg:aspect-auto lg:min-h-[460px] block"
       >
         <img 
           src={collage.main.src} 
@@ -94,7 +94,7 @@ const collage = {
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent flex items-end p-6 text-white">
+        <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent flex items-end p-4 sm:p-6 text-white">
           <div class="w-full flex items-end justify-between">
             <div>
               <span class="inline-block px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-600 text-white mb-1.5 shadow-sm">
@@ -111,12 +111,12 @@ const collage = {
       </a>
 
       <!-- Stacked 2 Photos (Right ~42%) -->
-      <div class="lg:col-span-5 flex flex-col gap-4 sm:gap-6 justify-between">
+      <div class="lg:col-span-5 flex flex-col gap-3 sm:gap-6 justify-between">
         
         <!-- Top Right 1 -> Opens Hikes Album -->
         <a 
           href={collage.topRight1.albumHref} 
-          class="group relative rounded-3xl overflow-hidden bg-stone-200 border border-stone-200 shadow-sm aspect-[16/9] lg:aspect-auto flex-1 block"
+          class="group relative rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-200 border border-stone-200 shadow-sm aspect-[16/9] lg:aspect-auto flex-1 block"
         >
           <img 
             src={collage.topRight1.src} 
@@ -124,13 +124,13 @@ const collage = {
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent flex items-end p-5 text-white">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent flex items-end p-3.5 sm:p-5 text-white">
             <div class="w-full flex items-end justify-between">
               <div>
-                <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-600 text-white mb-1">
+                <span class="inline-block px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wider bg-amber-600 text-white mb-1">
                   Album: {collage.topRight1.albumName}
                 </span>
-                <div class="font-bold text-base">{collage.topRight1.title}</div>
+                <div class="font-bold text-sm sm:text-base">{collage.topRight1.title}</div>
               </div>
               <span class="text-xs font-bold uppercase tracking-wider underline group-hover:translate-x-1 transition-transform">
                 →
@@ -142,7 +142,7 @@ const collage = {
         <!-- Top Right 2 -> Opens Parish Ceremonies Album -->
         <a 
           href={collage.topRight2.albumHref} 
-          class="group relative rounded-3xl overflow-hidden bg-stone-200 border border-stone-200 shadow-sm aspect-[16/9] lg:aspect-auto flex-1 block"
+          class="group relative rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-200 border border-stone-200 shadow-sm aspect-[16/9] lg:aspect-auto flex-1 block"
         >
           <img 
             src={collage.topRight2.src} 
@@ -150,13 +150,13 @@ const collage = {
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent flex items-end p-5 text-white">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent flex items-end p-3.5 sm:p-5 text-white">
             <div class="w-full flex items-end justify-between">
               <div>
-                <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-600 text-white mb-1">
+                <span class="inline-block px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wider bg-amber-600 text-white mb-1">
                   Album: {collage.topRight2.albumName}
                 </span>
-                <div class="font-bold text-base">{collage.topRight2.title}</div>
+                <div class="font-bold text-sm sm:text-base">{collage.topRight2.title}</div>
               </div>
               <span class="text-xs font-bold uppercase tracking-wider underline group-hover:translate-x-1 transition-transform">
                 →
@@ -170,7 +170,7 @@ const collage = {
     </div>
 
     <!-- Bottom Row: 4 Photos Across the Width -> Each opens its respective album -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
       {collage.bottomRow.map(item => (
         <a 
           href={item.albumHref} 
@@ -182,7 +182,7 @@ const collage = {
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity flex items-end p-3.5 sm:p-4 text-white">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity flex items-end p-2.5 sm:p-4 text-white">
             <div class="w-full">
               <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-amber-300">
                 {item.albumName}
