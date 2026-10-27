@@ -1,0 +1,304 @@
+---
+import { galleryAlbums, galleryPhotos } from '../data/gallery';
+
+interface Props {
+  limit?: number;
+  featuredOnly?: boolean;
+}
+
+const { limit } = Astro.props;
+---
+
+<div class="gallery-component space-y-12">
+  
+  <!-- Album Cards Showcase (True Album Style) -->
+  <div>
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <span class="text-xs uppercase tracking-widest font-bold text-stone-500 font-sans block">
+          CURATED ALBUMS
+        </span>
+        <h3 class="text-2xl font-black text-stone-900 tracking-tight">
+          Select a Photo Album
+        </h3>
+      </div>
+      <span class="text-xs font-semibold text-stone-500">
+        {galleryAlbums.length} Collections
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {galleryAlbums.map((album, i) => (
+        <button 
+          type="button" 
+          data-album-id={album.id} 
+          class={`album-selector-card text-left rounded-3xl overflow-hidden bg-white border-2 transition-all p-3 shadow-sm hover:shadow-md hover:-translate-y-1 group ${i === 0 ? 'border-cedar-800 ring-2 ring-cedar-800/20' : 'border-stone-200'}`}
+        >
+          <!-- Album Cover Image with photo stack effect -->
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-stone-200 relative mb-3">
+            <img 
+              src={album.coverImage} 
+              alt={album.name} 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute bottom-2.5 right-2.5 bg-stone-900/80 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
+              {album.count} Photos
+            </div>
+          </div>
+
+          <div class="px-2 pb-1 space-y-1">
+            <h4 class="font-bold text-stone-900 text-base leading-snug group-hover:text-cedar-800 transition-colors">
+              {album.name}
+            </h4>
+            <p class="text-xs text-stone-500 line-clamp-2 leading-relaxed">
+              {album.description}
+            </p>
+          </div>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Active Album Photos Grid -->
+  <div class="pt-6 border-t border-stone-200">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div>
+        <h4 id="active-album-title" class="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+          Grand Summer Camps
+        </h4>
+        <p id="active-album-desc" class="text-xs sm:text-sm text-stone-600 mt-0.5">
+          Showing photos from this album. Click any photo to view in full screen.
+        </p>
+      </div>
+
+      <button 
+        id="show-all-photos-btn" 
+        type="button" 
+        class="text-xs font-bold uppercase tracking-wider text-cedar-800 hover:text-cedar-950 underline self-start sm:self-auto"
+      >
+        View All Photos ({galleryPhotos.length})
+      </button>
+    </div>
+
+    <!-- Photos Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="photo-grid">
+      {galleryPhotos.map((photo, index) => (
+        <div 
+          class="photo-item group cursor-pointer relative overflow-hidden rounded-2xl bg-white border border-stone-200 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+          data-album={photo.albumId}
+          data-full-img={photo.imageUrl}
+          data-title={photo.title}
+          data-location={photo.location}
+          data-year={photo.year}
+          data-index={index}
+        >
+          <div class="aspect-[4/3] w-full overflow-hidden bg-stone-100">
+            <img 
+              src={photo.imageUrl} 
+              alt={photo.title} 
+              loading="lazy" 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+
+          <div class="p-4 flex items-center justify-between bg-white">
+            <div>
+              <h5 class="font-bold text-sm text-stone-900 group-hover:text-cedar-800 transition-colors">
+                {photo.title}
+              </h5>
+              <p class="text-xs text-stone-500 mt-0.5">
+                {photo.location} • <span class="font-medium text-amber-700">{photo.year}</span>
+              </p>
+            </div>
+            
+            <div class="w-8 h-8 rounded-full bg-stone-100 group-hover:bg-cedar-800 group-hover:text-white transition-colors flex items-center justify-center shrink-0 text-stone-500">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Interactive Lightbox Modal -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-stone-950/90 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col bg-stone-900 rounded-3xl overflow-hidden shadow-2xl border border-stone-800">
+      
+      <!-- Modal Top Bar -->
+      <div class="flex items-center justify-between px-6 py-4 bg-stone-900 border-b border-stone-800 text-sand-50">
+        <div>
+          <h3 id="lightbox-title" class="font-bold text-lg text-sand-50">Photo Title</h3>
+          <p id="lightbox-meta" class="text-xs text-stone-400">Location • Year</p>
+        </div>
+        <button 
+          id="lightbox-close" 
+          type="button" 
+          class="p-2 rounded-full text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
+          aria-label="Close Lightbox"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Main Image Display -->
+      <div class="relative flex-1 bg-black flex items-center justify-center min-h-[350px] max-h-[70vh] overflow-hidden">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[70vh] object-contain transition-opacity duration-200" />
+
+        <button 
+          id="lightbox-prev" 
+          type="button" 
+          class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-stone-900/80 hover:bg-stone-900 text-white border border-stone-700 transition-colors shadow-lg"
+          aria-label="Previous Photo"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button 
+          id="lightbox-next" 
+          type="button" 
+          class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-stone-900/80 hover:bg-stone-900 text-white border border-stone-700 transition-colors shadow-lg"
+          aria-label="Next Photo"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Album switching
+  const albumCards = document.querySelectorAll('.album-selector-card');
+  const photoItems = document.querySelectorAll<HTMLElement>('.photo-item');
+  const albumTitle = document.getElementById('active-album-title');
+  const albumDesc = document.getElementById('active-album-desc');
+  const showAllBtn = document.getElementById('show-all-photos-btn');
+
+  // Filter initially to the first album
+  let activeAlbum = 'summer-camps';
+  filterPhotos(activeAlbum);
+
+  albumCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const albumId = card.getAttribute('data-album-id') || '';
+      activeAlbum = albumId;
+
+      albumCards.forEach(c => {
+        c.classList.remove('border-cedar-800', 'ring-2', 'ring-cedar-800/20');
+        c.classList.add('border-stone-200');
+      });
+
+      card.classList.add('border-cedar-800', 'ring-2', 'ring-cedar-800/20');
+      card.classList.remove('border-stone-200');
+
+      const name = card.querySelector('h4')?.textContent || '';
+      const desc = card.querySelector('p')?.textContent || '';
+      if (albumTitle) albumTitle.textContent = name;
+      if (albumDesc) albumDesc.textContent = desc;
+
+      filterPhotos(albumId);
+    });
+  });
+
+  showAllBtn?.addEventListener('click', () => {
+    albumCards.forEach(c => {
+      c.classList.remove('border-cedar-800', 'ring-2', 'ring-cedar-800/20');
+      c.classList.add('border-stone-200');
+    });
+    if (albumTitle) albumTitle.textContent = 'All Photos';
+    if (albumDesc) albumDesc.textContent = 'Showing all memories across all camps and hikes.';
+    filterPhotos('all');
+  });
+
+  function filterPhotos(albumId: string) {
+    photoItems.forEach(item => {
+      if (albumId === 'all' || item.getAttribute('data-album') === albumId) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  }
+
+  // Lightbox Modal
+  const modal = document.getElementById('lightbox-modal');
+  const modalImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const modalTitle = document.getElementById('lightbox-title');
+  const modalMeta = document.getElementById('lightbox-meta');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+
+  let visiblePhotos: HTMLElement[] = [];
+  let currentIndex = 0;
+
+  function updateVisiblePhotos() {
+    visiblePhotos = Array.from(document.querySelectorAll<HTMLElement>('.photo-item:not(.hidden)'));
+  }
+
+  function showPhoto(idx: number) {
+    if (visiblePhotos.length === 0) return;
+    if (idx < 0) idx = visiblePhotos.length - 1;
+    if (idx >= visiblePhotos.length) idx = 0;
+    currentIndex = idx;
+
+    const target = visiblePhotos[currentIndex];
+    const fullImg = target.getAttribute('data-full-img') || '';
+    const title = target.getAttribute('data-title') || '';
+    const loc = target.getAttribute('data-location') || '';
+    const yr = target.getAttribute('data-year') || '';
+
+    if (modalImg) modalImg.src = fullImg;
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalMeta) modalMeta.textContent = `${loc} • ${yr} (${currentIndex + 1} of ${visiblePhotos.length})`;
+  }
+
+  photoItems.forEach(item => {
+    item.addEventListener('click', () => {
+      updateVisiblePhotos();
+      const idx = visiblePhotos.indexOf(item);
+      if (idx !== -1) {
+        showPhoto(idx);
+        modal?.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  function closeModal() {
+    modal?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  prevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showPhoto(currentIndex - 1);
+  });
+
+  nextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showPhoto(currentIndex + 1);
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (modal?.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') showPhoto(currentIndex - 1);
+    if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
+  });
+</script>

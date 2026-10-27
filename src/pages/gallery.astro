@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { galleryAlbums, galleryPhotos } from '../data/gallery';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout 
+  title={`Photo Albums & Archives – ${siteConfig.groupName}`}
+  description="Browse curated photo albums from Scout Des Cèdres Saint Jean Marc: Grand Camps, pioneering woodcraft, mountain hikes, and parish celebrations."
+>
+  <!-- Header Banner -->
+  <section class="bg-stone-900 text-sand-50 py-16 sm:py-20 border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs uppercase tracking-widest font-bold text-amber-400 block font-sans">
+        PHOTO ARCHIVES
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+        Curated Scout Albums
+      </h1>
+      <p class="text-stone-300 text-base sm:text-lg max-w-2xl mx-auto">
+        Select an album to open its dedicated collection of high-resolution camp photographs and field memories.
+      </p>
+    </div>
+  </section>
+
+  <!-- Albums Grid Section -->
+  <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {galleryAlbums.map(album => (
+        <a 
+          href={`/gallery/${album.id}`}
+          class="group rounded-3xl overflow-hidden bg-white border border-stone-200 shadow-sm hover:shadow-md hover:border-stone-400 transition-all flex flex-col justify-between"
+        >
+          <!-- Cover Image with photo count badge -->
+          <div class="aspect-[16/9] w-full overflow-hidden bg-stone-200 relative">
+            <img 
+              src={album.coverImage} 
+              alt={album.name} 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute bottom-3 right-3 bg-stone-900/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full">
+              {album.count} Photographs
+            </div>
+          </div>
+
+          <!-- Album Meta -->
+          <div class="p-6 sm:p-8 space-y-3">
+            <div class="flex items-center justify-between">
+              <h2 class="text-2xl font-black text-stone-900 group-hover:text-cedar-800 transition-colors tracking-tight">
+                {album.name}
+              </h2>
+            </div>
+
+            <p class="text-sm text-stone-600 leading-relaxed">
+              {album.description}
+            </p>
+
+            <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-cedar-800 group-hover:text-cedar-950">
+              <span>Open Album</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Photo Contribution Note -->
+  <section class="pb-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+    <h3 class="text-2xl font-black text-stone-900 tracking-tight">
+      Have old scout photos from Saint Jean Marc?
+    </h3>
+    <p class="text-sm text-stone-600 max-w-md mx-auto">
+      Alumni and parents with photographs from past camps (from 1977 to today) can send them directly to our media team.
+    </p>
+    <a 
+      href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent('Hello! I have scout photos from Saint Jean Marc camps that I would like to contribute.')}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-scout-primary text-xs uppercase tracking-wider inline-block"
+    >
+      Send Photos on WhatsApp
+    </a>
+  </section>
+</Layout>

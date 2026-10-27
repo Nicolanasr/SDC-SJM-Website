@@ -1,0 +1,208 @@
+---
+import { scoutReviews } from '../data/reviews';
+---
+
+<section class="py-16 sm:py-24 bg-[#FAF7F2] overflow-hidden border-t border-stone-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header Bar matching screenshot -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div>
+        <h2 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-tight">
+          Good days make great stories
+        </h2>
+        <p class="text-stone-600 text-sm sm:text-base mt-2 max-w-xl">
+          From first-timers to seasoned patrol leaders, our youth and parents share their journey with Saint Jean Marc.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <div class="flex items-center gap-2">
+          <div class="flex text-amber-500 text-sm tracking-tight">
+            ★★★★★
+          </div>
+          <span class="text-xs sm:text-sm font-bold text-stone-800">
+            Excellent • 49 Years of Stories
+          </span>
+        </div>
+
+        <!-- Carousel Arrows -->
+        <div class="flex items-center gap-2">
+          <button 
+            id="review-prev" 
+            type="button" 
+            class="w-10 h-10 rounded-full border border-stone-300 bg-white hover:bg-stone-100 flex items-center justify-center text-stone-700 transition-colors shadow-sm focus:outline-none"
+            aria-label="Previous Story"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button 
+            id="review-next" 
+            type="button" 
+            class="w-10 h-10 rounded-full bg-cedar-800 hover:bg-cedar-900 text-white flex items-center justify-center transition-colors shadow-sm focus:outline-none"
+            aria-label="Next Story"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Full-bleed carousel track showing peeked left & right cards -->
+  <div class="relative w-full overflow-hidden py-4" id="carousel-viewport">
+    <div 
+      id="reviews-track" 
+      class="flex items-center transition-transform duration-500 ease-out"
+    >
+      {scoutReviews.map((review, idx) => (
+        <div 
+          class="review-slide shrink-0 transition-all duration-500 px-3 sm:px-4 cursor-pointer"
+          data-index={idx}
+          style="width: min(880px, 88vw);"
+        >
+          <!-- Review Card matching media_1792752761857.png with prominent large photo -->
+          <div class="review-card-inner rounded-[2rem] bg-[#F4EFE6] border border-stone-300/80 p-5 sm:p-7 lg:p-8 shadow-sm transition-all duration-300">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
+              
+              <!-- Left Camp Photo (Bigger, taller, matching screenshot) -->
+              <div class="md:col-span-6 rounded-2xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-full md:min-h-[340px] lg:min-h-[380px] bg-stone-300 shadow-sm relative">
+                <img 
+                  src={review.image} 
+                  alt={review.name} 
+                  class="w-full h-full object-cover" 
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- Right Review Content -->
+              <div class="md:col-span-6 space-y-4 py-2">
+                <div class="flex text-amber-500 text-base">
+                  ★★★★★
+                </div>
+
+                <blockquote class="text-stone-800 text-base sm:text-lg leading-relaxed font-normal">
+                  "{review.quote}"
+                </blockquote>
+
+                <div class="pt-4 border-t border-stone-300/70">
+                  <div class="font-bold text-stone-900 text-base">
+                    {review.name}
+                  </div>
+                  <div class="text-xs text-stone-600 font-medium mt-0.5">
+                    {review.role}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Bottom Indicator Dots -->
+  <div class="max-w-7xl mx-auto px-4 text-center mt-6">
+    <div class="flex items-center justify-center gap-2" id="review-dots">
+      {scoutReviews.map((_, i) => (
+        <button 
+          type="button" 
+          class={`h-2 rounded-full transition-all duration-300 dot-indicator ${i === 0 ? 'w-8 bg-cedar-800' : 'w-2 bg-stone-300'}`}
+          data-index={i}
+          aria-label={`Go to slide ${i + 1}`}
+        />
+      ))}
+    </div>
+
+    <div class="mt-6">
+      <a 
+        href={`https://wa.me/96170000000?text=${encodeURIComponent('Hello! I would like to inquire about joining Scout Saint Jean Marc this Saturday.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cedar-800 hover:text-cedar-950 underline"
+      >
+        <span>Read guest reviews or ask us a question</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  let activeIndex = 0;
+  const viewport = document.getElementById('carousel-viewport');
+  const track = document.getElementById('reviews-track');
+  const slides = document.querySelectorAll<HTMLElement>('.review-slide');
+  const dots = document.querySelectorAll('.dot-indicator');
+  const prevBtn = document.getElementById('review-prev');
+  const nextBtn = document.getElementById('review-next');
+  const total = slides.length;
+
+  function updateCarousel(idx: number) {
+    if (idx < 0) idx = total - 1;
+    if (idx >= total) idx = 0;
+    activeIndex = idx;
+
+    if (!viewport || !track || slides.length === 0) return;
+
+    const viewportWidth = viewport.clientWidth;
+    const activeSlide = slides[activeIndex];
+    const slideWidth = activeSlide.offsetWidth;
+
+    const slideCenterInTrack = activeSlide.offsetLeft + (slideWidth / 2);
+    const targetOffset = (viewportWidth / 2) - slideCenterInTrack;
+
+    track.style.transform = `translateX(${targetOffset}px)`;
+
+    slides.forEach((slide, i) => {
+      const cardInner = slide.querySelector('.review-card-inner') as HTMLElement;
+      if (i === activeIndex) {
+        slide.style.opacity = '1';
+        slide.style.transform = 'scale(1)';
+        if (cardInner) {
+          cardInner.style.boxShadow = '0 10px 30px -5px rgba(0, 0, 0, 0.1)';
+        }
+      } else {
+        slide.style.opacity = '0.45';
+        slide.style.transform = 'scale(0.96)';
+        if (cardInner) {
+          cardInner.style.boxShadow = 'none';
+        }
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      if (i === activeIndex) {
+        dot.classList.remove('w-2', 'bg-stone-300');
+        dot.classList.add('w-8', 'bg-cedar-800');
+      } else {
+        dot.classList.remove('w-8', 'bg-cedar-800');
+        dot.classList.add('w-2', 'bg-stone-300');
+      }
+    });
+  }
+
+  window.addEventListener('load', () => updateCarousel(0));
+  window.addEventListener('resize', () => updateCarousel(activeIndex));
+  setTimeout(() => updateCarousel(0), 100);
+
+  prevBtn?.addEventListener('click', () => updateCarousel(activeIndex - 1));
+  nextBtn?.addEventListener('click', () => updateCarousel(activeIndex + 1));
+
+  slides.forEach((slide, idx) => {
+    slide.addEventListener('click', () => updateCarousel(idx));
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
+      updateCarousel(idx);
+    });
+  });
+</script>

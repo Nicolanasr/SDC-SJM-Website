@@ -1,0 +1,230 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { galleryAlbums, galleryPhotos, type GalleryAlbum, type GalleryPhoto } from '../../data/gallery';
+import { siteConfig } from '../../data/siteConfig';
+
+export function getStaticPaths() {
+  return galleryAlbums.map(album => ({
+    params: { album: album.id },
+    props: { album },
+  }));
+}
+
+interface Props {
+  album: GalleryAlbum;
+}
+
+const { album } = Astro.props;
+const albumPhotos = galleryPhotos.filter(p => p.albumId === album.id);
+---
+
+<Layout 
+  title={`${album.name} – Photo Album | ${siteConfig.groupName}`}
+  description={`${album.description} (${albumPhotos.length} photos)`}
+>
+  <!-- Album Header Banner -->
+  <section class="bg-stone-900 text-sand-50 py-16 sm:py-20 border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Back Link -->
+      <a 
+        href="/gallery" 
+        class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-amber-400 hover:text-amber-300 mb-6 transition-colors"
+      >
+        <span>← Back to All Albums</span>
+      </a>
+
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-stone-800 text-stone-300 border border-stone-700">
+          {albumPhotos.length} Photographs
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          {album.name}
+        </h1>
+
+        <p class="text-stone-300 text-base sm:text-lg leading-relaxed">
+          {album.description}
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Album Photos Grid with Lightbox -->
+  <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="album-photos-grid">
+      {albumPhotos.map((photo, index) => (
+        <div 
+          class="album-photo-item group cursor-pointer relative overflow-hidden rounded-3xl bg-stone-200 border border-stone-200 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+          data-full-img={photo.imageUrl}
+          data-title={photo.title}
+          data-location={photo.location}
+          data-year={photo.year}
+          data-index={index}
+        >
+          <div class="aspect-[4/3] w-full overflow-hidden bg-stone-100">
+            <img 
+              src={photo.imageUrl} 
+              alt={photo.title} 
+              loading="lazy" 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+
+          <div class="p-4 bg-white flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-sm text-stone-900 group-hover:text-cedar-800 transition-colors">
+                {photo.title}
+              </h3>
+              <p class="text-xs text-stone-500 mt-0.5">
+                {photo.location} • <span class="font-medium text-amber-700">{photo.year}</span>
+              </p>
+            </div>
+            
+            <div class="w-8 h-8 rounded-full bg-stone-100 group-hover:bg-cedar-800 group-hover:text-white transition-colors flex items-center justify-center shrink-0 text-stone-500">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom navigation between albums -->
+    <div class="pt-16 mt-16 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a 
+        href="/gallery" 
+        class="btn-scout-outline text-xs uppercase tracking-wider"
+      >
+        ← View Other Albums
+      </a>
+
+      <a 
+        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(`Hello! I have photos to share from ${album.name}.`)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs font-bold uppercase tracking-wider text-cedar-800 hover:text-cedar-950 underline"
+      >
+        Share photos from this camp on WhatsApp →
+      </a>
+    </div>
+  </section>
+
+  <!-- Interactive Lightbox Modal -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-stone-950/90 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col bg-stone-900 rounded-3xl overflow-hidden shadow-2xl border border-stone-800">
+      
+      <!-- Modal Top Bar -->
+      <div class="flex items-center justify-between px-6 py-4 bg-stone-900 border-b border-stone-800 text-sand-50">
+        <div>
+          <h3 id="lightbox-title" class="font-bold text-lg text-sand-50">Photo Title</h3>
+          <p id="lightbox-meta" class="text-xs text-stone-400">Location • Year</p>
+        </div>
+        <button 
+          id="lightbox-close" 
+          type="button" 
+          class="p-2 rounded-full text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
+          aria-label="Close Lightbox"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Main Image Display -->
+      <div class="relative flex-1 bg-black flex items-center justify-center min-h-[350px] max-h-[70vh] overflow-hidden">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[70vh] object-contain transition-opacity duration-200" />
+
+        <button 
+          id="lightbox-prev" 
+          type="button" 
+          class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-stone-900/80 hover:bg-stone-900 text-white border border-stone-700 transition-colors shadow-lg"
+          aria-label="Previous Photo"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button 
+          id="lightbox-next" 
+          type="button" 
+          class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-stone-900/80 hover:bg-stone-900 text-white border border-stone-700 transition-colors shadow-lg"
+          aria-label="Next Photo"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const photoItems = document.querySelectorAll<HTMLElement>('.album-photo-item');
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const modalTitle = document.getElementById('lightbox-title');
+    const modalMeta = document.getElementById('lightbox-meta');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    let currentIndex = 0;
+
+    function showPhoto(idx: number) {
+      if (photoItems.length === 0) return;
+      if (idx < 0) idx = photoItems.length - 1;
+      if (idx >= photoItems.length) idx = 0;
+      currentIndex = idx;
+
+      const target = photoItems[currentIndex];
+      const fullImg = target.getAttribute('data-full-img') || '';
+      const title = target.getAttribute('data-title') || '';
+      const loc = target.getAttribute('data-location') || '';
+      const yr = target.getAttribute('data-year') || '';
+
+      if (modalImg) modalImg.src = fullImg;
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalMeta) modalMeta.textContent = `${loc} • ${yr} (${currentIndex + 1} of ${photoItems.length})`;
+    }
+
+    photoItems.forEach((item, idx) => {
+      item.addEventListener('click', () => {
+        showPhoto(idx);
+        modal?.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeModal() {
+      modal?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    prevBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPhoto(currentIndex - 1);
+    });
+
+    nextBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPhoto(currentIndex + 1);
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (modal?.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') showPhoto(currentIndex - 1);
+      if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
+    });
+  </script>
+</Layout>

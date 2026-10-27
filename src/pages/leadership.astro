@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LeadershipTree from '../components/LeadershipTree.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout 
+  title={`Leadership Hierarchy Tree – ${siteConfig.groupName}`}
+  description="Explore the leadership hierarchy tree of Scout Des Cèdres Groupe Saint Jean Marc: Chef de Groupe, Conseil de Groupe, and Section Unit Leaders."
+>
+  <!-- Page Header Banner -->
+  <section class="bg-cedar-950 text-sand-50 py-16 sm:py-20 border-b border-cedar-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-cedar-950">
+        Chain of Leadership
+      </span>
+      <h1 class="font-serif text-3xl sm:text-5xl font-bold text-sand-50">
+        Group Leadership Hierarchy Tree
+      </h1>
+      <p class="text-sand-300 text-base sm:text-lg max-w-2xl mx-auto">
+        100% volunteer-driven. Our chefs and council members dedicate their time every week to guide the youth of Saint Jean Marc.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Hierarchy Tree Section -->
+  <section class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-8">
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-cedar-950">
+        Organizational Tree
+      </h2>
+      <p class="text-xs sm:text-sm text-stone-500 mt-1">
+        Hover over any leader to highlight their responsibilities and branch.
+      </p>
+    </div>
+
+    <!-- The Tree Component -->
+    <LeadershipTree />
+  </section>
+
+  <!-- Leadership Philosophy & Formation Note -->
+  <section class="pb-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-sand-100 rounded-3xl p-8 sm:p-12 border-2 border-cedar-800/15 shadow-tactile space-y-6">
+      <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cedar-900">
+        <span class="w-2 h-2 rounded-full bg-cedar-700"></span>
+        <span>Formation & Training</span>
+      </div>
+
+      <h3 class="font-serif text-2xl sm:text-3xl font-bold text-cedar-950">
+        How Leaders Are Formed
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-stone-700 leading-relaxed">
+        <p>
+          In our scout tradition, leadership is not a title—it is an act of service (<em>Servir</em>). The vast majority of our chefs began in the group as young Gramiz or Kochefe, taking their promise at the altar of Saint Jean Marc before rising through the ranks.
+        </p>
+        <p>
+          Before taking responsibility for a unit, each leader undergoes rigorous pedagogical, psychological, and outdoor first-aid training camps, adhering strictly to the national guidelines of the Lebanese Scout Federation.
+        </p>
+      </div>
+
+      <div class="pt-4 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-xs text-stone-600">
+          Interested in volunteering with the leadership or parents' council?
+        </div>
+        <a 
+          href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent('Hello! I would like to volunteer or learn more about joining the Saint Jean Marc leadership team.')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-scout-primary text-xs whitespace-nowrap"
+        >
+          Message Chef de Groupe
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

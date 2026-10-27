@@ -1,0 +1,59 @@
+---
+import { siteConfig } from '../data/siteConfig';
+---
+
+<div class="my-12 rounded-3xl bg-cedar-950 text-sand-50 p-8 sm:p-12 lg:p-14 border border-cedar-900 shadow-sm">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    
+    <!-- Left Details -->
+    <div class="lg:col-span-7 space-y-4">
+      <span class="text-xs uppercase tracking-widest font-bold text-gold-400 font-sans block">
+        WHEN & WHERE WE MEET
+      </span>
+
+      <h3 class="text-3xl sm:text-4xl font-black text-sand-50 tracking-tight leading-tight">
+        Every Saturday, 3:00 to 4:30 PM.
+      </h3>
+
+      <div class="space-y-2 text-sand-200 text-sm sm:text-base leading-relaxed">
+        <p class="font-medium">
+          Gathering location: <strong class="text-white">{siteConfig.meetingSchedule.locationName}</strong>
+        </p>
+        <p class="text-sand-300 text-sm">
+          {siteConfig.meetingSchedule.locationDetails}
+        </p>
+        <p class="text-xs text-sand-400 pt-1">
+          Open to all age units. Parents are warmly invited to drop by and meet the chefs.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
+      <a 
+        href={`https://maps.google.com/?q=${siteConfig.meetingSchedule.googleMapsQuery}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-sand-50 text-cedar-950 font-bold text-sm hover:bg-white transition-colors text-center"
+      >
+        <span>Open in Google Maps</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+
+      <a 
+        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent('Hello! Can you help me find the meeting location at Saint Jean Marc this Saturday?')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors text-center"
+      >
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.768-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
+        </svg>
+        <span>Message Us on WhatsApp</span>
+      </a>
+    </div>
+
+  </div>
+</div>

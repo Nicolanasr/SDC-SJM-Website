@@ -1,0 +1,165 @@
+---
+import { siteConfig } from '../data/siteConfig';
+
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Top Announcement Banner (Hidden once scrolled) -->
+<div class="bg-cedar-950 text-sand-100 text-xs py-2 px-4 border-b border-cedar-800/60">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+      <span class="font-medium text-stone-200">
+        Weekly meetings every Saturday, 3:00 – 4:30 PM for all ages (4–24) at Saint Jean Marc, Byblos
+      </span>
+    </div>
+    <a 
+      href="/#meeting" 
+      class="shrink-0 inline-flex items-center gap-1 font-bold text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors text-xs"
+    >
+      <span>Meeting Details</span>
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</div>
+
+<header class="sticky top-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-cedar-800/10 transition-all">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Brand Logo & Name -->
+      <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-cedar-600 rounded-lg p-1">
+        <!-- Stylized Scout Cedar Insignia -->
+        <div class="w-11 h-11 rounded-full bg-cedar-800 text-sand-50 flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-cedar-700 transition-colors">
+          <svg class="w-6 h-6 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
+            <!-- Stylized Cedar Tree -->
+            <path d="M12 2L6 8h3.5L5 14h4.5L3 20h18l-6.5-6h4.5L14.5 8H18L12 2zM11 20v2h2v-2h-2z" />
+          </svg>
+        </div>
+        <div>
+          <div class="font-serif font-bold text-lg sm:text-xl text-cedar-950 leading-tight">
+            {siteConfig.groupName}
+          </div>
+          <div class="text-xs uppercase tracking-wider text-cedar-700 font-semibold flex items-center gap-1.5">
+            <span>{siteConfig.tagline}</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-semibold text-stone-700">
+        <a 
+          href="/#history" 
+          class="px-3 py-2 rounded-full hover:text-cedar-900 hover:bg-stone-200/50 transition-colors"
+        >
+          History
+        </a>
+        <a 
+          href="/sections" 
+          class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/sections') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
+        >
+          Sections (Units)
+        </a>
+        <a 
+          href="/events" 
+          class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/events') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
+        >
+          Events
+        </a>
+        <a 
+          href="/leadership" 
+          class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/leadership') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
+        >
+          Leadership
+        </a>
+        <a 
+          href="/gallery" 
+          class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/gallery') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
+        >
+          Gallery
+        </a>
+        <a 
+          href="/blog" 
+          class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/blog') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
+        >
+          Field Notes
+        </a>
+      </nav>
+
+      <!-- Action Button (Contact) -->
+      <div class="hidden lg:flex items-center space-x-3">
+        <a 
+          href="/#contact" 
+          class="btn-scout-primary text-xs uppercase tracking-wider !py-2 !px-4"
+        >
+          Join Group
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        id="mobile-menu-btn" 
+        type="button" 
+        class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-cedar-900 hover:bg-stone-200/60 focus:outline-none focus:ring-2 focus:ring-cedar-700"
+        aria-label="Toggle navigation menu"
+      >
+        <svg id="menu-icon-bars" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-stone-200 bg-[#FAF7F2] px-4 pt-3 pb-6 space-y-2 shadow-lg">
+    <a href="/#history" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Our History</a>
+    <a href="/sections" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Sections (Units)</a>
+    <a href="/events" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Events & Camps</a>
+    <a href="/leadership" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Leadership Tree</a>
+    <a href="/gallery" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Photo Gallery</a>
+    <a href="/blog" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">Field Notes (Blog)</a>
+    
+    <div class="pt-3 border-t border-stone-200 flex flex-col gap-2.5">
+      <a 
+        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center gap-2 py-2.5 rounded-full font-bold text-sm bg-emerald-600 text-white shadow-sm"
+      >
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.767-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
+        </svg>
+        <span>Message on WhatsApp</span>
+      </a>
+      <a href="/#contact" class="btn-scout-primary text-center py-2.5 text-sm">
+        Register / Join
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconBars = document.getElementById('menu-icon-bars');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+    iconBars?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+  });
+
+  // Close menu when clicking any nav link
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      iconBars?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+    });
+  });
+</script>

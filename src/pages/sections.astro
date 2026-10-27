@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { sectionsData } from '../data/sections';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout 
+  title={`Sections & Units – ${siteConfig.groupName}`}
+  description="Explore the three scout branches at Scout Des Cèdres Saint Jean Marc: Gramiz & Zahrat (ages 4-11), Kochefe & Mourchidet (ages 11-16), Jouwele & Mounjidet (ages 16-24)."
+>
+  <!-- Page Header Banner -->
+  <section class="bg-cedar-950 text-sand-50 py-16 sm:py-20 border-b border-cedar-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-cedar-950">
+        Our Three Branches
+      </span>
+      <h1 class="font-serif text-3xl sm:text-5xl font-bold text-sand-50">
+        Scout Sections & Age Framework
+      </h1>
+      <p class="text-sand-300 text-base sm:text-lg max-w-2xl mx-auto">
+        Each unit is tailored to nurture character, friendship, autonomy, and outdoor woodcraft at every stage of youth.
+      </p>
+    </div>
+  </section>
+
+  <!-- Detailed Units List -->
+  <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    {sectionsData.map((section, idx) => (
+      <div 
+        id={section.id} 
+        class={`scroll-mt-28 rounded-3xl p-8 sm:p-12 border-2 border-cedar-800/15 shadow-tactile ${idx % 2 === 0 ? 'bg-sand-100' : 'bg-white'}`}
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left details & narrative -->
+          <div class="lg:col-span-7 space-y-5">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${section.badgeColor}`}>
+                {section.ageRange}
+              </span>
+              <span class="text-stone-500 font-serif font-bold text-sm">
+                {section.arabicName}
+              </span>
+            </div>
+
+            <div>
+              <h2 class="font-serif text-3xl sm:text-4xl font-bold text-cedar-950">
+                {section.name}
+              </h2>
+              <p class="text-sm text-stone-500 italic mt-0.5">{section.frenchName}</p>
+            </div>
+
+            <div class="inline-block bg-white/90 border border-gold-300 px-3.5 py-1.5 rounded-xl text-xs font-bold text-gold-800 uppercase tracking-wider">
+              Scout Motto: {section.motto}
+            </div>
+
+            <p class="text-stone-700 text-base leading-relaxed">
+              {section.description}
+            </p>
+
+            <div class="pt-2">
+              <h4 class="font-bold text-xs uppercase tracking-wider text-cedar-900 mb-2">
+                Weekly Meeting Schedule:
+              </h4>
+              <div class="inline-flex items-center gap-2 text-sm font-semibold text-stone-800 bg-sand-200/80 px-3 py-1.5 rounded-lg">
+                <svg class="w-4 h-4 text-cedar-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{section.meetingTime}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Key activities checklist & CTA -->
+          <div class="lg:col-span-5 bg-sand-50 rounded-2xl p-6 sm:p-8 border border-stone-200 shadow-sm space-y-6">
+            <h3 class="font-serif font-bold text-lg text-cedar-950 border-b border-stone-200 pb-3">
+              What Scouts Learn & Do
+            </h3>
+
+            <ul class="space-y-3 text-sm text-stone-700">
+              {section.activities.map(activity => (
+                <li class="flex items-start gap-2.5">
+                  <span class="w-5 h-5 rounded-full bg-cedar-100 text-cedar-800 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
+                    ✓
+                  </span>
+                  <span>{activity}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="pt-4 border-t border-stone-200 space-y-3">
+              <a 
+                href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(`Hello! I would like to inquire about registering my child in ${section.name} (${section.ageRange}).`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-scout-gold w-full text-center text-xs uppercase tracking-wider !py-2.5"
+              >
+                Inquire on WhatsApp for {section.name}
+              </a>
+
+              <a 
+                href="/#contact"
+                class="btn-scout-outline w-full text-center text-xs uppercase tracking-wider !py-2.5"
+              >
+                Submit Web Registration Form
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="pb-20 max-w-4xl mx-auto px-4 text-center space-y-4">
+    <h3 class="font-serif text-2xl font-bold text-cedar-950">
+      Not sure which section fits your child?
+    </h3>
+    <p class="text-stone-600 text-sm max-w-xl mx-auto">
+      Visit us this Saturday between 3:00 PM and 4:30 PM at the Saint Jean Marc scout hall. Our chefs will gladly guide you.
+    </p>
+    <a href="/#contact" class="btn-scout-primary text-sm inline-block">
+      Contact Group Leaders
+    </a>
+  </section>
+</Layout>

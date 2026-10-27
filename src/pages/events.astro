@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EventsCalendar from '../components/EventsCalendar.astro';
+import { upcomingEvents } from '../data/events';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout 
+  title={`Events & Annual Camps – ${siteConfig.groupName}`}
+  description="Discover upcoming camps, parish celebrations, and outdoor expeditions at Scout Des Cèdres Saint Jean Marc Byblos."
+>
+  <!-- Page Header Banner -->
+  <section class="bg-stone-900 text-sand-50 py-16 sm:py-20 border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs uppercase tracking-widest font-bold text-amber-400 block font-sans">
+        TROOP CALENDAR
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+        Upcoming Camps, Salidas & Celebrations
+      </h1>
+      <p class="text-stone-300 text-base sm:text-lg max-w-2xl mx-auto">
+        Living outdoors is where character is formed. Here is our official schedule of major camps, parish feast days, and community cleanups.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Dynamic Interactive Calendar at Top -->
+    <EventsCalendar />
+
+    <!-- Detailed Events Cards Section -->
+    <div class="space-y-8">
+      <div class="border-b border-stone-200 pb-4">
+        <h2 class="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+          All Event Listings
+        </h2>
+        <p class="text-stone-600 text-sm mt-1">
+          Click any event to open its full itinerary, packing kit checklist, and access the members portal.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {upcomingEvents.map((event) => (
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-sm hover:shadow-md transition-all">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              
+              <div class="space-y-3 flex-1">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class={`text-xs uppercase font-bold tracking-wider px-3 py-1 rounded-full ${event.badgeColor}`}>
+                    {event.badge}
+                  </span>
+                  <span class="text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                    {event.date}
+                  </span>
+                  <span class="text-xs font-semibold text-stone-500">
+                    {event.duration} • {event.ages}
+                  </span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+                  <a href={`/events/${event.id}`} class="hover:text-cedar-800 transition-colors">
+                    {event.title}
+                  </a>
+                </h3>
+                <p class="text-xs sm:text-sm font-semibold text-stone-500">{event.subtitle}</p>
+
+                <p class="text-stone-600 text-sm leading-relaxed pt-1">
+                  {event.description}
+                </p>
+
+                <div class="pt-2 text-xs text-stone-600 flex items-center gap-2 font-medium">
+                  <svg class="w-4 h-4 text-stone-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                  <span>{event.location}</span>
+                </div>
+              </div>
+
+              <!-- Action Link to Event Detail Page -->
+              <div class="lg:shrink-0 flex sm:flex-row lg:flex-col gap-3">
+                <a 
+                  href={`/events/${event.id}`}
+                  class="btn-scout-gold text-xs !py-3 !px-6 text-center whitespace-nowrap"
+                >
+                  View Details & Portal →
+                </a>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { blogPosts } from '../data/blog';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout 
+  title={`Field Notes & Blog – ${siteConfig.groupName}`}
+  description="Read articles, parenting guides, and historical chronicles from Scout Des Cèdres Saint Jean Marc Byblos."
+>
+  <!-- Header Banner -->
+  <section class="bg-stone-900 text-sand-50 py-16 sm:py-20 border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs uppercase tracking-widest font-bold text-amber-400 block font-sans">
+        FIELD NOTES & CHRONICLES
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+        Scout Stories, Woodcraft & Heritage
+      </h1>
+      <p class="text-stone-300 text-base sm:text-lg max-w-2xl mx-auto">
+        Reflections from our leaders, field guides for parents, and chronicles of nearly 50 years of scouting in Byblos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Blog Posts Grid -->
+  <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {blogPosts.map(post => (
+        <article class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md hover:border-stone-400 transition-all flex flex-col justify-between">
+          <div>
+            <!-- Cover Image -->
+            <a href={`/blog/${post.slug}`} class="block aspect-[16/10] overflow-hidden bg-stone-200">
+              <img 
+                src={post.image} 
+                alt={post.title} 
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+              />
+            </a>
+
+            <!-- Content -->
+            <div class="p-6 sm:p-7 space-y-3">
+              <div class="flex items-center justify-between text-xs font-bold text-stone-500">
+                <span class="px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-700 uppercase tracking-wider text-[10px]">
+                  {post.category}
+                </span>
+                <span>{post.readTime}</span>
+              </div>
+
+              <h2 class="text-xl font-bold text-stone-900 tracking-tight leading-snug">
+                <a href={`/blog/${post.slug}`} class="hover:text-cedar-800 transition-colors">
+                  {post.title}
+                </a>
+              </h2>
+
+              <p class="text-xs sm:text-sm text-stone-600 leading-relaxed line-clamp-3">
+                {post.excerpt}
+              </p>
+            </div>
+          </div>
+
+          <!-- Footer Author & Date -->
+          <div class="px-6 pb-6 pt-2 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+            <div>
+              <span class="font-bold text-stone-800 block">{post.author}</span>
+              <span>{post.date}</span>
+            </div>
+
+            <a href={`/blog/${post.slug}`} class="font-bold text-cedar-800 hover:text-cedar-950 uppercase tracking-wider text-[11px] underline">
+              Read →
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>

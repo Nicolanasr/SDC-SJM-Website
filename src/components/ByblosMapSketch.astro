@@ -1,0 +1,309 @@
+---
+import { siteConfig } from '../data/siteConfig';
+---
+
+<div class="rounded-3xl bg-sand-100 border border-stone-300/80 p-6 sm:p-10 shadow-sm overflow-hidden my-8">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    
+    <!-- Left: Field-Journal Walking Guide Narrative -->
+    <div class="lg:col-span-5 space-y-4">
+      <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-amber-700 bg-sand-200 px-3 py-1 rounded-full border border-stone-300">
+        <span>EXACT LOCATION • BYBLOS</span>
+      </div>
+
+      <h3 class="text-3xl font-black text-stone-900 tracking-tight leading-tight">
+        How to find us in ancient Byblos.
+      </h3>
+
+      <p class="text-stone-600 text-sm leading-relaxed">
+        Our hall is located at <strong>Antoch Saint Jean Marc (Near UNESCO Se7a)</strong> in Byblos (Jbeil), just 350 meters from the Crusader Castle and Old Souk.
+      </p>
+
+      <!-- Step by step trail checkpoints -->
+      <div class="space-y-3 pt-2 text-xs sm:text-sm text-stone-700">
+        <div class="flex items-start gap-3">
+          <span class="w-6 h-6 rounded-full bg-stone-200 text-stone-800 font-bold flex items-center justify-center shrink-0 text-xs">1</span>
+          <div>
+            <strong class="text-stone-900 block">From the Old Souk or Citadel:</strong>
+            <span class="text-stone-600 text-xs">Walk toward the cobblestone UNESCO Se7a (Saint Jean Marc square).</span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <span class="w-6 h-6 rounded-full bg-stone-200 text-stone-800 font-bold flex items-center justify-center shrink-0 text-xs">2</span>
+          <div>
+            <strong class="text-stone-900 block">Behind Feniqia Restaurant:</strong>
+            <span class="text-stone-600 text-xs">Turn right into the Antoch Saint Jean Marc courtyard.</span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <span class="w-6 h-6 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center shrink-0 text-xs">✓</span>
+          <div>
+            <strong class="text-stone-900 block">Scout Hall & Courtyard:</strong>
+            <span class="text-stone-600 text-xs">Every Saturday at 3:00 PM our leaders and youth gather here.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 flex flex-wrap gap-3">
+        <a 
+          href="https://maps.google.com/?q=4JCW%2BF8J%2C+Jbeil"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-scout-outline text-xs !py-2.5 !px-4 inline-flex items-center gap-1.5"
+        >
+          <span>Open Full Google Maps</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+
+        <a 
+          href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent('Hello! Can you send me the WhatsApp live location for the Saint Jean Marc scout hall?')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-scout-gold text-xs !py-2.5 !px-4 inline-flex items-center gap-1.5"
+        >
+          <span>Ask Live Location</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Interactive Google Map with Tab Switcher to Field Sketch -->
+    <div class="lg:col-span-7 bg-[#F4EFE6] rounded-3xl border border-stone-300 p-4 sm:p-6 relative overflow-hidden shadow-sm">
+      
+      <!-- Top View Switcher Tabs -->
+      <div class="flex items-center justify-between pb-3 mb-3 border-b border-stone-300/80">
+        <div class="flex items-center gap-2">
+          <button 
+            type="button" 
+            id="tab-sketch-map" 
+            class="map-view-tab px-3.5 py-1.5 rounded-full text-xs font-bold bg-cedar-800 text-white transition-all shadow-sm"
+          >
+            Field Trail Sketch
+          </button>
+          <button 
+            type="button" 
+            id="tab-google-map" 
+            class="map-view-tab px-3.5 py-1.5 rounded-full text-xs font-bold text-stone-700 bg-stone-200/80 hover:bg-stone-300 transition-all"
+          >
+            Google Map
+          </button>
+        </div>
+
+        <span class="text-[11px] font-mono font-bold text-amber-800 hidden sm:inline">
+          4JCW+F8J, Jbeil
+        </span>
+      </div>
+
+      <!-- VIEW 1: Field-Journal Hand-Drawn Walking Map Sketch (Active by default) -->
+      <div id="view-sketch-map" class="w-full aspect-[4/3] sm:aspect-[16/10] bg-[#FAF8F5] rounded-2xl border border-stone-300 p-2 sm:p-3 shadow-inner flex items-center justify-center overflow-hidden">
+        <svg class="w-full h-full select-none" viewBox="0 0 680 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Field journal subtle grid pattern -->
+            <pattern id="grid-dots-sketch" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="0.8" fill="#e7e0d3" />
+            </pattern>
+            <!-- Drop shadow for pin -->
+            <filter id="pin-shadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.35" flood-color="#1c1917" />
+            </filter>
+          </defs>
+
+          <!-- Background paper -->
+          <rect width="680" height="440" fill="#FAF6EE" />
+          <rect width="680" height="440" fill="url(#grid-dots-sketch)" />
+
+          <!-- Mediterranean Sea Coast (West side) -->
+          <path d="M 0,0 L 120,0 Q 110,35 110,60 Q 95,110 85,140 Q 110,165 140,185 Q 120,230 115,260 Q 90,270 70,275 Q 90,300 120,310 Q 150,335 155,380 Q 160,415 165,440 L 0,440 Z" fill="#E0F2FE" stroke="#BAE6FD" stroke-width="2" />
+          
+          <!-- Subtle water waves / ripples -->
+          <path d="M 20,40 Q 40,35 60,40 M 35,110 Q 55,105 75,110 M 15,200 Q 35,195 55,200 M 30,340 Q 55,335 80,340" stroke="#7DD3FC" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+          <text x="22" y="240" font-size="10" font-weight="800" fill="#0284C7" letter-spacing="3" transform="rotate(-90 22 240)">MEDITERRANEAN SEA</text>
+
+          <!-- Jbeil Public Park (حديقة جبيل العامة) -->
+          <path d="M 240,10 Q 300,5 315,40 Q 320,75 285,90 Q 235,90 230,45 Z" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.5" />
+          <g transform="translate(260, 32)">
+            <circle cx="8" cy="8" r="8" fill="#15803D" opacity="0.2" />
+            <path d="M 8,3 L 3,11 L 6,11 L 2,16 L 14,16 L 10,11 L 13,11 Z" fill="#15803D" />
+            <rect x="7" y="16" width="2" height="3" fill="#854D0E" />
+          </g>
+          <text x="245" y="75" font-size="9" font-weight="bold" fill="#166534">Jbeil Public Park</text>
+          <text x="252" y="86" font-size="8" font-weight="medium" fill="#15803D">حديقة جبيل العامة</text>
+
+          <!-- Byblos Citadel / Crusader Castle Grounds (قلعة جبيل) -->
+          <path d="M 285,320 Q 365,315 375,360 Q 365,410 295,415 Q 260,390 270,340 Z" fill="#FEF3C7" stroke="#FDE68A" stroke-width="1.5" />
+          <g transform="translate(305, 335)">
+            <!-- Citadel Castle Tower Icon -->
+            <rect x="5" y="6" width="18" height="16" rx="2" fill="#B45309" opacity="0.15" />
+            <path d="M 6,20 L 6,9 L 8,9 L 8,11 L 11,11 L 11,9 L 14,9 L 14,11 L 17,11 L 17,9 L 20,9 L 20,20 Z" fill="#92400E" />
+            <rect x="11" y="14" width="4" height="6" rx="1" fill="#FEF3C7" />
+          </g>
+          <text x="325" y="370" font-size="9" font-weight="bold" fill="#78350F">Byblos Citadel</text>
+          <text x="333" y="381" font-size="8" font-weight="medium" fill="#92400E">قلعة جبيل</text>
+
+          <!-- Highway 51 (Coastal Hwy) & Ramps on East edge -->
+          <path d="M 590,0 L 590,440" stroke="#86EFAC" stroke-width="12" stroke-linecap="square" />
+          <path d="M 605,0 L 605,440" stroke="#4ADE80" stroke-width="12" stroke-linecap="square" />
+          <path d="M 597,0 L 597,440" stroke="#166534" stroke-width="1" stroke-dasharray="4 4" />
+          <!-- Highway interchange clover loops -->
+          <path d="M 550,55 Q 575,30 595,50 T 630,40" stroke="#86EFAC" stroke-width="5" fill="none" />
+          <text x="590" y="180" font-size="9" font-weight="bold" fill="#14532D" letter-spacing="2" transform="rotate(90 590 180)">COASTAL HWY 51</text>
+          <text x="550" y="30" font-size="8" font-weight="bold" fill="#166534">Jbeil Municipality</text>
+
+          <!-- Kfar Aabida Seaside Rd (Diagonal main artery) -->
+          <path d="M 570,55 L 430,205 Q 385,250 350,305" stroke="#CBD5E1" stroke-width="7" stroke-linecap="round" />
+          <path d="M 570,55 L 430,205 Q 385,250 350,305" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5 3" />
+          <text x="450" y="155" font-size="8" font-weight="bold" fill="#047857" transform="rotate(-47 450 155)">Kfar Aabida Seaside Rd</text>
+
+          <!-- Secondary Old Byblos Street Network -->
+          <!-- Road to Bahsa Beach & El Molino -->
+          <path d="M 120,50 L 190,80 L 240,85 L 245,190" stroke="#E2E8F0" stroke-width="6" stroke-linecap="round" />
+          <!-- Street past Old Souq & Hall to Port -->
+          <path d="M 430,205 L 340,210 L 255,205 L 140,190" stroke="#E2E8F0" stroke-width="8" stroke-linecap="round" />
+          <!-- Street connecting Feniqia down to Citadel & Marina -->
+          <path d="M 255,205 L 250,265 Q 240,310 180,330" stroke="#E2E8F0" stroke-width="6" stroke-linecap="round" />
+          <!-- Street curving from Citadel to Souq -->
+          <path d="M 270,325 Q 310,290 350,305" stroke="#E2E8F0" stroke-width="5" stroke-linecap="round" />
+
+          <!-- Cobblestones area for The Old Souq -->
+          <rect x="305" y="235" width="85" height="40" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5" />
+          <circle cx="318" cy="255" r="9" fill="#0284C7" />
+          <!-- Souq bag icon -->
+          <path d="M 315,252 L 321,252 L 322,258 L 314,258 Z" fill="white" />
+          <path d="M 316,252 Q 318,249 320,252" stroke="white" stroke-width="1" fill="none" />
+          <text x="332" y="253" font-size="9" font-weight="bold" fill="#0F172A">The Old Souq</text>
+          <text x="332" y="264" font-size="8" font-weight="medium" fill="#64748B">الأسواق القديمة</text>
+
+          <!-- Landmarks on Coast -->
+          <!-- Bahsa Beach -->
+          <circle cx="120" cy="45" r="4" fill="#0D9488" />
+          <text x="128" y="47" font-size="8" font-weight="bold" fill="#0F766E">Bahsa Beach</text>
+
+          <!-- Byblos Dock and Fishing Port (ميناء جبيل) -->
+          <circle cx="140" cy="190" r="10" fill="#0284C7" stroke="white" stroke-width="1.5" />
+          <!-- Anchor / Ship helm icon -->
+          <circle cx="140" cy="190" r="3" fill="white" />
+          <text x="155" y="187" font-size="9" font-weight="bold" fill="#0369A1">Byblos Dock & Fishing Port</text>
+          <text x="155" y="198" font-size="8" font-weight="medium" fill="#0284C7">ميناء جبيل</text>
+
+          <!-- Jbeil Marina -->
+          <circle cx="108" cy="275" r="5" fill="#0284C7" />
+          <text x="65" y="290" font-size="8" font-weight="bold" fill="#0369A1">Jbeil Marina</text>
+
+          <!-- Samket el mina -->
+          <circle cx="145" cy="285" r="4" fill="#EA580C" />
+          <text x="153" y="288" font-size="8" font-weight="bold" fill="#C2410C">Samket el mina</text>
+
+          <!-- Teatre romà -->
+          <circle cx="185" cy="370" r="5" fill="#7C3AED" />
+          <text x="195" y="373" font-size="8" font-weight="bold" fill="#6D28D9">Teatre romà</text>
+
+          <!-- Feniqia Restaurant (Directly south of Scout Hall) -->
+          <circle cx="235" cy="255" r="9" fill="#EA580C" stroke="white" stroke-width="1.5" />
+          <path d="M 232,251 L 232,258 M 235,251 L 235,258 M 238,251 L 238,258" stroke="white" stroke-width="1" stroke-linecap="round" />
+          <text x="248" y="258" font-size="9" font-weight="bold" fill="#9A3412">Feniqia (فينيقيا)</text>
+
+          <!-- WALKING TRAIL from Old Souq & Citadel to Scout Hall -->
+          <path d="M 330,340 Q 300,310 270,270 L 255,230" stroke="#15803D" stroke-width="3" stroke-dasharray="4 3" stroke-linecap="round" />
+          <path d="M 330,245 Q 290,225 265,215" stroke="#15803D" stroke-width="3" stroke-dasharray="4 3" stroke-linecap="round" />
+
+          <!-- TARGET DESTINATION PIN: Antoch Saint Jean Marc Scout Hall -->
+          <g transform="translate(248, 198)" filter="url(#pin-shadow)">
+            <!-- Pulsing outer wave ring -->
+            <circle cx="0" cy="0" r="24" fill="#EF4444" opacity="0.2" class="animate-ping" style="animation-duration: 2.5s;" />
+            <circle cx="0" cy="0" r="16" fill="#DC2626" opacity="0.25" />
+            
+            <!-- Red Pin Base Shape -->
+            <path d="M 0,0 C -10,-10 -14,-22 0,-34 C 14,-22 10,-10 0,0 Z" fill="#DC2626" stroke="#991B1B" stroke-width="1.5" />
+            
+            <!-- White Inner Circle -->
+            <circle cx="0" cy="-20" r="8.5" fill="#FAF7F2" />
+            
+            <!-- Cedar Tree Emblem in Gold inside Pin -->
+            <path d="M 0,-26 L -4,-21 L -2,-21 L -5,-16 L 5,-16 L 2,-21 L 4,-21 Z" fill="#1B4332" />
+            <rect x="-1" y="-16" width="2" height="2" fill="#B45309" />
+          </g>
+
+          <!-- Scout Hall Marker Badge & Callout -->
+          <g transform="translate(145, 120)">
+            <rect x="0" y="0" width="210" height="44" rx="8" fill="#1B4332" stroke="#D97706" stroke-width="2" />
+            <text x="10" y="18" font-size="10" font-weight="900" fill="#FEF3C7">ANTOCH SAINT JEAN MARC</text>
+            <text x="10" y="32" font-size="8.5" font-weight="bold" fill="#86EFAC">SCOUT HALL • SJM COURTYARD</text>
+            <text x="10" y="41" font-size="7.5" font-weight="medium" fill="#D1D5DB">Every Saturday, 3:00 – 4:30 PM</text>
+            <!-- Little indicator arrow pointing to red pin -->
+            <path d="M 105,44 L 105,58 L 102,44 Z" fill="#1B4332" />
+          </g>
+
+          <!-- Field Compass Rose (Top Right) -->
+          <g transform="translate(500, 40)">
+            <circle cx="16" cy="16" r="16" fill="white" stroke="#CBD5E1" stroke-width="1.5" />
+            <path d="M 16,3 L 20,16 L 16,13 L 12,16 Z" fill="#DC2626" />
+            <path d="M 16,29 L 20,16 L 16,19 L 12,16 Z" fill="#64748B" />
+            <text x="13" y="2" font-size="8" font-weight="bold" fill="#DC2626">N</text>
+          </g>
+
+          <!-- Scale Bar (Bottom Left) -->
+          <g transform="translate(180, 415)">
+            <line x1="0" y1="0" x2="60" y2="0" stroke="#475569" stroke-width="2" />
+            <line x1="0" y1="-3" x2="0" y2="3" stroke="#475569" stroke-width="2" />
+            <line x1="60" y1="-3" x2="60" y2="3" stroke="#475569" stroke-width="2" />
+            <text x="16" y="-5" font-size="8" font-weight="bold" fill="#475569">~150 m</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- VIEW 2: Embedded Google Map (User's Exact Embed Iframe, toggleable) -->
+      <div id="view-google-map" class="hidden w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden border border-stone-300 bg-stone-200 shadow-inner">
+        <iframe 
+          src={siteConfig.meetingSchedule.googleMapsEmbedUrl} 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Scout Des Cedres Saint Jean Marc Location Map"
+          class="w-full h-full"
+        ></iframe>
+      </div>
+
+      <div class="mt-3 flex items-center justify-between text-[11px] text-stone-500 font-medium">
+        <span>Antoch Saint Jean Marc • UNESCO Se7a, Byblos</span>
+        <span class="text-emerald-800 font-bold">• Weekly meetings every Saturday 3:00 – 4:30 PM</span>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const tabGoogle = document.getElementById('tab-google-map');
+  const tabSketch = document.getElementById('tab-sketch-map');
+  const viewGoogle = document.getElementById('view-google-map');
+  const viewSketch = document.getElementById('view-sketch-map');
+
+  tabGoogle?.addEventListener('click', () => {
+    tabGoogle.classList.add('bg-cedar-800', 'text-white');
+    tabGoogle.classList.remove('text-stone-700', 'bg-stone-200/80');
+
+    tabSketch?.classList.remove('bg-cedar-800', 'text-white');
+    tabSketch?.classList.add('text-stone-700', 'bg-stone-200/80');
+
+    viewGoogle?.classList.remove('hidden');
+    viewSketch?.classList.add('hidden');
+  });
+
+  tabSketch?.addEventListener('click', () => {
+    tabSketch.classList.add('bg-cedar-800', 'text-white');
+    tabSketch.classList.remove('text-stone-700', 'bg-stone-200/80');
+
+    tabGoogle?.classList.remove('bg-cedar-800', 'text-white');
+    tabGoogle?.classList.add('text-stone-700', 'bg-stone-200/80');
+
+    viewSketch?.classList.remove('hidden');
+    viewGoogle?.classList.add('hidden');
+  });
+</script>
