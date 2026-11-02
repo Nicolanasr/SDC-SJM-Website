@@ -227,7 +227,7 @@ export const leadershipData: LeadershipHierarchy = {
       title: "Routiers (Young Men 16–24)",
       titleAr: "عشيرة الجوالة (الشباب ١٦–٢٤ سنة)",
       branchId: "jouwele-mounjidet",
-      color: "border-sky-500 bg-sky-50/80",
+      color: "border-red-500 bg-red-50/80",
       chief: {
         id: "chef-jouwele",
         name: "Chef Anthony",
@@ -251,7 +251,7 @@ export const leadershipData: LeadershipHierarchy = {
       title: "Caravelles (Young Women 16–24)",
       titleAr: "فرع المنجدات (الشابات ١٦–٢٤ سنة)",
       branchId: "jouwele-mounjidet",
-      color: "border-sky-500 bg-sky-50/80",
+      color: "border-red-500 bg-red-50/80",
       chief: {
         id: "cheftaine-mounjidet",
         name: "Chefteine Maria",
