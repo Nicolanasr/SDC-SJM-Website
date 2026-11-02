@@ -55,7 +55,7 @@ export const siteConfig: SiteConfig = {
   contact: {
     phoneDisplay: "+961 79 013 907",
     phoneRaw: "96179013907",
-    email: "info@sdcsainjeanmarc.org",
+    email: "info@sdcsaintjeanmarc.org",
     address: "Saint Jean Marc, Byblos, Mount Lebanon",
     whatsappMessage: "Hello Scout Saint Jean Marc! I would like to inquire about joining the group / weekly activities.",
   },

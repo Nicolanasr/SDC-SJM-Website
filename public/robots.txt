@@ -1,4 +1,24 @@
+# Robots.txt for Scout Des Cèdres - Groupe Saint Jean Marc (Byblos, Lebanon)
 User-agent: *
 Allow: /
 
-Sitemap: https://scout-saint-jeanmarc.org/sitemap.xml
+# Explicit AI Search & Assistant Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+Sitemap: https://sdcsaintjeanmarc.org/sitemap.xml

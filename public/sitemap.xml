@@ -1,88 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://scout-saint-jeanmarc.org/</loc>
+    <loc>https://sdcsaintjeanmarc.org/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/sections</loc>
+    <loc>https://sdcsaintjeanmarc.org/sections</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/events</loc>
+    <loc>https://sdcsaintjeanmarc.org/events</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sdcsaintjeanmarc.org/events/weekly-saturday-meeting</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/events/annual-spring-camp-2026</loc>
+    <loc>https://sdcsaintjeanmarc.org/leadership</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/events/st-jean-marc-feast-day</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://scout-saint-jeanmarc.org/events/grand-summer-camp-2026</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://scout-saint-jeanmarc.org/events/spring-cleaning-drive</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://scout-saint-jeanmarc.org/leadership</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://scout-saint-jeanmarc.org/gallery</loc>
+    <loc>https://sdcsaintjeanmarc.org/gallery</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/gallery/summer-camps</loc>
+    <loc>https://sdcsaintjeanmarc.org/gallery/summer-camps</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/gallery/pioneering</loc>
+    <loc>https://sdcsaintjeanmarc.org/gallery/pioneering</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/gallery/hikes-expeditions</loc>
+    <loc>https://sdcsaintjeanmarc.org/gallery/hikes-expeditions</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/gallery/parish-ceremonies</loc>
+    <loc>https://sdcsaintjeanmarc.org/gallery/parish-ceremonies</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/blog</loc>
+    <loc>https://sdcsaintjeanmarc.org/blog</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sdcsaintjeanmarc.org/blog/why-join-scouting-in-lebanon-10-reasons</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/blog/parent-guide-first-weekend-camp</loc>
+    <loc>https://sdcsaintjeanmarc.org/blog/what-do-scouts-actually-do</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/blog/froissartage-woodcraft-without-nails</loc>
+    <loc>https://sdcsaintjeanmarc.org/blog/froissartage-woodcraft-without-nails</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://scout-saint-jeanmarc.org/blog/founding-of-saint-jean-marc-1977</loc>
+    <loc>https://sdcsaintjeanmarc.org/blog/founding-of-saint-jean-marc-1977</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sdcsaintjeanmarc.org/blog/parent-guide-first-weekend-camp</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

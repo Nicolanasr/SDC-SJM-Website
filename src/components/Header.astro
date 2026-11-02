@@ -6,24 +6,31 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 const currentPath = Astro.url.pathname;
 ---
 
-<!-- Top Announcement Banner (Hidden once scrolled) -->
-<div class="bg-cedar-950 text-sand-100 text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 border-b border-cedar-800/60">
-  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-2 text-center sm:text-left">
-    <div class="flex items-center gap-2">
-      <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
-      <span class="font-medium text-stone-200">
-        <T 
-          en="Weekly meetings every Saturday, 3:00 – 4:30 PM for all ages (4–24) at Saint Jean Marc, Byblos" 
-          ar="اللقاء الأسبوعي: كل سبت من ٣:٠٠ حتى ٤:٣٠ بعد الظهر لجميع الأعمار في باحة مار يوحنا مرقس، جبيل"
-        />
+<!-- Top Announcement Banner (Single-line on mobile) -->
+<div class="bg-cedar-950 text-sand-100 text-[10px] sm:text-xs py-1 sm:py-1.5 px-2.5 sm:px-4 border-b border-cedar-800/60 overflow-hidden">
+  <div class="max-w-7xl mx-auto flex items-center justify-between gap-1.5 sm:gap-2 whitespace-nowrap overflow-hidden">
+    <div class="flex items-center gap-1.5 truncate">
+      <span class="inline-flex items-center justify-center w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse shrink-0"></span>
+      <span class="font-medium text-stone-200 truncate text-[10px] sm:text-xs">
+        <span class="sm:hidden">
+          <T 
+            en="Every Saturday 3:00–4:30 PM • Byblos" 
+            ar="كل سبت ٣:٠٠–٤:٣٠ بعد الظهر • جبيل" 
+          />
+        </span>
+        <span class="hidden sm:inline">
+          <T 
+            en="Weekly meetings every Saturday, 3:00 – 4:30 PM for all ages (4–24) at Saint Jean Marc, Byblos" 
+            ar="اللقاء الأسبوعي: كل سبت من ٣:٠٠ حتى ٤:٣٠ بعد الظهر لجميع الأعمار في باحة مار يوحنا مرقس، جبيل"
+          />
+        </span>
       </span>
     </div>
     <a 
       href="/#meeting" 
-      class="shrink-0 inline-flex items-center gap-1 font-bold text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors text-[11px] sm:text-xs"
+      class="shrink-0 inline-flex items-center gap-0.5 sm:gap-1 font-bold text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors text-[10px] sm:text-xs"
     >
-      <T en="Meeting Details" ar="تفاصيل اللقاء" />
-      <svg class="w-3.5 h-3.5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      <T en="Details →" ar="التفاصيل ←" />
     </a>
   </div>
 </div>

@@ -23,7 +23,34 @@ const relatedPosts = blogPosts.filter(p => p.slug !== post.slug).slice(0, 2);
 <Layout 
   title={`${post.title} – ${siteConfig.groupName}`}
   description={post.excerpt}
+  image={post.image}
 >
+  <!-- Schema.org BlogPosting for Google & AI Search Assistants -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.image,
+    "datePublished": post.date,
+    "author": {
+      "@type": "Person",
+      "name": post.author,
+      "jobTitle": post.authorRole
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": siteConfig.groupName,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteConfig.siteUrl}/sdc-logo-transparent.webp`
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${siteConfig.siteUrl}/blog/${post.slug}`
+    }
+  })} />
   <article class="py-10 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Breadcrumb & Back Link -->

@@ -22,6 +22,7 @@ const albumPhotos = galleryPhotos.filter(p => p.albumId === album.id);
 <Layout 
   title={`${album.name} – Photo Album | ${siteConfig.groupName}`}
   description={`${album.description} (${albumPhotos.length} photos)`}
+  image={album.coverImage}
 >
   <!-- Album Header Banner -->
   <section class="bg-stone-900 text-sand-50 py-12 sm:py-20 border-b border-stone-800">
