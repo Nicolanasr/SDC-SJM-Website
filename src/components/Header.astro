@@ -46,10 +46,10 @@ const currentPath = Astro.url.pathname;
         </div>
         <div>
           <div class="font-serif font-bold text-base sm:text-xl text-cedar-950 leading-tight">
-            <T en={siteConfig.groupName} ar={siteConfig.arabicGroupName} />
+            <T en="Saint Jean Marc" ar="فوج القديس يوحنا مرقس" />
           </div>
           <div class="text-[10px] sm:text-xs uppercase tracking-wider text-cedar-700 font-semibold truncate max-w-[150px] sm:max-w-none">
-            <T en={siteConfig.tagline} ar={siteConfig.arabicTagline} />
+            <T en="Scout Des Cèdres" ar="كشافة الأرز" />
           </div>
         </div>
       </a>
@@ -96,6 +96,7 @@ const currentPath = Astro.url.pathname;
 
       <!-- Action Button & Language Switcher -->
       <div class="hidden md:flex items-center space-x-3">
+
         <LanguageSwitcher />
 
         <a 
@@ -106,8 +107,19 @@ const currentPath = Astro.url.pathname;
         </a>
       </div>
 
-      <!-- Mobile Right Controls (Switcher + Hamburger) -->
+      <!-- Mobile Right Controls (WhatsApp + Switcher + Hamburger) -->
       <div class="md:hidden flex items-center gap-2">
+        <a 
+          href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-sm"
+          aria-label="Direct WhatsApp Message"
+        >
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.768-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
+          </svg>
+        </a>
         <LanguageSwitcher />
 
         <button 

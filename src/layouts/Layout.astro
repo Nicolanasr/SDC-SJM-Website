@@ -39,7 +39,7 @@ const schemaData = {
   "email": siteConfig.contact.email,
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Courtyard of Paroisse Saint Jean Marc, Se7a",
+    "streetAddress": "Courtyard of Paroisse Saint Jean Marc, Old Byblos Square",
     "addressLocality": "Byblos (Jbeil)",
     "addressRegion": "Mount Lebanon",
     "addressCountry": "LB"
@@ -93,6 +93,9 @@ const schemaData = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
+
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="google-site-verification-token" />
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />

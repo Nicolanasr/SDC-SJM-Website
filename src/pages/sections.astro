@@ -4,192 +4,328 @@ import PageHeader from '../components/PageHeader.astro';
 import T from '../components/T.astro';
 import { sectionsData } from '../data/sections';
 import { siteConfig } from '../data/siteConfig';
+import { Compass, Flame, Shield, Users, MapPin, Sparkles, ArrowRight } from 'lucide-astro';
+
+// Distinctive theme styling per branch to give authentic scout personality
+const branchStyles = [
+  {
+    themeBg: "bg-amber-950/5 border-amber-300/80",
+    badgeTheme: "bg-amber-600 text-white",
+    cardAccent: "border-l-4 border-amber-600",
+    iconColor: "text-amber-600",
+    glow: "from-amber-500/20 to-orange-500/0",
+    mascot: "🐺",
+    subUnits: [
+      { name: "Louveteaux (الجراميز)", target: "Boys ages 4–11", role: "Led by Akela & Baloo in the jungle pack" },
+      { name: "Jeannettes (الزهرات)", target: "Girls ages 4–11", role: "Friendship, creativity, and joyful outdoor discovery" },
+    ],
+    highlights: [
+      { icon: "🌲", title: "100% Screen-Free Saturdays", titleAr: "أنشطة نقية خالية من الشاشات", desc: "Running, climbing, laughter, and real camaraderie in the ancient courtyard." },
+      { icon: "🪢", title: "Early Woodcraft & Knots", titleAr: "عقد كشفية ومهارات يدوية", desc: "Learning real knots, outdoor crafts, and taking care of their own backpack." },
+      { icon: "🤝", title: "Caring & Sharing (De notre mieux)", titleAr: "روح الأخوة والمشاركة", desc: "Growing in empathy, teamwork, and confidence under loving, attentive leaders." },
+    ]
+  },
+  {
+    themeBg: "bg-emerald-950/5 border-emerald-300/80",
+    badgeTheme: "bg-emerald-700 text-white",
+    cardAccent: "border-l-4 border-emerald-700",
+    iconColor: "text-emerald-700",
+    glow: "from-emerald-500/20 to-teal-500/0",
+    mascot: "🏕️",
+    subUnits: [
+      { name: "Scouts (الكشافة)", target: "Boys ages 11–16", role: "Autonomous patrols (patrouilles) exploring mountain wilderness" },
+      { name: "Guides (المرشدات)", target: "Girls ages 11–16", role: "Sisterhood, campcraft mastery, pioneering, and leadership" },
+    ],
+    highlights: [
+      { icon: "🪵", title: "Froissartage (Zero Nails)", titleAr: "منشآت خشبية بدون أي مسمار", desc: "Building towers, bridges, and camp kitchens with timber logs and sisal rope." },
+      { icon: "🧭", title: "Topographic Mountain Treks", titleAr: "مسارات الجبال والبوصلة", desc: "Navigating rugged Lebanese valleys with topographic maps and compass." },
+      { icon: "🔥", title: "10-Day Camp Under Canvas", titleAr: "المخيم الصيفي الكبير (١٠ أيام)", desc: "Wood stove cooking, evening campfire legends, and sleeping under mountain stars." },
+    ]
+  },
+  {
+    themeBg: "bg-sky-950/5 border-sky-300/80",
+    badgeTheme: "bg-sky-800 text-white",
+    cardAccent: "border-l-4 border-sky-800",
+    iconColor: "text-sky-800",
+    glow: "from-sky-500/20 to-indigo-500/0",
+    mascot: "⛰️",
+    subUnits: [
+      { name: "Routiers (الجوالة)", target: "Young Men ages 16–24", role: "Clan expeditions, disaster relief, and mountain journeys" },
+      { name: "Caravelles (المنجدات)", target: "Young Women ages 16–24", role: "Humanitarian impact, self-reflection, and community leadership" },
+    ],
+    highlights: [
+      { icon: "🥾", title: "The Open Road (LMT Treks)", titleAr: "مسارات درب الجبل الطويلة", desc: "Long distance backpacking journeys across Lebanon's highest ridges." },
+      { icon: "❤️", title: "Civic & Emergency Service", titleAr: "خدمة المجتمع والإغاثة", desc: "Concrete aid to vulnerable families and active parish social solidarity." },
+      { icon: "🎖️", title: "Leadership In Action", titleAr: "مدرسة صناعة القادة", desc: "Mentoring younger sections, organizing large-scale logistics, and public speaking." },
+    ]
+  }
+];
 ---
 
 <Layout 
-  title={`Sections & Branches – ${siteConfig.groupName}`}
-  description="Explore the three scout branches at Scout Des Cèdres Saint Jean Marc Byblos: Louveteaux & Jeannettes (جراميز وزهرات, ages 4-11), Scouts & Guides (كشافة ومرشدات, ages 11-16), and Routiers & Caravelles (جوالة ومنجدات, ages 16-24)."
+  title={`Sections & Branches – ${siteConfig.groupName} – ${siteConfig.tagline}`}
+  description="Explore the three scout branches at Scout Des Cèdres Saint Jean Marc Byblos: Louveteaux & Jeannettes (4–11), Scouts & Guides (11–16), and Routiers & Caravelles (16–24). Weekly Saturday meetings in Byblos."
 >
   <PageHeader 
-    badge="OUR THREE BRANCHES"
+    badge="THE THREE BRANCHES OF SCOUTING"
     badgeAr="فروع الفوج الكشفي الثلاثة"
-    title="A section for every age"
-    titleAr="قسم مخصص لكل فئة عمرية"
-    description="Each branch is tailored to nurture character, friendship, autonomy, and outdoor woodcraft at every stage of youth in Byblos."
-    descriptionAr="تنشئة متكاملة تهدف إلى صقل الشخصية، روح الأخوة، الاستقلالية، ومهارات ريادة الخلاء في كل مرحلة عمرية."
+    title="Not an after-school daycare. A lifelong brotherhood and sisterhood in the wild."
+    titleAr="ليست مجرد نادٍ عادي.. بل مدرسة للحياة في قلب الطبيعة."
+    description="From first outdoor games at age 4 to high mountain expeditions at age 20, discover where your child's journey begins."
+    descriptionAr="من أولى ألعاب الحركة في سن الرابعة حتى مسارات القمم الجبلية في العشرين.. هنا تبدأ المغامرة الحقيقية."
   />
 
-  <!-- Detailed Units List (Magazine Showcase) -->
-  <section class="py-10 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
-    {sectionsData.map((section, idx) => (
-      <article 
-        id={section.id} 
-        class="scroll-mt-28 rounded-3xl overflow-hidden border border-stone-200/90 bg-white shadow-sm hover:shadow-md transition-shadow"
+  <!-- Quick Branch Jump Bar -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-10 sm:mb-16">
+    <div class="bg-white rounded-2xl sm:rounded-full p-2 border border-stone-200/90 shadow-md flex flex-wrap items-center justify-around gap-2">
+      <a 
+        href="#jaramiz-zahrat" 
+        class="flex-1 min-w-[200px] text-center px-4 py-2.5 rounded-xl sm:rounded-full hover:bg-amber-50 text-stone-800 hover:text-amber-900 transition-colors font-bold text-xs sm:text-sm flex items-center justify-center gap-2"
       >
-        <!-- Wide Top Image Banner -->
-        <div class="relative h-64 sm:h-80 md:h-96 w-full overflow-hidden bg-stone-900">
-          <img 
-            src={section.image} 
-            alt={section.name} 
-            class="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/40 to-transparent"></div>
-          
-          <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-8 sm:right-8 flex flex-wrap items-end justify-between gap-3 text-white">
-            <div>
-              <div class="flex flex-wrap items-center gap-2 mb-2">
-                <span class={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${section.badgeColor}`}>
-                  <T en={section.ageRange} ar={section.arabicAgeRange} />
-                </span>
-                <span class="text-xs uppercase tracking-wider font-bold bg-amber-400/20 text-amber-300 border border-amber-400/40 px-3 py-1 rounded-full backdrop-blur-sm">
-                  <T en={`Motto: ${section.motto}`} ar={`الشعار: ${section.arabicMotto}`} />
-                </span>
+        <span class="text-base">🐺</span>
+        <span><T en="Ages 4–11: Cubs & Jeannettes" ar="٤–١١ سنة: جراميز وزهرات" /></span>
+      </a>
+      <span class="hidden sm:inline text-stone-300">•</span>
+      <a 
+        href="#kechefe-mourchidet" 
+        class="flex-1 min-w-[200px] text-center px-4 py-2.5 rounded-xl sm:rounded-full hover:bg-emerald-50 text-stone-800 hover:text-emerald-950 transition-colors font-bold text-xs sm:text-sm flex items-center justify-center gap-2"
+      >
+        <span class="text-base">🏕️</span>
+        <span><T en="Ages 11–16: Scouts & Guides" ar="١١–١٦ سنة: كشافة ومرشدات" /></span>
+      </a>
+      <span class="hidden sm:inline text-stone-300">•</span>
+      <a 
+        href="#jouwele-mounjidet" 
+        class="flex-1 min-w-[200px] text-center px-4 py-2.5 rounded-xl sm:rounded-full hover:bg-sky-50 text-stone-800 hover:text-sky-950 transition-colors font-bold text-xs sm:text-sm flex items-center justify-center gap-2"
+      >
+        <span class="text-base">⛰️</span>
+        <span><T en="Ages 16–24: Rovers & Caravelles" ar="١٦–٢٤ سنة: جوالة ومنجدات" /></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Detailed Units (High-Energy Magazine Showcase) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24 pb-16 sm:pb-24">
+    {sectionsData.map((section, idx) => {
+      const style = branchStyles[idx] || branchStyles[0];
+      return (
+        <article 
+          id={section.id} 
+          class="scroll-mt-24 rounded-3xl overflow-hidden border-2 bg-white shadow-md hover:shadow-xl transition-all duration-300"
+          style={`border-color: ${section.accentHex}40;`}
+        >
+          <!-- Wide Atmospheric Top Image Banner -->
+          <div class="relative h-72 sm:h-96 w-full overflow-hidden bg-stone-900 group">
+            <img 
+              src={section.image} 
+              alt={section.name} 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent"></div>
+            
+            <!-- Banner Content Overlay -->
+            <div class="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 flex flex-col md:flex-row md:items-end justify-between gap-4 text-white">
+              <div class="space-y-2">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-sm ${style.badgeTheme}`}>
+                    <span>{style.mascot}</span>
+                    <T en={section.ageRange} ar={section.arabicAgeRange} />
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-black/60 backdrop-blur-md border border-white/20 text-gold-300">
+                    <T en={`Motto: ${section.motto}`} ar={`الشعار: ${section.arabicMotto}`} />
+                  </span>
+                </div>
+
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight drop-shadow-md">
+                  <T en={section.name.split('(')[0].trim()} ar={section.arabicName.split('(')[0].trim()} />
+                </h2>
+                <p class="text-xs sm:text-sm text-sand-200 font-medium">
+                  {section.frenchName} • <T en="Scout Des Cèdres Saint Jean Marc Byblos" ar="كشافة الأرز - فوج القديس يوحنا مرقس" />
+                </p>
               </div>
-              <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight drop-shadow-sm">
-                <T en={section.name} ar={section.arabicName} />
-              </h2>
-              <p class="text-xs sm:text-sm text-stone-300 font-medium mt-1">
-                {section.frenchName}
+
+              <!-- Saturday Meeting Pill -->
+              <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-stone-900/80 backdrop-blur-md border border-stone-700/80 text-xs font-bold text-sand-100 self-start md:self-auto">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span><T en="Every Saturday 3:00 – 4:30 PM" ar="كل سبت ٣:٠٠ – ٤:٣٠ بعد الظهر" /></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Body -->
+          <div class="p-6 sm:p-10 lg:p-12 space-y-10">
+            
+            <!-- Narrative Lead -->
+            <div class="max-w-4xl space-y-3">
+              <h3 class="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+                <T en="The Spirit & The Adventure" ar="روح المغامرة في هذا الفرع" />
+              </h3>
+              <p class="text-stone-700 text-base sm:text-lg leading-relaxed font-sans">
+                <T en={section.description} ar={section.arabicDescription} />
               </p>
             </div>
 
-            <div class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold bg-stone-900/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-stone-700/60 text-stone-200">
-              <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>
-                <T en={section.meetingTime} ar={section.arabicMeetingTime} />
-              </span>
+            <!-- Two Sub-Units Cards (Boys Branch & Girls Branch) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              {style.subUnits.map(unit => (
+                <div class="p-5 rounded-2xl bg-stone-50 border border-stone-200/80 flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center font-bold text-lg shrink-0 shadow-xs">
+                    {style.mascot}
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-base text-stone-900">{unit.name}</h4>
+                    <span class="text-xs font-semibold text-amber-800 uppercase tracking-wider block">{unit.target}</span>
+                    <p class="text-xs text-stone-600 mt-1 leading-relaxed">{unit.role}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-        </div>
 
-        <!-- Body Details Grid -->
-        <div class="p-6 sm:p-10 lg:p-12 space-y-8">
-          
-          <!-- Narrative Lead -->
-          <div class="max-w-4xl space-y-3">
-            <p class="text-stone-700 text-base sm:text-lg leading-relaxed">
-              <T en={section.description} ar={section.arabicDescription} />
-            </p>
-            <div class="sm:hidden inline-flex items-center gap-2 text-xs font-semibold bg-stone-100 px-3 py-2 rounded-xl border border-stone-200 text-stone-700">
-              <svg class="w-4 h-4 text-cedar-800 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>
-                <T en={section.meetingTime} ar={section.arabicMeetingTime} />
-              </span>
-            </div>
-          </div>
-
-          <!-- Two-Column Cards: Parent Peace of Mind vs Skills & Activities -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-            
-            <!-- Parent Peace of Mind Box -->
-            <div class="rounded-2xl p-5 sm:p-6 bg-emerald-50/50 border border-emerald-100/80 space-y-3">
-              <div class="flex items-center gap-2.5 text-emerald-950 font-bold text-sm sm:text-base">
-                <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 text-sm">
-                  🛡️
-                </span>
-                <h3>
-                  <T en="Parent Peace of Mind" ar="راحة واطمئنان الأهل" />
-                </h3>
+            <!-- 3 Adventure Highlights Cards (WOW Factor) -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-stone-500">
+                <Sparkles class="w-4 h-4 text-gold-500" />
+                <span><T en="What Youth Love About This Branch" ar="أبرز ما يعيشه ويبنيه الشباب في هذا الفرع" /></span>
               </div>
-              <ul class="lang-en space-y-2 text-xs sm:text-sm text-stone-700">
-                {section.parentHighlights.map(item => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-emerald-700 font-bold shrink-0 mt-0.5">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <ul class="lang-ar space-y-2 text-xs sm:text-sm text-stone-700">
-                {section.arabicParentHighlights.map(item => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-emerald-700 font-bold shrink-0 mt-0.5">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
 
-            <!-- Key Skills & Activities Box -->
-            <div class="rounded-2xl p-5 sm:p-6 bg-amber-50/50 border border-amber-100/80 space-y-3">
-              <div class="flex items-center gap-2.5 text-amber-950 font-bold text-sm sm:text-base">
-                <span class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center shrink-0 text-sm">
-                  🏕️
-                </span>
-                <h3>
-                  <T en="What Scouts Learn & Do" ar="الأنشطة والمهارات المكتسبة" />
-                </h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {style.highlights.map(h => (
+                  <div class="p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:border-stone-400 transition-colors flex flex-col justify-between">
+                    <div>
+                      <span class="text-2xl block mb-2">{h.icon}</span>
+                      <h4 class="font-bold text-sm sm:text-base text-stone-900">
+                        <T en={h.title} ar={h.titleAr} />
+                      </h4>
+                      <p class="text-xs text-stone-600 leading-relaxed mt-1.5">
+                        {h.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <ul class="lang-en space-y-2 text-xs sm:text-sm text-stone-700">
-                {section.activities.map(activity => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-amber-700 font-bold shrink-0 mt-0.5">✦</span>
-                    <span>{activity}</span>
-                  </li>
-                ))}
-              </ul>
-              <ul class="lang-ar space-y-2 text-xs sm:text-sm text-stone-700">
-                {section.arabicActivities.map(activity => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-amber-700 font-bold shrink-0 mt-0.5">✦</span>
-                    <span>{activity}</span>
-                  </li>
-                ))}
-              </ul>
+            </div>
+
+            <!-- Deep Dive: Parent Trust vs Youth Skills Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-stone-100">
+              
+              <!-- For Parents: Peace of mind, safety, values -->
+              <div class="rounded-2xl p-6 bg-emerald-50/60 border border-emerald-200/80 space-y-4">
+                <div class="flex items-center gap-2.5 text-emerald-950 font-bold text-sm sm:text-base">
+                  <Shield class="w-5 h-5 text-emerald-700 shrink-0" />
+                  <h4>
+                    <T en="Why Parents in Byblos Value This Branch" ar="لماذا يثق الأهل بهذا الفرع الكشفي" />
+                  </h4>
+                </div>
+                <ul class="lang-en space-y-2 text-xs sm:text-sm text-stone-700">
+                  {section.parentHighlights.map(item => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-emerald-700 font-bold shrink-0 mt-0.5">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <ul class="lang-ar space-y-2 text-xs sm:text-sm text-stone-700">
+                  {section.arabicParentHighlights.map(item => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-emerald-700 font-bold shrink-0 mt-0.5">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- For Teens / Scouts: Concrete skills & traditions -->
+              <div class="rounded-2xl p-6 bg-amber-50/60 border border-amber-200/80 space-y-4">
+                <div class="flex items-center gap-2.5 text-amber-950 font-bold text-sm sm:text-base">
+                  <Flame class="w-5 h-5 text-amber-700 shrink-0" />
+                  <h4>
+                    <T en="Core Outdoor & Life Skills Mastered" ar="المهارات الميدانية والتطبيقية المكتسبة" />
+                  </h4>
+                </div>
+                <ul class="lang-en space-y-2 text-xs sm:text-sm text-stone-700">
+                  {section.activities.map(activity => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-amber-700 font-bold shrink-0 mt-0.5">✦</span>
+                      <span>{activity}</span>
+                    </li>
+                  ))}
+                </ul>
+                <ul class="lang-ar space-y-2 text-xs sm:text-sm text-stone-700">
+                  {section.arabicActivities.map(activity => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-amber-700 font-bold shrink-0 mt-0.5">✦</span>
+                      <span>{activity}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+
+            <!-- Action Bar: Direct WhatsApp Question & Visit Invitation -->
+            <div class="pt-6 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="text-xs text-stone-600 flex items-center gap-2">
+                <MapPin class="w-4 h-4 text-cedar-800 shrink-0" />
+                <span>
+                  <T 
+                    en="Courtyard of Saint Jean Marc, Old Byblos. No prior scouting experience needed." 
+                    ar="باحة كاتدرائية مار يوحنا مرقس، جبيل القديمة. لا يشترط أي خبرة كشفية مسبقة." 
+                  />
+                </span>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                <a 
+                  href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(`Hello Chef! I would like to ask about joining the ${section.name} section.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-scout-gold text-xs uppercase tracking-wider !py-2.5 !px-5 flex items-center justify-center gap-2 w-full sm:w-auto shadow-xs"
+                >
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 2.112.822 3.19.822 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.768-5.768-5.768zm0-2c4.284 0 7.768 3.484 7.768 7.768 0 4.283-3.484 7.767-7.768 7.768-1.328 0-2.585-.341-3.69-.941l-4.341 1.139 1.159-4.238c-.684-1.161-1.096-2.502-1.096-3.727 0-4.284 3.484-7.768 7.768-7.768z"/>
+                  </svg>
+                  <T en="Ask About This Branch" ar="استفسار عبر واتساب" />
+                </a>
+
+                <a 
+                  href="/#contact"
+                  class="btn-scout-primary text-xs uppercase tracking-wider !py-2.5 !px-5 text-center w-full sm:w-auto shadow-xs"
+                >
+                  <T en="Visit This Saturday" ar="تفضل بزيارتنا هذا السبت" />
+                </a>
+              </div>
             </div>
 
           </div>
-
-          <!-- Action Buttons Bar -->
-          <div class="pt-4 border-t border-stone-100 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <span class="text-xs text-stone-500 font-medium">
-              <T 
-                en="Weekly gatherings take place at Saint Jean Marc Byblos courtyard." 
-                ar="تقام الأنشطة الأسبوعية في باحة كاتدرائية مار يوحنا مرقس في جبيل القديمة." 
-              />
-            </span>
-            <div class="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
-              <a 
-                href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(`Hello! I would like to inquire about registering in ${section.name}.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-scout-gold text-xs uppercase tracking-wider !py-2.5 !px-5 flex items-center justify-center gap-2 w-full sm:w-auto"
-              >
-                <span>💬</span>
-                <T en={`Inquire on WhatsApp`} ar={`استفسار عبر واتساب`} />
-              </a>
-              <a 
-                href="/#meeting"
-                class="btn-scout-outline text-xs uppercase tracking-wider !py-2.5 !px-5 text-center w-full sm:w-auto"
-              >
-                <T en="Visit This Saturday" ar="تفضل بزيارتنا هذا السبت" />
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </article>
-    ))}
+        </article>
+      );
+    })}
   </section>
 
-  <!-- Bottom CTA -->
-  <section class="pb-16 sm:pb-24 max-w-4xl mx-auto px-4 text-center space-y-3 sm:space-y-4">
+  <!-- Bottom Encouragement Box -->
+  <section class="pb-16 sm:pb-24 max-w-4xl mx-auto px-4 text-center space-y-4">
+    <div class="w-12 h-12 rounded-full bg-cedar-100 text-cedar-900 mx-auto flex items-center justify-center font-bold text-xl">
+      ⚜️
+    </div>
     <h3 class="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
-      <T en="Not sure which section fits your child?" ar="لست متأكداً من القسم الأنسب لطفلك؟" />
+      <T en="Still not sure which branch fits?" ar="لست متأكداً من القسم الأنسب لطفلك؟" />
     </h3>
     <p class="text-stone-600 text-xs sm:text-base max-w-xl mx-auto leading-relaxed">
       <T 
-        en="Visit us this Saturday between 3:00 PM and 4:30 PM at the Saint Jean Marc courtyard in Byblos. Our chefs will gladly welcome your family and answer every question." 
-        ar="تفضلوا بزيارتنا هذا السبت بين ٣:٠٠ و ٤:٣٠ بعد الظهر في باحة مار يوحنا مرقس في جبيل. سيسعد قادتنا باستقبال عائلتكم والإجابة على استفساراتكم." 
+        en="Drop in any Saturday at 3:00 PM at Saint Jean Marc in old Byblos. Your child can jump into the outdoor games in normal sneakers while you have coffee with our chefs." 
+        ar="تفضلوا بزيارتنا أي نهار سبت عند الساعة ٣:٠٠ بعد الظهر في باحة مار يوحنا مرقس في جبيل القديمة. يستطيع طفلكم المشاركة بحذاء رياضي عادي بينما تتعرفون على القادة." 
       />
     </p>
     <div class="pt-2">
-      <a href="/#contact" class="btn-scout-primary text-xs uppercase tracking-wider inline-block">
-        <T en="Contact Group Leaders" ar="تواصل مع قادة الفوج" />
+      <a 
+        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent("Hello! We are visiting this Saturday with our child to check out the troop.")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider hover:bg-emerald-800 transition-colors shadow-sm"
+      >
+        <span>💬</span>
+        <T en="Tell Us You're Dropping By" ar="أخبرنا بزيارتك عبر واتساب" />
       </a>
     </div>
   </section>

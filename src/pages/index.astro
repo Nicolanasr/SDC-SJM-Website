@@ -206,8 +206,8 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
 
         <p class="text-stone-600 text-sm sm:text-base max-w-md">
           <T 
-            en="Every season has its rhythm. Spring in Qadisha, anniversary marches through Byblos, and ten full days under canvas in the high mountains each summer." 
-            ar="لكل فصل إيقاعه الكشفي. في الربيع نخيم في قاديشا، وفي أيار نحتفل بمسيرة بيبلوس، وفي تموز نقضي عشرة أيام كاملة تحت الخيمة في أعالي الجبال." 
+            en="From weekend mountain trails and parish service to our annual camps under canvas, scouting offers youth a year-round journey of outdoor discovery and leadership." 
+            ar="من مسيرات الطبيعة الأسبوعية وخدمة الرعية إلى المخيمات السنوية تحت الخيمة، يعيش أبناؤنا تجربة كشفية حقيقية تصقل الشخصية على مدار العام." 
           />
         </p>
       </div>
@@ -308,7 +308,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
-      {blogPosts.map(post => (
+      {blogPosts.slice(0, 3).map(post => (
         <article class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md hover:border-stone-400 transition-all flex flex-col justify-between">
           <div>
             <a href={`/blog/${post.slug}`} class="block aspect-[16/10] overflow-hidden bg-stone-200">
@@ -352,6 +352,16 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
           </div>
         </article>
       ))}
+    </div>
+
+    <!-- View More Articles Button -->
+    <div class="mt-8 sm:mt-12 text-center">
+      <a 
+        href="/blog" 
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-stone-900 text-sand-50 hover:bg-cedar-950 font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+      >
+        <T en="View More Articles →" ar="عرض المزيد من المقالات ←" />
+      </a>
     </div>
   </section>
 

@@ -21,10 +21,10 @@ import T from './T.astro';
           </div>
           <div>
             <div class="font-serif font-bold text-lg text-sand-50 leading-tight">
-              <T en={siteConfig.groupName} ar={siteConfig.arabicGroupName} />
+              <T en="Saint Jean Marc" ar="فوج القديس يوحنا مرقس" />
             </div>
             <div class="text-xs uppercase tracking-wider text-gold-400 font-medium">
-              <T en={siteConfig.tagline} ar={siteConfig.arabicTagline} />
+              <T en="Scout Des Cèdres" ar="كشافة الأرز" />
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ import T from './T.astro';
         <div class="bg-cedar-900/60 p-4 rounded-xl border border-cedar-800/80 space-y-2 text-sm">
           <div class="font-bold text-sand-100 flex items-center gap-2">
             <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
             <T en={siteConfig.meetingSchedule.day} ar="كل نهار سبت" />
           </div>
@@ -71,7 +71,7 @@ import T from './T.astro';
             <T en={siteConfig.meetingSchedule.time} ar="٣:٠٠ – ٤:٣٠ بعد الظهر" />
           </div>
           <p class="text-xs text-sand-300/80 leading-relaxed pt-1">
-            <T en={siteConfig.meetingSchedule.locationDetails} ar="قرب أنطش مار يوحنا مرقس، ساحة بيبلوس الأثرية، جبيل، لبنان" />
+            <T en={siteConfig.meetingSchedule.locationDetails} ar="قرب أنطش مار يوحنا مرقس، جبيل القديمة، لبنان" />
           </p>
           <div class="pt-2">
             <a 
@@ -124,7 +124,29 @@ import T from './T.astro';
               <span class="break-all">{siteConfig.contact.email}</span>
             </a>
           </li>
-          <li class="pt-2 text-xs text-sand-400">
+          <!-- Social Links -->
+          <li class="pt-2 flex items-center gap-3">
+            <a 
+              href={siteConfig.socials.instagram} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center gap-1.5 text-xs text-sand-300 hover:text-gold-400 transition-colors"
+            >
+              <span>📷</span>
+              <span>Instagram</span>
+            </a>
+            <span>•</span>
+            <a 
+              href={siteConfig.socials.facebook} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center gap-1.5 text-xs text-sand-300 hover:text-gold-400 transition-colors"
+            >
+              <span>👥</span>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li class="pt-1 text-xs text-sand-400">
             <T en="Paroisse Saint Jean Marc, Byblos (Jbeil), Lebanon" ar="رعية مار يوحنا مرقس، جبيل، لبنان" />
           </li>
         </ul>
