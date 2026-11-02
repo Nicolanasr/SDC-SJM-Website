@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import T from '../../components/T.astro';
 import { upcomingEvents, type ScoutEvent } from '../../data/events';
 import { siteConfig } from '../../data/siteConfig';
 
@@ -22,7 +23,7 @@ const { event } = Astro.props;
   description={event.description}
 >
   <!-- Event Hero Banner -->
-  <section class="bg-stone-900 text-sand-50 py-16 sm:py-20 border-b border-stone-800">
+  <section class="bg-stone-900 text-sand-50 py-12 sm:py-20 border-b border-stone-800">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Back Link -->
@@ -30,44 +31,54 @@ const { event } = Astro.props;
         href="/events" 
         class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-amber-400 hover:text-amber-300 mb-6 transition-colors"
       >
-        <span>← Back to All Events & Calendar</span>
+        <span>← <T en="Back to Troop Calendar" ar="العودة إلى رزنامة الأنشطة" /></span>
       </a>
 
       <div class="space-y-4">
         <div class="flex flex-wrap items-center gap-2">
           <span class={`inline-block px-3 py-1 rounded-full text-xs font-bold ${event.badgeColor}`}>
-            {event.badge}
+            <T en={event.badge} ar={event.badgeAr} />
           </span>
           <span class="text-xs font-bold text-stone-300 bg-stone-800 px-3 py-1 rounded-full border border-stone-700">
-            {event.date}
+            <T en={event.date} ar={event.dateAr} />
           </span>
         </div>
 
         <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-          {event.title}
+          <T en={event.title} ar={event.titleAr} />
         </h1>
 
         <p class="text-stone-300 text-base sm:text-lg max-w-2xl">
-          {event.subtitle}
+          <T en={event.subtitle} ar={event.subtitleAr} />
         </p>
 
         <!-- Quick Specs Row -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-stone-800 text-xs">
           <div>
-            <span class="text-stone-400 block font-medium">Duration:</span>
+            <span class="text-stone-400 block font-medium">
+              <T en="Duration:" ar="المدة:" />
+            </span>
             <strong class="text-white text-sm">{event.duration}</strong>
           </div>
           <div>
-            <span class="text-stone-400 block font-medium">Eligible Units:</span>
+            <span class="text-stone-400 block font-medium">
+              <T en="Eligible Units:" ar="الفئات:" />
+            </span>
             <strong class="text-white text-sm">{event.ages}</strong>
           </div>
           <div>
-            <span class="text-stone-400 block font-medium">Location:</span>
-            <strong class="text-white text-sm">{event.location}</strong>
+            <span class="text-stone-400 block font-medium">
+              <T en="Location:" ar="الموقع:" />
+            </span>
+            <strong class="text-white text-sm">
+              <T en={event.location} ar={event.locationAr} />
+            </strong>
           </div>
           <div>
-            <span class="text-stone-400 block font-medium">Assembly:</span>
-            <strong class="text-white text-sm">{event.departureTime.split('at')[0]}</strong>
+            <span class="text-stone-400 block font-medium">
+              <T en="Assembly Time:" ar="موعد التجمع:" />
+            </span>
+            <strong class="text-white text-sm">{event.departureTime}</strong>
           </div>
         </div>
       </div>
@@ -76,41 +87,43 @@ const { event } = Astro.props;
   </section>
 
   <!-- Main Event Details Container -->
-  <section class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+  <section class="py-12 sm:py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
     
-    <!-- MEMBERS PORTAL CALLOUT (Signed-in Users Only) -->
-    <div class="rounded-3xl bg-amber-50 border-2 border-amber-300/80 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+    <!-- PARENT DROP-OFF & WHATSAPP LOGISTICS CALLOUT -->
+    <div class="rounded-3xl bg-emerald-50/70 border border-emerald-200 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
       <div class="space-y-1.5 max-w-xl">
-        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-900">
-          <svg class="w-4 h-4 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
-          <span>Members & Leaders Portal (Signed-in Only)</span>
+        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-900">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+          <span>
+            <T en="Parent Quick Guide & Attendance" ar="دليل أولياء الأمور وتأكيد الحضور" />
+          </span>
         </div>
-        <h4 class="font-bold text-base text-stone-900">
-          Internal Camp Portal & Documents
+        <h4 class="font-bold text-base sm:text-lg text-stone-900">
+          <T en="Drop-Off & Welcome Every Saturday" ar="استقبال الكشافة كل يوم سبت في جبيل" />
         </h4>
-        <p class="text-xs text-stone-600 leading-relaxed">
-          Registered scout families and leaders can sign in to view the confidential patrol roster, medical authorizations, real-time camp updates, and private photo drives.
+        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+          <T 
+            en="Drop-off is between 2:45 PM and 3:00 PM at Saint Jean Marc courtyard. Pick-up is at 4:30 PM sharp. Have questions or bringing a new child for their first trial?" 
+            ar="يبدأ الاستقبال من الساعة ٢:٤٥ وحتى ٣:٠٠ بعد الظهر في باحة مار يوحنا مرقس. ينتهي اللقاء في تمام الساعة ٤:٣٠ بعد الظهر. هل لديكم استفسار أو ترغبون بتجربة اللقاء الأول لطفلكم؟" 
+          />
         </p>
       </div>
 
-      <button 
-        type="button" 
-        id="portal-btn"
-        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-amber-700 hover:bg-amber-800 text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-colors shadow-sm cursor-pointer"
+      <a 
+        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(`Hello! I have a question about attending the Saturday meeting at Saint Jean Marc Byblos.`)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-colors shadow-sm"
       >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-        </svg>
-        <span>Sign In to Portal</span>
-      </button>
+        <span>💬</span>
+        <T en="Ask on WhatsApp" ar="تواصل معنا عبر واتساب" />
+      </a>
     </div>
 
     <!-- Overview Narrative -->
     <div class="space-y-4">
       <h2 class="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
-        Event Overview
+        <T en="Meeting Overview & Routine" ar="تفاصيل وبرنامج اللقاء" />
       </h2>
       <div class="space-y-3 text-stone-700 text-base leading-relaxed">
         {event.fullOverview.map(p => (
@@ -122,30 +135,40 @@ const { event } = Astro.props;
     <!-- Schedule Highlights Table -->
     <div class="space-y-4 pt-6 border-t border-stone-200">
       <h3 class="text-2xl font-black text-stone-900 tracking-tight">
-        Detailed Schedule Highlights
+        <T en="Schedule Breakdown (3:00 PM – 4:30 PM)" ar="الجدول الزمني للقاء (٣:٠٠ – ٤:٣٠ بعد الظهر)" />
       </h3>
-      <div class="rounded-2xl border border-stone-200 overflow-hidden divide-y divide-stone-200 bg-white">
+      <div class="rounded-2xl border border-stone-200 overflow-hidden divide-y divide-stone-200 bg-white shadow-sm">
         {event.scheduleHighlights.map(item => (
           <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
-            <span class="font-mono font-bold text-xs sm:text-sm text-amber-700 sm:w-28 shrink-0">
+            <span class="font-mono font-bold text-xs sm:text-sm text-emerald-800 sm:w-28 shrink-0">
               {item.time}
             </span>
             <span class="text-sm text-stone-800 font-medium">
-              {item.activity}
+              <T en={item.activity} ar={item.activityAr || item.activity} />
             </span>
           </div>
         ))}
       </div>
     </div>
 
-    <!-- Packing Kit Checklist -->
+    <!-- Required Kit Checklist -->
     <div class="space-y-4 pt-6 border-t border-stone-200">
       <h3 class="text-2xl font-black text-stone-900 tracking-tight">
-        Required Packing Kit & Equipment
+        <T en="What to Bring to the Meeting" ar="ما يحتاجه الكشاف في اللقاء" />
       </h3>
       <div class="bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-stone-200">
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-stone-700">
+        <ul class="lang-en grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-stone-700">
           {event.packingKit.map(kit => (
+            <li class="flex items-start gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center shrink-0 text-xs mt-0.5">
+                ✓
+              </span>
+              <span>{kit}</span>
+            </li>
+          ))}
+        </ul>
+        <ul class="lang-ar grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-stone-700">
+          {event.arabicPackingKit.map(kit => (
             <li class="flex items-start gap-2.5">
               <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center shrink-0 text-xs mt-0.5">
                 ✓
@@ -157,21 +180,39 @@ const { event } = Astro.props;
       </div>
     </div>
 
-    <!-- Contact Event Leader -->
+    <!-- Contact & Leader Note -->
     <div class="pt-8 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <div class="font-bold text-base text-stone-900">Have questions about {event.title}?</div>
-        <p class="text-xs text-stone-500">Contact the event chef directly via WhatsApp.</p>
+        <div class="font-bold text-base text-stone-900">
+          <T en="New to scouting or visiting for the first time?" ar="هل تنضمون للكشافة للمرة الأولى؟" />
+        </div>
+        <p class="text-xs text-stone-500">
+          <T 
+            en="You are always welcome to come without prior registration to watch any Saturday." 
+            ar="أهلاً بكم في أي وقت لحضور ومتابعة النشاط دون الحاجة لتسجيل مسبق." 
+          />
+        </p>
       </div>
 
       <a 
-        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(`Hello Chef! I have a question about the event: ${event.title} (${event.date}).`)}`}
+        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(`Hello Chef! I am a parent interested in learning more about the Saturday meetings.`)}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-scout-gold text-xs !py-3 !px-6"
+        class="btn-scout-gold text-xs !py-3 !px-6 whitespace-nowrap"
       >
-        Ask Chef on WhatsApp →
+        <T en="Message Leadership on WhatsApp" ar="تواصل مع قادة الفوج" />
       </a>
+    </div>
+
+    <!-- Discreet leaders portal link at bottom -->
+    <div class="pt-4 text-center">
+      <button 
+        type="button" 
+        id="portal-btn"
+        class="text-xs text-stone-400 hover:text-stone-600 underline cursor-pointer"
+      >
+        <T en="Leader & Internal Council sign-in" ar="دخول القادة ومجلس الفوج" />
+      </button>
     </div>
 
   </section>
@@ -181,29 +222,30 @@ const { event } = Astro.props;
     <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-stone-200 relative">
       <div class="flex items-center justify-between border-b border-stone-200 pb-4">
         <div class="flex items-center gap-2 font-bold text-stone-900 text-base">
-          <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
-          <span>Scout Members Portal</span>
+          <span>🔒</span>
+          <span><T en="Scout Leaders Portal" ar="بوابة قادة الفوج" /></span>
         </div>
         <button id="modal-close" type="button" class="text-stone-400 hover:text-stone-600 text-xl font-bold">×</button>
       </div>
 
       <p class="text-xs text-stone-600 leading-relaxed">
-        This area is restricted to enrolled scouts, parents, and leaders of Groupe Saint Jean Marc. Please enter your family membership ID or request access from the secretariat.
+        <T 
+          en="This area is for verified unit chefs and council members. Enter your leader credentials provided by the Chef de Groupe." 
+          ar="هذه المساحة مخصصة لقادة الوحدات وأعضاء مجلس الفوج فقط. يرجى إدخال بيانات الدخول المعتمدة من قيادة الفوج." 
+        />
       </p>
 
       <div class="space-y-3">
         <div>
-          <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Scout ID or Email</label>
-          <input type="text" placeholder="e.g. SJM-2026-XXXX" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-cedar-800" />
+          <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Leader ID</label>
+          <input type="text" placeholder="e.g. CHEF-SJM-2026" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-cedar-800" />
         </div>
         <div>
           <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Access PIN</label>
           <input type="password" placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-cedar-800" />
         </div>
-        <button type="button" class="w-full btn-scout-primary text-xs uppercase tracking-wider py-3 mt-2" onclick="alert('Demo Mode: Portal access credentials are provided by the Chef de Groupe at registration.');">
-          Log In
+        <button type="button" class="w-full btn-scout-primary text-xs uppercase tracking-wider py-3 mt-2" onclick="alert('Access restricted to active chefs de troupe and maitrise.');">
+          Sign In
         </button>
       </div>
     </div>

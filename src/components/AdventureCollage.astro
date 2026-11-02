@@ -98,13 +98,12 @@ const collage = {
           <div class="w-full flex items-end justify-between">
             <div>
               <span class="inline-block px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-600 text-white mb-1.5 shadow-sm">
-                Album: {collage.main.albumName}
+                <T en={`Album: ${collage.main.albumName}`} ar={`ألبوم: ${collage.main.albumName}`} />
               </span>
               <div class="font-bold text-lg">{collage.main.title}</div>
             </div>
-            <span class="text-xs font-bold uppercase tracking-wider underline group-hover:translate-x-1 transition-transform flex items-center gap-1">
-              <span>View Album</span>
-              <span>→</span>
+            <span class="text-xs font-bold uppercase tracking-wider underline group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform flex items-center gap-1">
+              <T en="View Album →" ar="عرض الألبوم ←" />
             </span>
           </div>
         </div>

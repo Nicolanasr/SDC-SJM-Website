@@ -1,7 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import T from '../../components/T.astro';
 import { blogPosts, type BlogPost } from '../../data/blog';
 import { siteConfig } from '../../data/siteConfig';
+import { ArrowRight, ArrowLeft } from 'lucide-astro';
 
 export function getStaticPaths() {
   return blogPosts.map(post => ({
@@ -15,73 +17,144 @@ interface Props {
 }
 
 const { post } = Astro.props;
+const relatedPosts = blogPosts.filter(p => p.slug !== post.slug).slice(0, 2);
 ---
 
 <Layout 
   title={`${post.title} – ${siteConfig.groupName}`}
   description={post.excerpt}
 >
-  <article class="py-12 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <article class="py-10 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Breadcrumb -->
+    <!-- Breadcrumb & Back Link -->
     <a 
       href="/blog" 
-      class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-amber-700 hover:text-amber-900 mb-8 transition-colors"
+      class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-emerald-800 hover:text-emerald-950 mb-8 transition-colors"
     >
-      <span>← Back to All Field Notes</span>
+      <ArrowLeft class="w-3.5 h-3.5 rtl:rotate-180" />
+      <span><T en="Back to All Field Notes" ar="العودة إلى دليل ومقالات الفوج" /></span>
     </a>
 
     <!-- Header Metadata -->
     <header class="space-y-4 mb-8">
-      <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-stone-500">
-        <span class="px-3 py-1 rounded-full bg-stone-200 text-stone-800 text-[11px]">
-          {post.category}
+      <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-bold uppercase tracking-wider text-stone-500">
+        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 text-[11px] font-bold">
+          <T en={post.category} ar={post.categoryAr} />
         </span>
         <span>•</span>
-        <span>{post.readTime}</span>
+        <span>
+          <T en={post.readTime} ar={post.readTimeAr} />
+        </span>
         <span>•</span>
-        <span>{post.date}</span>
+        <span>
+          <T en={post.date} ar={post.dateAr} />
+        </span>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-[1.12]">
-        {post.title}
+      <h1 class="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-[1.14]">
+        <T en={post.title} ar={post.titleAr} />
       </h1>
 
-      <div class="flex items-center gap-3 pt-2 text-sm text-stone-600">
-        <div class="w-10 h-10 rounded-full bg-stone-200 text-stone-800 font-bold flex items-center justify-center text-xs">
+      <div class="flex items-center gap-3 pt-3 text-sm text-stone-600 border-t border-stone-100">
+        <div class="w-11 h-11 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-sm shadow-sm">
           {post.author.slice(0, 2)}
         </div>
         <div>
           <div class="font-bold text-stone-900">{post.author}</div>
-          <div class="text-xs text-stone-500">{post.authorRole}</div>
+          <div class="text-xs text-stone-500">
+            <T en={post.authorRole} ar={post.authorRoleAr} />
+          </div>
         </div>
       </div>
     </header>
 
     <!-- Main Article Image -->
-    <div class="rounded-3xl overflow-hidden aspect-[16/9] bg-stone-200 border border-stone-200 shadow-sm mb-12">
+    <div class="rounded-3xl overflow-hidden aspect-[16/9] bg-stone-200 border border-stone-200 shadow-sm mb-10">
       <img 
         src={post.image} 
         alt={post.title} 
         class="w-full h-full object-cover"
+        loading="eager"
       />
+    </div>
+
+    <!-- Key Takeaways Box (Inspired by Scouter Mom & On Scouting) -->
+    {post.keyTakeaways && (
+      <div class="mb-10 rounded-2xl p-5 sm:p-7 bg-amber-50/80 border border-amber-200/90 shadow-sm space-y-3">
+        <div class="flex items-center gap-2 text-amber-900 font-bold text-sm sm:text-base">
+          <span class="w-6 h-6 rounded-md bg-amber-600 text-white flex items-center justify-center shrink-0 text-xs">
+            ★
+          </span>
+          <h3>
+            <T en="Key Highlights for Parents & Youth" ar="أبرز النقاط المفيدة للأهل والشباب" />
+          </h3>
+        </div>
+        <ul class="lang-en space-y-2 text-xs sm:text-sm text-stone-800">
+          {post.keyTakeaways.map(point => (
+            <li class="flex items-start gap-2">
+              <span class="text-amber-700 font-bold shrink-0 mt-0.5">✓</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+        {post.arabicKeyTakeaways && (
+          <ul class="lang-ar space-y-2 text-xs sm:text-sm text-stone-800">
+            {post.arabicKeyTakeaways.map(point => (
+              <li class="flex items-start gap-2">
+                <span class="text-amber-700 font-bold shrink-0 mt-0.5">✓</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    )}
+
+    <!-- Lead Excerpt Callout -->
+    <div class="p-5 sm:p-6 rounded-2xl bg-stone-100/80 border-l-4 border-emerald-700 text-stone-900 font-medium text-lg sm:text-xl leading-relaxed mb-8">
+      <T en={post.excerpt} ar={post.excerptAr} />
     </div>
 
     <!-- Article Content Paragraphs -->
     <div class="prose prose-lg text-stone-800 space-y-6 text-base sm:text-lg leading-relaxed border-b border-stone-200 pb-12">
-      <p class="font-medium text-xl text-stone-900 leading-snug">
-        {post.excerpt}
-      </p>
-
       {post.content.map(p => (
         <p class="text-stone-700 leading-relaxed">{p}</p>
       ))}
     </div>
 
-    <!-- Bottom Actions / Share -->
-    <footer class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <!-- Parent / Reader Help Callout Box -->
+    <div class="my-10 rounded-3xl bg-emerald-50/70 border border-emerald-200 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+      <div class="space-y-1.5 max-w-xl">
+        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-900">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+          <span><T en="Questions for our Leaders?" ar="هل لديكم استفسار لقادة الفوج؟" /></span>
+        </div>
+        <h4 class="font-bold text-base sm:text-lg text-stone-900">
+          <T en="We are here to support every family" ar="نحن هنا لمرافقة والإجابة على كل عائلة" />
+        </h4>
+        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+          <T 
+            en="Want to know more about registration, weekend camps, or what section fits your child best? Message our chefs directly." 
+            ar="هل ترغبون بمعرفة المزيد حول التسجيل، المخيمات، أو القسم الأنسب لطفلكم؟ تواصلوا مباشرة مع قادتنا." 
+          />
+        </p>
+      </div>
+
+      <a 
+        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent(`Hello Chef! I read the article "${post.title}" and would like to ask a question.`)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-colors shadow-sm"
+      >
+        <span>💬</span>
+        <T en="Ask on WhatsApp" ar="راسلنا عبر واتساب" />
+      </a>
+    </div>
+
+    <!-- Bottom Actions / Share & Back -->
+    <footer class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-stone-200 pb-10">
       <a href="/blog" class="btn-scout-outline text-xs uppercase tracking-wider">
-        ← More Field Notes
+        <T en="← Browse More Articles" ar="← تصفح جميع المقالات" />
       </a>
 
       <a 
@@ -90,9 +163,44 @@ const { post } = Astro.props;
         rel="noopener noreferrer"
         class="btn-scout-gold text-xs uppercase tracking-wider flex items-center gap-2"
       >
-        <span>Share on WhatsApp</span>
+        <span>💬</span>
+        <T en="Share on WhatsApp" ar="مشاركة المقال عبر واتساب" />
       </a>
     </footer>
+
+    <!-- Related Articles Section -->
+    {relatedPosts.length > 0 && (
+      <section class="pt-10 space-y-6">
+        <h3 class="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+          <T en="Continue Reading" ar="مقالات أخرى ذات صلة" />
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {relatedPosts.map(rel => (
+            <a 
+              href={`/blog/${rel.slug}`}
+              class="group rounded-2xl p-5 border border-stone-200 bg-white hover:border-emerald-700 transition-all flex flex-col justify-between shadow-sm"
+            >
+              <div class="space-y-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full">
+                  <T en={rel.category} ar={rel.categoryAr} />
+                </span>
+                <h4 class="font-bold text-sm sm:text-base text-stone-900 group-hover:text-emerald-800 transition-colors leading-snug">
+                  <T en={rel.title} ar={rel.titleAr} />
+                </h4>
+              </div>
+
+              <div class="pt-3 border-t border-stone-100 mt-3 flex items-center justify-between text-xs text-stone-500">
+                <span><T en={rel.readTime} ar={rel.readTimeAr} /></span>
+                <span class="font-bold text-emerald-800 group-hover:translate-x-1 transition-transform flex items-center gap-1 rtl:rotate-180">
+                  →
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
   </article>
 </Layout>

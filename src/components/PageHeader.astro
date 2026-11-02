@@ -1,0 +1,32 @@
+---
+import T from './T.astro';
+
+interface Props {
+  badge: string;
+  badgeAr?: string;
+  title: string;
+  titleAr?: string;
+  description: string;
+  descriptionAr?: string;
+}
+
+const { badge, badgeAr, title, titleAr, description, descriptionAr } = Astro.props;
+---
+
+<section class="bg-stone-900 text-sand-50 py-10 sm:py-16 lg:py-20 border-b border-stone-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2.5 sm:space-y-3.5">
+    {badge && (
+      <span class="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-stone-800 text-amber-400 border border-stone-700">
+        <T en={badge} ar={badgeAr || badge} />
+      </span>
+    )}
+    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+      <T en={title} ar={titleAr || title} />
+    </h1>
+    {description && (
+      <p class="text-stone-300 text-xs sm:text-base max-w-2xl mx-auto leading-relaxed">
+        <T en={description} ar={descriptionAr || description} />
+      </p>
+    )}
+  </div>
+</section>

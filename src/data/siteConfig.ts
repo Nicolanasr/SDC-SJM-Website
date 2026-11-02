@@ -5,6 +5,8 @@ export interface SiteConfig {
   arabicTagline: string;
   arabicFullTitle: string;
   siteUrl: string;
+  logoUrl: string;
+  logoWithBgUrl: string;
   parish: string;
   foundingDate: string;
   foundedYear: number;
@@ -37,6 +39,8 @@ export const siteConfig: SiteConfig = {
   arabicTagline: "فوج القديس يوحنا مرقس",
   arabicFullTitle: "جمعية كشافة الأرز - فوج القديس يوحنا مرقس - جبيل",
   siteUrl: "https://scout-saint-jeanmarc.org",
+  logoUrl: "/sdc-logo-transparent.webp",
+  logoWithBgUrl: "/sdc-logo.jpeg",
   parish: "Paroisse Saint Jean Marc",
   foundingDate: "May 5, 1977",
   foundedYear: 1977,

@@ -47,8 +47,8 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
         <!-- Headline -->
         <h1 class="text-3xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] sm:leading-[1.05]">
           <T 
-            en="Forty-nine years of Saturday afternoons, mountain camps, and showing up." 
-            ar="تسعة وأربعون عاماً من لقاءات بعد ظهر السبت، ومخيمات الجبال، والالتزام الحقيقي." 
+            en="49 years of scouting in Byblos: camps, adventures, and showing up." 
+            ar="٤٩ عاماً من الكشفية في جبيل: مخيمات، مغامرات، والتزام حقيقي." 
           />
         </h1>
 
@@ -138,7 +138,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
                 <T en={section.name} ar={section.arabicName} />
               </h3>
               <p class="text-xs text-stone-500 italic mt-0.5">
-                <T en={section.frenchName} ar={section.motto} />
+                <T en={section.frenchName} ar={section.arabicMotto} />
               </p>
             </div>
 
@@ -146,8 +146,17 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
               <T en={section.summary} ar={section.arabicSummary} />
             </p>
 
-            <ul class="space-y-2 pt-2 border-t border-stone-100 text-xs text-stone-600">
+            <ul class="lang-en space-y-2 pt-2 border-t border-stone-100 text-xs text-stone-600">
               {section.activities.slice(0, 3).map(activity => (
+                <li class="flex items-center gap-2">
+                  <span class="text-cedar-800 font-bold">•</span>
+                  <span>{activity}</span>
+                </li>
+              ))}
+            </ul>
+
+            <ul class="lang-ar space-y-2 pt-2 border-t border-stone-100 text-xs text-stone-600">
+              {section.arabicActivities.slice(0, 3).map(activity => (
                 <li class="flex items-center gap-2">
                   <span class="text-cedar-800 font-bold">•</span>
                   <span>{activity}</span>
@@ -161,7 +170,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
               href={`/sections#${section.id}`} 
               class="inline-flex items-center justify-between w-full font-bold text-xs uppercase tracking-wider text-cedar-800 hover:text-cedar-950"
             >
-              <span class="lang-en">Explore {section.name}</span>
+              <span class="lang-en">Explore {section.frenchName}</span>
               <span class="lang-ar">استكشف {section.arabicName}</span>
               <ArrowRight class="w-4 h-4 rtl:rotate-180" />
             </a>
@@ -218,12 +227,14 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
                 />
                 <!-- Scout Date Badge -->
                 <div class="absolute top-3 left-3 bg-stone-950/85 backdrop-blur-sm text-sand-50 rounded-xl px-3 py-1.5 shadow-sm text-center border border-white/15">
-                  <div class="text-[10px] font-bold uppercase tracking-wider text-gold-400">{event.date.split(',')[0]}</div>
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-gold-400">
+                    <T en={event.date.split(',')[0]} ar={event.dateAr ? event.dateAr.split(',')[0] : event.date.split(',')[0]} />
+                  </div>
                 </div>
                 <!-- Category badge -->
                 <div class="absolute bottom-3 right-3">
                   <span class={`inline-block px-3 py-1 rounded-full text-xs font-bold shadow-sm ${event.badgeColor}`}>
-                    {event.badge}
+                    <T en={event.badge} ar={event.badgeAr || event.badge} />
                   </span>
                 </div>
               </div>
@@ -231,10 +242,10 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
               <!-- Title & description -->
               <div>
                 <h3 class="text-2xl font-black text-stone-900 tracking-tight leading-snug">
-                  {event.title}
+                  <T en={event.title} ar={event.titleAr || event.title} />
                 </h3>
                 <p class="text-xs text-stone-600 leading-relaxed mt-2 line-clamp-3">
-                  {event.description}
+                  <T en={event.description} ar={event.descriptionAr || event.description} />
                 </p>
               </div>
 
@@ -242,7 +253,9 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
               <div class="pt-3 border-t border-stone-100 space-y-2 text-xs text-stone-600">
                 <div class="flex items-center gap-2">
                   <MapPin class="w-3.5 h-3.5 text-cedar-700 shrink-0" />
-                  <span class="font-medium text-stone-800">{event.location.split('&')[0].trim()}</span>
+                  <span class="font-medium text-stone-800">
+                    <T en={event.location.split('&')[0].trim()} ar={(event.locationAr || event.location).split('&')[0].trim()} />
+                  </span>
                 </div>
                 <div class="flex items-center gap-2">
                   <Clock class="w-3.5 h-3.5 text-cedar-700 shrink-0" />
@@ -259,7 +272,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
                 href={`/events/${event.id}`}
                 class="btn-scout-gold w-full text-xs uppercase tracking-wider !py-3 flex items-center justify-center gap-2"
               >
-                <T en="View Camp Details & Kit" ar="تفاصيل المخيم والعتاد" />
+                <T en="View Schedule & What to Bring" ar="تفاصيل اللقاء وما يحتاجه الكشاف" />
                 <ArrowRight class="w-3.5 h-3.5 rtl:rotate-180" />
               </a>
             </div>
@@ -310,25 +323,29 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
             <div class="p-4 sm:p-6 space-y-2.5">
               <div class="flex items-center justify-between text-xs font-bold text-stone-500">
                 <span class="px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-700 uppercase tracking-wider text-[10px]">
-                  {post.category}
+                  <T en={post.category} ar={post.categoryAr || post.category} />
                 </span>
-                <span>{post.readTime}</span>
+                <span>
+                  <T en={post.readTime} ar={post.readTimeAr || post.readTime} />
+                </span>
               </div>
 
               <h3 class="text-lg sm:text-xl font-bold text-stone-900 tracking-tight leading-snug">
                 <a href={`/blog/${post.slug}`} class="hover:text-cedar-800 transition-colors">
-                  {post.title}
+                  <T en={post.title} ar={post.titleAr || post.title} />
                 </a>
               </h3>
 
               <p class="text-xs text-stone-600 leading-relaxed line-clamp-3">
-                {post.excerpt}
+                <T en={post.excerpt} ar={post.excerptAr || post.excerpt} />
               </p>
             </div>
           </div>
 
           <div class="px-4 pb-4 sm:px-6 sm:pb-6 pt-2 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
-            <span>{post.date}</span>
+            <span>
+              <T en={post.date} ar={post.dateAr || post.date} />
+            </span>
             <a href={`/blog/${post.slug}`} class="font-bold text-cedar-800 hover:text-cedar-950 uppercase tracking-wider text-[11px] underline">
               <T en="Read Article →" ar="قراءة المقال ←" />
             </a>
@@ -341,25 +358,44 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   <!-- LEADERSHIP SECTION LINK -->
   <section class="py-10 sm:py-16 bg-[#FAF7F2] border-t border-stone-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-3xl p-5 sm:p-10 lg:p-12 border border-stone-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
-        <div>
+      <div class="bg-white rounded-3xl p-5 sm:p-8 lg:p-10 border border-stone-200 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+        
+        <!-- Text & Action Column -->
+        <div class="lg:col-span-7 space-y-3 sm:space-y-4">
           <span class="text-xs uppercase tracking-widest font-bold text-stone-500 block font-sans">
             <T en="VOLUNTEER LEADERSHIP" ar="القيادة التطوعية" />
           </span>
-          <h2 class="text-xl sm:text-3xl font-black text-stone-900 tracking-tight mt-1">
+          <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-stone-900 tracking-tight leading-tight">
             <T en="The chefs and cheftaines behind the troop." ar="القادة والقائدات في خدمة الفوج." />
           </h2>
-          <p class="text-stone-600 text-xs sm:text-sm max-w-xl mt-1 leading-relaxed">
+          <p class="text-stone-600 text-xs sm:text-sm leading-relaxed max-w-xl">
             <T 
               en="100% volunteer-run. Meet the chefs, cheftaines, chaplain, and maitrise who dedicate their Saturday afternoons to Saint Jean Marc." 
               ar="فوج تطوعي ١٠٠٪. تعرفوا على القادة، المرشد الروحي، ومجلس الفوج الذين يكرسون سبتهم لخدمة أطفالنا في مار يوحنا مرقس." 
             />
           </p>
+          <div class="pt-2">
+            <a href="/leadership" class="btn-scout-primary text-xs uppercase tracking-wider inline-flex items-center gap-2">
+              <T en="Meet the Leaders →" ar="تعرف على القادة ←" />
+            </a>
+          </div>
         </div>
 
-        <a href="/leadership" class="btn-scout-primary text-xs uppercase tracking-wider shrink-0 w-full sm:w-auto text-center justify-center">
-          <T en="Meet the Leaders →" ar="تعرف على القادة ←" />
-        </a>
+        <!-- Leaders Photo Column (User can easily swap this image) -->
+        <div class="lg:col-span-5">
+          <div class="aspect-[16/10] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shadow-inner relative group">
+            <img 
+              src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=80" 
+              alt="Maitrise and volunteer leaders of Scout Des Cèdres Saint Jean Marc" 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute bottom-2.5 right-2.5 rtl:right-auto rtl:left-2.5 bg-stone-900/80 backdrop-blur-sm text-sand-50 text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">
+              <T en="Troop Maitrise & Chefs" ar="مجلس وقادة الفوج" />
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>

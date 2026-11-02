@@ -14,10 +14,10 @@ export const scoutReviews: ScoutReview[] = [
     id: "r1",
     name: "Cynthia K.",
     role: "Parent of Louveteaux & Zahrat",
-    roleAr: "أم لطفلين في فرع القراميز والزهرات",
+    roleAr: "أم لطفلين في فرع الجراميز والزهرات",
     rating: 5,
-    quote: "My two kids joined the Gramiz pack three years ago. The changes in their independence, how they pack their own bags, help at home, and respect nature have been incredible. Saint Jean Marc isn't daycare—it is a true school of life.",
-    quoteAr: "انتسب ولداي إلى فرع القراميز منذ ثلاث سنوات. التغيير في استقلاليتهما واعتمادهما على النفس، وكيف يحضران حقيبتيهما بنفسيهما، أمر رائع. مار يوحنا مرقس ليس مجرد تمضية وقت—بل هو مدرسة حقيقية للحياة.",
+    quote: "My two kids joined the Jaramiz pack three years ago. The changes in their independence, how they pack their own bags, help at home, and respect nature have been incredible. Saint Jean Marc isn't daycare—it is a true school of life.",
+    quoteAr: "انتسب ولداي إلى فرع الجراميز منذ ثلاث سنوات. التغيير في استقلاليتهما واعتمادهما على النفس، وكيف يحضران حقيبتيهما بنفسيهما، أمر رائع. مار يوحنا مرقس ليس مجرد تمضية وقت—بل هو مدرسة حقيقية للحياة.",
     image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
   },
   {

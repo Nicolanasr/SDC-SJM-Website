@@ -1,152 +1,316 @@
 ---
-import { leadershipData } from '../data/leadership';
+import { leadershipData, type LeaderNode } from '../data/leadership';
+import T from './T.astro';
 ---
 
-<div class="py-8">
+<div class="py-6 sm:py-10 max-w-6xl mx-auto px-4 sm:px-6">
   
-  <!-- Interactive View Toggle (Tree View vs List View on smaller screens) -->
-  <div class="max-w-5xl mx-auto">
+  <div class="space-y-12 sm:space-y-16">
     
-    <!-- LEVEL 1: High Leadership (Chef de Groupe & Chaplain) -->
-    <div class="flex flex-col items-center">
+    <!-- LEVEL 1: High Command Hierarchy (Mourched -> Chef de Groupe -> Assistant Chef de Groupe) -->
+    <div class="space-y-8 flex flex-col items-center">
       
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl w-full">
-        <!-- Chef de Groupe Card -->
-        <div class="bg-sand-100 rounded-2xl p-6 border-2 border-cedar-800 shadow-tactile text-center relative group hover:-translate-y-1 transition-transform">
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-cedar-800 text-gold-400 text-xs font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-sm">
-            Top Leadership
-          </div>
-          <div class="w-16 h-16 rounded-full bg-cedar-800 text-sand-50 mx-auto mb-3 flex items-center justify-center font-serif text-2xl font-bold shadow-inner border-2 border-gold-400">
-            CG
-          </div>
-          <h4 class="font-serif font-bold text-xl text-cedar-950">{leadershipData.groupLeader.name}</h4>
-          <p class="text-xs uppercase tracking-wider font-semibold text-cedar-700 mt-0.5">{leadershipData.groupLeader.role}</p>
-          <p class="text-xs text-stone-600 mt-2">{leadershipData.groupLeader.bio}</p>
-          <span class="inline-block mt-3 text-[11px] font-semibold text-stone-500 bg-sand-200/70 px-2.5 py-0.5 rounded-full">
-            {leadershipData.groupLeader.yearsInGroup}
-          </span>
-        </div>
-
-        <!-- Chaplain / Aumonier Card -->
-        <div class="bg-sand-100 rounded-2xl p-6 border-2 border-stone-400 shadow-tactile text-center relative group hover:-translate-y-1 transition-transform">
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-stone-700 text-white text-xs font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-sm">
-            Spiritual Guide
-          </div>
-          <div class="w-16 h-16 rounded-full bg-stone-700 text-sand-50 mx-auto mb-3 flex items-center justify-center font-serif text-2xl font-bold shadow-inner border-2 border-stone-300">
-            ✝
-          </div>
-          <h4 class="font-serif font-bold text-xl text-stone-900">{leadershipData.chaplain.name}</h4>
-          <p class="text-xs uppercase tracking-wider font-semibold text-stone-600 mt-0.5">{leadershipData.chaplain.role}</p>
-          <p class="text-xs text-stone-600 mt-2">{leadershipData.chaplain.bio}</p>
-          <span class="inline-block mt-3 text-[11px] font-semibold text-stone-500 bg-sand-200/70 px-2.5 py-0.5 rounded-full">
-            {leadershipData.chaplain.yearsInGroup}
-          </span>
-        </div>
+      <!-- Section Tag -->
+      <div class="text-center">
+        <span class="inline-block px-3.5 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-stone-900 text-amber-400 border border-stone-700 shadow-sm">
+          <T en="SPIRITUAL GUIDANCE & TROOP COMMAND" ar="الإرشاد الروحي وقيادة الفوج" />
+        </span>
       </div>
 
-      <!-- Vertical Connecting Stem 1 -->
-      <div class="w-0.5 h-10 bg-cedar-700"></div>
-      <div class="w-3 h-3 rounded-full bg-cedar-800 -mt-1.5"></div>
-
-      <!-- LEVEL 2: Group Council (Conseil de Groupe) -->
-      <div class="mt-4 w-full">
-        <div class="text-center mb-4">
-          <span class="bg-cedar-100 text-cedar-900 border border-cedar-300 text-xs uppercase tracking-wider font-bold px-4 py-1 rounded-full">
-            Conseil de Groupe (Group Council)
-          </span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {leadershipData.council.map(member => (
-            <div class="bg-white rounded-xl p-4 border border-cedar-800/15 shadow-sm hover:shadow-md transition-shadow text-center">
-              <div class="w-10 h-10 rounded-full bg-sand-200 text-cedar-900 font-bold mx-auto mb-2 flex items-center justify-center text-xs">
-                {member.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
-              </div>
-              <h5 class="font-bold text-sm text-stone-900">{member.name}</h5>
-              <p class="text-xs font-semibold text-cedar-700">{member.role}</p>
-              <p class="text-[11px] text-stone-500 mt-1.5 leading-snug">{member.bio}</p>
+      <!-- 1. Mourched Al Foj (At the very top) -->
+      <div class="w-full max-w-sm flex flex-col items-center">
+        <button 
+          type="button" 
+          class="leader-card w-full bg-white rounded-3xl p-5 sm:p-6 border-2 border-stone-300 shadow-sm hover:shadow-md hover:border-amber-500 transition-all text-center flex flex-col justify-between cursor-pointer focus:outline-none"
+          data-name={leadershipData.chaplain.name}
+          data-name-ar={leadershipData.chaplain.nameAr}
+          data-role={leadershipData.chaplain.role}
+          data-role-ar={leadershipData.chaplain.roleAr}
+          data-bio={leadershipData.chaplain.bio}
+          data-bio-ar={leadershipData.chaplain.bioAr}
+        >
+          <div>
+            <div class="w-16 h-16 rounded-full bg-stone-800 text-amber-300 mx-auto mb-3 flex items-center justify-center font-serif text-2xl font-bold border-2 border-amber-400 shadow-sm">
+              ✝
             </div>
-          ))}
-        </div>
+            <h4 class="font-black text-lg sm:text-xl text-stone-900">
+              <T en={leadershipData.chaplain.name} ar={leadershipData.chaplain.nameAr} />
+            </h4>
+            <p class="text-xs uppercase font-bold text-amber-800 tracking-wider mt-1">
+              <T en={leadershipData.chaplain.role} ar={leadershipData.chaplain.roleAr} />
+            </p>
+          </div>
+          <div class="pt-3 mt-3 border-t border-stone-100 text-[11px] text-stone-500 font-medium">
+            <T en="Click to view bio" ar="اضغط للاطلاع على النبذة" />
+          </div>
+        </button>
+
+        <!-- Vertical Stem Connector from Mourched to Chef de Groupe -->
+        <div class="w-0.5 h-8 bg-amber-400/80 my-1"></div>
       </div>
 
-      <!-- Vertical Connecting Stem 2 -->
-      <div class="w-0.5 h-12 bg-cedar-700 mt-4"></div>
-      
-      <!-- Horizontal Connecting Branch Bar across the 3 Units -->
-      <div class="hidden md:block w-3/4 h-0.5 bg-cedar-700 relative">
-        <!-- Dots at branch ends and center -->
-        <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-amber-600"></div>
-        <div class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-emerald-600"></div>
-        <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 rounded-full bg-sky-600"></div>
+      <!-- 2. Chef de Groupe (Directly under Mourched) -->
+      <div class="w-full max-w-sm flex flex-col items-center">
+        <button 
+          type="button" 
+          class="leader-card w-full bg-cedar-950 text-white rounded-3xl p-5 sm:p-6 border-2 border-cedar-800 shadow-sm hover:shadow-md hover:border-gold-400 transition-all text-center flex flex-col justify-between cursor-pointer focus:outline-none"
+          data-name={leadershipData.groupLeader.name}
+          data-name-ar={leadershipData.groupLeader.nameAr}
+          data-role={leadershipData.groupLeader.role}
+          data-role-ar={leadershipData.groupLeader.roleAr}
+          data-bio={leadershipData.groupLeader.bio}
+          data-bio-ar={leadershipData.groupLeader.bioAr}
+        >
+          <div>
+            <div class="w-16 h-16 rounded-full bg-cedar-800 text-gold-400 mx-auto mb-3 flex items-center justify-center font-serif text-xl font-black border-2 border-gold-400 shadow-sm">
+              CG
+            </div>
+            <h4 class="font-black text-lg sm:text-xl text-white">
+              <T en={leadershipData.groupLeader.name} ar={leadershipData.groupLeader.nameAr} />
+            </h4>
+            <p class="text-xs uppercase font-bold text-gold-400 tracking-wider mt-1">
+              <T en={leadershipData.groupLeader.role} ar={leadershipData.groupLeader.roleAr} />
+            </p>
+          </div>
+          <div class="pt-3 mt-3 border-t border-cedar-800 text-[11px] text-sand-300 font-medium">
+            <T en="Click to view bio" ar="اضغط للاطلاع على النبذة" />
+          </div>
+        </button>
+
+        <!-- Vertical Stem Connector to Assistant Chef de Groupe -->
+        <div class="w-0.5 h-6 bg-stone-300 my-1"></div>
       </div>
 
-      <!-- LEVEL 3 & 4: Section Branches & Assistant Leaders -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 w-full">
-        {leadershipData.sectionBranches.map(branch => (
-          <div class={`rounded-2xl p-5 border-2 shadow-sm ${branch.color} flex flex-col justify-between`}>
+      <!-- 3. Assistant Chef de Groupe (Under Chef de Groupe, a bit smaller) -->
+      <div class="w-full max-w-xs flex flex-col items-center">
+        <button 
+          type="button" 
+          class="leader-card w-full bg-white rounded-2xl p-4 sm:p-5 border-2 border-stone-200 shadow-sm hover:shadow-md hover:border-cedar-800 transition-all text-center flex flex-col justify-between cursor-pointer focus:outline-none"
+          data-name={leadershipData.deputyLeader.name}
+          data-name-ar={leadershipData.deputyLeader.nameAr}
+          data-role={leadershipData.deputyLeader.role}
+          data-role-ar={leadershipData.deputyLeader.roleAr}
+          data-bio={leadershipData.deputyLeader.bio}
+          data-bio-ar={leadershipData.deputyLeader.bioAr}
+        >
+          <div>
+            <div class="w-12 h-12 rounded-full bg-sand-200 text-cedar-950 mx-auto mb-2.5 flex items-center justify-center font-serif text-base font-black border-2 border-cedar-800 shadow-sm">
+              AC
+            </div>
+            <h4 class="font-black text-base sm:text-lg text-stone-900">
+              <T en={leadershipData.deputyLeader.name} ar={leadershipData.deputyLeader.nameAr} />
+            </h4>
+            <p class="text-[11px] uppercase font-bold text-cedar-800 tracking-wider mt-0.5">
+              <T en={leadershipData.deputyLeader.role} ar={leadershipData.deputyLeader.roleAr} />
+            </p>
+          </div>
+          <div class="pt-2 mt-2 border-t border-stone-100 text-[10px] text-stone-500 font-medium">
+            <T en="Click to view bio" ar="اضغط للاطلاع على النبذة" />
+          </div>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- LEVEL 2: Maitrise de Groupe (Includes Ka2ed Idare + Council Members) -->
+    <div class="space-y-6 pt-4 border-t border-stone-200/80">
+      <div class="text-center">
+        <span class="inline-block px-3.5 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-stone-100 text-stone-800 border border-stone-300">
+          <T en="MAITRISE DE GROUPE • OPERATIONAL COUNCIL" ar="مجلس الفوج • المسؤوليات الإدارية واللوجستية" />
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {leadershipData.council.map(member => (
+          <button 
+            type="button" 
+            class="leader-card bg-white rounded-2xl p-4 sm:p-5 border border-stone-200 shadow-sm hover:shadow-md hover:border-cedar-800 transition-all text-center flex flex-col justify-between cursor-pointer focus:outline-none"
+            data-name={member.name}
+            data-name-ar={member.nameAr}
+            data-role={member.role}
+            data-role-ar={member.roleAr}
+            data-bio={member.bio}
+            data-bio-ar={member.bioAr}
+          >
             <div>
-              <!-- Branch Header -->
-              <div class="text-center pb-3 border-b border-stone-200/70">
-                <span class="text-xs font-bold uppercase tracking-wider text-stone-700">
-                  Unit Branch
-                </span>
-                <h4 class="font-serif font-bold text-lg text-cedar-950 mt-0.5">
-                  {branch.branchName}
+              <div class="w-12 h-12 rounded-full bg-stone-100 text-stone-800 mx-auto mb-2.5 flex items-center justify-center font-serif text-sm font-bold border border-stone-300">
+                {member.name.slice(0, 2)}
+              </div>
+              <h5 class="font-bold text-sm sm:text-base text-stone-900">
+                <T en={member.name} ar={member.nameAr} />
+              </h5>
+              <p class="text-[11px] font-semibold text-emerald-800 mt-0.5">
+                <T en={member.role} ar={member.roleAr} />
+              </p>
+            </div>
+            <div class="pt-2 mt-3 border-t border-stone-100 text-[10px] text-stone-400">
+              <T en="View Role" ar="عرض المهام" />
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- LEVEL 3: The 6 Unit Branches (Louveteaux, Jeannettes, Scouts, Guides, Routiers, Caravelles) -->
+    <div class="space-y-6 pt-4 border-t border-stone-200/80">
+      <div class="text-center">
+        <span class="inline-block px-3.5 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-stone-100 text-stone-700 border border-stone-300">
+          <T en="UNIT BRANCH LEADERSHIP" ar="قيادة الوحدات والفروع الكشفية الستة" />
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {leadershipData.units.map(unit => (
+          <div class={`rounded-3xl p-5 border-2 ${unit.color} shadow-sm space-y-4 flex flex-col justify-between bg-white`}>
+            <div>
+              <div class="border-b border-stone-200 pb-2 mb-3">
+                <h4 class="font-black text-base sm:text-lg text-stone-900">
+                  <T en={unit.title} ar={unit.titleAr} />
                 </h4>
               </div>
 
-              <!-- Main Unit Leader -->
-              <div class="space-y-4 pt-4">
-                {branch.leaders.map(leader => (
-                  <div class="space-y-3">
-                    <div class="bg-white/95 rounded-xl p-4 border border-stone-200 text-center shadow-sm">
-                      <div class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-stone-100 text-stone-700 mb-1">
-                        Chef d'Unité
-                      </div>
-                      <h5 class="font-bold text-sm text-stone-900">{leader.name}</h5>
-                      <p class="text-xs font-semibold text-cedar-700">{leader.role}</p>
-                      <p class="text-xs text-stone-600 mt-1">{leader.bio}</p>
-                    </div>
-
-                    <!-- Assistants (Level 4 of tree) -->
-                    {leader.children && leader.children.length > 0 && (
-                      <div class="space-y-2 pt-2">
-                        <div class="flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-wider text-stone-500">
-                          <span class="w-4 h-px bg-stone-300"></span>
-                          <span>Chefs Adjoints</span>
-                          <span class="w-4 h-px bg-stone-300"></span>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
-                          {leader.children.map(child => (
-                            <div class="bg-white/80 rounded-lg p-2.5 border border-stone-200/80 text-center text-xs">
-                              <div class="font-semibold text-stone-900">{child.name}</div>
-                              <div class="text-[11px] text-stone-500">{child.role}</div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+              <!-- Chief and Assistant Side-by-side or stacked -->
+              <div class="space-y-3">
+                <!-- Unit Chief -->
+                <button 
+                  type="button" 
+                  class="leader-card w-full bg-stone-50 hover:bg-stone-100 p-3 rounded-xl border border-stone-200 text-left flex items-center justify-between cursor-pointer focus:outline-none transition-colors"
+                  data-name={unit.chief.name}
+                  data-name-ar={unit.chief.nameAr}
+                  data-role={unit.chief.role}
+                  data-role-ar={unit.chief.roleAr}
+                  data-bio={unit.chief.bio}
+                  data-bio-ar={unit.chief.bioAr}
+                >
+                  <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block">
+                      <T en="Unit Chief" ar="قائد الفرع" />
+                    </span>
+                    <strong class="text-xs sm:text-sm text-stone-900 block font-bold">
+                      <T en={unit.chief.name} ar={unit.chief.nameAr} />
+                    </strong>
+                    <span class="text-[11px] text-stone-500">
+                      <T en={unit.chief.role} ar={unit.chief.roleAr} />
+                    </span>
                   </div>
-                ))}
+                  <span class="text-xs text-stone-400">›</span>
+                </button>
+
+                <!-- Assistant -->
+                <button 
+                  type="button" 
+                  class="leader-card w-full bg-stone-50 hover:bg-stone-100 p-3 rounded-xl border border-stone-200 text-left flex items-center justify-between cursor-pointer focus:outline-none transition-colors"
+                  data-name={unit.assistant.name}
+                  data-name-ar={unit.assistant.nameAr}
+                  data-role={unit.assistant.role}
+                  data-role-ar={unit.assistant.roleAr}
+                  data-bio={unit.assistant.bio}
+                  data-bio-ar={unit.assistant.bioAr}
+                >
+                  <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 block">
+                      <T en="Assistant (Mse3ed)" ar="المساعد" />
+                    </span>
+                    <strong class="text-xs sm:text-sm text-stone-900 block font-bold">
+                      <T en={unit.assistant.name} ar={unit.assistant.nameAr} />
+                    </strong>
+                    <span class="text-[11px] text-stone-500">
+                      <T en={unit.assistant.role} ar={unit.assistant.roleAr} />
+                    </span>
+                  </div>
+                  <span class="text-xs text-stone-400">›</span>
+                </button>
               </div>
             </div>
 
-            <!-- View Section link -->
-            <div class="pt-5 text-center">
+            <div class="pt-2 text-center border-t border-stone-100">
               <a 
-                href={`/sections#${branch.branchId}`}
-                class="inline-flex items-center gap-1.5 text-xs font-bold text-cedar-800 hover:text-cedar-950 underline"
+                href={`/sections#${unit.branchId}`}
+                class="text-[11px] font-bold text-cedar-800 hover:text-cedar-950 uppercase tracking-wider"
               >
-                <span>Explore {branch.branchName.split('(')[0]} activities</span>
-                <span>→</span>
+                <T en="Explore Branch Activities →" ar="استكشف أنشطة الفرع ←" />
               </a>
             </div>
           </div>
         ))}
       </div>
-
     </div>
 
   </div>
+
+  <!-- Interactive Leader Bio Modal -->
+  <div 
+    id="leader-modal" 
+    class="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4"
+  >
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-4 shadow-2xl border border-stone-200 relative">
+      <button 
+        id="leader-modal-close" 
+        type="button" 
+        class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 text-2xl font-bold cursor-pointer"
+      >
+        ×
+      </button>
+
+      <div class="text-center pt-2">
+        <h3 id="modal-leader-name" class="text-xl sm:text-2xl font-black text-stone-900"></h3>
+        <p id="modal-leader-role" class="text-xs uppercase font-bold text-amber-800 tracking-wider mt-1"></p>
+      </div>
+
+      <div class="py-2 border-y border-stone-100">
+        <p id="modal-leader-bio" class="text-xs sm:text-sm text-stone-700 leading-relaxed"></p>
+      </div>
+
+      <div class="pt-2 text-center">
+        <button 
+          id="modal-leader-ok" 
+          type="button" 
+          class="btn-scout-primary text-xs uppercase tracking-wider w-full py-2.5"
+        >
+          <T en="Close" ar="إغلاق" />
+        </button>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+<script>
+  const cards = document.querySelectorAll('.leader-card');
+  const modal = document.getElementById('leader-modal');
+  const modalName = document.getElementById('modal-leader-name');
+  const modalRole = document.getElementById('modal-leader-role');
+  const modalBio = document.getElementById('modal-leader-bio');
+  const closeBtn = document.getElementById('leader-modal-close');
+  const okBtn = document.getElementById('modal-leader-ok');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const isArabic = document.documentElement.lang === 'ar';
+      
+      const name = isArabic 
+        ? card.getAttribute('data-name-ar') || card.getAttribute('data-name') 
+        : card.getAttribute('data-name');
+      
+      const role = isArabic 
+        ? card.getAttribute('data-role-ar') || card.getAttribute('data-role') 
+        : card.getAttribute('data-role');
+      
+      const bio = isArabic 
+        ? card.getAttribute('data-bio-ar') || card.getAttribute('data-bio') 
+        : card.getAttribute('data-bio');
+
+      if (modalName) modalName.textContent = name || '';
+      if (modalRole) modalRole.textContent = role || '';
+      if (modalBio) modalBio.textContent = bio || '';
+
+      modal?.classList.remove('hidden');
+    });
+  });
+
+  closeBtn?.addEventListener('click', () => modal?.classList.add('hidden'));
+  okBtn?.addEventListener('click', () => modal?.classList.add('hidden'));
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.add('hidden');
+  });
+</script>

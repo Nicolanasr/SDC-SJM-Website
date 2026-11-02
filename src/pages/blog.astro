@@ -1,78 +1,287 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import T from '../components/T.astro';
 import { blogPosts } from '../data/blog';
 import { siteConfig } from '../data/siteConfig';
+import { ArrowRight, Search, BookOpen, Sparkles } from 'lucide-astro';
+
+const featuredPost = blogPosts.find(p => p.featured) || blogPosts[0];
+const regularPosts = blogPosts.filter(p => p.slug !== featuredPost.slug);
 ---
 
 <Layout 
-  title={`Field Notes & Blog – ${siteConfig.groupName}`}
-  description="Read articles, parenting guides, and historical chronicles from Scout Des Cèdres Saint Jean Marc Byblos."
+  title={`Scout Chronicles, Parent Guides & Outdoor Skills – ${siteConfig.groupName}`}
+  description="Practical scout skills, parenting guides, and field chronicles from Scout Des Cèdres Saint Jean Marc Byblos: screen-free youth, woodcraft, and mountain camps."
 >
-  <!-- Header Banner -->
-  <section class="bg-stone-900 text-sand-50 py-12 sm:py-20 border-b border-stone-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 sm:space-y-4">
-      <span class="text-xs uppercase tracking-widest font-bold text-amber-400 block font-sans">
-        FIELD NOTES & CHRONICLES
-      </span>
-      <h1 class="text-2xl sm:text-5xl font-black text-white tracking-tight">
-        Scout Stories, Woodcraft & Heritage
-      </h1>
-      <p class="text-stone-300 text-sm sm:text-lg max-w-2xl mx-auto">
-        Reflections from our leaders, field guides for parents, and chronicles of nearly 50 years of scouting in Byblos.
-      </p>
+  <PageHeader 
+    badge="CHRONICLES & GUIDES"
+    badgeAr="المجلة الكشفية ودليل الأهل"
+    title="Field Notes, Skills & Parent Guides"
+    titleAr="مقالات كشفية، مهارات الخلاء ودليل الأهل"
+    description="Inspired by the world of scouting: practical parenting advice, woodcraft tutorials, and stories from 49 years under canvas in Byblos."
+    descriptionAr="إرشادات تربوية للأهل، مهارات ريادة الخلاء، وذكريات تمتد لما يقارب نصف قرن من المغامرة تحت الخيمة في جبيل."
+  />
+
+  <!-- FEATURED LEAD STORY (Inspired by On Scouting & Scout Life Magazine) -->
+  <section class="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="rounded-3xl overflow-hidden bg-stone-900 border border-stone-800 shadow-xl text-white">
+      <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+        
+        <!-- Big Hero Image -->
+        <a 
+          href={`/blog/${featuredPost.slug}`}
+          class="lg:col-span-7 aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[420px] w-full overflow-hidden relative block group"
+        >
+          <img 
+            src={featuredPost.image} 
+            alt={featuredPost.title} 
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-stone-950/90 via-stone-950/40 to-transparent"></div>
+          <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-stone-950 shadow-sm">
+              <Sparkles class="w-3.5 h-3.5" />
+              <T en="FEATURED GUIDE" ar="المقال المميز" />
+            </span>
+          </div>
+        </a>
+
+        <!-- Story Meta -->
+        <div class="lg:col-span-5 p-6 sm:p-10 space-y-4">
+          <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-stone-400">
+            <span class="px-2.5 py-0.5 rounded-full bg-stone-800 text-amber-400 border border-stone-700">
+              <T en={featuredPost.category} ar={featuredPost.categoryAr} />
+            </span>
+            <span>•</span>
+            <span>
+              <T en={featuredPost.readTime} ar={featuredPost.readTimeAr} />
+            </span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white leading-tight">
+            <a href={`/blog/${featuredPost.slug}`} class="hover:text-amber-400 transition-colors">
+              <T en={featuredPost.title} ar={featuredPost.titleAr} />
+            </a>
+          </h2>
+
+          <p class="text-xs sm:text-sm text-stone-300 leading-relaxed line-clamp-3">
+            <T en={featuredPost.excerpt} ar={featuredPost.excerptAr} />
+          </p>
+
+          <div class="pt-2 flex items-center justify-between">
+            <span class="text-xs text-stone-400">
+              <T en={featuredPost.date} ar={featuredPost.dateAr} />
+            </span>
+            <a 
+              href={`/blog/${featuredPost.slug}`}
+              class="btn-scout-gold inline-flex items-center gap-2 text-xs uppercase tracking-wider !py-2.5 !px-5"
+            >
+              <span><T en="Read Full Article" ar="قراءة المقال بالكامل" /></span>
+              <ArrowRight class="w-4 h-4 rtl:rotate-180" />
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- Blog Posts Grid -->
-  <section class="py-10 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
+  <!-- SEARCH & CATEGORY FILTER TABS (Inspired by Scouter Mom & On Scouting) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 space-y-4">
+    <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap items-center gap-2" id="blog-category-filters">
+        <button 
+          type="button" 
+          data-filter="all" 
+          class="blog-tab active px-4 py-2 rounded-full text-xs font-bold transition-all bg-emerald-800 text-white shadow-sm cursor-pointer"
+        >
+          <T en="All Topics" ar="جميع الموضوعات" />
+        </button>
+        <button 
+          type="button" 
+          data-filter="Parent Corner" 
+          class="blog-tab px-4 py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
+        >
+          <T en="Parent Corner" ar="ركن الأهل" />
+        </button>
+        <button 
+          type="button" 
+          data-filter="Outdoor Skills" 
+          class="blog-tab px-4 py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
+        >
+          <T en="Outdoor Skills & Gear" ar="مهارات الخلاء" />
+        </button>
+        <button 
+          type="button" 
+          data-filter="Camp Life" 
+          class="blog-tab px-4 py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
+        >
+          <T en="Camp Life & Traditions" ar="الحياة الكشفية" />
+        </button>
+        <button 
+          type="button" 
+          data-filter="Heritage" 
+          class="blog-tab px-4 py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
+        >
+          <T en="Heritage & Byblos" ar="التاريخ والتراث" />
+        </button>
+      </div>
+
+      <!-- Quick Search Input -->
+      <div class="relative w-full md:w-72">
+        <Search class="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+        <input 
+          type="text" 
+          id="blog-search-input" 
+          placeholder="Search articles (e.g. camps, screen time)..." 
+          class="w-full pl-10 pr-4 py-2 rounded-full bg-white border border-stone-200 text-xs sm:text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-700 shadow-sm"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ALL ARTICLES GRID -->
+  <section class="pb-16 sm:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="blog-posts-grid">
       {blogPosts.map(post => (
-        <article class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md hover:border-stone-400 transition-all flex flex-col justify-between">
+        <article 
+          class="blog-card bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md hover:border-stone-400 transition-all flex flex-col justify-between"
+          data-category={post.category}
+          data-title={post.title.toLowerCase()}
+          data-desc={post.excerpt.toLowerCase()}
+        >
           <div>
-            <!-- Cover Image -->
-            <a href={`/blog/${post.slug}`} class="block aspect-[16/10] overflow-hidden bg-stone-200">
+            <!-- Cover Image with Reading Time Pill -->
+            <a href={`/blog/${post.slug}`} class="block aspect-[16/10] overflow-hidden bg-stone-200 relative group">
               <img 
                 src={post.image} 
                 alt={post.title} 
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
+              <span class="absolute top-3 right-3 bg-stone-900/80 backdrop-blur-sm text-sand-50 text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">
+                <T en={post.readTime} ar={post.readTimeAr} />
+              </span>
             </a>
 
             <!-- Content -->
-            <div class="p-4 sm:p-7 space-y-2.5 sm:space-y-3">
-              <div class="flex items-center justify-between text-xs font-bold text-stone-500">
-                <span class="px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-700 uppercase tracking-wider text-[10px]">
-                  {post.category}
+            <div class="p-5 sm:p-7 space-y-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-stone-100 text-emerald-900 font-bold uppercase tracking-wider text-[10px] border border-stone-200">
+                  <T en={post.category} ar={post.categoryAr} />
                 </span>
-                <span>{post.readTime}</span>
+                <span class="text-xs text-stone-400">•</span>
+                <span class="text-xs text-stone-500 font-medium">
+                  <T en={post.date} ar={post.dateAr} />
+                </span>
               </div>
 
-              <h2 class="text-lg sm:text-xl font-bold text-stone-900 tracking-tight leading-snug">
-                <a href={`/blog/${post.slug}`} class="hover:text-cedar-800 transition-colors">
-                  {post.title}
+              <h3 class="text-lg sm:text-xl font-bold text-stone-900 tracking-tight leading-snug">
+                <a href={`/blog/${post.slug}`} class="hover:text-emerald-800 transition-colors">
+                  <T en={post.title} ar={post.titleAr} />
                 </a>
-              </h2>
+              </h3>
 
               <p class="text-xs sm:text-sm text-stone-600 leading-relaxed line-clamp-3">
-                {post.excerpt}
+                <T en={post.excerpt} ar={post.excerptAr} />
               </p>
             </div>
           </div>
 
-          <!-- Footer Author & Date -->
-          <div class="px-4 pb-4 sm:px-6 sm:pb-6 pt-2 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+          <!-- Footer Author & Link -->
+          <div class="px-5 pb-5 sm:px-7 sm:pb-6 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
             <div>
-              <span class="font-bold text-stone-800 block">{post.author}</span>
-              <span>{post.date}</span>
+              <span class="font-bold text-stone-800 block text-xs">{post.author}</span>
+              <span class="text-[11px] text-stone-500">
+                <T en={post.authorRole} ar={post.authorRoleAr} />
+              </span>
             </div>
 
-            <a href={`/blog/${post.slug}`} class="font-bold text-cedar-800 hover:text-cedar-950 uppercase tracking-wider text-[11px] underline">
-              Read →
+            <a 
+              href={`/blog/${post.slug}`} 
+              class="font-bold text-emerald-800 hover:text-emerald-950 uppercase tracking-wider text-[11px] flex items-center gap-1 group"
+            >
+              <span><T en="Read" ar="اقرأ" /></span>
+              <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform rtl:rotate-180" />
             </a>
           </div>
         </article>
       ))}
     </div>
+
+    <!-- Empty search state -->
+    <div id="blog-empty-state" class="hidden text-center py-16 space-y-3">
+      <BookOpen class="w-10 h-10 text-stone-400 mx-auto" />
+      <h4 class="text-lg font-bold text-stone-800">
+        <T en="No articles match your search" ar="لم يتم العثور على مقالات مطابقة" />
+      </h4>
+      <p class="text-xs text-stone-500">
+        <T en="Try searching with a different keyword or select All Topics above." ar="يرجى تجربة كلمة بحث أخرى أو اختيار جميع الموضوعات أعلاه." />
+      </p>
+    </div>
   </section>
+
+  <!-- Client-side Filter & Search Script -->
+  <script>
+    const filterButtons = document.querySelectorAll('.blog-tab');
+    const searchInput = document.getElementById('blog-search-input') as HTMLInputElement;
+    const cards = document.querySelectorAll('.blog-card');
+    const emptyState = document.getElementById('blog-empty-state');
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        const title = card.getAttribute('data-title') || '';
+        const desc = card.getAttribute('data-desc') || '';
+
+        const matchesCat = currentCategory === 'all' || cat === currentCategory;
+        const matchesSearch = !searchQuery || title.includes(searchQuery) || desc.includes(searchQuery);
+
+        if (matchesCat && matchesSearch) {
+          (card as HTMLElement).style.display = 'flex';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-emerald-800', 'text-white', 'shadow-sm');
+          b.classList.add('bg-stone-100', 'text-stone-700');
+        });
+
+        btn.classList.remove('bg-stone-100', 'text-stone-700');
+        btn.classList.add('bg-emerald-800', 'text-white', 'shadow-sm');
+
+        currentCategory = btn.getAttribute('data-filter') || 'all';
+        applyFilters();
+      });
+    });
+
+    searchInput?.addEventListener('input', (e) => {
+      searchQuery = (e.target as HTMLInputElement).value.toLowerCase().trim();
+      applyFilters();
+    });
+  </script>
 </Layout>
