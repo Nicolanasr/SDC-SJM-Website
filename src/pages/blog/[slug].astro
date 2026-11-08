@@ -22,15 +22,18 @@ const relatedPosts = blogPosts.filter(p => p.slug !== post.slug).slice(0, 2);
 
 <Layout 
   title={`${post.title} – ${siteConfig.groupName}`}
+  titleAr={`${post.titleAr} – كشافة الأرز جبيل`}
   description={post.excerpt}
+  descriptionAr={post.excerptAr}
   image={post.image}
 >
   <!-- Schema.org BlogPosting for Google & AI Search Assistants -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": post.title,
-    "description": post.excerpt,
+    "headline": `${post.title} | ${post.titleAr}`,
+    "description": `${post.excerpt} | ${post.excerptAr}`,
+    "inLanguage": ["en", "ar"],
     "image": post.image,
     "datePublished": post.date,
     "author": {
@@ -41,6 +44,7 @@ const relatedPosts = blogPosts.filter(p => p.slug !== post.slug).slice(0, 2);
     "publisher": {
       "@type": "Organization",
       "name": siteConfig.groupName,
+      "alternateName": siteConfig.arabicGroupName,
       "logo": {
         "@type": "ImageObject",
         "url": `${siteConfig.siteUrl}/sdc-logo-transparent.webp`

@@ -7,17 +7,29 @@ import '../styles/global.css';
 
 interface Props {
   title?: string;
+  titleAr?: string;
   description?: string;
+  descriptionAr?: string;
   image?: string;
 }
 
 const { 
-  title = `${siteConfig.groupName} – ${siteConfig.tagline} | Byblos (Jbeil)`, 
-  description = "Scout Des Cèdres - Groupe Saint Jean Marc (كشافة الأرز - جبيل). Founded May 5, 1977. Weekly outdoor scout meetings every Saturday 3:00 - 4:30 PM for boys and girls ages 4 to 24 in Byblos, Lebanon.",
+  title = `${siteConfig.groupName} – ${siteConfig.tagline} | Byblos (Jbeil)`,
+  titleAr = `${siteConfig.arabicGroupName} – ${siteConfig.arabicTagline} | جبيل`,
+  description = "Scout Des Cèdres - Groupe Saint Jean Marc (كشافة الأرز - جبيل). Founded May 5, 1977. Weekly outdoor scout meetings every Saturday 3:00 - 4:30 PM for boys and girls ages 4 to 24 in Byblos, Lebanon. 50 years of heritage.",
+  descriptionAr = "كشافة الأرز - فوج القديس يوحنا مرقس جبيل. تأسس في ٥ أيار ١٩٧٧. لقاءات كشفية أسبوعية كل سبت من ٣:٠٠ حتى ٤:٣٠ بعد الظهر للفتيان والفتيات من ٤ حتى ٢٤ سنة في باحة مار يوحنا مرقس، جبيل.",
   image = "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=85"
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, siteConfig.siteUrl).toString();
+
+const fullDocumentTitle = titleAr && titleAr !== title
+  ? `${title} | ${titleAr}`
+  : title;
+
+const fullMetaDescription = descriptionAr && descriptionAr !== description
+  ? `${description} | ${descriptionAr}`
+  : description;
 
 const schemaData = {
   "@context": "https://schema.org",
@@ -29,11 +41,13 @@ const schemaData = {
     siteConfig.arabicTagline,
     "Scouts Saint Jean Marc Byblos",
     "كشافة جبيل",
-    "كشافة مار يوحنا مرقس"
+    "كشافة مار يوحنا مرقس",
+    "كشافة الأرز جبيل"
   ],
   "url": siteConfig.siteUrl,
   "image": image,
-  "description": description,
+  "description": fullMetaDescription,
+  "inLanguage": ["en", "ar"],
   "foundingDate": "1977-05-05",
   "telephone": siteConfig.contact.phoneDisplay,
   "email": siteConfig.contact.email,
@@ -70,16 +84,16 @@ const schemaData = {
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
 
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>{fullDocumentTitle}</title>
+    <meta name="description" content={fullMetaDescription} />
     <meta name="keywords" content="Scouts Byblos, Scouts Jbeil, Scout Des Cèdres, Saint Jean Marc, كشافة جبيل, كشافة الأرز, كشافة مار يوحنا مرقس, Louveteaux, Eclaireurs, Routiers, Camps Byblos" />
 
     <!-- Open Graph / WhatsApp Preview Meta Tags -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={`${siteConfig.groupName} – ${siteConfig.tagline} | كشافة الأرز`} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={fullDocumentTitle} />
+    <meta property="og:description" content={fullMetaDescription} />
     <meta property="og:image" content={image} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -90,8 +104,8 @@ const schemaData = {
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={fullDocumentTitle} />
+    <meta name="twitter:description" content={fullMetaDescription} />
     <meta name="twitter:image" content={image} />
 
     <!-- Google Search Console Verification -->
@@ -100,18 +114,31 @@ const schemaData = {
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
-    <!-- Immediate Language Initialization Script to prevent flicker -->
-    <script is:inline>
+    <!-- Immediate Language & Title Synchronization Script -->
+    <script is:inline define:vars={{ title, titleAr, description, descriptionAr }}>
+      window.__SDC_TITLE_EN = title;
+      window.__SDC_TITLE_AR = titleAr;
+      window.__SDC_DESC_EN = description;
+      window.__SDC_DESC_AR = descriptionAr;
+
       try {
         const lang = localStorage.getItem('sdc_lang') || 'en';
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        if (lang === 'ar' && titleAr) {
+          document.title = titleAr;
+        } else if (lang === 'en' && title) {
+          document.title = title;
+        }
       } catch (e) {}
     </script>
 
-    <!-- Google Fonts Preconnect -->
+    <!-- Speed: DNS-Prefetch and Preconnect for CDN assets and Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap" />
   </head>
   <body class="bg-[#FAF7F2] text-stone-800 min-h-screen flex flex-col selection:bg-cedar-800 selection:text-sand-50 w-full max-w-full relative" id="top">
     

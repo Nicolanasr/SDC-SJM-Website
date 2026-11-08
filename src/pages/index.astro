@@ -15,7 +15,12 @@ import { faqs } from '../data/faq';
 import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
 ---
 
-<Layout title={`${siteConfig.groupName} – ${siteConfig.tagline}`}>
+<Layout 
+  title="50 Years of Scouting in Byblos – Scout Des Cèdres Saint Jean Marc"
+  titleAr="٥٠ عاماً من الكشفية في جبيل – كشافة الأرز فوج القديس يوحنا مرقس"
+  description="Official troop website for Scout Des Cèdres Saint Jean Marc in Byblos (Jbeil), Lebanon. Active since May 5, 1977. Weekly outdoor scout meetings every Saturday 3:00–4:30 PM for boys and girls ages 4 to 24."
+  descriptionAr="الموقع الرسمي لفوج القديس يوحنا مرقس – كشافة الأرز في جبيل، لبنان. تأسس في ٥ أيار ١٩٧٧. لقاءات أسبوعية كل سبت من ٣:٠٠ حتى ٤:٣٠ بعد الظهر للفتيان والفتيات من عمر ٤ حتى ٢٤ سنة."
+>
   
   <!-- HERO SECTION (Full Background Group Photo with Overlay) -->
   <section class="relative min-h-[520px] sm:min-h-[640px] lg:min-h-[720px] flex items-center bg-stone-900 overflow-hidden">
@@ -23,9 +28,11 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
     <!-- Background Whole Group Photo -->
     <div class="absolute inset-0 z-0">
       <img 
-        src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=2400&q=85" 
+        src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1600&q=80" 
         alt="Scout Des Cèdres Saint Jean Marc whole group gathering" 
         class="w-full h-full object-cover object-center brightness-90"
+        fetchpriority="high"
+        decoding="async"
       />
       <!-- Gradient overlay: darker where text sits on left, fading to preserve the group photo on right -->
       <div class="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/80 to-stone-950/40"></div>

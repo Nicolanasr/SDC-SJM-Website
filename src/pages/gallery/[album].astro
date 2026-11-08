@@ -21,7 +21,9 @@ const albumPhotos = galleryPhotos.filter(p => p.albumId === album.id);
 
 <Layout 
   title={`${album.name} – Photo Album | ${siteConfig.groupName}`}
+  titleAr={`${album.nameAr} – ألبوم صور | كشافة الأرز جبيل`}
   description={`${album.description} (${albumPhotos.length} photos)`}
+  descriptionAr={`${album.descriptionAr} (${albumPhotos.length} صورة)`}
   image={album.coverImage}
 >
   <!-- Album Header Banner -->

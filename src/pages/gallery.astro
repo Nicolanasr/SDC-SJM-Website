@@ -8,8 +8,10 @@ import { ArrowRight } from 'lucide-astro';
 ---
 
 <Layout 
-  title={`Photo Albums & Archives – ${siteConfig.groupName}`}
+  title={`Photo Albums & Archives – ${siteConfig.groupName} Byblos`}
+  titleAr="أرشيف الصور والمخيمات – كشافة الأرز جبيل"
   description="Browse curated photo albums from Scout Des Cèdres Saint Jean Marc: Grand Camps, pioneering woodcraft, mountain hikes, and parish celebrations in Byblos."
+  descriptionAr="تصفحوا أرشيف صور ومخيمات فوج القديس يوحنا مرقس جبيل: المخيمات الصيفية الكبرى، ريادة الخلاء، مسارات الجبال، والاحتفالات الرعوية في جبيل."
 >
   <PageHeader 
     badge="PHOTO ARCHIVES"
@@ -21,142 +23,165 @@ import { ArrowRight } from 'lucide-astro';
   />
 
   <!-- MULTISELECT FILTER TOOLBAR -->
-  <section class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-6 sm:mb-10">
-    <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-stone-200/90 shadow-md space-y-4 sm:space-y-5">
+  <section class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-8 sm:mb-12">
+    <div class="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-stone-200/90 shadow-xl space-y-5">
       
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-stone-100">
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-          <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-800">
-            <T en="Filter Collections" ar="تصفية مجموعات الصور" />
+      <!-- Top Status Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-stone-100">
+        <div class="flex items-center gap-2.5">
+          <span class="flex h-2.5 w-2.5 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
+          </span>
+          <h3 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-stone-900 flex items-center gap-2">
+            <span><T en="Filter Collections" ar="تصفية المجموعات الكشفية" /></span>
           </h3>
-          <span id="filter-result-count" class="text-xs text-stone-500 font-mono">
-            (<T en="4 collections" ar="٤ مجموعات" />)
+          <span id="filter-result-count" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-stone-100 text-stone-700 font-mono border border-stone-200">
+            <T en="4 collections" ar="٤ مجموعات" />
           </span>
         </div>
         <button 
           id="filter-reset-btn" 
           type="button" 
-          class="text-xs font-bold text-amber-700 hover:text-amber-900 underline self-start sm:self-auto cursor-pointer"
+          class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-800 hover:text-amber-950 px-2.5 py-1 rounded-lg hover:bg-amber-50 transition-colors self-start sm:self-auto cursor-pointer"
         >
-          <T en="Reset All Filters" ar="إعادة ضبط الفلاتر" />
+          <span>↺</span>
+          <T en="Reset Filters" ar="إعادة الضبط" />
         </button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      <!-- 3-Column Modern Control Deck -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
         
-        <!-- Filter 1: Type (Multiselect) -->
-        <div class="space-y-2">
-          <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500">
-            <T en="1. Activity Type" ar="١. نوع النشاط" />
-          </label>
-          <div class="flex flex-wrap gap-1.5" id="type-filters">
+        <!-- Filter 1: Activity Type -->
+        <div class="space-y-2.5">
+          <div class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-stone-500">
+            <span>🏷️</span>
+            <span><T en="1. Activity Type" ar="١. نوع النشاط" /></span>
+          </div>
+          <div class="flex flex-wrap gap-1.5 sm:gap-2" id="type-filters">
             <button 
               type="button" 
               data-filter-type="camps" 
-              class="filter-chip px-2.5 py-1 rounded-full text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:border-emerald-600 cursor-pointer transition-all"
+              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
             >
-              <T en="⛺ Camps" ar="⛺ مخيمات" />
+              <span>⛺</span>
+              <span><T en="Camps" ar="مخيمات" /></span>
             </button>
             <button 
               type="button" 
               data-filter-type="woodcraft" 
-              class="filter-chip px-2.5 py-1 rounded-full text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:border-emerald-600 cursor-pointer transition-all"
+              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
             >
-              <T en="🪵 Woodcraft" ar="🪵 ريادة الخلاء" />
+              <span>🪵</span>
+              <span><T en="Woodcraft" ar="ريادة الخلاء" /></span>
             </button>
             <button 
               type="button" 
               data-filter-type="hikes" 
-              class="filter-chip px-2.5 py-1 rounded-full text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:border-emerald-600 cursor-pointer transition-all"
+              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
             >
-              <T en="🥾 Hikes" ar="🥾 رحلات مسير" />
+              <span>🥾</span>
+              <span><T en="Hikes" ar="رحلات مسير" /></span>
             </button>
             <button 
               type="button" 
               data-filter-type="ceremonies" 
-              class="filter-chip px-2.5 py-1 rounded-full text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:border-emerald-600 cursor-pointer transition-all"
+              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
             >
-              <T en="⚜️ Ceremonies" ar="⚜️ احتفالات" />
+              <span>⚜️</span>
+              <span><T en="Ceremonies" ar="احتفالات" /></span>
             </button>
           </div>
         </div>
 
-        <!-- Filter 2: Sections (Multiselect) -->
-        <div class="space-y-2">
-          <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500">
-            <T en="2. Scout Branch" ar="٢. الفرع الكشفي" />
-          </label>
-          <div class="flex flex-wrap gap-1.5" id="section-filters">
+        <!-- Filter 2: Sections -->
+        <div class="space-y-2.5">
+          <div class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-stone-500">
+            <span>👥</span>
+            <span><T en="2. Scout Branch" ar="٢. الفرع الكشفي" /></span>
+          </div>
+          <div class="flex flex-wrap gap-1.5 sm:gap-2" id="section-filters">
             <button 
               type="button" 
               data-filter-section="louveteaux" 
-              class="filter-chip px-2.5 py-1 rounded-full text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:border-amber-600 cursor-pointer transition-all"
+              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
             >
-              <T en="🐺 Cubs (4–11)" ar="🐺 الجراميز (٤–١١)" />
+              <span>🐺</span>
+              <span><T en="Cubs (4–11)" ar="الجراميز (٤–١١)" /></span>
             </button>
             <button 
               type="button" 
               data-filter-section="scouts" 
-              class="filter-chip px-2.5 py-1 rounded-full text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:border-emerald-600 cursor-pointer transition-all"
+              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
             >
-              <T en="🏕️ Scouts (11–16)" ar="🏕️ الكشافة (١١–١٦)" />
+              <span>🏕️</span>
+              <span><T en="Scouts (11–16)" ar="الكشافة (١١–١٦)" /></span>
             </button>
             <button 
               type="button" 
               data-filter-section="routiers" 
-              class="filter-chip px-2.5 py-1 rounded-full text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:border-red-600 cursor-pointer transition-all"
+              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
             >
-              <T en="⛰️ Rovers (16–24)" ar="⛰️ الجوالة (١٦–٢٤)" />
+              <span>⛰️</span>
+              <span><T en="Rovers (16–24)" ar="الجوالة (١٦–٢٤)" /></span>
             </button>
             <button 
               type="button" 
               data-filter-section="group" 
-              class="filter-chip px-2.5 py-1 rounded-full text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:border-stone-600 cursor-pointer transition-all"
+              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
             >
-              <T en="🏛️ Full Group" ar="🏛️ الفوج كاملاً" />
+              <span>🏛️</span>
+              <span><T en="Full Group" ar="الفوج كاملاً" /></span>
             </button>
           </div>
         </div>
 
         <!-- Filter 3: Date (From–To Year Range) -->
-        <div class="space-y-2">
-          <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500">
-            <T en="3. Year Range (From – To)" ar="٣. النطاق الزمني (من – إلى)" />
-          </label>
-          <div class="flex items-center gap-2">
-            <input 
-              type="number" 
-              id="year-from" 
-              min="1977" 
-              max="2026" 
-              value="1977" 
-              class="w-full text-xs sm:text-sm px-2.5 py-1.5 rounded-lg border border-stone-300 bg-stone-50 text-stone-800 focus:outline-none focus:ring-1 focus:ring-cedar-800"
-              aria-label="From Year"
-            />
-            <span class="text-stone-400 font-bold text-xs">–</span>
-            <input 
-              type="number" 
-              id="year-to" 
-              min="1977" 
-              max="2026" 
-              value="2026" 
-              class="w-full text-xs sm:text-sm px-2.5 py-1.5 rounded-lg border border-stone-300 bg-stone-50 text-stone-800 focus:outline-none focus:ring-1 focus:ring-cedar-800"
-              aria-label="To Year"
-            />
+        <div class="space-y-2.5">
+          <div class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-stone-500">
+            <span>📅</span>
+            <span><T en="3. Year Timeline" ar="٣. الخط الزمني" /></span>
           </div>
-          <div class="flex items-center gap-1.5 pt-1">
+          <div class="flex items-center gap-2">
+            <div class="relative flex-1">
+              <span class="absolute inset-y-0 left-2.5 rtl:left-auto rtl:right-2.5 flex items-center text-[10px] font-bold text-stone-400 uppercase pointer-events-none">From</span>
+              <input 
+                type="number" 
+                id="year-from" 
+                min="1977" 
+                max="2026" 
+                value="1977" 
+                class="w-full text-xs font-bold font-mono pl-10 pr-2.5 rtl:pl-2.5 rtl:pr-10 py-2 rounded-xl border border-stone-300 bg-stone-50 text-stone-900 focus:outline-none focus:ring-2 focus:ring-cedar-800/20 focus:border-cedar-800 transition-all shadow-2xs"
+                aria-label="From Year"
+              />
+            </div>
+            <span class="text-stone-300 font-bold text-xs">–</span>
+            <div class="relative flex-1">
+              <span class="absolute inset-y-0 left-2.5 rtl:left-auto rtl:right-2.5 flex items-center text-[10px] font-bold text-stone-400 uppercase pointer-events-none">To</span>
+              <input 
+                type="number" 
+                id="year-to" 
+                min="1977" 
+                max="2026" 
+                value="2026" 
+                class="w-full text-xs font-bold font-mono pl-7 pr-2.5 rtl:pl-2.5 rtl:pr-7 py-2 rounded-xl border border-stone-300 bg-stone-50 text-stone-900 focus:outline-none focus:ring-2 focus:ring-cedar-800/20 focus:border-cedar-800 transition-all shadow-2xs"
+                aria-label="To Year"
+              />
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 pt-0.5">
             <button 
               type="button" 
               data-range="all" 
-              class="quick-year-btn text-[10px] font-semibold px-2 py-0.5 rounded-md bg-stone-100 hover:bg-stone-200 text-stone-600 cursor-pointer"
+              class="quick-year-btn text-[10px] font-bold px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200/80 cursor-pointer transition-colors"
             >
               <T en="All (1977–2026)" ar="الكل (١٩٧٧–٢٠٢٦)" />
             </button>
             <button 
               type="button" 
               data-range="recent" 
-              class="quick-year-btn text-[10px] font-semibold px-2 py-0.5 rounded-md bg-stone-100 hover:bg-stone-200 text-stone-600 cursor-pointer"
+              class="quick-year-btn text-[10px] font-bold px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200/80 cursor-pointer transition-colors"
             >
               <T en="2020–2026" ar="٢٠٢٠–٢٠٢٦" />
             </button>
@@ -326,12 +351,12 @@ import { ArrowRight } from 'lucide-astro';
         const val = btn.dataset.filterType || '';
         if (selectedTypes.includes(val)) {
           selectedTypes = selectedTypes.filter(t => t !== val);
-          btn.classList.remove('bg-emerald-700', 'text-white', 'border-emerald-700');
-          btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200');
+          btn.classList.remove('bg-cedar-900', 'text-gold-300', 'border-cedar-950', 'ring-2', 'ring-gold-400/30');
+          btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
         } else {
           selectedTypes.push(val);
-          btn.classList.add('bg-emerald-700', 'text-white', 'border-emerald-700');
-          btn.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200');
+          btn.classList.add('bg-cedar-900', 'text-gold-300', 'border-cedar-950', 'ring-2', 'ring-gold-400/30');
+          btn.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
         }
         updateFilters();
       });
@@ -343,12 +368,12 @@ import { ArrowRight } from 'lucide-astro';
         const val = btn.dataset.filterSection || '';
         if (selectedSections.includes(val)) {
           selectedSections = selectedSections.filter(s => s !== val);
-          btn.classList.remove('bg-amber-600', 'text-white', 'border-amber-600');
-          btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200');
+          btn.classList.remove('bg-amber-700', 'text-white', 'border-amber-800', 'ring-2', 'ring-amber-400/30');
+          btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
         } else {
           selectedSections.push(val);
-          btn.classList.add('bg-amber-600', 'text-white', 'border-amber-600');
-          btn.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200');
+          btn.classList.add('bg-amber-700', 'text-white', 'border-amber-800', 'ring-2', 'ring-amber-400/30');
+          btn.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
         }
         updateFilters();
       });
@@ -377,12 +402,12 @@ import { ArrowRight } from 'lucide-astro';
       selectedTypes = [];
       selectedSections = [];
       document.querySelectorAll<HTMLButtonElement>('[data-filter-type]').forEach(btn => {
-        btn.classList.remove('bg-emerald-700', 'text-white', 'border-emerald-700');
-        btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200');
+        btn.classList.remove('bg-cedar-900', 'text-gold-300', 'border-cedar-950', 'ring-2', 'ring-gold-400/30');
+        btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
       });
       document.querySelectorAll<HTMLButtonElement>('[data-filter-section]').forEach(btn => {
-        btn.classList.remove('bg-amber-600', 'text-white', 'border-amber-600');
-        btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200');
+        btn.classList.remove('bg-amber-700', 'text-white', 'border-amber-800', 'ring-2', 'ring-amber-400/30');
+        btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
       });
       if (yearFromInput) yearFromInput.value = '1977';
       if (yearToInput) yearToInput.value = '2026';

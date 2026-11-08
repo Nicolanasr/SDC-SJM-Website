@@ -30,6 +30,11 @@
         document.documentElement.dir = next === 'ar' ? 'rtl' : 'ltr';
         try {
           localStorage.setItem('sdc_lang', next);
+          if (next === 'ar' && (window as any).__SDC_TITLE_AR) {
+            document.title = (window as any).__SDC_TITLE_AR;
+          } else if (next === 'en' && (window as any).__SDC_TITLE_EN) {
+            document.title = (window as any).__SDC_TITLE_EN;
+          }
         } catch (e) {}
       });
     });

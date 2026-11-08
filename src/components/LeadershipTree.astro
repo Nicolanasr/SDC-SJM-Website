@@ -7,26 +7,53 @@ import T from './T.astro';
   
   <div class="space-y-12 sm:space-y-16">
     
-    <!-- LEVEL 1: Troop Direction & Spiritual Guidance (Chef de Groupe & Mourched side-by-side) -->
-    <div class="space-y-6 flex flex-col items-center">
+    <!-- LEVEL 1: Spiritual Guidance & Troop Direction -->
+    <div class="space-y-4 flex flex-col items-center">
       
       <!-- Section Tag -->
       <div class="text-center">
         <span class="inline-block px-3.5 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-stone-900 text-amber-400 border border-stone-700 shadow-sm">
-          <T en="TROOP DIRECTION & SPIRITUAL GUIDANCE" ar="قيادة الفوج والإرشاد الروحي" />
+          <T en="SPIRITUAL GUIDANCE & TROOP DIRECTION" ar="الإرشاد الروحي وقيادة الفوج" />
         </span>
-        <p class="text-xs sm:text-sm text-stone-500 mt-1 max-w-md mx-auto">
-          <T 
-            en="The Chef de Groupe leads troop operations and pedagogy, with Père Simon providing spiritual guidance and pastoral care." 
-            ar="تقود رئيسة الفوج العمليات الميدانية والتربوية، بمرافقة الأب سيمون كمرشد روحي وراعٍ للفوج." 
-          />
-        </p>
       </div>
 
-      <!-- Side-by-Side: Chef de Groupe & Mourched Al Foj -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-2xl">
-        
-        <!-- Chef de Groupe (Operational Leader) -->
+      <!-- Top: Mourched Al Foj (Spiritual Guidance - Smaller, Refined) -->
+      <div class="w-full max-w-sm flex flex-col items-center">
+        <button 
+          type="button" 
+          class="leader-card w-full bg-stone-50 hover:bg-white rounded-2xl p-3.5 sm:p-4 border border-amber-300/80 shadow-xs hover:shadow-md hover:border-amber-500 transition-all text-center flex flex-col justify-between cursor-pointer focus:outline-none"
+          data-name={leadershipData.chaplain.name}
+          data-name-ar={leadershipData.chaplain.nameAr}
+          data-role={leadershipData.chaplain.role}
+          data-role-ar={leadershipData.chaplain.roleAr}
+          data-bio={leadershipData.chaplain.bio}
+          data-bio-ar={leadershipData.chaplain.bioAr}
+        >
+          <div>
+            <div class="w-10 h-10 rounded-full bg-stone-900 text-amber-300 mx-auto mb-2 flex items-center justify-center font-serif text-lg font-bold border border-amber-400 shadow-xs">
+              ✝
+            </div>
+            <span class="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-200 mb-1">
+              <T en="Spiritual Guidance" ar="الإرشاد الروحي والرعوي" />
+            </span>
+            <h4 class="font-bold text-base sm:text-lg text-stone-900">
+              <T en={leadershipData.chaplain.name} ar={leadershipData.chaplain.nameAr} />
+            </h4>
+            <p class="text-xs font-semibold text-amber-800 tracking-wide mt-0.5">
+              <T en={leadershipData.chaplain.role} ar={leadershipData.chaplain.roleAr} />
+            </p>
+          </div>
+          <div class="pt-2 mt-2 border-t border-stone-200/60 text-[11px] text-stone-500 font-medium">
+            <T en="Click to view pastoral bio" ar="اضغط للاطلاع على السيرة الرعوية" />
+          </div>
+        </button>
+      </div>
+
+      <!-- Connector Line from Mourched to Chef de Groupe -->
+      <div class="w-0.5 h-5 bg-amber-300"></div>
+
+      <!-- Chef de Groupe (Operational Troop Leader) -->
+      <div class="w-full max-w-sm flex flex-col items-center">
         <button 
           type="button" 
           class="leader-card w-full bg-cedar-950 text-white rounded-2xl sm:rounded-3xl p-5 border-2 border-cedar-800 shadow-md hover:shadow-xl hover:border-gold-400 transition-all text-center flex flex-col justify-between cursor-pointer focus:outline-none"
@@ -42,7 +69,7 @@ import T from './T.astro';
               CG
             </div>
             <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gold-400/20 text-gold-300 border border-gold-400/30 mb-1.5">
-              <T en="Troop Leadership" ar="قيادة الفوج" />
+              <T en="Troop Leader • Chef de Groupe" ar="قيادة الفوج • رئيسة الفوج" />
             </span>
             <h4 class="font-bold text-lg sm:text-xl text-white">
               <T en={leadershipData.groupLeader.name} ar={leadershipData.groupLeader.nameAr} />
@@ -55,37 +82,6 @@ import T from './T.astro';
             <T en="Click to view profile & bio" ar="اضغط للاطلاع على السيرة الكشفية" />
           </div>
         </button>
-
-        <!-- Mourched Al Foj (Spiritual Guidance Partner) -->
-        <button 
-          type="button" 
-          class="leader-card w-full bg-white rounded-2xl sm:rounded-3xl p-5 border-2 border-stone-300 shadow-md hover:shadow-xl hover:border-amber-500 transition-all text-center flex flex-col justify-between cursor-pointer focus:outline-none"
-          data-name={leadershipData.chaplain.name}
-          data-name-ar={leadershipData.chaplain.nameAr}
-          data-role={leadershipData.chaplain.role}
-          data-role-ar={leadershipData.chaplain.roleAr}
-          data-bio={leadershipData.chaplain.bio}
-          data-bio-ar={leadershipData.chaplain.bioAr}
-        >
-          <div>
-            <div class="w-14 h-14 rounded-full bg-stone-900 text-amber-300 mx-auto mb-3 flex items-center justify-center font-serif text-2xl font-bold border-2 border-amber-400 shadow-sm">
-              ✝
-            </div>
-            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-200 mb-1.5">
-              <T en="Spiritual Guidance" ar="الإرشاد الروحي" />
-            </span>
-            <h4 class="font-bold text-lg sm:text-xl text-stone-900">
-              <T en={leadershipData.chaplain.name} ar={leadershipData.chaplain.nameAr} />
-            </h4>
-            <p class="text-xs sm:text-sm font-semibold text-amber-800 tracking-wide mt-1">
-              <T en={leadershipData.chaplain.role} ar={leadershipData.chaplain.roleAr} />
-            </p>
-          </div>
-          <div class="pt-3 mt-3 border-t border-stone-100 text-xs text-stone-500 font-medium">
-            <T en="Click to view profile & bio" ar="اضغط للاطلاع على السيرة الرعوية" />
-          </div>
-        </button>
-
       </div>
 
       <!-- Stem Connector to Deputy Leader -->

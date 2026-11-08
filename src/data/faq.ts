@@ -57,6 +57,13 @@ export const faqs: FAQItem[] = [
     answerAr: "السلامة أولويتنا المطلقة. جميع قادتنا متطوعون خضعوا لدورات إعداد قيادي، مع وجود مسعفين حائزين على شهادات الصليب الأحمر اللبناني في الموقع وسيارة طوارئ دائمة طوال فترة المخيم. ومخيمات الصغار تقام في أديرة ومحميات مقفلة ومؤمنة.",
   },
   {
+    category: "practical",
+    question: "How do younger scouts balance scouting with school, homework, exams, and other activities (sports/music)?",
+    questionAr: "كيف يوفق الكشاف الصغير بين نشاط الكشافة والدروس المدرسية والامتحانات والرياضة؟",
+    answer: "Easily and healthily. Scouting meetings take place exclusively on Saturday afternoons for only 90 minutes (3:00 to 4:30 PM), leaving mornings and Sundays completely free for homework, sports practice, and family time. During official school exam periods (midterms and finals), troop activities are paused or lightened. Far from hurting school performance, 50 years of experience show that scouting teaches children discipline, autonomy, time management, and healthy focus away from digital screens.",
+    answerAr: "بكل سهولة وتوازن. تقام الاجتماعات الأسبوعية حصراً بعد ظهر السبت لمدة ساعة ونصف فقط (من ٣:٠٠ حتى ٤:٣٠)، مما يترك فترات الصباح ويوم الأحد بأكمله حراً للدروس والواجبات المدرسية والتمارين الرياضية والعائلة. وفي فترات الامتحانات المدرسية الرسمية ونصف السنة، يُخفف البرنامج أو يُعلق مؤقتاً لمراعاة دراسة الأولاد. وخبرة ٥٠ عاماً تثبت أن الكشفية لا تعيق الدراسة، بل تنمي لدى الطفل الانضباط الذاتي وتنظيم الوقت والتركيز بعيداً عن الشاشات الإلكترونية.",
+  },
+  {
     category: "joining",
     question: "What if my child is shy or doesn't know anyone in Byblos?",
     questionAr: "ماذا لو كان طفلي خجولاً ولا يعرف أحداً في جبيل؟",
