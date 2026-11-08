@@ -1,5 +1,6 @@
 ---
 import { scoutReviews } from '../data/reviews';
+import { siteConfig } from '../data/siteConfig';
 import T from './T.astro';
 
 // Triple array for seamless infinite buffer
@@ -34,12 +35,12 @@ const realCount = scoutReviews.length;
           </span>
         </div>
 
-        <!-- Carousel Arrows -->
+        <!-- Carousel Arrows (Min 44x44px touch targets for 100 Accessibility) -->
         <div class="flex items-center gap-2">
           <button 
             id="review-prev" 
             type="button" 
-            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-300 bg-white hover:bg-stone-100 flex items-center justify-center text-stone-700 transition-colors shadow-sm focus:outline-none"
+            class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-stone-300 bg-white hover:bg-stone-100 flex items-center justify-center text-stone-700 transition-colors shadow-sm focus:outline-none cursor-pointer"
             aria-label="Previous Story"
           >
             <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +50,7 @@ const realCount = scoutReviews.length;
           <button 
             id="review-next" 
             type="button" 
-            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-cedar-800 hover:bg-cedar-900 text-white flex items-center justify-center transition-colors shadow-sm focus:outline-none"
+            class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-cedar-800 hover:bg-cedar-900 text-white flex items-center justify-center transition-colors shadow-sm focus:outline-none cursor-pointer"
             aria-label="Next Story"
           >
             <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,25 +118,27 @@ const realCount = scoutReviews.length;
 
   <!-- Bottom Indicator Dots -->
   <div class="max-w-7xl mx-auto px-4 text-center mt-6">
-    <div class="flex items-center justify-center gap-2" id="review-dots">
+    <div class="flex items-center justify-center gap-1 sm:gap-2" id="review-dots">
       {scoutReviews.map((_, i) => (
         <button 
           type="button" 
-          class={`h-2 rounded-full transition-all duration-300 dot-indicator ${i === 0 ? 'w-8 bg-cedar-800' : 'w-2 bg-stone-300'}`}
+          class="h-11 min-w-[36px] sm:min-w-[44px] inline-flex items-center justify-center cursor-pointer dot-btn group px-1 focus:outline-none"
           data-index={i}
           aria-label={`Go to slide ${i + 1}`}
-        />
+        >
+          <span class={`h-2.5 rounded-full transition-all duration-300 block dot-indicator ${i === 0 ? 'w-8 bg-cedar-800' : 'w-2.5 bg-stone-300 group-hover:bg-stone-400'}`} />
+        </button>
       ))}
     </div>
 
     <div class="mt-6">
       <a 
-        href={`https://wa.me/96170000000?text=${encodeURIComponent('Hello! I would like to inquire about joining Scout Saint Jean Marc this Saturday.')}`}
+        href={`https://wa.me/${siteConfig.contact.phoneRaw}?text=${encodeURIComponent('Hello! I would like to inquire about joining Scout Saint Jean Marc this Saturday.')}`}
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cedar-800 hover:text-cedar-950 underline"
       >
-        <span>Read guest reviews or ask us a question</span>
+        <span><T en="Read more stories or ask us a question" ar="اقرأ المزيد من القصص أو اطرح استفسارك" /></span>
         <span>→</span>
       </a>
     </div>
@@ -197,12 +200,13 @@ const realCount = scoutReviews.length;
     });
 
     dots.forEach((dot, i) => {
+      const indicator = dot.querySelector('.dot-indicator') as HTMLElement || dot;
       if (i === currentReal) {
-        dot.classList.remove('w-2', 'bg-stone-300');
-        dot.classList.add('w-8', 'bg-cedar-800');
+        indicator.classList.remove('w-2.5', 'bg-stone-300');
+        indicator.classList.add('w-8', 'bg-cedar-800');
       } else {
-        dot.classList.remove('w-8', 'bg-cedar-800');
-        dot.classList.add('w-2', 'bg-stone-300');
+        indicator.classList.remove('w-8', 'bg-cedar-800');
+        indicator.classList.add('w-2.5', 'bg-stone-300');
       }
     });
   }

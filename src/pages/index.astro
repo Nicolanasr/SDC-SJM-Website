@@ -25,15 +25,27 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   <!-- HERO SECTION (Full Background Group Photo with Overlay) -->
   <section class="relative min-h-[520px] sm:min-h-[640px] lg:min-h-[720px] flex items-center bg-stone-900 overflow-hidden">
     
-    <!-- Background Whole Group Photo -->
+    <!-- Background Whole Group Photo (Responsive for sub-1.5s mobile LCP) -->
     <div class="absolute inset-0 z-0">
-      <img 
-        src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1600&q=80" 
-        alt="Scout Des Cèdres Saint Jean Marc whole group gathering" 
-        class="w-full h-full object-cover object-center brightness-90"
-        fetchpriority="high"
-        decoding="async"
-      />
+      <picture>
+        <source 
+          media="(max-width: 640px)" 
+          srcset="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=640&q=75" 
+        />
+        <source 
+          media="(max-width: 1024px)" 
+          srcset="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1024&q=80" 
+        />
+        <img 
+          src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1600&q=80" 
+          alt="Scout Des Cèdres Saint Jean Marc whole group gathering" 
+          class="w-full h-full object-cover object-center brightness-90"
+          fetchpriority="high"
+          decoding="async"
+          width="1600"
+          height="900"
+        />
+      </picture>
       <!-- Gradient overlay: darker where text sits on left, fading to preserve the group photo on right -->
       <div class="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/80 to-stone-950/40"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-stone-950/40"></div>
@@ -203,7 +215,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
       <!-- Header Bar -->
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
         <div>
-          <span class="text-xs uppercase tracking-widest font-bold text-stone-500 block font-sans">
+          <span class="text-xs uppercase tracking-widest font-bold text-stone-700 block font-sans">
             <T en="ANNUAL CAMPS & TRADITIONS" ar="المخيمات والتقاليد السنوية" />
           </span>
           <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight mt-1">
@@ -295,7 +307,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   <section class="py-12 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-stone-200">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
       <div>
-        <span class="text-xs uppercase tracking-widest font-bold text-stone-500 block font-sans">
+        <span class="text-xs uppercase tracking-widest font-bold text-stone-700 block font-sans">
           <T en="CHRONICLES & GUIDES" ar="مقالات ودليل الأهل" />
         </span>
         <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight mt-1">
@@ -379,7 +391,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
         
         <!-- Text & Action Column -->
         <div class="lg:col-span-7 space-y-3 sm:space-y-4">
-          <span class="text-xs uppercase tracking-widest font-bold text-stone-500 block font-sans">
+          <span class="text-xs uppercase tracking-widest font-bold text-stone-700 block font-sans">
             <T en="VOLUNTEER LEADERSHIP" ar="القيادة التطوعية" />
           </span>
           <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-stone-900 tracking-tight leading-tight">
@@ -434,7 +446,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
     })} />
 
     <div class="text-center space-y-1.5 sm:space-y-2 mb-8 sm:mb-12">
-      <span class="text-xs uppercase tracking-widest font-bold text-stone-500 font-sans block">
+      <span class="text-xs uppercase tracking-widest font-bold text-stone-700 font-sans block">
         <T en="FREQUENT QUESTIONS" ar="الأسئلة الشائعة" />
       </span>
       <h2 class="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight">
@@ -500,7 +512,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   <!-- CONTACT & WHATSAPP -->
   <section id="contact" class="py-12 sm:py-20 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 border-t border-stone-200">
     <div class="text-center max-w-xl mx-auto space-y-1.5 sm:space-y-2 mb-8 sm:mb-12">
-      <span class="text-xs uppercase tracking-widest font-bold text-stone-500 font-sans block">
+      <span class="text-xs uppercase tracking-widest font-bold text-stone-700 font-sans block">
         <T en="GET IN TOUCH" ar="تواصل معنا" />
       </span>
       <h2 class="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight">
