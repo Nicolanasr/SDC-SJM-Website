@@ -18,6 +18,13 @@ export interface BlogPost {
   keyTakeaways?: string[];
   arabicKeyTakeaways?: string[];
   content: string[];
+  contentAr?: string[];
+  inlineImages?: {
+    index: number;
+    url: string;
+    caption: string;
+    captionAr: string;
+  }[];
 }
 
 export const blogPosts: BlogPost[] = [
@@ -51,7 +58,7 @@ export const blogPosts: BlogPost[] = [
       "إدارة المخاطر الحقيقية: يتعلم الفتيان والفتيات التعامل مع الأدوات بأمان والطبخ على النار واحترام البيئة"
     ],
     content: [
-      "In an era where teenagers spend upwards of seven hours daily on smartphones, tablets, and algorithmic feeds, childhood is quietly migrating indoors. Parents frequently ask our chefs during Saturday pick-up in Byblos: What makes a traditional youth movement like Scout Des Cèdres Saint Jean Marc so enduringly magnetic, even forty-nine years after its founding?",
+      "In an era where teenagers spend upwards of seven hours daily on smartphones, tablets, and algorithmic feeds, childhood is quietly migrating indoors. Parents frequently ask our chefs during Saturday pick-up in Byblos: What makes a traditional youth movement like Scout Des Cèdres Saint Jean Marc so enduringly magnetic, even fifty years after its founding?",
       "The answer is simple: children do not crave passive entertainment. They crave reality. They want to test their physical strength against a limestone cliff, feel the honest sting of woodsmoke in their eyes, build something tangible with their own two hands, and belong to a small tribe of peers who judge them by their loyalty and effort rather than their social media profile.",
       "1. True Independence and Self-Care: From age four in the Louveteaux pack to twenty in the Routiers clan, scouts learn to pack their own rucksacks, care for their boots, roll their sleeping mats, and cook meals over outdoor stoves. When a child learns that forgetting their rain jacket means getting wet, they develop internal accountability that school lectures can never provide.",
       "2. Unfiltered, Algorithmic-Free Social Connection: In a patrol of six to eight peers (Patrouille), there are no curated likes or digital filters. Respect is earned quietly through showing up in the rain, sharing the last piece of bread, helping carry a tired younger scout's pack on a steep incline, and keeping your word when chores are assigned.",
@@ -64,6 +71,35 @@ export const blogPosts: BlogPost[] = [
       "9. Lifelong Brotherhood and Sisterhood: The bonds forged while pitching heavy canvas tents during an unexpected thunderstorm on a mountain ridge remain unbreakable for thirty, forty, and fifty years. Former scouts who wore our green and yellow scarf decades ago still gather in Byblos as brothers and sisters in spirit.",
       "10. The Habit of Showing Up: In a culture increasingly characterized by flaking, casual cancellations, and low commitment, scouting reinstates the sacred code of duty. Showing up every Saturday at 3:00 PM rain or shine instills an internal compass of reliability that universities and future employers recognize instantly.",
       "If you want your son or daughter to discover their true courage, step away from screens, and grow surrounded by wholesome role models, the courtyard doors of Saint Jean Marc are open every Saturday afternoon."
+    ],
+    contentAr: [
+      "في عصر يقضي فيه المراهقون أكثر من سبع ساعات يومياً أمام الشاشات والهواتف الذكية، تنحسر الطفولة تدريجياً داخل الجدران المغلقة. كثيراً ما يسألنا أولياء الأمور أثناء اصطحاب أبنائهم مساء السبت في جبيل: ما الذي يجعل حركة شبابية تقليدية مثل كشافة الأرز – فوج مار يوحنا مرقس تحافظ على جاذبيتها حتى بعد مرور خمسين عاماً على تأسيسها؟",
+      "الجواب بسيط وواضح: الأطفال لا يبحثون عن التسلية الافتراضية السلبية، بل يشتاقون إلى الواقع الحقيقي. يريدون اختبار قوتهم البدنية أمام منحدر صخري، وتنفس دخان الحطب في الهواء الطلق، وبناء منشأة حقيقية بأيديهم، والانتماء إلى طليعة من الأصدقاء تقيّمهم بوفائهم وعطائهم لا بعدد إعجابات وسائل التواصل.",
+      "١. الاستقلالية الحقيقية والعناية بالنفس: من سن الرابعة في سرب الجراميز حتى العشرين في عشيرة الجوالة، يتعلم الكشاف توضيب حقيبته بنفسه، تنظيف حذائه، طي فرشته، والطبخ في الخلاء. وحين يدرك الطفل أن نسيان معطف المطر يعني البلل، يكتسب حس المسؤولية الذاتية الذي تعجز المحاضرات المدرسية عن تقديمه.",
+      "٢. تواصل إنساني صادق بعيداً عن الخوارزميات: في طليعة مكونة من ٦ إلى ٨ أفراد، لا توجد فلاتر رقمية مصطنعة. يُبنى الاحترام بهدوء من خلال الحضور تحت المطر، ومقاسمة رغيف الخبز الأخير، ومساعدة رفيق تعب في حمل حقيبته في صعود وعر، والالتزام الصادق بالكلمة المعطاة.",
+      "٣. التوازن النفسي في طبيعة لبنان: تؤكد دراسات علم النفس العصبي أن الساعات التي يقضيها الفتى بين أشجار الأرز والسنديان وعلى ضفاف الوديان تخفض بشكل ملحوظ هرمونات التوتر، وتعالج القلق المزمن وتستعيد صفاء التركيز. وتوفر تضاريس لبنان—من ساحل جبيل القديمة إلى مرتفعات تنورين وقاديشا—صفاً دراسياً طبيعياً لا مثيل له.",
+      "٤. الهندسة التطبيقية عبر فن الفرويسارتاج: بناء أبراج مراقبة بارتفاع ستة أمتار، وجسور معلقة ومطابخ طليعية باستخدام أخشاب الصنوبر وحبال القنب فقط دون استخدام أي مسمار حديدي يرسخ مبادئ الفيزياء المكانية والتوازن الإنشائي. يكتشف الشباب أن التعاون البشري قادر على تحويل الحطب إلى مأوى آمن.",
+      "٥. جاهزية الطوارئ والإسعافات الأولية المعتمدة: يحمل قادتنا ومساعدوهم شهادات إسعافات أولية معتمدة وفق معايير الصليب الأحمر. يتدرب الكشافة دورياً على تضميد الجروح، تثبيت الكسور، والتعامل مع الطوارئ بحكمة وهدوء بدلاً من الارتباك والذعر.",
+      "٦. الانتماء لجذور جبيل وتراثها: منذ ٥ أيار ١٩٧٧، اتخذ الفوج من باحة كاتدرائية مار يوحنا مرقس موطناً ومقراً له. التنشئة في ظلال أسوار بيبلوس الصليبية والآثار الفينيقية تزرع في قلوب الشباب فخراً عميقاً بمدينتهم وشعوراً بالمسؤولية لحماية تراثها.",
+      "٧. الاعتماد على النفس عبر نظام الطلائع (Système des Patrouilles): كان أعظم ابتكار تربوي لمؤسس الحركة الكشفية هو نقل القيادة من الكبار إلى رؤساء الطلائع في سن المراهقة. يتعلم قائد الطليعة بعمر ١٤ سنة كيف يوزع الأدوار، يحل الخلافات بحكمة، ويقود رفاقه بروح القدوة والمحبة.",
+      "٨. نشاط تطوعي غير ربحي متاح لكل عائلة: على عكس الأكاديميات الرياضية والنوادي التجارية المكلفة، تعمل الكشفية كحركة تربوية تطوعية بحتة. الاشتراكات رمزية وقاعدتنا ثابتة: لا يُحرم أي طفل أو شاب من المشاركة بسبب الظروف المادية.",
+      "٩. أخوّة وصداقة تدوم مدى الحياة: الصداقات التي تُبنى أثناء نصب الخيام القماشية تحت عاصفة جبلية مفاجئة أو حول سهرة النار تبقى راسخة لثلاثين وأربعين وخمسين عاماً. قادة وقدامى ارتدوا منديل الفوج الأخضر والذهبي منذ عقود ما زالوا يجتمعون في جبيل كعائلة واحدة.",
+      "١٠. فضيلة الالتزام والحضور: في ثقافة يكثر فيها التردد والانسحاب السهل، تعيد الكشفية ترسيخ قيمة الواجب الكشفي. الحضور كل سبت عند الساعة الثالثة بعد الظهر يغرس بوصلة داخلية من الانضباط والوفاء بالعهد تحترمها الجامعات ويقدّرها المجتمع.",
+      "إذا كنتم ترغبون في أن يكتشف ابنكم أو ابنتكم شجاعتهم الحقيقية، ويبتعدوا عن الشاشات وسط قدوة حسنة، فإن أبواب باحة مار يوحنا مرقس مفتوحة لاستقبالكم كل بعد ظهر سبت."
+    ],
+    inlineImages: [
+      {
+        index: 2,
+        url: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1000&q=80",
+        caption: "Patrol campfire circle in the high mountains of Lebanon",
+        captionAr: "حلقة سهرة النار الكشفية في أعالي جبال لبنان"
+      },
+      {
+        index: 5,
+        url: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1000&q=80",
+        caption: "Froissartage timber construction: engineering without nails",
+        captionAr: "ريادة الخلاء وتشييد المنشآت الخشبية دون أي مسمار"
+      }
     ]
   },
   {
@@ -104,6 +140,31 @@ export const blogPosts: BlogPost[] = [
       "The 10-Day Grand Summer Camp (The Apex of the Scout Year): In midsummer, our troop travels into the high Mount Lebanon plateau for our annual Grand Camp. Upon arrival, the campsite is completely empty mountain land. Within forty-eight hours, scouts use untreated timber logs and sisal rope to build their entire village: dining shelters with raised tables, elevated woodcraft kitchens with stone firepits, tool racks, sanitary washstands, and artistic camp gateways.",
       "For ten full days, life is lived entirely outdoors under canvas tents. Youth cook their own meals over wood fires, compete in grand patrol tournaments, embark on a 24-hour wilderness hike (Exploration), and gather every evening around the glowing campfire for songs, theatrical sketches, and quiet reflections under starry skies.",
       "The Transformation: When scouts return home from camp on Sunday afternoon, parents often notice a remarkable difference: their children stand taller, clean up without being asked, look adults in the eye when speaking, and carry a deep, grounded inner joy that stays with them throughout the school year."
+    ],
+    contentAr: [
+      "بالنسبة للأهالي الذين لم يخوضوا تجربة الكشفية من قبل، قد يبدو مشهد الفتيان والفتيات بالزي الكشفي في باحة مار يوحنا مرقس بعد ظهر السبت مألوفاً ومثيراً للفضول في آنٍ واحد. قد يتساءل الأهل: ماذا يجري بالضبط خلال تلك التسعين دقيقة الأسبوعية؟ وماذا يتعلم الأبناء في رحلات نهاية الأسبوع؟ وماذا يحدث حين ينطلقون لعشرة أيام في المخيم الصيفي الجبلي؟",
+      "يقدم هذا الدليل نظرة شفافة وصادقة لما يعيشه أبناؤكم على مدار العام الكشفي في فوجنا في جبيل.",
+      "إيقاع بعد ظهر السبت (٣:٠٠ – ٤:٣٠ بعد الظهر): يبدأ النشاط الأسبوعي تمام الساعة ٣:٠٠ بعد الظهر بالتجمع (Rassemblement) في الباحة الحجرية. تصطف الوحدات بنظام، يُرفع العلم، تُتلى الصلوات الكشفية وشعار الفوج، ويسجل رؤساء الطلائع الحضور. هذه الدقائق الخمس الأولى تنقل الفتى فوراً من صخب الأسبوع المدرسي إلى تركيز وحيوية النشاط الكشفي.",
+      "من ٣:١٥ حتى ٤:٠٠، يتوزع الفوج حسب الفئات العمرية. يدخل صغار السن (الجراميز والزهرات ٤–١١ سنة) عالم الغابة مع أكيلا وبالو: ألعاب حركة وحيلة، قصص تربوية وبناء العادات الحسنة. ويعمل الفتيان والفتيات (الكشافة والمرشدات ١١–١٦ سنة) ضمن طلائع مستقلة: تعلم العقد الكشفية، قراءة الخرائط الجغرافية والبوصلة، وإعداد ألعاب البطولة. بينما ينظم الجوالة والمنجدات (١٦–٢٤ سنة) المبادرات الاجتماعية، الرحلات الجبلية، ومساندة قيادة الفروع الصغرى.",
+      "عند الساعة ٤:١٥، يلتقي الفوج مجدداً في مراسم الختام. يعلن القادة المواعيد القادمة، تُوزع الشارات المستحقة، وتُنزل الرايات الكشفية لينصرف الجميع عند الساعة ٤:٣٠ بسلام وابتسامة.",
+      "رحلات المسير الفصلية (Salidas): ثلاث إلى أربع مرات في العام، تنطلق الوحدات خارج جبيل في رحلات استكشافية تدعى Salidas. ليست هذه الرحلات مجرد نزهة عادية، بل يحمل الكشاف حقيبة الظهر مع الماء والبوصلة والإسعافات الأولية ووجبة خفيفة، فيعبرون محميات الأرز في تنورين، أو يكتشفون مغاور وادي قاديشا، أو ينظفون شاطئ جبيل الأثري ليتعلموا حماية البيئة عملياً.",
+      "المخيم الصيفي الكبير (قمة العام الكشفي): في منتصف الصيف، يصعد الفوج إلى أعالي جبال لبنان لإقامة المخيم الكبير لمدة عشرة أيام متواصلة. عند الوصول تكون أرض المخيم خالية تماماً، وفي غضون ٤٨ ساعة فقط تحوّل الطلائع أخشاب الصنوبر وحبال القنب إلى قرية متكاملة: موائد طعام مظللة، مطابخ مرتفعة مع مواقد حجرية، حوامل للمعدات، وبوابة فنية للمخيم.",
+      "عشرة أيام كاملة تُعاش تحت الخيام القماشية. يطبخ الفتيان طعامهم بأنفسهم، ويتنافسون في دورة الطلائع الكبرى، وينطلقون في رحلة استكشافية تمتد ٢٤ ساعة (Exploration)، ويجتمعون مساءً حول شعلة النار في سهرات ممتلئة بالأناشيد والتمثيليات الهادفة تحت النجوم.",
+      "التحول الإيجابي: حين يعود الكشاف إلى منزله بعد ظهر الأحد، يلاحظ الأهل فوراً الفرق الكبير: يقف الفتى أكثر ثقة واستقامة، يرتب أغراضه دون تذكير، ينظر في عيني محدثه باحترام، ويحمل في قلبه فرحاً عميقاً وصداقة أصيلة ترافقه طوال العام الدراسي."
+    ],
+    inlineImages: [
+      {
+        index: 2,
+        url: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1000&q=80",
+        caption: "Saturday courtyard assembly at Saint Jean Marc Byblos",
+        captionAr: "تجمع السبت في باحة كاتدرائية مار يوحنا مرقس جبيل"
+      },
+      {
+        index: 5,
+        url: "https://images.unsplash.com/photo-1496080174650-637e3f22fa03?auto=format&fit=crop&w=1000&q=80",
+        caption: "Outdoor cooking on open wood fires during 10-day summer camp",
+        captionAr: "الطبخ على مواقد الحطب خلال المخيم الصيفي الجبلي"
+      }
     ]
   },
   {
@@ -144,6 +205,31 @@ export const blogPosts: BlogPost[] = [
       "3. The Tripod Lashing (Le Nœud de Trépied): The architectural foundation for water towers, bell towers, and camp gateways. Three poles laid side by side are woven with alternating turns before the legs are spread into a self-standing pyramid of extraordinary stability.",
       "Safety First, Always: Every piece of timber is inspected by the Chef Matériel for hairline fractures, rot, or weakness before construction begins. Lashings are tensioned using wooden levers, never bare hands, to prevent rope burns. No scout climbs any structure above waist height without a chef present to verify lashing integrity and ground anchor stability.",
       "What Youth Take Home: Beyond the physical watchtower, Froissartage gives teenagers an unshakeable sense of self-efficacy. In a world where adolescents rarely touch anything heavier than a smartphone screen, spending two days hauling logs, tying sixty lashings, and standing atop a watchtower they built with their friends permanently alters their view of what they are capable of achieving."
+    ],
+    contentAr: [
+      "حين تزور أرض المخيم الصيفي لفوجنا في أواخر شهر تموز، سيبهرك مشهد غير مألوف: مطابخ مرتفعة عن الأرض مع مواقد حجرية آمنة، طاولة طعام خشبية يجلس حولها ثمانية مراهقين براحة تامة، رفوف مرتفعة لحفظ الطعام من حيوانات البرية، وبرج مراقبة واستطلاع يرتفع ستة أمتار فوق المخيم—كل ذلك مشيّد بالكامل من جذوع الصنوبر وحبال القنب دون استخدام أي مسمار أو برغي معدني على الإطلاق.",
+      "هذا هو فن الفرويسارتاج (Froissartage)—منهج تربوي في ريادة الخلاء صاغه في ثلاثينيات القرن الماضي المربي الكشفي الفرنسي ميشال فرويسار. وبدلاً من إيذاء الأشجار بالمسامير الحديدية التي تصدأ وتجرح الخشب، يعتمد الفرويسارتاج على مهارات النجارة التقليدية، التعشيق الخشبي (Mortise & Tenon)، والعقد والحبال المحكمة (Brêlages).",
+      "لماذا نرفض استخدام المسامير؟ المسامير المعدنية تضعف ألياف الخشب تحت قوى الشد، وتترك رؤوساً حادة تشكل خطراً في أرض المخيم وقد تؤذي الحيوانات حتى بعد رحيلنا. والأهم من ذلك، أن استخدام المسامير يحرم الشاب من التحدي الفكري والبدني لفهم كيفية تحمّل الخشب للوزن وانحنائه وثباته تحت الشد الميكانيكي.",
+      "أركان البناء الكشفي: لتشييد مطبخ طليعي أو برج مراقبة، يتقن الكشافة ثلاث عقد وحبال رئيسية:",
+      "١. العقدة المربعة (Le Brêlage Carré): تُستخدم لربط قطعتين خشبيتين تتقاطعان بزاوية ٩٠ درجة. تبدأ بعقدة الوتد (Clove Hitch)، وتُلف الحبال ثلاث مرات بإحكام حول الجذعين، ثم تُشد بدورتين خانقتين (Frapping) تعتصران الألياف، وتُختتم بعقدة التثبيت. حين ينفذها كشافان بتنسيق متقن، تستطيع تحمّل مئات الكيلوغرامات بأمان.",
+      "٢. العقدة القطرية (Le Brêlage Diagonal): ضرورية للدعامات المائلة في الأبراج وبوابات المخيم لمنع الاهتزاز والالتواء. تبدأ بعقدة الحطاب (Timber Hitch) لجمع الجذعين بقوة قبل الشد النهائي.",
+      "٣. العقدة الثلاثية (Le Nœud de Trépied): الأساس المعماري لأبراج المياه، أبراج الأجراس وبوابات المعسكرات. تُصف ثلاثة أعمدة متوازية وتُنسج الحبال بينها بالتناوب قبل فتح أرجلها لتشكل هرماً ذاتي الثبات يتمتع بتوازن مدهش.",
+      "السلامة أولاً ودائماً: يفحص قائد التجهيزات (Chef Matériel) كل قطعة خشب للتأكد من خلوها من الشقوق أو الضعف قبل بدء البناء. وتُشد الحبال بأدوات خشبية خاصة لتجنب حروق الحبال في اليدين. ولا يصعد أي كشاف فوق أي منشأة إلا بإشراف القائد ومطابقة معايير الثبات الأرضي.",
+      "الأثر التربوي العميق: بعيداً عن برج المراقبة بحد ذاته، يمنح الفرويسارتاج الفتى شعوراً لا يتزعزع بالقدرة الذاتية. في عالم نادراً ما يلمس فيه المراهق شيئاً أثقل من شاشة هاتفه، فإن قضاء يومين في نقل الأخشاب، وربط ستين عقدة، والوقوف فوق برج بناه مع رفاقه يغير نظرته إلى قدراته وإمكانياته إلى الأبد."
+    ],
+    inlineImages: [
+      {
+        index: 1,
+        url: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1000&q=80",
+        caption: "Square and diagonal rope lashings binding pine spars without nails",
+        captionAr: "العقد المربعة والقطرية لربط الأخشاب بحبال القنب دون مسامير"
+      },
+      {
+        index: 4,
+        url: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1000&q=80",
+        caption: "Standing atop a handmade 6-meter patrol watchtower",
+        captionAr: "الوقوف فوق برج استطلاع كشفي بارتفاع ستة أمتار صنعته الطليعة"
+      }
     ]
   },
   {
@@ -160,8 +246,8 @@ export const blogPosts: BlogPost[] = [
     readTime: "10 min read",
     readTimeAr: "١٠ دقائق للقراءة",
     image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
-    excerpt: "Amidst the turbulence of 1977 in Lebanon, founders Youssef Abou Jaoude and Louis Khalife decided that youth in Byblos needed peace, discipline, and nature. 49 years later, the flame still burns.",
-    excerptAr: "وسط ظروف عام ١٩٧٧ في لبنان، أطلق المؤسسان يوسف أبو جودة ولويس خليفة مسيرة الفوج في باحة مار يوحنا مرقس. ٤٩ عاماً مضت والشعلة ما زالت متقدة في جبيل.",
+    excerpt: "Amidst the turbulence of 1977 in Lebanon, founders Youssef Abou Jaoude and Louis Khalife decided that youth in Byblos needed peace, discipline, and nature. 50 years later, the flame still burns.",
+    excerptAr: "وسط ظروف عام ١٩٧٧ في لبنان، أطلق المؤسسان يوسف أبو جودة ولويس خليفة مسيرة الفوج في باحة مار يوحنا مرقس. ٥٠ عاماً مضت والشعلة ما زالت متقدة في جبيل.",
     keyTakeaways: [
       "Founded on May 5, 1977 by Youssef Abou Jaoude & Louis Khalife at Saint Jean Marc Byblos",
       "Kept meeting uninterrupted through Lebanon's civil war, economic crises, and pandemic",
@@ -182,6 +268,29 @@ export const blogPosts: BlogPost[] = [
       "Unbroken Continuity Through the Years: Through decades of national hardship, the troop never ceased meeting. When long-distance travel to cedar reserves was blocked, patrols carried their rucksacks into the olive orchards of Blat and the limestone hills above Byblos. When power outages plunged the town into darkness, scout meetings continued under the glow of kerosene lanterns and campfires.",
       "In the decades that followed, the group expanded into a full scout family: welcoming girls into the Jeannettes, Guides, and Caravelles branches, training generations of chefs and cheftaines, and establishing annual traditions that the entire town of Byblos looks forward to—from the solemn Good Friday parish vigil to the festive Saint Jean Marc feast day parade through the old souks.",
       "The Sacred Thread: Today, nearly half a century later, when you walk into the courtyard on a Saturday afternoon, you will meet young boys and girls whose parents and grandparents stood in those exact same lines forty years ago. They wear the same green and gold cedar scarf, make the same scout promise, and sing the same campfire hymns. That unbroken golden thread is what makes Scout Des Cèdres Groupe Saint Jean Marc a living monument of hope in Lebanon."
+    ],
+    contentAr: [
+      "حين تأسس فوج كشافة الأرز في كاتدرائية مار يوحنا مرقس الأثرية في ٥ أيار ١٩٧٧، كان لبنان يمر بإحدى أحلك المراحل في تاريخه المعاصر. كانت الصراعات تمزق المجتمعات، والمدارس تقفل أبوابها بصورة متقطعة، والشباب محاطين بالقلق والغموض.",
+      "وسط تلك الأجواء الصعبة، جمع مربيان رائدان من أبناء جبيل، يوسف أبو جودة ولويس خليفة، اثني عشر فتى محلياً في باحة الكاتدرائية. كانت قناعتهما بسيطة لكنها ثورية في عمقها: لا يجوز ترك أبنائنا فريسة لليأس أو الكراهية. يحتاج شبابنا إلى الطبيعة، إلى الأخوّة الصادقة، إلى الانضباط الأخلاقي، وإلى الخدمة الفرحة لبلدتهم.",
+      "البدايات الصعبة: كانت الإمكانيات شبه معدومة. لم يكن هناك مقر، ولا ميزانية، ولا حتى زي كشفي جاهز واحد. كانت الخيام الأولى عبارة عن أقمشة مستعملة خاطتها أمهات الرعية بأيديهن. وقُصّت المناديل الكشفية من أقمشة قطنية بسيطة. أما المعدات، فكان القادة يحضرون الأواني وفؤوس الحطب من بيوتهم.",
+      "لكن ما كان ينقص في الإمكانيات المادية، عوّضته الروح الكشفية أضعافاً مضاعفة. في كل بعد ظهر سبت، كانت باحة مار يوحنا مرقس تصدح بالأناشيد الكشفية، وصفارات المسير، وضحكات فتيان وجدوا في الفوج مكاناً آمناً ومحترماً.",
+      "استمرارية تاريخية دون انقطاع: على مدى عقود من الصعوبات والأزمات الوطنية، لم تتوقف لقاءات الفوج يوماً واحداً. وحين تعذر السفر إلى غابات الأرز البعيدة، حملت الطلائع حقائبها إلى بساتين بلاط وتلال جبيل المجاورة. وحين انقطعت الكهرباء عن المدينة، استمرت اللقاءات على ضوء فوانيس الكاز وسهرات النار.",
+      "في السنوات التالية، نما الفوج ليصبح عائلة كشفية متكاملة: فاستقبل الفتيات في فروع الزهرات والمرشدات والمنجدات، وخرّج أجيالاً من القادة والقائدات، وأرسى تقاليد سنوية تنتظرها مدينة جبيل بأسرها—من رتبة سجدة الصليب الحاشدة في الجمعة العظيمة إلى المسيرة الاحتفالية في عيد مار يوحنا مرقس في أسواق جبيل القديمة.",
+      "الخيط الذهبي المتصل: اليوم، وبعد مرور خمسين عاماً، حين تدخل باحة الكاتدرائية بعد ظهر السبت، ستلتقي بفتيان وفتيات وقف آباؤهم وأجدادهم في نفس هذه الصفوف قبل عقود. يرتدون نفس المنديل الأخضر والذهبي، ويؤدون نفس الوعد الكشفي، ويرددون نفس الأناشيد. هذا الخيط الذهبي المتصل هو ما يجعل فوج القديس يوحنا مرقس شاهداً حياً على الأمل والعطاء في لبنان."
+    ],
+    inlineImages: [
+      {
+        index: 2,
+        url: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=80",
+        caption: "Historic Saint Jean Marc cathedral courtyard in Byblos",
+        captionAr: "باحة كاتدرائية مار يوحنا مرقس الأثرية في جبيل"
+      },
+      {
+        index: 4,
+        url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=80",
+        caption: "Generations gathering under the green and gold cedar scarf",
+        captionAr: "أجيال متعاقبة تجتمع بمنديل كشافة الأرز الأخضر والذهبي"
+      }
     ]
   },
   {
@@ -221,6 +330,30 @@ export const blogPosts: BlogPost[] = [
       "Within fifteen minutes, the physical exhaustion of a day spent running in mountain pine air takes over, and children fall into deep, restorative sleep.",
       "Safety, Hygiene, and 24-Hour Watch: Our group maintains a strict adult-to-child ratio. Certified first-aiders with Red Cross training are on duty at all times with fully stocked medical field kits. At night, a rotational watch ensures that no child wanders out of tents unassisted. Handwashing and tooth-brushing routines are actively supervised before every communal meal.",
       "The Sunday Pickup: When you arrive at the church courtyard on Sunday afternoon, be prepared for a wonderful surprise. Your child will step off the bus dusty, tired, wearing their scarf with immense pride, and eager to tell you fifty stories at once. They will have discovered that they are braver than they knew—and that is the greatest gift scouting offers."
+    ],
+    contentAr: [
+      "في كل عام مع اقتراب موعد مخيم الخريف التدريبي، نستقبل أولياء أمور يحملون نفس الأسئلة الصادقة والمشروعة: هل سيكون طفلي دافئاً في الليل؟ ماذا لو اشتاق إلى البيت عند النوم؟ من يتأكد من أنه تناول طعامه؟ وماذا نفعل إذا شعر بالتعب؟",
+      "إذا كنتم تشعرون ببعض القلق بشأن إرسال طفلكم في مخيمه الأول للمبيت خارج المنزل، فتنفسوا براحة. لقد رافق كل قائد وقائدة في فوجنا عشرات الأطفال في هذه الخطوة الهامة. إليكم تفصيلاً صادقاً وخطوة بخطوة لما نقوم به لحماية طفلكم ورعايته وبناء ثقته من لحظة صعود الباص حتى لقاء الأحد.",
+      "القاعدة الذهبية لتوضيب الأمتعة: وضّبوا مع طفلكم، وليس بدلاً عنه: أفضل طريقة لتبديد قلق المخيم تبدأ من غرفة الجلوس في بيتكم. اجلسوا معاً على الأرض، دعوا طفلكم يطوي سترته بنفسه، يضع جواربه الإضافية في أكياس نايلون، ويجرب مصباحه اليدوي. وحين يعرف الفتى ذو السبع سنوات في أي جيب وضع بيجامته، يشعر بالتحكم الكامل والاستقرار داخل خيمته.",
+      "ما يُمنع إحضاره تماماً: تُمنع الهواتف المحمولة، الساعات الذكية، والألعاب الإلكترونية والحلويات المصنعة منعاً باتاً. هذه الأجهزة لا تهدئ الشوق، بل تزيده لأنها تبقي الطفل مشدوداً بحبل سري رقمي. وفي بيئتنا الخالية من الشاشات، ينغمس الأطفال في ألعاب الطبيعة وسهرات النار وينسون القلق في دقائق.",
+      "كيف يتعامل القادة مع لحظة النوم عند التاسعة مساءً: المساء هو الوقت الأكثر شيوعاً لشعور المبتدئين بالشوق لأهلهم. قادتنا مدربون خصيصاً لهذه اللحظة الدافئة: لا نستهين بدموع الطفل، بل يجلس القائد قربه، يستمع إليه بحنان، يقدم له كوباً دافئاً من الشاي بالنعناع، ويذكره بمدى فخر والديه به، ويغني معه أناشيد النوم الكشفية الهادئة.",
+      "وفي غضون ربع ساعة، يتغلب التعب الجسدي بعد يوم من الركض في هواء الجبل النقي، ويغط الأطفال في نوم عميق وصحي.",
+      "السلامة، النظافة، والمراقبة المستمرة على مدار الساعة: نلتزم بنسبة إشراف عالية تضمن وجود قائد لكل عدد قليل من الأطفال. يتواجد مسعفون معتمدون في كل الأوقات مع حقائب إسعاف مجهزة. وفي الليل، يتناوب القادة على الحراسة للتأكد من عدم خروج أي طفل بمفرده. كما تتم مراقبة غسل اليدين وتنظيف الأسنان قبل كل وجبة طعام.",
+      "لقاء بعد ظهر الأحد: حين تصلون إلى باحة الكنيسة بعد ظهر الأحد لاستقبال طفلكم، استعدوا لمفاجأة سارة. سينزل طفلكم من الباص تعباً ممتلئاً بغبار المغامرة، يرتدي منديله الكشفي بفخر استثنائي، ومتشوقاً ليحكي لكم خمسين قصة في وقت واحد. لقد اكتشف أنه أكثر شجاعة واعتماداً على نفسه مما كان يظن—وهذه هي أثمن هدية تقدمها الكشفية لأبنائكم."
+    ],
+    inlineImages: [
+      {
+        index: 2,
+        url: "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?auto=format&fit=crop&w=1000&q=80",
+        caption: "Packing backpacks and checking flashlights before camp departure",
+        captionAr: "توضيب حقيبة الظهر وفحص المصباح قبل الانطلاق إلى المخيم"
+      },
+      {
+        index: 4,
+        url: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1000&q=80",
+        caption: "Tent inspection and nighttime campfire story circle",
+        captionAr: "تفتيش الخيام وحلقة قصص سهرة النار الهادئة قبل النوم"
+      }
     ]
   }
 ];

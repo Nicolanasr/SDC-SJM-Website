@@ -19,6 +19,8 @@ export interface GalleryAlbum {
   description: string;
   descriptionAr: string;
   category: "camps" | "woodcraft" | "hikes" | "ceremonies";
+  sections: ("louveteaux" | "scouts" | "routiers" | "group")[];
+  yearRange: { from: number; to: number };
 }
 
 export const galleryAlbums: GalleryAlbum[] = [
@@ -31,6 +33,8 @@ export const galleryAlbums: GalleryAlbum[] = [
     description: "Living 10 days in the high mountains of Lebanon under canvas tents, building our own kitchen, campfire lore, and starry nights.",
     descriptionAr: "عشرة أيام متواصلة في أعالي جبال لبنان تحت الخيام القماشية: بناء المطابخ الخشبية، سهرات النار، والنوم تحت النجوم.",
     category: "camps",
+    sections: ["scouts", "routiers", "louveteaux"],
+    yearRange: { from: 1980, to: 2026 },
   },
   {
     id: "pioneering",
@@ -41,6 +45,8 @@ export const galleryAlbums: GalleryAlbum[] = [
     description: "Rope lashings, timber watchtowers, bridges, and campfire cooking setups handcrafted by patrols without a single nail.",
     descriptionAr: "أبراج مراقبة، جسور، ومطابخ كشفية تبنيها الطلائع بأخشاب الصنوبر وحبال القنب دون استخدام أي مسمار.",
     category: "woodcraft",
+    sections: ["scouts", "routiers"],
+    yearRange: { from: 1978, to: 2026 },
   },
   {
     id: "hikes-expeditions",
@@ -51,6 +57,8 @@ export const galleryAlbums: GalleryAlbum[] = [
     description: "Trekking through the holy Qadisha Valley, high cedar reserves, and coastal trails overlooking ancient Byblos.",
     descriptionAr: "مسارات المشي في وادي قاديشا المقدس، محميات الأرز الجبلية، والتلال المطلة على البحر المتوسط.",
     category: "hikes",
+    sections: ["scouts", "routiers", "louveteaux"],
+    yearRange: { from: 1977, to: 2026 },
   },
   {
     id: "parish-ceremonies",
@@ -61,6 +69,8 @@ export const galleryAlbums: GalleryAlbum[] = [
     description: "May 5 anniversary parades, scout promise investitures, and weekly gatherings in the Saint Jean Marc courtyard.",
     descriptionAr: "مسيرة ٥ أيار السنوية، رتبة أداء الوعد الكشفي في الكاتدرائية، وتجمعات السبت الأسبوعية في جبيل القديمة.",
     category: "ceremonies",
+    sections: ["louveteaux", "scouts", "routiers", "group"],
+    yearRange: { from: 1977, to: 2026 },
   },
 ];
 

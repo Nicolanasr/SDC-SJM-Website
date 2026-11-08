@@ -58,8 +58,8 @@ export const historyTimeline: TimelineEvent[] = [
   },
   {
     year: "2026",
-    title: "49 Years of Authentic Scouting",
-    titleAr: "٤٩ عاماً من الكشفية الأصيلة",
+    title: "50 Years of Authentic Scouting",
+    titleAr: "٥٠ عاماً من الكشفية الأصيلة",
     description: "Over 140 active youth across all three branches, 35 dedicated volunteer leaders, and an unbroken tradition in the heart of Byblos.",
     descriptionAr: "أكثر من ١٤٠ كشافاً ومرشدة في فروعنا الثلاثة، و٣٥ قائداً متطوعاً يواصلون المسيرة في قلب جبيل.",
   },

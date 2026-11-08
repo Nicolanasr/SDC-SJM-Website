@@ -36,8 +36,8 @@ export const scoutReviews: ScoutReview[] = [
     role: "Scout Parent Committee Member",
     roleAr: "عضو لجنة الأهل في الفوج",
     rating: 5,
-    quote: "As parents, what impresses us most is the dedication of the volunteer chefs. Every Saturday is organized, safe, and positive. You feel the deep 49-year heritage of Byblos every time the group gathers.",
-    quoteAr: "أكثر ما يطمئننا كأهل هو تفاني القادة المتطوعين. كل سبت منظم، آمن، وممتلئ بالطاقة الإيجابية. تشعر بعراقة ٤٩ عاماً في كل تجمع يقيمه الفوج في جبيل.",
+    quote: "As parents, what impresses us most is the dedication of the volunteer chefs. Every Saturday is organized, safe, and positive. You feel the deep 50-year heritage of Byblos every time the group gathers.",
+    quoteAr: "أكثر ما يطمئننا كأهل هو تفاني القادة المتطوعين. كل سبت منظم، آمن، وممتلئ بالطاقة الإيجابية. تشعر بعراقة ٥٠ عاماً في كل تجمع يقيمه الفوج في جبيل.",
     image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80",
   },
   {

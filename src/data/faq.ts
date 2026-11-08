@@ -25,8 +25,8 @@ export const faqs: FAQItem[] = [
     category: "practical",
     question: "How much does scouting cost? Are camps expensive?",
     questionAr: "كم تبلغ تكلفة الانتساب؟ وهل المخيمات مكلفة؟",
-    answer: "Scouting is a non-profit volunteer movement. Annual troop dues are nominal and cover insurance, badges, and meeting supplies. Weekend outings and summer camps are budgeted at strict cost with zero profit. Furthermore, our golden rule has stood for 49 years: no child or youth is ever left behind due to financial circumstances.",
-    answerAr: "الكشفية حركة تطوعية غير ربحية. اشتراك الفوج السنوي رمزي ويغطي التأمين، الشارات ومواد الأنشطة. المخيمات والرحلات تُحسب بسعر التكلفة المباشرة فقط. وقاعدتنا الذهبية منذ ٤٩ عاماً واضحة: لا يُحرم أي طفل أو شاب من المشاركة في الفوج أو المخيمات لأسباب مادية على الإطلاق.",
+    answer: "Scouting is a non-profit volunteer movement. Annual troop dues are nominal and cover insurance, badges, and meeting supplies. Weekend outings and summer camps are budgeted at strict cost with zero profit. Furthermore, our golden rule has stood for 50 years: no child or youth is ever left behind due to financial circumstances.",
+    answerAr: "الكشفية حركة تطوعية غير ربحية. اشتراك الفوج السنوي رمزي ويغطي التأمين، الشارات ومواد الأنشطة. المخيمات والرحلات تُحسب بسعر التكلفة المباشرة فقط. وقاعدتنا الذهبية منذ ٥٠ عاماً واضحة: لا يُحرم أي طفل أو شاب من المشاركة في الفوج أو المخيمات لأسباب مادية على الإطلاق.",
   },
   {
     category: "practical",

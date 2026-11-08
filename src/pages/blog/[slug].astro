@@ -142,11 +142,41 @@ const relatedPosts = blogPosts.filter(p => p.slug !== post.slug).slice(0, 2);
       <T en={post.excerpt} ar={post.excerptAr} />
     </div>
 
-    <!-- Article Content Paragraphs -->
+    <!-- Article Content Paragraphs with Bilingual Support & Interstitial Images -->
     <div class="prose prose-lg text-stone-800 space-y-6 text-base sm:text-lg leading-relaxed border-b border-stone-200 pb-12">
-      {post.content.map(p => (
-        <p class="text-stone-700 leading-relaxed">{p}</p>
-      ))}
+      <!-- English Content -->
+      <div class="lang-en space-y-6">
+        {post.content.map((p, idx) => (
+          <div>
+            <p class="text-stone-700 leading-relaxed mb-6">{p}</p>
+            {post.inlineImages?.filter(img => img.index === idx).map(img => (
+              <figure class="my-8 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shadow-sm not-prose">
+                <img src={img.url} alt={img.caption} class="w-full h-auto object-cover max-h-[460px]" loading="lazy" />
+                <figcaption class="p-3 text-xs text-stone-500 font-sans text-center bg-stone-50 border-t border-stone-200">
+                  {img.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <!-- Arabic Content -->
+      <div class="lang-ar space-y-6">
+        {(post.contentAr || post.content).map((p, idx) => (
+          <div>
+            <p class="text-stone-700 leading-relaxed font-sans mb-6">{p}</p>
+            {post.inlineImages?.filter(img => img.index === idx).map(img => (
+              <figure class="my-8 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shadow-sm not-prose">
+                <img src={img.url} alt={img.captionAr} class="w-full h-auto object-cover max-h-[460px]" loading="lazy" />
+                <figcaption class="p-3 text-xs text-stone-500 font-sans text-center bg-stone-50 border-t border-stone-200">
+                  {img.captionAr}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
 
     <!-- Parent / Reader Help Callout Box -->

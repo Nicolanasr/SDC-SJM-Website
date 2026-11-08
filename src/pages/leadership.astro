@@ -20,18 +20,7 @@ import { siteConfig } from '../data/siteConfig';
   />
 
   <!-- Interactive Hierarchy Tree Section -->
-  <section class="py-8 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-6 sm:mb-8 space-y-1">
-      <h2 class="font-serif text-xl sm:text-3xl font-bold text-cedar-950">
-        <T en="Organizational Tree & Maitrise" ar="الهيكل التنظيمي ومجلس الفوج" />
-      </h2>
-      <p class="text-xs sm:text-sm text-stone-500">
-        <T 
-          en="Click or tap any leader card to view their profile, responsibilities, and service." 
-          ar="اضغط على بطاقة أي قائد أو مسؤولة للاطلاع على دورهم ومسؤولياتهم في خدمة الفوج." 
-        />
-      </p>
-    </div>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- The Tree Component -->
     <LeadershipTree />
@@ -81,6 +70,86 @@ import { siteConfig } from '../data/siteConfig';
         >
           <T en="Message Chef de Groupe" ar="تواصل مع قيادة الفوج" />
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership FAQ Section -->
+  <section class="pb-16 sm:pb-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-6 sm:space-y-8">
+      <div class="text-center space-y-2">
+        <span class="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-stone-100 text-stone-700 border border-stone-300">
+          <T en="LEADERSHIP & VOLUNTEERING FAQ" ar="الأسئلة الشائعة حول القيادة والتطوع" />
+        </span>
+        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
+          <T en="Frequently Asked Questions About Our Leadership" ar="أسئلة شائعة حول قيادة الفوج والمسؤوليات" />
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto">
+          <T 
+            en="Clear, transparent answers about our 100% volunteer model, safety standards, and leader formation." 
+            ar="إجابات شفافة وواضحة حول نموذج التطوع، معايير السلامة، وتدريب القادة في الفوج." 
+          />
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        
+        <!-- FAQ Item 1 -->
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-stone-200/90 shadow-xs space-y-2 hover:border-cedar-800 transition-colors">
+          <h4 class="font-bold text-sm sm:text-base text-stone-900 flex items-start gap-2">
+            <span class="text-amber-600 font-bold shrink-0">Q.</span>
+            <span><T en="Are our chefs and leaders paid or volunteers?" ar="هل قادة الفوج متطوعون أم يتقاضون أجراً؟" /></span>
+          </h4>
+          <p class="text-xs sm:text-sm text-stone-600 leading-relaxed pl-5 rtl:pl-0 rtl:pr-5">
+            <T 
+              en="100% unpaid volunteers. Every chef, cheftaine, and council member donates their time on Saturdays, weekends, and summer camps freely out of love for Byblos youth and the scout promise." 
+              ar="متطوعون ١٠٠٪ دون أي مقابل مادي. يكرس كل قائد وقائدة وقتهم في لقاءات السبت والمخيمات حباً بأجيال جبيل والتزاماً بوعدهم الكشفي." 
+            />
+          </p>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-stone-200/90 shadow-xs space-y-2 hover:border-cedar-800 transition-colors">
+          <h4 class="font-bold text-sm sm:text-base text-stone-900 flex items-start gap-2">
+            <span class="text-amber-600 font-bold shrink-0">Q.</span>
+            <span><T en="What first aid and safety certifications do leaders hold?" ar="ما هي مؤهلات السلامة والإسعافات الأولية لدى القادة؟" /></span>
+          </h4>
+          <p class="text-xs sm:text-sm text-stone-600 leading-relaxed pl-5 rtl:pl-0 rtl:pr-5">
+            <T 
+              en="Every unit has leaders certified in first aid following Lebanese Red Cross training standards, alongside mountain risk management and youth safety protocols." 
+              ar="تضم كل وحدة كشفية قادة حاصلين على شهادات إسعافات أولية معتمدة وفق معايير الصليب الأحمر اللبناني وإدارة مخاطر الطبيعة الجبلية." 
+            />
+          </p>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-stone-200/90 shadow-xs space-y-2 hover:border-cedar-800 transition-colors">
+          <h4 class="font-bold text-sm sm:text-base text-stone-900 flex items-start gap-2">
+            <span class="text-amber-600 font-bold shrink-0">Q.</span>
+            <span><T en="How do leaders balance scout duties with university or work?" ar="كيف يوفق القادة بين دراستهم الجامعية ووظائفهم وخدمة الفوج؟" /></span>
+          </h4>
+          <p class="text-xs sm:text-sm text-stone-600 leading-relaxed pl-5 rtl:pl-0 rtl:pr-5">
+            <T 
+              en="Scouting teaches real-world organization. Each section is co-led by a Unit Chief and Assistants, ensuring smooth continuity during exam seasons and work demands." 
+              ar="الكشفية مدرسة في تنظيم الوقت. تقاد كل وحدة بفريق مشترك من قائد ومساعدين، مما يضمن استمرارية النشاط بسلاسة أثناء فترات الامتحانات الجامعية." 
+            />
+          </p>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-stone-200/90 shadow-xs space-y-2 hover:border-cedar-800 transition-colors">
+          <h4 class="font-bold text-sm sm:text-base text-stone-900 flex items-start gap-2">
+            <span class="text-amber-600 font-bold shrink-0">Q.</span>
+            <span><T en="Can parents volunteer or get involved in troop support?" ar="هل يمكن لأولياء الأمور التطوع في دعم أنشطة الفوج؟" /></span>
+          </h4>
+          <p class="text-xs sm:text-sm text-stone-600 leading-relaxed pl-5 rtl:pl-0 rtl:pr-5">
+            <T 
+              en="Yes! Parents actively participate through the Parent Committee (Comité des Parents), camp logistics, first-aid support, and specialist craft workshops." 
+              ar="نعم بكل سرور! يشارك الأهل عبر لجنة أولياء الأمور، ومساندة لوجستيات المخيمات الصيفية، وتقديم ورش تدريبية تخصصية للفتية." 
+            />
+          </p>
+        </div>
+
       </div>
     </div>
   </section>

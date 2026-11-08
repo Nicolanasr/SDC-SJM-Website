@@ -45,7 +45,7 @@ export const leadershipData: LeadershipHierarchy = {
     nameAr: "القائدة غنوة",
     role: "Chefteine de Groupe (Group Leader)",
     roleAr: "قائدة الفوج",
-    bio: "Leading group operations, educational vision, and community relations, carrying our 49-year heritage forward.",
+    bio: "Leading group operations, educational vision, and community relations, carrying our 50-year heritage forward.",
     bioAr: "تقود مجلس الفوج وتتابع المسيرة التربوية والكشفية بالتنسيق مع الرعية وجمعية كشافة الأرز.",
     yearsInGroup: "Over 15 years in group",
   },
