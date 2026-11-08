@@ -76,46 +76,46 @@ const branchStyles = [
   />
 
   <!-- Quick Branch Jump Bar -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-10 sm:mb-16">
-    <div class="bg-white rounded-2xl sm:rounded-full p-2 border border-stone-200/90 shadow-md flex flex-wrap items-center justify-around gap-2">
+  <section class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-8 sm:mb-16">
+    <div class="bg-white rounded-2xl sm:rounded-full p-1.5 sm:p-2 border border-stone-200/90 shadow-md flex flex-wrap items-center justify-around gap-1.5 sm:gap-2">
       <a 
         href="#jaramiz-zahrat" 
-        class="flex-1 min-w-[200px] text-center px-4 py-2.5 rounded-xl sm:rounded-full hover:bg-amber-50 text-stone-800 hover:text-amber-900 transition-colors font-bold text-xs sm:text-sm flex items-center justify-center gap-2"
+        class="flex-1 min-w-[140px] sm:min-w-[200px] text-center px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-full hover:bg-amber-50 text-stone-800 hover:text-amber-900 transition-colors font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2"
       >
-        <span class="text-base">🐺</span>
+        <span class="text-sm sm:text-base">🐺</span>
         <span><T en="Ages 4–11: Cubs & Jeannettes" ar="٤–١١ سنة: جراميز وزهرات" /></span>
       </a>
       <span class="hidden sm:inline text-stone-300">•</span>
       <a 
         href="#kechefe-mourchidet" 
-        class="flex-1 min-w-[200px] text-center px-4 py-2.5 rounded-xl sm:rounded-full hover:bg-emerald-50 text-stone-800 hover:text-emerald-950 transition-colors font-bold text-xs sm:text-sm flex items-center justify-center gap-2"
+        class="flex-1 min-w-[140px] sm:min-w-[200px] text-center px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-full hover:bg-emerald-50 text-stone-800 hover:text-emerald-950 transition-colors font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2"
       >
-        <span class="text-base">🏕️</span>
+        <span class="text-sm sm:text-base">🏕️</span>
         <span><T en="Ages 11–16: Scouts & Guides" ar="١١–١٦ سنة: كشافة ومرشدات" /></span>
       </a>
       <span class="hidden sm:inline text-stone-300">•</span>
       <a 
         href="#jouwele-mounjidet" 
-        class="flex-1 min-w-[200px] text-center px-4 py-2.5 rounded-xl sm:rounded-full hover:bg-red-50 text-stone-800 hover:text-red-950 transition-colors font-bold text-xs sm:text-sm flex items-center justify-center gap-2"
+        class="flex-1 min-w-[140px] sm:min-w-[200px] text-center px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-full hover:bg-red-50 text-stone-800 hover:text-red-950 transition-colors font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2"
       >
-        <span class="text-base">⛰️</span>
+        <span class="text-sm sm:text-base">⛰️</span>
         <span><T en="Ages 16–24: Rovers & Caravelles" ar="١٦–٢٤ سنة: جوالة ومنجدات" /></span>
       </a>
     </div>
   </section>
 
   <!-- Detailed Units (High-Energy Magazine Showcase) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24 pb-16 sm:pb-24">
+  <section class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 space-y-10 sm:space-y-20 pb-16 sm:pb-24">
     {sectionsData.map((section, idx) => {
       const style = branchStyles[idx] || branchStyles[0];
       return (
         <article 
           id={section.id} 
-          class="scroll-mt-24 rounded-3xl overflow-hidden border-2 bg-white shadow-md hover:shadow-xl transition-all duration-300"
+          class="scroll-mt-24 rounded-2xl sm:rounded-3xl overflow-hidden border-2 bg-white shadow-md hover:shadow-xl transition-all duration-300"
           style={`border-color: ${section.accentHex}40;`}
         >
           <!-- Wide Atmospheric Top Image Banner -->
-          <div class="relative h-72 sm:h-96 w-full overflow-hidden bg-stone-900 group">
+          <div class="relative min-h-[260px] sm:h-96 w-full overflow-hidden bg-stone-900 group">
             <img 
               src={section.image} 
               alt={section.name} 
@@ -125,19 +125,19 @@ const branchStyles = [
             <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent"></div>
             
             <!-- Banner Content Overlay -->
-            <div class="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 flex flex-col md:flex-row md:items-end justify-between gap-4 text-white">
-              <div class="space-y-2">
-                <div class="flex flex-wrap items-center gap-2">
-                  <span class={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-sm ${style.badgeTheme}`}>
+            <div class="absolute bottom-3 left-3 right-3 sm:bottom-8 sm:left-8 sm:right-8 flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 text-white">
+              <div class="space-y-1.5 sm:space-y-2">
+                <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <span class={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-0.5 sm:px-3.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-sm ${style.badgeTheme}`}>
                     <span>{style.mascot}</span>
                     <T en={section.ageRange} ar={section.arabicAgeRange} />
                   </span>
-                  <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-black/60 backdrop-blur-md border border-white/20 text-gold-300">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-black/60 backdrop-blur-md border border-white/20 text-gold-300">
                     <T en={`Motto: ${section.motto}`} ar={`الشعار: ${section.arabicMotto}`} />
                   </span>
                 </div>
 
-                <h2 class="text-3xl sm:text-5xl font-black tracking-tight drop-shadow-md">
+                <h2 class="text-2xl sm:text-5xl font-black tracking-tight drop-shadow-md">
                   <T en={section.name.split('(')[0].trim()} ar={section.arabicName.split('(')[0].trim()} />
                 </h2>
                 <p class="text-xs sm:text-sm text-sand-200 font-medium">
@@ -146,36 +146,36 @@ const branchStyles = [
               </div>
 
               <!-- Saturday Meeting Pill -->
-              <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-stone-900/80 backdrop-blur-md border border-stone-700/80 text-xs font-bold text-sand-100 self-start md:self-auto">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-2xl bg-stone-900/80 backdrop-blur-md border border-stone-700/80 text-[11px] sm:text-xs font-bold text-sand-100 self-start md:self-auto">
+                <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span><T en="Every Saturday 3:00 – 4:30 PM" ar="كل سبت ٣:٠٠ – ٤:٣٠ بعد الظهر" /></span>
               </div>
             </div>
           </div>
 
           <!-- Main Body -->
-          <div class="p-6 sm:p-10 lg:p-12 space-y-10">
+          <div class="p-3.5 sm:p-8 lg:p-12 space-y-6 sm:space-y-10">
             
             <!-- Narrative Lead -->
-            <div class="max-w-4xl space-y-3">
-              <h3 class="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+            <div class="max-w-4xl space-y-2 sm:space-y-3">
+              <h3 class="text-lg sm:text-2xl font-black text-stone-900 tracking-tight">
                 <T en="The Spirit & The Adventure" ar="روح المغامرة في هذا الفرع" />
               </h3>
-              <p class="text-stone-700 text-base sm:text-lg leading-relaxed font-sans">
+              <p class="text-stone-700 text-sm sm:text-lg leading-relaxed font-sans">
                 <T en={section.description} ar={section.arabicDescription} />
               </p>
             </div>
 
             <!-- Two Sub-Units Cards (Boys Branch & Girls Branch) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 pt-1 sm:pt-2">
               {style.subUnits.map(unit => (
-                <div class="p-5 rounded-2xl bg-stone-50 border border-stone-200/80 flex items-start gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center font-bold text-lg shrink-0 shadow-xs">
+                <div class="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-stone-50 border border-stone-200/80 flex items-start gap-3 sm:gap-4">
+                  <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center font-bold text-base sm:text-lg shrink-0 shadow-xs">
                     {style.mascot}
                   </div>
                   <div>
-                    <h4 class="font-bold text-base text-stone-900">{unit.name}</h4>
-                    <span class="text-xs font-semibold text-amber-800 uppercase tracking-wider block">{unit.target}</span>
+                    <h4 class="font-bold text-sm sm:text-base text-stone-900">{unit.name}</h4>
+                    <span class="text-[11px] sm:text-xs font-semibold text-amber-800 uppercase tracking-wider block">{unit.target}</span>
                     <p class="text-xs text-stone-600 mt-1 leading-relaxed">{unit.role}</p>
                   </div>
                 </div>
@@ -183,21 +183,21 @@ const branchStyles = [
             </div>
 
             <!-- 3 Adventure Highlights Cards (WOW Factor) -->
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4">
               <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-stone-500">
                 <Sparkles class="w-4 h-4 text-gold-500" />
                 <span><T en="What Youth Love About This Branch" ar="أبرز ما يعيشه ويبنيه الشباب في هذا الفرع" /></span>
               </div>
 
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-5">
                 {style.highlights.map(h => (
-                  <div class="p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:border-stone-400 transition-colors flex flex-col justify-between">
+                  <div class="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-stone-50 border border-stone-200 hover:border-stone-400 transition-colors flex flex-col justify-between">
                     <div>
-                      <span class="text-2xl block mb-2">{h.icon}</span>
+                      <span class="text-xl sm:text-2xl block mb-1.5 sm:mb-2">{h.icon}</span>
                       <h4 class="font-bold text-sm sm:text-base text-stone-900">
                         <T en={h.title} ar={h.titleAr} />
                       </h4>
-                      <p class="text-xs text-stone-600 leading-relaxed mt-1.5">
+                      <p class="text-xs text-stone-600 leading-relaxed mt-1">
                         {h.desc}
                       </p>
                     </div>
@@ -207,10 +207,10 @@ const branchStyles = [
             </div>
 
             <!-- Deep Dive: Parent Trust vs Youth Skills Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-stone-100">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-3 sm:pt-4 border-t border-stone-100">
               
               <!-- For Parents: Peace of mind, safety, values -->
-              <div class="rounded-2xl p-6 bg-emerald-50/60 border border-emerald-200/80 space-y-4">
+              <div class="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-emerald-50/60 border border-emerald-200/80 space-y-3 sm:space-y-4">
                 <div class="flex items-center gap-2.5 text-emerald-950 font-bold text-sm sm:text-base">
                   <Shield class="w-5 h-5 text-emerald-700 shrink-0" />
                   <h4>
@@ -236,7 +236,7 @@ const branchStyles = [
               </div>
 
               <!-- For Teens / Scouts: Concrete skills & traditions -->
-              <div class="rounded-2xl p-6 bg-amber-50/60 border border-amber-200/80 space-y-4">
+              <div class="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-amber-50/60 border border-amber-200/80 space-y-3 sm:space-y-4">
                 <div class="flex items-center gap-2.5 text-amber-950 font-bold text-sm sm:text-base">
                   <Flame class="w-5 h-5 text-amber-700 shrink-0" />
                   <h4>

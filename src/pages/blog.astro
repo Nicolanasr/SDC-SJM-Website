@@ -24,8 +24,8 @@ const regularPosts = blogPosts.filter(p => p.slug !== featuredPost.slug);
   />
 
   <!-- FEATURED LEAD STORY (Inspired by On Scouting & Scout Life Magazine) -->
-  <section class="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="rounded-3xl overflow-hidden bg-stone-900 border border-stone-800 shadow-xl text-white">
+  <section class="py-6 sm:py-12 max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
+    <div class="rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-900 border border-stone-800 shadow-xl text-white">
       <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
         
         <!-- Big Hero Image -->
@@ -49,7 +49,7 @@ const regularPosts = blogPosts.filter(p => p.slug !== featuredPost.slug);
         </a>
 
         <!-- Story Meta -->
-        <div class="lg:col-span-5 p-6 sm:p-10 space-y-4">
+        <div class="lg:col-span-5 p-4 sm:p-8 lg:p-10 space-y-3 sm:space-y-4">
           <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-stone-400">
             <span class="px-2.5 py-0.5 rounded-full bg-stone-800 text-amber-400 border border-stone-700">
               <T en={featuredPost.category} ar={featuredPost.categoryAr} />
@@ -89,43 +89,43 @@ const regularPosts = blogPosts.filter(p => p.slug !== featuredPost.slug);
   </section>
 
   <!-- SEARCH & CATEGORY FILTER TABS (Inspired by Scouter Mom & On Scouting) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 space-y-4">
+  <section class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 pt-4 pb-8 space-y-4">
     <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
       
       <!-- Category Tabs -->
-      <div class="flex flex-wrap items-center gap-2" id="blog-category-filters">
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2" id="blog-category-filters">
         <button 
           type="button" 
           data-filter="all" 
-          class="blog-tab active px-4 py-2 rounded-full text-xs font-bold transition-all bg-emerald-800 text-white shadow-sm cursor-pointer"
+          class="blog-tab active px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all bg-emerald-800 text-white shadow-sm cursor-pointer"
         >
           <T en="All Topics" ar="جميع الموضوعات" />
         </button>
         <button 
           type="button" 
           data-filter="Parent Corner" 
-          class="blog-tab px-4 py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
+          class="blog-tab px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
         >
           <T en="Parent Corner" ar="ركن الأهل" />
         </button>
         <button 
           type="button" 
           data-filter="Outdoor Skills" 
-          class="blog-tab px-4 py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
+          class="blog-tab px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
         >
           <T en="Outdoor Skills & Gear" ar="مهارات الخلاء" />
         </button>
         <button 
           type="button" 
           data-filter="Camp Life" 
-          class="blog-tab px-4 py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
+          class="blog-tab px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
         >
           <T en="Camp Life & Traditions" ar="الحياة الكشفية" />
         </button>
         <button 
           type="button" 
           data-filter="Heritage" 
-          class="blog-tab px-4 py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
+          class="blog-tab px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all bg-stone-100 text-stone-700 hover:bg-stone-200 cursor-pointer"
         >
           <T en="Heritage & Byblos" ar="التاريخ والتراث" />
         </button>
@@ -146,11 +146,11 @@ const regularPosts = blogPosts.filter(p => p.slug !== featuredPost.slug);
   </section>
 
   <!-- ALL ARTICLES GRID -->
-  <section class="pb-16 sm:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="blog-posts-grid">
+  <section class="pb-16 sm:pb-24 max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8" id="blog-posts-grid">
       {blogPosts.map(post => (
         <article 
-          class="blog-card bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md hover:border-stone-400 transition-all flex flex-col justify-between"
+          class="blog-card bg-white rounded-2xl sm:rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md hover:border-stone-400 transition-all flex flex-col justify-between"
           data-category={post.category}
           data-title={post.title.toLowerCase()}
           data-desc={post.excerpt.toLowerCase()}
@@ -170,7 +170,7 @@ const regularPosts = blogPosts.filter(p => p.slug !== featuredPost.slug);
             </a>
 
             <!-- Content -->
-            <div class="p-5 sm:p-7 space-y-3">
+            <div class="p-3.5 sm:p-7 space-y-2.5 sm:space-y-3">
               <div class="flex items-center gap-2">
                 <span class="px-2.5 py-0.5 rounded-full bg-stone-100 text-emerald-900 font-bold uppercase tracking-wider text-[10px] border border-stone-200">
                   <T en={post.category} ar={post.categoryAr} />

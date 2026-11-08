@@ -36,13 +36,13 @@ const currentPath = Astro.url.pathname;
 </div>
 
 <header class="sticky top-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-cedar-800/10 transition-all">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 sm:h-20">
+  <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20 gap-2">
       
       <!-- Brand Logo & Name -->
-      <a href="/" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-cedar-600 rounded-lg p-0.5 sm:p-1">
+      <a href="/" class="flex items-center gap-2 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-cedar-600 rounded-lg p-0.5 sm:p-1 min-w-0">
         <!-- Official Scout Des Cèdres Group Logo -->
-        <div class="w-10 h-10 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center">
+        <div class="w-9 h-9 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center">
           <img 
             src={siteConfig.logoUrl} 
             alt="Scout Des Cèdres Saint Jean Marc Logo" 
@@ -51,11 +51,11 @@ const currentPath = Astro.url.pathname;
             height="48"
           />
         </div>
-        <div>
-          <div class="font-serif font-bold text-base sm:text-xl text-cedar-950 leading-tight">
+        <div class="min-w-0 truncate">
+          <div class="font-serif font-bold text-sm sm:text-xl text-cedar-950 leading-tight truncate">
             <T en="Saint Jean Marc" ar="فوج القديس يوحنا مرقس" />
           </div>
-          <div class="text-[10px] sm:text-xs uppercase tracking-wider text-cedar-700 font-semibold truncate max-w-[150px] sm:max-w-none">
+          <div class="text-[9px] sm:text-xs uppercase tracking-wider text-cedar-700 font-semibold truncate">
             <T en="Scout Des Cèdres" ar="كشافة الأرز" />
           </div>
         </div>
@@ -115,7 +115,7 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <!-- Mobile Right Controls (WhatsApp + Switcher + Hamburger) -->
-      <div class="md:hidden flex items-center gap-2">
+      <div class="md:hidden flex items-center gap-1.5 sm:gap-2 shrink-0">
         <LanguageSwitcher />
 
         <button 

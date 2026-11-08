@@ -6,7 +6,7 @@ import T from './T.astro';
 <div 
   id="troop-calendar-root" 
   data-phone={siteConfig.contact.phoneRaw} 
-  class="rounded-3xl bg-white border border-stone-200 p-4 sm:p-10 shadow-sm mb-10 sm:mb-16"
+  class="rounded-2xl sm:rounded-3xl bg-white border border-stone-200 p-3 sm:p-8 lg:p-10 shadow-sm mb-8 sm:mb-16"
 >
   
   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-5 sm:pb-6 border-b border-stone-200">
@@ -52,7 +52,7 @@ import T from './T.astro';
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 pt-6 sm:pt-8 items-start">
     
     <!-- LEFT: Calendar Widget -->
-    <div class="lg:col-span-5 bg-[#FAF7F2] rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 border border-stone-300/80 shadow-sm">
+    <div class="lg:col-span-5 bg-[#FAF7F2] rounded-xl sm:rounded-3xl p-2.5 sm:p-5 border border-stone-300/80 shadow-sm">
       
       <!-- Day Names Header Row -->
       <div class="grid grid-cols-7 gap-1 text-center font-bold text-[11px] text-stone-500 uppercase tracking-wider mb-2">
@@ -89,13 +89,13 @@ import T from './T.astro';
     </div>
 
     <!-- RIGHT: Active Selected Saturday Details Card (Server Pre-rendered for zero empty state) -->
-    <div class="lg:col-span-7 space-y-4">
+    <div class="lg:col-span-7 space-y-3 sm:space-y-4">
       
       <div class="text-xs uppercase tracking-widest font-bold text-stone-500">
         <T en="Schedule for Selected Saturday:" ar="برنامج نشاط يوم السبت المحدد:" />
       </div>
 
-      <div id="event-spotlight-card" class="bg-white rounded-3xl border border-stone-300 p-5 sm:p-8 shadow-sm space-y-4 transition-all">
+      <div id="event-spotlight-card" class="bg-white rounded-xl sm:rounded-3xl border border-stone-300 p-3.5 sm:p-7 shadow-sm space-y-3.5 sm:space-y-4 transition-all">
         <div class="flex items-center justify-between">
           <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-700 text-white">
             <T en="Weekly Gathering" ar="لقاء أسبوعي منتظم" />

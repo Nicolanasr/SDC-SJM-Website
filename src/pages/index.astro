@@ -33,7 +33,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
     </div>
 
     <!-- Content on top of background -->
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-28 w-full">
+    <div class="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-14 sm:py-28 w-full">
       <div class="max-w-3xl space-y-4 sm:space-y-5">
         
         <!-- Eyebrow Badge -->
@@ -85,7 +85,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   </section>
 
   <!-- WHEN, WHERE & HOW TO JOIN (Unified non-repetitive section with embedded Google Map) -->
-  <section id="meeting" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="meeting" class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
     <MeetingBanner />
   </section>
 
@@ -93,7 +93,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   <HistoryTimeline />
 
   <!-- SECTIONS / UNITS (With Photos for Each Age Section) -->
-  <section class="py-12 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-12 sm:py-24 max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
       <div>
         <span class="text-xs uppercase tracking-widest font-bold text-stone-500 block font-sans">
@@ -411,7 +411,21 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   </section>
 
   <!-- PARENT FAQS ACCORDION -->
-  <section id="faq" class="py-12 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="faq" class="py-12 sm:py-20 max-w-4xl mx-auto px-3 sm:px-6 lg:px-8">
+    <!-- FAQPage Schema for Google & AI Search Assistants -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    })} />
+
     <div class="text-center space-y-1.5 sm:space-y-2 mb-8 sm:mb-12">
       <span class="text-xs uppercase tracking-widest font-bold text-stone-500 font-sans block">
         <T en="FREQUENT QUESTIONS" ar="الأسئلة الشائعة" />
@@ -477,7 +491,7 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   </section>
 
   <!-- CONTACT & WHATSAPP -->
-  <section id="contact" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-stone-200">
+  <section id="contact" class="py-12 sm:py-20 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 border-t border-stone-200">
     <div class="text-center max-w-xl mx-auto space-y-1.5 sm:space-y-2 mb-8 sm:mb-12">
       <span class="text-xs uppercase tracking-widest font-bold text-stone-500 font-sans block">
         <T en="GET IN TOUCH" ar="تواصل معنا" />

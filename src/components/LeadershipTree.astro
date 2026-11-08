@@ -3,7 +3,7 @@ import { leadershipData, type LeaderNode } from '../data/leadership';
 import T from './T.astro';
 ---
 
-<div class="py-6 sm:py-10 max-w-6xl mx-auto px-4 sm:px-6">
+<div class="py-6 sm:py-10 max-w-6xl mx-auto px-2.5 sm:px-6">
   
   <div class="space-y-12 sm:space-y-16">
     
@@ -161,7 +161,7 @@ import T from './T.astro';
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {leadershipData.units.map(unit => (
-          <div class={`rounded-3xl p-5 border-2 ${unit.color} shadow-sm space-y-4 flex flex-col justify-between bg-white`}>
+          <div class={`rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 border-2 ${unit.color} shadow-sm space-y-4 flex flex-col justify-between bg-white`}>
             <div>
               <div class="border-b border-stone-200 pb-2 mb-3">
                 <h4 class="font-black text-base sm:text-lg text-stone-900">
