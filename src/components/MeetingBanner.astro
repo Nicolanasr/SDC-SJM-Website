@@ -91,26 +91,72 @@ import T from './T.astro';
       </div>
     </div>
 
-    <!-- Right: Embedded Google Map (Pure Google Map, no sketch) -->
+    <!-- Right: High-Performance Google Maps Facade (0 KB initial JS overhead) -->
     <div class="lg:col-span-6">
-      <div class="w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-cedar-800 bg-stone-900 shadow-md">
-        <iframe 
-          src={siteConfig.meetingSchedule.googleMapsEmbedUrl} 
-          width="100%" 
-          height="100%" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="strict-origin-when-cross-origin"
-          title="Scout Des Cedres Saint Jean Marc Location Map"
-          class="w-full h-full"
-        ></iframe>
+      <div 
+        id="map-facade-container"
+        class="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-cedar-800 bg-stone-900 shadow-md group cursor-pointer"
+        data-embed-url={siteConfig.meetingSchedule.googleMapsEmbedUrl}
+        role="region"
+        aria-label="Map location preview"
+      >
+        <!-- Styled Scout Map Preview (Instant paint, 0 KB external JS) -->
+        <div id="map-facade-preview" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-cedar-950 via-stone-900 to-cedar-900 transition-opacity">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gold-500/20 text-gold-400 border border-gold-500/40 flex items-center justify-center mb-2.5 shadow-inner group-hover:scale-110 transition-transform">
+            <MapPin class="w-6 h-6 sm:w-7 sm:h-7 text-gold-400" />
+          </div>
+          <div class="font-serif text-base sm:text-lg font-bold text-white mb-0.5">
+            <T en="Courtyard of Saint Jean Marc" ar="باحة وقاعة مار يوحنا مرقس" />
+          </div>
+          <p class="text-xs text-sand-300 max-w-xs mb-3.5">
+            <T en="Old Byblos Square • Historic Church Courtyard" ar="ساحة بيبلوس القديمة • باحة الكنيسة الأثرية" />
+          </p>
+          <button 
+            type="button"
+            id="load-map-btn"
+            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold-500 hover:bg-gold-400 text-stone-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md group-hover:shadow-lg min-h-[44px]"
+            aria-label="Load interactive Google map"
+          >
+            <T en="View Interactive Map" ar="عرض الخريطة التفاعلية" />
+          </button>
+        </div>
       </div>
       <div class="mt-2.5 flex items-center justify-between text-xs text-sand-400">
         <span>Old Byblos Square (UNESCO)</span>
         <span class="font-mono text-gold-400">4JCW+F8J, Jbeil</span>
       </div>
     </div>
+
+<script>
+  // High-performance map facade: only mount Google Maps iframe upon user interaction
+  const container = document.getElementById('map-facade-container');
+  if (container) {
+    const activateMap = () => {
+      const url = container.dataset.embedUrl;
+      if (!url || container.querySelector('iframe')) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = url;
+      iframe.width = '100%';
+      iframe.height = '100%';
+      iframe.style.border = '0';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.title = 'Scout Des Cedres Saint Jean Marc Location Map';
+      iframe.className = 'w-full h-full';
+      container.innerHTML = '';
+      container.appendChild(iframe);
+    };
+
+    container.addEventListener('click', activateMap, { once: true });
+    container.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activateMap();
+      }
+    }, { once: true });
+  }
+</script>
 
   </div>
 </div>
