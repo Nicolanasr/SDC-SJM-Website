@@ -91,34 +91,26 @@ import T from './T.astro';
       </div>
     </div>
 
-    <!-- Right: High-Performance Google Maps Facade (0 KB initial JS overhead) -->
+    <!-- Right: Embedded Google Map (Auto-loads on Scroll) -->
     <div class="lg:col-span-6">
       <div 
-        id="map-facade-container"
-        class="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-cedar-800 bg-stone-900 shadow-md group cursor-pointer"
+        id="map-container"
+        class="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-cedar-800 bg-stone-900 shadow-md"
         data-embed-url={siteConfig.meetingSchedule.googleMapsEmbedUrl}
         role="region"
-        aria-label="Map location preview"
+        aria-label="Location Map"
       >
-        <!-- Styled Scout Map Preview (Instant paint, 0 KB external JS) -->
-        <div id="map-facade-preview" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-cedar-950 via-stone-900 to-cedar-900 transition-opacity">
-          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gold-500/20 text-gold-400 border border-gold-500/40 flex items-center justify-center mb-2.5 shadow-inner group-hover:scale-110 transition-transform">
-            <MapPin class="w-6 h-6 sm:w-7 sm:h-7 text-gold-400" />
+        <!-- Lightweight Placeholder while scrolling into view -->
+        <div id="map-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-stone-900 text-sand-300">
+          <div class="w-12 h-12 rounded-full bg-cedar-900 text-gold-400 border border-cedar-800 flex items-center justify-center mb-2.5 shadow-inner">
+            <MapPin class="w-6 h-6 text-gold-400" />
           </div>
-          <div class="font-serif text-base sm:text-lg font-bold text-white mb-0.5">
+          <div class="font-serif text-base font-bold text-white mb-0.5">
             <T en="Courtyard of Saint Jean Marc" ar="باحة وقاعة مار يوحنا مرقس" />
           </div>
-          <p class="text-xs text-sand-300 max-w-xs mb-3.5">
-            <T en="Old Byblos Square • Historic Church Courtyard" ar="ساحة بيبلوس القديمة • باحة الكنيسة الأثرية" />
+          <p class="text-xs text-sand-400">
+            <T en="Old Byblos Square, Jbeil" ar="ساحة بيبلوس الأثرية، جبيل" />
           </p>
-          <button 
-            type="button"
-            id="load-map-btn"
-            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold-500 hover:bg-gold-400 text-stone-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md group-hover:shadow-lg min-h-[44px]"
-            aria-label="Load interactive Google map"
-          >
-            <T en="View Interactive Map" ar="عرض الخريطة التفاعلية" />
-          </button>
         </div>
       </div>
       <div class="mt-2.5 flex items-center justify-between text-xs text-sand-400">
@@ -128,12 +120,12 @@ import T from './T.astro';
     </div>
 
 <script>
-  // High-performance map facade: only mount Google Maps iframe upon user interaction
-  const container = document.getElementById('map-facade-container');
-  if (container) {
-    const activateMap = () => {
-      const url = container.dataset.embedUrl;
-      if (!url || container.querySelector('iframe')) return;
+  // Automatically loads the live Google Map as soon as user scrolls towards it
+  const mapContainer = document.getElementById('map-container');
+  if (mapContainer) {
+    const mountMap = () => {
+      const url = mapContainer.dataset.embedUrl;
+      if (!url || mapContainer.querySelector('iframe')) return;
       const iframe = document.createElement('iframe');
       iframe.src = url;
       iframe.width = '100%';
@@ -144,17 +136,26 @@ import T from './T.astro';
       iframe.referrerPolicy = 'strict-origin-when-cross-origin';
       iframe.title = 'Scout Des Cedres Saint Jean Marc Location Map';
       iframe.className = 'w-full h-full';
-      container.innerHTML = '';
-      container.appendChild(iframe);
+      iframe.onload = () => {
+        const placeholder = document.getElementById('map-placeholder');
+        if (placeholder) placeholder.remove();
+      };
+      mapContainer.appendChild(iframe);
     };
 
-    container.addEventListener('click', activateMap, { once: true });
-    container.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        activateMap();
-      }
-    }, { once: true });
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            mountMap();
+            obs.disconnect();
+          }
+        });
+      }, { rootMargin: '120px' });
+      observer.observe(mapContainer);
+    } else {
+      window.addEventListener('scroll', mountMap, { once: true, passive: true });
+    }
   }
 </script>
 
