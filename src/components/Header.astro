@@ -87,18 +87,6 @@ const currentPath = Astro.url.pathname;
         >
           <T en="Leadership" ar="القادة" />
         </a>
-        <a 
-          href="/gallery" 
-          class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/gallery') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
-        >
-          <T en="Gallery" ar="الصور" />
-        </a>
-        <a 
-          href="/blog" 
-          class={`px-3 py-2 rounded-full transition-colors ${currentPath.startsWith('/blog') ? 'text-cedar-900 bg-cedar-100/70 font-bold' : 'hover:text-cedar-900 hover:bg-stone-200/50'}`}
-        >
-          <T en="Field Notes" ar="المقالات" />
-        </a>
       </nav>
 
       <!-- Action Button & Language Switcher -->
@@ -149,12 +137,6 @@ const currentPath = Astro.url.pathname;
     </a>
     <a href="/leadership" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">
       <T en="Scout Leadership" ar="القادة ومجلس الفوج" />
-    </a>
-    <a href="/gallery" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">
-      <T en="Photo Gallery" ar="معرض الصور" />
-    </a>
-    <a href="/blog" class="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-800 hover:bg-cedar-100/60">
-      <T en="Field Notes (Blog)" ar="مقالات ودليل الأهل" />
     </a>
     
     <div class="pt-3 border-t border-stone-200 flex flex-col gap-2.5">
