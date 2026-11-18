@@ -45,7 +45,7 @@ export const upcomingEvents: ScoutEvent[] = [
     badge: "Weekly Meeting",
     badgeAr: "لقاء أسبوعي",
     badgeColor: "bg-emerald-700 text-white",
-    image: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1200&q=80",
+    image: "",
     meetingPoint: "Courtyard of Saint Jean Marc Church, Old Byblos",
     departureTime: "Saturday at 3:00 PM sharp (Drop-off)",
     returnTime: "Saturday at 4:30 PM (Pick-up)",

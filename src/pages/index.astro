@@ -25,29 +25,18 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
   <!-- HERO SECTION (Full Background Group Photo with Overlay) -->
   <section class="relative min-h-[520px] sm:min-h-[640px] lg:min-h-[720px] flex items-center bg-stone-900 overflow-hidden">
     
-    <!-- Background Whole Group Photo (Responsive for sub-1.5s mobile LCP) -->
-    <div class="absolute inset-0 z-0">
-      <picture>
-        <source 
-          media="(max-width: 640px)" 
-          srcset="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=640&q=75" 
-        />
-        <source 
-          media="(max-width: 1024px)" 
-          srcset="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1024&q=80" 
-        />
-        <img 
-          src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1600&q=80" 
-          alt="Scout Des Cèdres Saint Jean Marc whole group gathering" 
-          class="w-full h-full object-cover object-center brightness-90"
-          fetchpriority="high"
-          decoding="async"
-          width="1600"
-          height="900"
-        />
-      </picture>
-      <!-- Gradient overlay: darker where text sits on left, fading to preserve the group photo on right -->
-      <div class="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/80 to-stone-950/40"></div>
+    <!-- Background Whole Group Photo (or placeholder if not ready) -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-br from-cedar-950 via-stone-900 to-stone-950 flex items-center justify-end pr-8 sm:pr-16">
+      <div class="border-2 border-dashed border-stone-700/60 rounded-3xl p-6 sm:p-8 max-w-sm text-right text-stone-400 hidden lg:block opacity-60">
+        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30 mb-2">
+          Hero Photo Needed
+        </span>
+        <p class="text-xs font-semibold text-stone-200">
+          <T en="Whole Troop Gathering in Saint Jean Marc Courtyard (1600 × 900 px)" ar="صورة التجمع العام للفوج في باحة مار يوحنا مرقس (١٦٠٠ × ٩٠٠ بكسل)" />
+        </p>
+      </div>
+      <!-- Gradient overlay: darker where text sits on left -->
+      <div class="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/80 to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-stone-950/40"></div>
     </div>
 
@@ -136,17 +125,31 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
         <div class="bg-white rounded-3xl p-4 sm:p-6 border border-stone-200 shadow-sm flex flex-col justify-between hover:border-stone-400 transition-colors">
           <div class="space-y-4">
             
-            <!-- Section Image -->
-            <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden bg-stone-200 relative">
-              <img 
-                src={section.image} 
-                alt={section.name} 
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                loading="lazy"
-                decoding="async"
-                width="600"
-                height="375"
-              />
+            <!-- Section Image (or HTML placeholder if not ready) -->
+            <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 relative flex items-center justify-center">
+              {section.image ? (
+                <img 
+                  src={section.image} 
+                  alt={section.name} 
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="375"
+                />
+              ) : (
+                <div class="w-full h-full flex flex-col items-center justify-center p-4 text-center bg-stone-100/90">
+                  <div class="w-10 h-10 rounded-full bg-stone-200 text-stone-500 flex items-center justify-center mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  </div>
+                  <span class="text-[9px] uppercase font-bold tracking-wider text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-full mb-1">
+                    Photo Needed
+                  </span>
+                  <p class="text-xs font-bold text-stone-800">
+                    <T en={`${section.name} in action`} ar={`صورة نشاط ${section.arabicName}`} />
+                  </p>
+                </div>
+              )}
               <span class={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/95 text-stone-900 shadow-sm backdrop-blur-sm border border-stone-200`}>
                 <T en={section.ageRange} ar={section.arabicAgeRange} />
               </span>
@@ -228,8 +231,8 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
 
         <p class="text-stone-600 text-sm sm:text-base max-w-md">
           <T 
-            en="From weekend mountain trails and parish service to our annual camps under canvas, scouting offers youth a year-round journey of outdoor discovery and leadership." 
-            ar="من مسيرات الطبيعة الأسبوعية وخدمة الرعية إلى المخيمات السنوية تحت الخيمة، يعيش أبناؤنا تجربة كشفية حقيقية تصقل الشخصية على مدار العام." 
+            en="Every spring and summer, our scouts pack their rucksacks for the Lebanese mountains. We pitch canvas tents, cook on wood fires, and learn to look after each other." 
+            ar="بفصل الربيع وبالصيف، بتطلع طلائعنا عمخيمات بجبال لبنان. بننصب خيمنا بإيدنا، بنطبخ عالحطب، وبنتعلم نشيل بعض بالبرية." 
           />
         </p>
       </div>
@@ -240,13 +243,24 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
           <div class="bg-white rounded-3xl border border-stone-200 p-4 sm:p-6 shadow-sm hover:border-stone-400 transition-all flex flex-col justify-between">
             <div class="space-y-4">
               <!-- Photo with organic date tag -->
-              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden bg-stone-200 relative">
-                <img 
-                  src={event.image} 
-                  alt={event.title} 
-                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  loading="lazy"
-                />
+              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 relative flex items-center justify-center">
+                {event.image ? (
+                  <img 
+                    src={event.image} 
+                    alt={event.title} 
+                    class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full h-full flex flex-col items-center justify-center p-4 text-center bg-stone-100">
+                    <span class="text-[9px] uppercase font-bold tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full mb-1">
+                      Event Photo
+                    </span>
+                    <p class="text-xs font-bold text-stone-800">
+                      <T en={event.title} ar={event.titleAr} />
+                    </p>
+                  </div>
+                )}
                 <!-- Scout Date Badge -->
                 <div class="absolute top-3 left-3 bg-stone-950/85 backdrop-blur-sm text-sand-50 rounded-xl px-3 py-1.5 shadow-sm text-center border border-white/15">
                   <div class="text-[10px] font-bold uppercase tracking-wider text-gold-400">
@@ -333,13 +347,24 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
       {blogPosts.slice(0, 3).map(post => (
         <article class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md hover:border-stone-400 transition-all flex flex-col justify-between">
           <div>
-            <a href={`/blog/${post.slug}`} class="block aspect-[16/10] overflow-hidden bg-stone-200">
-              <img 
-                src={post.image} 
-                alt={post.title} 
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                loading="lazy"
-              />
+            <a href={`/blog/${post.slug}`} class="block aspect-[16/10] overflow-hidden bg-stone-100 relative flex items-center justify-center">
+              {post.image ? (
+                <img 
+                  src={post.image} 
+                  alt={post.title} 
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-full h-full flex flex-col items-center justify-center p-4 text-center bg-stone-100">
+                  <span class="text-[9px] uppercase font-bold tracking-wider text-stone-600 bg-stone-200 px-2 py-0.5 rounded-full mb-1">
+                    Article Photo
+                  </span>
+                  <p class="text-xs font-bold text-stone-800 line-clamp-2 max-w-xs">
+                    <T en={post.title} ar={post.titleAr || post.title} />
+                  </p>
+                </div>
+              )}
             </a>
 
             <div class="p-4 sm:p-6 space-y-2.5">
@@ -413,18 +438,23 @@ import { MapPin, Clock, Users, ArrowRight, Calendar } from 'lucide-astro';
           </div>
         </div>
 
-        <!-- Leaders Photo Column (User can easily swap this image) -->
+        <!-- Leaders Photo Column (or placeholder if not ready) -->
         <div class="lg:col-span-5">
-          <div class="aspect-[16/10] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shadow-inner relative group">
-            <img 
-              src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=75" 
-              alt="Maitrise and volunteer leaders of Scout Des Cèdres Saint Jean Marc" 
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-              width="600"
-              height="375"
-            />
+          <div class="aspect-[16/10] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shadow-inner relative group flex items-center justify-center">
+            <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-stone-100">
+              <div class="w-12 h-12 rounded-full bg-cedar-900/10 text-cedar-850 flex items-center justify-center mb-2.5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              </div>
+              <span class="text-[10px] uppercase font-bold tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full mb-1.5">
+                Photo Needed
+              </span>
+              <p class="text-sm font-bold text-stone-900">
+                <T en="Troop Maitrise & Chefs Official Photo" ar="صورة مجلس وقادة الفوج الرسمية" />
+              </p>
+              <p class="text-xs text-stone-500 mt-1 max-w-xs">
+                <T en="Upload a photo of chefs, cheftaines and chaplain in uniform" ar="يرجى إضافة صورة رسمية للقادة والقائدات مع المرشد الروحي" />
+              </p>
+            </div>
             <div class="absolute bottom-2.5 right-2.5 rtl:right-auto rtl:left-2.5 bg-stone-900/80 backdrop-blur-sm text-sand-50 text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">
               <T en="Troop Maitrise & Chefs" ar="مجلس وقادة الفوج" />
             </div>

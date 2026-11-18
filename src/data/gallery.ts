@@ -29,7 +29,7 @@ export const galleryAlbums: GalleryAlbum[] = [
     name: "Grand Summer Camps",
     nameAr: "المخيمات الصيفية الكبرى",
     count: 6,
-    coverImage: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1000&q=80",
+    coverImage: "",
     description: "Living 10 days in the high mountains of Lebanon under canvas tents, building our own kitchen, campfire lore, and starry nights.",
     descriptionAr: "عشرة أيام متواصلة في أعالي جبال لبنان تحت الخيام القماشية: بناء المطابخ الخشبية، سهرات النار، والنوم تحت النجوم.",
     category: "camps",
@@ -41,7 +41,7 @@ export const galleryAlbums: GalleryAlbum[] = [
     name: "Froissartage & Pioneering",
     nameAr: "ريادة الخلاء والمنشآت الخشبية",
     count: 4,
-    coverImage: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1000&q=80",
+    coverImage: "",
     description: "Rope lashings, timber watchtowers, bridges, and campfire cooking setups handcrafted by patrols without a single nail.",
     descriptionAr: "أبراج مراقبة، جسور، ومطابخ كشفية تبنيها الطلائع بأخشاب الصنوبر وحبال القنب دون استخدام أي مسمار.",
     category: "woodcraft",
@@ -53,7 +53,7 @@ export const galleryAlbums: GalleryAlbum[] = [
     name: "Mountain Hikes & Expeditions",
     nameAr: "رحلات المسير واستكشاف الجبال",
     count: 4,
-    coverImage: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1000&q=80",
+    coverImage: "",
     description: "Trekking through the holy Qadisha Valley, high cedar reserves, and coastal trails overlooking ancient Byblos.",
     descriptionAr: "مسارات المشي في وادي قاديشا المقدس، محميات الأرز الجبلية، والتلال المطلة على البحر المتوسط.",
     category: "hikes",
@@ -65,7 +65,7 @@ export const galleryAlbums: GalleryAlbum[] = [
     name: "Parish Life & Ceremonies",
     nameAr: "احتفالات الرعية والوعد الكشفي",
     count: 4,
-    coverImage: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=80",
+    coverImage: "",
     description: "May 5 anniversary parades, scout promise investitures, and weekly gatherings in the Saint Jean Marc courtyard.",
     descriptionAr: "مسيرة ٥ أيار السنوية، رتبة أداء الوعد الكشفي في الكاتدرائية، وتجمعات السبت الأسبوعية في جبيل القديمة.",
     category: "ceremonies",
@@ -84,7 +84,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Qadisha High Plateau",
     locationAr: "أعالي وادي قاديشا",
     year: "Summer Camp",
-    imageUrl: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "landscape",
   },
   {
@@ -95,7 +95,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Bcharre Mountains",
     locationAr: "جبال بشري",
     year: "Summer Camp",
-    imageUrl: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "tall",
   },
   {
@@ -106,7 +106,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Cedars Reserve Edge",
     locationAr: "محيط غابة الأرز",
     year: "Patrol Activity",
-    imageUrl: "https://images.unsplash.com/photo-1496080174650-637e3f22fa03?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "square",
   },
   {
@@ -117,7 +117,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Camp Ground",
     locationAr: "أرض المخيم",
     year: "Summer Camp",
-    imageUrl: "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "landscape",
   },
   {
@@ -128,7 +128,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Patrol Corner",
     locationAr: "مقر الطليعة",
     year: "Summer Camp",
-    imageUrl: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "landscape",
   },
   {
@@ -139,7 +139,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "High Ridge",
     locationAr: "مرتفعات المخيم",
     year: "Summer Camp",
-    imageUrl: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "square",
   },
 
@@ -152,7 +152,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Troop Camp Site",
     locationAr: "أرض المخيم الكشفي",
     year: "Froissartage",
-    imageUrl: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "tall",
   },
   {
@@ -163,7 +163,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Saint Jean Marc Courtyard",
     locationAr: "باحة مار يوحنا مرقس، جبيل",
     year: "Weekly Meeting",
-    imageUrl: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "landscape",
   },
   {
@@ -174,7 +174,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "River Valley",
     locationAr: "وادي النهر",
     year: "Patrol Challenge",
-    imageUrl: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "landscape",
   },
   {
@@ -185,7 +185,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Field Base",
     locationAr: "القاعدة الميدانية",
     year: "Woodcraft",
-    imageUrl: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "square",
   },
 
@@ -198,7 +198,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Mount Lebanon Ridge",
     locationAr: "سلسلة جبال لبنان",
     year: "Routiers Trek",
-    imageUrl: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "landscape",
   },
   {
@@ -209,7 +209,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Qadisha Valley",
     locationAr: "وادي قاديشا",
     year: "Troop Hike",
-    imageUrl: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "tall",
   },
   {
@@ -220,7 +220,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "High Meadows",
     locationAr: "المروج الجبلية",
     year: "Orientation Raid",
-    imageUrl: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "square",
   },
   {
@@ -231,7 +231,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Byblos Hills",
     locationAr: "تلال قضاء جبيل",
     year: "Day Outing",
-    imageUrl: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "landscape",
   },
 
@@ -244,7 +244,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Saint Jean Marc Cathedral",
     locationAr: "كاتدرائية مار يوحنا مرقس، جبيل",
     year: "Promise Ceremony",
-    imageUrl: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "landscape",
   },
   {
@@ -255,7 +255,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Old Byblos Souk",
     locationAr: "أسواق جبيل القديمة",
     year: "May 5 Anniversary",
-    imageUrl: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "tall",
   },
   {
@@ -266,7 +266,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Saint Jean Marc Courtyard",
     locationAr: "باحة مار يوحنا مرقس",
     year: "Weekly Session",
-    imageUrl: "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "square",
   },
   {
@@ -277,7 +277,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     location: "Saint Jean Marc Cathedral",
     locationAr: "كاتدرائية مار يوحنا مرقس",
     year: "Parish Mass",
-    imageUrl: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "",
     aspect: "landscape",
   },
 ];

@@ -227,14 +227,25 @@ import { ArrowRight } from 'lucide-astro';
           data-year-from={album.yearRange.from}
           data-year-to={album.yearRange.to}
         >
-          <!-- Cover Image with photo count badge -->
-          <div class="aspect-[16/10] w-full overflow-hidden bg-stone-900 relative">
-            <img 
-              src={album.coverImage} 
-              alt={album.name} 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-95"
-              loading="lazy"
-            />
+          <!-- Cover Image (or placeholder) with photo count badge -->
+          <div class="aspect-[16/10] w-full overflow-hidden bg-stone-900 relative flex items-center justify-center">
+            {album.coverImage ? (
+              <img 
+                src={album.coverImage} 
+                alt={album.name} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-95"
+                loading="lazy"
+              />
+            ) : (
+              <div class="w-full h-full bg-gradient-to-br from-stone-900 via-stone-850 to-stone-950 flex flex-col items-center justify-center p-6 text-center">
+                <span class="text-[9px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/80 px-2.5 py-0.5 rounded-full border border-amber-500/30 mb-2">
+                  Album Cover Needed
+                </span>
+                <p class="text-sm font-bold text-white max-w-xs">
+                  <T en={album.name} ar={album.nameAr} />
+                </p>
+              </div>
+            )}
             <div class="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent"></div>
             
             <div class="absolute bottom-3.5 right-3.5 rtl:right-auto rtl:left-3.5 bg-stone-900/85 backdrop-blur-sm text-sand-50 text-xs font-bold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">

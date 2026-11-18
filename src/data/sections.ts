@@ -34,34 +34,34 @@ export const sectionsData: SectionBranch[] = [
     accentHex: "#d97706",
     motto: "De notre mieux (Do our best)",
     arabicMotto: "نبذل جهدنا (De notre mieux)",
-    image: "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?auto=format&fit=crop&w=600&q=75",
-    summary: "Curiosity, team games, character-building, and early discovery of the outdoors through the jungle and forest lore.",
-    arabicSummary: "حب الاستكشاف، ألعاب جماعية، بناء الشخصية والتعرف على الطبيعة في بيئة دافئة تحت رعاية قادة أكفاء.",
-    description: "The younger branches welcome children into a warm, safe pack. Through story-driven games, creative crafts, basic camping skills, and community values, they learn to share, take responsibility, and grow in confidence alongside their pack leaders (Akela & Baloo).",
-    arabicDescription: "يستقبل فرع الجراميز والزهرات الأطفال في سرب دافئ وآمن. من خلال ألعاب مستوحاة من قصص الغابة، الأشغال اليدوية، المهارات الكشفية الأولية، وقيم المشاركة، يتعلم الصغار الاعتماد على النفس والتعاون تحت إشراف قادتهم وقائداتهم.",
+    image: "",
+    summary: "Active outdoor games in Byblos, forest trails, and making first real friends away from screens under caring leaders.",
+    arabicSummary: "ألعاب حركة ومرح بباحة جبيل، قصص الغابة مع أكيلا، وأول رفقات عمر بعيداً عن التلفزيون والتابلت.",
+    description: "Children take their first scout steps in a warm, family pack. Guided by Akela and Baloo, they learn through fun group games, simple handicrafts, and short nature walks. Here they learn how to share, pack their own little backpack, and listen to each other.",
+    arabicDescription: "بيبدأ الطفل أول خطوة كشفية بسرب دافي متل العيلة. مع قادة متدربين وحنونين، بيتعلموا من خلال اللعب، الأشغال اليدوية، ومشاوير قصيرة بالطبيعة. هون بيتعلم الولد يشارك رفقاته، يوضّب غراضه لحاله، ويكتشف فرح الطبيعة.",
     activities: [
-      "Jungle book lore & outdoor games",
-      "Knot tying and basic survival skills",
-      "Nature scavenger hunts and mini hikes",
-      "Community sharing & Christmas charity drives",
-      "Annual weekend spring & summer camp"
+      "Active outdoor team games & relay races",
+      "Knot tying and simple craft projects",
+      "Nature discovery walks around Byblos",
+      "Christmas charity drives for local families",
+      "Annual 3-day spring and summer camp"
     ],
     arabicActivities: [
-      "ألعاب حركية وقصص الغابة في الهواء الطلق",
-      "تعلم العقد الكشفية والمهارات الأساسية",
-      "مسارات استكشاف الطبيعة والبحث عن الكنز",
-      "مبادرات المشاركة وحملات المحبة الميلادية",
-      "مخيم الربيع والمخيم الصيفي السنوي"
+      "ألعاب حركة وتحدي بباحة مار يوحنا مرقس",
+      "تعلم أول العقد الكشفية والأشغال اليدوية",
+      "مشاوير استكشاف بالطبيعة وبساتين جبيل",
+      "مبادرات ومساعدات ميلادية لعائلات الرعية",
+      "مخيم ربيعي وصيفي قصير ٣ أيام بالطبيعة"
     ],
     parentHighlights: [
-      "Vigilant, trained leaders providing close 1-on-1 attention and safety",
-      "Screen-free environment developing emotional resilience and healthy social skills",
-      "Saturday 3:00–4:30 PM drop-off at Saint Jean Marc Byblos courtyard"
+      "Vigilant leaders giving close care—children are never left unmonitored",
+      "Screen-free Saturdays focused on friendship and outdoor play",
+      "Drop-off every Saturday 3:00 to 4:30 PM at Saint Jean Marc courtyard"
     ],
     arabicParentHighlights: [
-      "إشراف دائم وقادة مؤهلون يضمنون رعاية تامة وأماناً كاملاً لطفلك",
-      "بيئة نقية خالية من الشاشات تركز على بناء الشخصية والتفاعل الإنساني",
-      "موعد مريح وموحد لأولياء الأمور كل سبت (٣:٠٠ - ٤:٣٠ بعد الظهر) في جبيل"
+      "قادة حنونين ومسؤولين بيعطوا عين ساهرة عكل ولد بدون إهمال",
+      "بعد ظهر سبت نظيف بعيد كلياً عن الشاشات والملل",
+      "توصيل مريح وموحد كل سبت ٣:٠٠ حتى ٤:٣٠ بعد الظهر بجبيل"
     ],
     meetingTime: "Saturdays, 3:00 PM – 4:30 PM",
     arabicMeetingTime: "كل سبت، من ٣:٠٠ حتى ٤:٣٠ بعد الظهر",
@@ -77,34 +77,34 @@ export const sectionsData: SectionBranch[] = [
     accentHex: "#059669",
     motto: "Toujours Prêt (Always Prepared)",
     arabicMotto: "كن مستعداً (Toujours Prêt)",
-    image: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=75",
-    summary: "Pioneering, woodcraft, autonomous patrols, wilderness survival, and leadership under the open sky.",
-    arabicSummary: "بناء المنشآت الخشبية بدون مسامير (فرويسارتاج)، الطبخ على الحطب، وتوجيه البوصلة مع مغامرات الخلاء.",
-    description: "At the heart of the scout adventure, boys and girls form autonomous patrols led by a Patrol Leader (Patrouille). They design and build their own wooden camp installations (froissartage), cook their own meals on fires, hike rugged mountain trails, and discover true camaraderie.",
-    arabicDescription: "في قلب المغامرة الكشفية، ينتظم الفتيان والفتيات في طلائع مستقلة يقودها عريف الطليعة. يصممون ويبنون منشآت مخيمهم بالخشب والحبال دون مسامير (فرويسارتاج)، يطهون طعامهم على النار، ويخوضون مسارات جبلية ومغامرات الخلاء بروح الإخاء والشهامة.",
+    image: "",
+    summary: "Building complete campsites with timber and rope (Froissartage), cooking over wood fires, and 10 days of mountain camping.",
+    arabicSummary: "بناء مخيم كامل بالخشب والحبال بدون مسامير، طبخ عالحطب، ومخيم صيفي ١٠ أيام بجبال لبنان.",
+    description: "The classic scout experience. Boys and girls join small, autonomous patrols of 6 to 8 friends led by a Patrol Leader (CP). Together they hike mountain trails with topographical maps, cook their own camp meals over fire, and build dining tables and towers from pine logs and sisal rope.",
+    arabicDescription: "قلب المغامرة الكشفية الحقيقية. بينتظم الشباب والصبايا بطلائع من ٦ لـ ٨ رفقات بقيادة عريف الطليعة (CP). مع بعض بيمشوا بالوديان مع الخارطة والبوصلة، بيطبخوا أكلن عالحطب، وبيعمروا طاولات ومطابخ وأبراج بالخشب والحبال.",
     activities: [
-      "Pioneering & woodcraft installations (Froissartage)",
-      "Orienteering with topographic maps & compass",
+      "Froissartage woodcraft installations (zero nails)",
+      "Map reading, compass navigation & trail tracking",
       "Campfire cooking, bivouacs & 10-day summer camp",
-      "First aid certification & outdoor safety",
-      "Patrol tournaments and physical challenges"
+      "Red Cross first-aid training & safety drills",
+      "Patrol tournaments and obstacle courses"
     ],
     arabicActivities: [
-      "ريادة الخلاء والمنشآت الخشبية بالحبال (فرويسارتاج)",
-      "تحديد الاتجاهات بالخارطة الطبوغرافية والبوصلة",
-      "الطبخ على مواقد الحطب والمخيم الصيفي الكبير (١٠ أيام)",
-      "تدريبات الإسعاف الأولي والسلامة في الطبيعة",
-      "منافسات الطلائع والأنشطة الرياضية الكشفية"
+      "بناء منشآت المخيم بالخشب والحبال (فرويسارتاج)",
+      "قراءة الخرائط الطبوغرافية والبوصلة بالبرية",
+      "الطبخ عالحطب، بيات بالخيمة، ومخيم صيفي ١٠ أيام",
+      "تدريبات إسعاف أولي وسلامة ميدانية",
+      "بطولات وتحديات رياضية بين الطلائع"
     ],
     parentHighlights: [
-      "Channels teen energy into outdoor grit, resourcefulness, and self-reliance",
-      "Certified first-aid leadership, strict camp protocols, and verified campsites",
-      "Lifelong moral foundation built on the scout law, honor, and brotherhood"
+      "Turns teen energy into real practical competence and resilience",
+      "Certified first-aid chefs, verified campsites, and strict mountain safety",
+      "Lifelong friendships and moral values grounded in the Scout Law"
     ],
     arabicParentHighlights: [
-      "توجيه طاقة المراهقة نحو البناء: حل التحديات، المثابرة، والاعتماد على النفس",
-      "قادة متدربون على الإسعافات الأولية مع اختيار مواقع تخييم آمنة ومدروسة",
-      "صقل أخلاقي متين قائم على قانون الكشافة والشرف والالتزام الحقيقي"
+      "تفريغ طاقة المراهقة بالعمل المفيد، الاعتماد عالنفس، وحل المشاكل",
+      "قادة مدرّبين عإسعافات الصليب الأحمر ومواقع تخييم مدروسة وآمنة",
+      "صداقات عمر وأخلاق حقيقية مبنية عقانون الكشاف وشرفه"
     ],
     meetingTime: "Saturdays, 3:00 PM – 4:30 PM",
     arabicMeetingTime: "كل سبت، من ٣:٠٠ حتى ٤:٣٠ بعد الظهر",
@@ -120,34 +120,34 @@ export const sectionsData: SectionBranch[] = [
     accentHex: "#dc2626",
     motto: "Servir (To Serve)",
     arabicMotto: "خدمة (Servir)",
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=75",
-    summary: "Road expeditions, community service, spiritual depth, self-governance, and mentoring the next generation.",
-    arabicSummary: "رحلات مسير واستكشاف على درب الجبل، خدمة إنسانية للمجتمع، وتحمل المسؤولية في قيادة الأجيال.",
-    description: "The senior branch is a brotherhood and sisterhood of the Open Road. Members take on ambitious humanitarian initiatives, wilderness expeditions across Lebanon, emergency relief, and prepare to step up into leadership roles as chefs and community pillars.",
-    arabicDescription: "فرع الشباب الأكبر هو أخوّة طريق الخلاء والخدمة العامة. يقود أفراد العشيرة مبادرات إنسانية ومجتمعية، ويجتازون رحلات مسير استكشافية طويلة عبر جبال لبنان، ويشاركون في الإغاثة الطارئة، استعداداً لتحمل مسؤوليات قيادية في الفوج والمجتمع.",
+    image: "",
+    summary: "Long-distance mountain trails, humanitarian community projects in Byblos, and mentoring younger troop sections.",
+    arabicSummary: "مشاوير مشي طويلة بجبال لبنان، خدمة ومساعدة عائلات بجبيل، وتدريب ليصيروا قادة الفوج بالمستقبل.",
+    description: "The senior branch is a brotherhood and sisterhood of the Open Road. Members organize mountain treks across Lebanon (like the Lebanon Mountain Trail), lead social and parish aid projects in Byblos, and train to step into leadership roles as chefs and cheftaines.",
+    arabicDescription: "فرع الشباب الأكبر هو أخوّة طريق البرية والخدمة الحقيقية. بينظموا مسيرات طويلة بقمم ووديان لبنان، بيقودوا مبادرات إنسانية وخدمة رعية بجبيل، وبيتدربوا تربوياً ليصيروا قادة الفوج المستقبليين.",
     activities: [
-      "Humanitarian expeditions & community development",
-      "Long-distance mountain treks (Lebanon Mountain Trail)",
-      "Leadership training & assistant section mentoring",
-      "Social solidarity & parish heritage preservation",
-      "Spiritual retreats and self-reflection fires"
+      "Mountain trekking & autonomous trail expeditions",
+      "Community aid projects & parish support in Byblos",
+      "Leadership formation & mentoring younger units",
+      "Heritage preservation & conservation projects",
+      "Evening reflection campfires and spiritual retreats"
     ],
     arabicActivities: [
-      "مشاريع الخدمة العامة والتنمية المجتمعية في بيبلوس",
-      "رحلات المسير الطويلة على درب الجبل اللبناني ومحميات الشمال",
-      "التدريب القيادي ومرافقة الفرق الصغرى",
-      "مبادرات التضامن الاجتماعي وحفظ تراث الرعية",
-      "خلوات تأمل وسهرات نار فكرية وروحية"
+      "رحلات مسير واستكشاف على قمم ومحميات لبنان",
+      "مبادرات مساعدة ومشاريع تنموية بجبيل والقرى المجاورة",
+      "تدريب تربوي ومرافقة الفرق الكشفية الصغرى",
+      "أنشطة بيئية وحفظ تراث مدينة جبيل العريقة",
+      "سهرات نار هادئة، تأمل، وخلوات روحية"
     ],
     parentHighlights: [
-      "Real-world leadership, project logistics, and public speaking experience",
-      "Direct civic impact and disaster relief helping vulnerable families in Byblos",
-      "Trustworthy peer community of ambitious, grounded, and values-driven youths"
+      "Builds grounded young adults with project management and leadership experience",
+      "Direct positive impact on Byblos families and community needs",
+      "A healthy, inspiring peer group during the most important university years"
     ],
     arabicParentHighlights: [
-      "خبرة عملية في القيادة وإدارة المشاريع والخدمة العامة تصقل مسيرتهم الجامعية والمهنية",
-      "انخراط مباشر في المبادرات الإنسانية وخدمة المجتمع في قضاء جبيل",
-      "بيئة شبابية راقية تبني شبكة علاقات متينة قائمة على القيم والأخلاق"
+      "بناء شخصية قيادية واعية قادرة تنظم مشاريع وتتحمل مسؤولية",
+      "أثر إيجابي حقيقي بمساعدة عائلات ومجتمع جبيل",
+      "بيئة شبابية نقية وملهمة بأهم سنوات الجامعة والشباب"
     ],
     meetingTime: "Saturdays, 3:00 PM – 4:30 PM (and special missions)",
     arabicMeetingTime: "كل سبت، ٣:٠٠ – ٤:٣٠ بعد الظهر (ومهمات خاصة)",

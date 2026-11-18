@@ -79,14 +79,31 @@ const realCount = scoutReviews.length;
           <div class="review-card-inner rounded-[1.75rem] sm:rounded-[2rem] bg-[#F4EFE6] border border-stone-300/80 p-4 sm:p-7 lg:p-8 shadow-sm transition-all duration-300">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 lg:gap-10 items-center">
               
-              <!-- Left Camp Photo (Bigger, taller, matching screenshot) -->
-              <div class="md:col-span-6 rounded-2xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-full md:min-h-[340px] lg:min-h-[380px] bg-stone-300 shadow-sm relative">
-                <img 
-                  src={review.image} 
-                  alt={review.name} 
-                  class="w-full h-full object-cover" 
-                  loading="lazy"
-                />
+              <!-- Left Camp Photo (or Placeholder if image not ready) -->
+              <div class="md:col-span-6 rounded-2xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-full md:min-h-[340px] lg:min-h-[380px] bg-stone-200/90 border border-stone-300 shadow-sm relative flex items-center justify-center">
+                {review.image ? (
+                  <img 
+                    src={review.image} 
+                    alt={review.name} 
+                    class="w-full h-full object-cover" 
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="p-6 text-center space-y-2.5">
+                    <div class="w-12 h-12 rounded-full bg-cedar-900/10 text-cedar-850 flex items-center justify-center mx-auto">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-stone-300 text-stone-700">
+                      Photo Needed
+                    </span>
+                    <p class="text-xs font-bold text-stone-800">
+                      <T en={`Camp / Courtyard photo for ${review.name}`} ar={`صورة من المخيم أو باحة الكنيسة لشهادة ${review.name}`} />
+                    </p>
+                    <p class="text-[11px] text-stone-500 max-w-xs mx-auto">
+                      <T en="Upload a real photograph from Saint Jean Marc camps" ar="يرجى إضافة صورة حقيقية من أنشطة ومخيمات الفوج" />
+                    </p>
+                  </div>
+                )}
               </div>
 
               <!-- Right Review Content -->
@@ -262,8 +279,19 @@ const realCount = scoutReviews.length;
     }
   }, { passive: true });
 
-  // Initial centering
-  window.addEventListener('load', () => updateVisuals(false));
-  window.addEventListener('resize', () => updateVisuals(false));
-  setTimeout(() => updateVisuals(false), 50);
+  // Defer initialization until slider is visible to prevent forced reflow on initial page load
+  if ('IntersectionObserver' in window && viewport) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          requestAnimationFrame(() => updateVisuals(false));
+          obs.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' });
+    observer.observe(viewport);
+  } else {
+    window.addEventListener('load', () => requestAnimationFrame(() => updateVisuals(false)));
+  }
+  window.addEventListener('resize', () => requestAnimationFrame(() => updateVisuals(false)));
 </script>

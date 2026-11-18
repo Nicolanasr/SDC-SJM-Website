@@ -257,7 +257,7 @@ import { siteConfig } from '../data/siteConfig';
       <!-- VIEW 2: Embedded Google Map (User's Exact Embed Iframe, toggleable) -->
       <div id="view-google-map" class="hidden w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden border border-stone-300 bg-stone-200 shadow-inner">
         <iframe 
-          src={siteConfig.meetingSchedule.googleMapsEmbedUrl} 
+          data-src={siteConfig.meetingSchedule.googleMapsEmbedUrl} 
           width="100%" 
           height="100%" 
           style="border:0;" 
@@ -291,6 +291,12 @@ import { siteConfig } from '../data/siteConfig';
 
     tabSketch?.classList.remove('bg-cedar-800', 'text-white');
     tabSketch?.classList.add('text-stone-700', 'bg-stone-200/80');
+
+    // Mount iframe source only when requested
+    const iframe = viewGoogle?.querySelector('iframe');
+    if (iframe && !iframe.src && iframe.dataset.src) {
+      iframe.src = iframe.dataset.src;
+    }
 
     viewGoogle?.classList.remove('hidden');
     viewSketch?.classList.add('hidden');

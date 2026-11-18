@@ -33,14 +33,25 @@ const regularPosts = blogPosts.filter(p => p.slug !== featuredPost.slug);
         <!-- Big Hero Image -->
         <a 
           href={`/blog/${featuredPost.slug}`}
-          class="lg:col-span-7 aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[420px] w-full overflow-hidden relative block group"
+          class="lg:col-span-7 aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[420px] w-full overflow-hidden relative block group flex items-center justify-center bg-stone-900"
         >
-          <img 
-            src={featuredPost.image} 
-            alt={featuredPost.title} 
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="eager"
-          />
+          {featuredPost.image ? (
+            <img 
+              src={featuredPost.image} 
+              alt={featuredPost.title} 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="eager"
+            />
+          ) : (
+            <div class="w-full h-full bg-gradient-to-br from-stone-900 via-stone-850 to-stone-950 flex flex-col items-center justify-center p-8 text-center">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/80 px-3 py-1 rounded-full border border-amber-500/30 mb-2">
+                Featured Article Photo
+              </span>
+              <p class="text-base sm:text-lg font-bold text-white max-w-md">
+                <T en={featuredPost.title} ar={featuredPost.titleAr || featuredPost.title} />
+              </p>
+            </div>
+          )}
           <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-stone-950/90 via-stone-950/40 to-transparent"></div>
           <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-stone-950 shadow-sm">
@@ -159,13 +170,24 @@ const regularPosts = blogPosts.filter(p => p.slug !== featuredPost.slug);
         >
           <div>
             <!-- Cover Image with Reading Time Pill -->
-            <a href={`/blog/${post.slug}`} class="block aspect-[16/10] overflow-hidden bg-stone-200 relative group">
-              <img 
-                src={post.image} 
-                alt={post.title} 
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
+            <a href={`/blog/${post.slug}`} class="block aspect-[16/10] overflow-hidden bg-stone-100 relative group flex items-center justify-center">
+              {post.image ? (
+                <img 
+                  src={post.image} 
+                  alt={post.title} 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-full h-full flex flex-col items-center justify-center p-4 text-center bg-stone-100">
+                  <span class="text-[9px] uppercase font-bold tracking-wider text-stone-600 bg-stone-200 px-2 py-0.5 rounded-full mb-1">
+                    Article Photo
+                  </span>
+                  <p class="text-xs font-bold text-stone-800 line-clamp-2 max-w-xs">
+                    <T en={post.title} ar={post.titleAr || post.title} />
+                  </p>
+                </div>
+              )}
               <span class="absolute top-3 right-3 bg-stone-900/80 backdrop-blur-sm text-sand-50 text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">
                 <T en={post.readTime} ar={post.readTimeAr} />
               </span>

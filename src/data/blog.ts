@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = [
     categoryAr: "ركن الأهل",
     readTime: "12 min read",
     readTimeAr: "١٢ دقيقة للقراءة",
-    image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80",
+    image: "",
     featured: true,
     excerpt: "From screen addiction to mental resilience: discover why four generations of families in Byblos choose Saturday scout meetings and high mountain camps over digital isolation.",
     excerptAr: "من مواجهة إدمان الشاشات إلى بناء الصلابة النفسية: اكتشفوا لماذا تختار مئات العائلات في جبيل اللقاءات الكشفية الأسبوعية والمخيمات الجبلية بديلاً عن العزلة الرقمية.",
@@ -90,13 +90,13 @@ export const blogPosts: BlogPost[] = [
     inlineImages: [
       {
         index: 2,
-        url: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Patrol campfire circle in the high mountains of Lebanon",
         captionAr: "حلقة سهرة النار الكشفية في أعالي جبال لبنان"
       },
       {
         index: 5,
-        url: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Froissartage timber construction: engineering without nails",
         captionAr: "ريادة الخلاء وتشييد المنشآت الخشبية دون أي مسمار"
       }
@@ -115,7 +115,7 @@ export const blogPosts: BlogPost[] = [
     categoryAr: "الحياة الكشفية",
     readTime: "11 min read",
     readTimeAr: "١١ دقيقة للقراءة",
-    image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80",
+    image: "",
     excerpt: "A transparent breakdown of a scout's year: Saturday afternoon games in the Saint Jean Marc courtyard, day hikes through Lebanon's valleys, and 10 uninterrupted days under canvas.",
     excerptAr: "نظرة شفافة ومفصلة على مدار العام الكشفي: ألعاب بعد ظهر السبت في باحة مار يوحنا مرقس، مسيرات الوديان، وعشرة أيام متواصلة تحت الخيمة في أعالي الجبال.",
     keyTakeaways: [
@@ -155,13 +155,13 @@ export const blogPosts: BlogPost[] = [
     inlineImages: [
       {
         index: 2,
-        url: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Saturday courtyard assembly at Saint Jean Marc Byblos",
         captionAr: "تجمع السبت في باحة كاتدرائية مار يوحنا مرقس جبيل"
       },
       {
         index: 5,
-        url: "https://images.unsplash.com/photo-1496080174650-637e3f22fa03?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Outdoor cooking on open wood fires during 10-day summer camp",
         captionAr: "الطبخ على مواقد الحطب خلال المخيم الصيفي الجبلي"
       }
@@ -180,7 +180,7 @@ export const blogPosts: BlogPost[] = [
     categoryAr: "مهارات الخلاء",
     readTime: "10 min read",
     readTimeAr: "١٠ دقائق للقراءة",
-    image: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1200&q=80",
+    image: "",
     excerpt: "Every summer in the high mountains of Lebanon, our patrols transform raw pine timbers and sisal rope into kitchens, dining shelters, and watchtowers. Here is the lost art of Froissartage.",
     excerptAr: "في كل صيف بأعالي جبال لبنان، تحوّل طلائع الكشافة أخشاب الصنوبر وحبال القنب إلى مطابخ، مقاعد وأبراج مراقبة. إليكم فن ريادة الخلاء الكشفي (فرويسارتاج).",
     keyTakeaways: [
@@ -220,13 +220,13 @@ export const blogPosts: BlogPost[] = [
     inlineImages: [
       {
         index: 1,
-        url: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Square and diagonal rope lashings binding pine spars without nails",
         captionAr: "العقد المربعة والقطرية لربط الأخشاب بحبال القنب دون مسامير"
       },
       {
         index: 4,
-        url: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Standing atop a handmade 6-meter patrol watchtower",
         captionAr: "الوقوف فوق برج استطلاع كشفي بارتفاع ستة أمتار صنعته الطليعة"
       }
@@ -245,7 +245,7 @@ export const blogPosts: BlogPost[] = [
     categoryAr: "التاريخ والتراث",
     readTime: "10 min read",
     readTimeAr: "١٠ دقائق للقراءة",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+    image: "",
     excerpt: "Amidst the turbulence of 1977 in Lebanon, founders Youssef Abou Jaoude and Louis Khalife decided that youth in Byblos needed peace, discipline, and nature. 50 years later, the flame still burns.",
     excerptAr: "وسط ظروف عام ١٩٧٧ في لبنان، أطلق المؤسسان يوسف أبو جودة ولويس خليفة مسيرة الفوج في باحة مار يوحنا مرقس. ٥٠ عاماً مضت والشعلة ما زالت متقدة في جبيل.",
     keyTakeaways: [
@@ -281,13 +281,13 @@ export const blogPosts: BlogPost[] = [
     inlineImages: [
       {
         index: 2,
-        url: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Historic Saint Jean Marc cathedral courtyard in Byblos",
         captionAr: "باحة كاتدرائية مار يوحنا مرقس الأثرية في جبيل"
       },
       {
         index: 4,
-        url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Generations gathering under the green and gold cedar scarf",
         captionAr: "أجيال متعاقبة تجتمع بمنديل كشافة الأرز الأخضر والذهبي"
       }
@@ -306,7 +306,7 @@ export const blogPosts: BlogPost[] = [
     categoryAr: "ركن الأهل",
     readTime: "9 min read",
     readTimeAr: "٩ دقائق للقراءة",
-    image: "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?auto=format&fit=crop&w=1200&q=80",
+    image: "",
     excerpt: "Sending your 7 or 10-year-old on their first sleepaway camp can feel daunting. Here is exactly what happens from Friday departure to Sunday campfire reunion.",
     excerptAr: "إرسال طفلكم بعمر ٧ أو ١٠ سنوات إلى مخيمه الأول قد يثير قلقكم كأهل. إليكم بالتفصيل ما يجري من انطلاق الباص حتى العودة بسلام.",
     keyTakeaways: [
@@ -344,13 +344,13 @@ export const blogPosts: BlogPost[] = [
     inlineImages: [
       {
         index: 2,
-        url: "https://images.unsplash.com/photo-1472898965229-f9b06b9c9bbe?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Packing backpacks and checking flashlights before camp departure",
         captionAr: "توضيب حقيبة الظهر وفحص المصباح قبل الانطلاق إلى المخيم"
       },
       {
         index: 4,
-        url: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1000&q=80",
+        url: "",
         caption: "Tent inspection and nighttime campfire story circle",
         captionAr: "تفتيش الخيام وحلقة قصص سهرة النار الهادئة قبل النوم"
       }

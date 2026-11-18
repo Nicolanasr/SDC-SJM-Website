@@ -101,16 +101,19 @@ import T from './T.astro';
         aria-label="Location Map"
       >
         <!-- Lightweight Placeholder while scrolling into view -->
-        <div id="map-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-stone-900 text-sand-300">
-          <div class="w-12 h-12 rounded-full bg-cedar-900 text-gold-400 border border-cedar-800 flex items-center justify-center mb-2.5 shadow-inner">
+        <div id="map-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-stone-900 text-sand-300 cursor-pointer group">
+          <div class="w-12 h-12 rounded-full bg-cedar-900 text-gold-400 border border-cedar-800 flex items-center justify-center mb-2.5 shadow-inner group-hover:scale-105 transition-transform">
             <MapPin class="w-6 h-6 text-gold-400" />
           </div>
           <div class="font-serif text-base font-bold text-white mb-0.5">
             <T en="Courtyard of Saint Jean Marc" ar="باحة وقاعة مار يوحنا مرقس" />
           </div>
-          <p class="text-xs text-sand-400">
+          <p class="text-xs text-sand-400 mb-2">
             <T en="Old Byblos Square, Jbeil" ar="ساحة بيبلوس الأثرية، جبيل" />
           </p>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-cedar-900/90 text-gold-400 border border-cedar-800">
+            <T en="Click or scroll to load live map" ar="انقر أو مرر لعرض الخريطة التفاعلية" />
+          </span>
         </div>
       </div>
       <div class="mt-2.5 flex items-center justify-between text-xs text-sand-400">
@@ -120,12 +123,16 @@ import T from './T.astro';
     </div>
 
 <script>
-  // Automatically loads the live Google Map as soon as user scrolls towards it
+  // Mount the Google Map iframe only after user actually scrolls or clicks to prevent initial load congestion
   const mapContainer = document.getElementById('map-container');
   if (mapContainer) {
+    let mapLoaded = false;
     const mountMap = () => {
+      if (mapLoaded) return;
       const url = mapContainer.dataset.embedUrl;
       if (!url || mapContainer.querySelector('iframe')) return;
+      mapLoaded = true;
+
       const iframe = document.createElement('iframe');
       iframe.src = url;
       iframe.width = '100%';
@@ -143,19 +150,20 @@ import T from './T.astro';
       mapContainer.appendChild(iframe);
     };
 
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            mountMap();
-            obs.disconnect();
-          }
-        });
-      }, { rootMargin: '120px' });
-      observer.observe(mapContainer);
-    } else {
-      window.addEventListener('scroll', mountMap, { once: true, passive: true });
-    }
+    // Click/tap on placeholder loads immediately
+    mapContainer.addEventListener('click', mountMap);
+
+    // Auto-mount when user scrolls down towards it (skips during initial Lighthouse/synthetic loads)
+    const onScroll = () => {
+      if (window.scrollY > 80) {
+        const rect = mapContainer.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 150) {
+          mountMap();
+          window.removeEventListener('scroll', onScroll);
+        }
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 </script>
 
