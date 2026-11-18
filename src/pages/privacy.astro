@@ -1,0 +1,279 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import T from '../components/T.astro';
+import { siteConfig } from '../data/siteConfig';
+import { ShieldCheck, Lock, FileText, AlertCircle, Mail } from 'lucide-astro';
+---
+
+<Layout 
+  title={`Privacy Policy & Terms of Service – ${siteConfig.groupName} Byblos`}
+  titleAr="سياسة الخصوصية وشروط الخدمة – كشافة الأرز جبيل"
+  description="Official privacy policy, leader portal data guidelines, and terms of service for Scout Des Cèdres Saint Jean Marc in Byblos, Lebanon."
+  descriptionAr="سياسة الخصوصية الرسمية، إرشادات حماية بيانات بوابة القادة، وشروط الخدمة لفوج القديس يوحنا مرقس – كشافة الأرز جبيل."
+>
+  <PageHeader 
+    badge="LEGAL & SAFEGUARDING"
+    badgeAr="السياسات وحماية البيانات"
+    title="Privacy Policy & Terms"
+    titleAr="سياسة الخصوصية وشروط الخدمة"
+    description="How we protect scout and family privacy on our public website and within our internal leaders portal."
+    descriptionAr="كيف نحمي خصوصية الكشافة والأهالي على موقعنا العام وداخل بوابة القادة المخصصة لفوجنا."
+  />
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
+    
+    <!-- Quick Overview Box -->
+    <div class="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-5 sm:p-6 text-xs sm:text-sm text-stone-700 space-y-2">
+      <div class="font-bold text-amber-900 flex items-center gap-2 text-sm">
+        <ShieldCheck class="w-4 h-4 text-amber-700" />
+        <T en="Last Updated: November 2026 • Byblos, Lebanon" ar="آخر تحديث: تشرين الثاني ٢٠٢٦ • جبيل، لبنان" />
+      </div>
+      <p class="leading-relaxed">
+        <T 
+          en="Scout Des Cèdres – Groupe Saint Jean Marc is committed to the safety, dignity, and privacy of every scout, parent, and leader in our community. We do not sell personal data, display intrusive ads, or track individuals across the web."
+          ar="يلتزم فوج القديس يوحنا مرقس – كشافة الأرز بكرامة وسلامة وخصوصية كل شبل وكشاف ومرشدة وولي أمر وقائد في أسرتنا. نحن لا نبيع البيانات الشخصية إطلاقاً ولا نستخدم أي إعلانات أو تتبع تجاري."
+        />
+      </p>
+    </div>
+
+    <!-- Navigation Anchors -->
+    <div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-wider">
+      <a href="#website-privacy" class="px-3 py-1.5 rounded-full bg-stone-100 hover:bg-cedar-100 text-stone-700 hover:text-cedar-900 transition-colors">
+        <T en="1. Public Website Privacy" ar="١. خصوصية الموقع العام" />
+      </a>
+      <a href="#leaders-portal" class="px-3 py-1.5 rounded-full bg-stone-100 hover:bg-cedar-100 text-stone-700 hover:text-cedar-900 transition-colors">
+        <T en="2. Leaders Portal Policy" ar="٢. خصوصية بوابة القادة" />
+      </a>
+      <a href="#terms-of-service" class="px-3 py-1.5 rounded-full bg-stone-100 hover:bg-cedar-100 text-stone-700 hover:text-cedar-900 transition-colors">
+        <T en="3. Terms of Service" ar="٣. شروط الخدمة" />
+      </a>
+      <a href="#contact-data" class="px-3 py-1.5 rounded-full bg-stone-100 hover:bg-cedar-100 text-stone-700 hover:text-cedar-900 transition-colors">
+        <T en="4. Data Inquiries" ar="٤. طلبات البيانات" />
+      </a>
+    </div>
+
+    <!-- SECTION 1: PUBLIC WEBSITE PRIVACY POLICY -->
+    <section id="website-privacy" class="space-y-4 pt-4 border-t border-stone-200">
+      <div class="flex items-center gap-2.5 text-cedar-850">
+        <ShieldCheck class="w-6 h-6 text-cedar-800" />
+        <h2 class="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+          <T en="1. Public Website Privacy Policy" ar="١. سياسة خصوصية الموقع الإلكتروني العام" />
+        </h2>
+      </div>
+
+      <div class="space-y-3 text-stone-700 text-sm leading-relaxed">
+        <p>
+          <T 
+            en="This section governs your use of our public website (sdcsaintjeanmarc.org). By visiting the site, you agree to the practices outlined below."
+            ar="تسري هذه السياسة على استخدام الموقع العام لفوجنا. بزيارتكم للموقع، فإنكم توافقون على الممارسات الموضحة أدناه."
+          />
+        </p>
+
+        <h3 class="text-base font-bold text-stone-900 pt-2">
+          <T en="A. Information We Collect" ar="أ. المعلومات التي نقوم بجمعها" />
+        </h3>
+        <ul class="list-disc pl-5 rtl:pl-0 rtl:pr-5 space-y-1.5 text-xs sm:text-sm">
+          <li>
+            <T 
+              en="Inquiries & Registration Submissions: When you fill out our contact form or send a message via WhatsApp, we collect the parent or leader name, phone number, scout birth year, and inquiry content solely to respond to your request."
+              ar="استفسارات التسجيل والتواصل: عند ملء نموذج الاتصال أو مراسلتنا عبر واتساب، نقوم بجمع اسم ولي الأمر، رقم الهاتف، سنة ميلاد الطفل، وفحوى الرسالة حصراً للإجابة عن استفساركم."
+            />
+          </li>
+          <li>
+            <T 
+              en="Technical Telemetry: Standard, non-identifying server logs (browser type, language preference, pages visited) used strictly to diagnose site errors and guarantee fast load times."
+              ar="البيانات التقنية غير المعرّفة: سجلات الخادم الأساسية (نوع المتصفح، اللغة، الصفحات التي تمت زيارتها) لتحسين سرعة التصفح ومعالجة الأعطال التقنية فقط."
+            />
+          </li>
+          <li>
+            <T 
+              en="Zero Commercial Cookies: We do not use third-party advertising tracking cookies, retargeting pixels, or behavioral analytics brokers."
+              ar="عدم استخدام ملفات تعريف الارتباط الإعلانية: نحن لا نستخدم أي كوكيز تتبع تجارية أو إعلانية موجهة."
+            />
+          </li>
+        </ul>
+
+        <h3 class="text-base font-bold text-stone-900 pt-2">
+          <T en="B. Photographs & Youth Safeguarding" ar="ب. سياسة الصور وحماية الفتيان والفتيات" />
+        </h3>
+        <p>
+          <T 
+            en="Scouting is an outdoor, communal activity. Photographs published on this website document troop life, camps in the Lebanese mountains, and Byblos parish processions. We adhere to Lebanese Scouting Association safeguarding principles:"
+            ar="الكشفية نشاط ميداني جماعي. تهدف الصور المنشورة على هذا الموقع إلى توثيق حياة الفوج ومخيمات الجبال ومسيرات رعية جبيل، وفق معايير حماية الطفل المعتمدة:"
+          />
+        </p>
+        <ul class="list-disc pl-5 rtl:pl-0 rtl:pr-5 space-y-1.5 text-xs sm:text-sm">
+          <li>
+            <T 
+              en="We never publish full identifying legal names, home addresses, or contact information alongside scout photographs."
+              ar="لا ننشر إطلاقاً الأسماء الكاملة أو العناوين أو أي معلومات اتصال خاصة بالكشاف إلى جانب صوره."
+            />
+          </li>
+          <li>
+            <T 
+              en="Parent Removal Right: Any parent or guardian may at any time request the immediate removal or blurring of any photograph featuring their child by contacting Maitrise de Groupe via WhatsApp or email."
+              ar="حق الأهل في طلب الحذف: يحق لأي ولي أمر أو وصي قانوني في أي وقت طلب حذف أو تغبيش أي صورة تظهر ابنه أو ابنته فوراً عبر مراسلة مجلس قيادة الفوج."
+            />
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 2: LEADER PORTAL PRIVACY POLICY -->
+    <section id="leaders-portal" class="space-y-4 pt-8 border-t border-stone-200">
+      <div class="flex items-center gap-2.5 text-amber-800">
+        <Lock class="w-6 h-6 text-amber-700" />
+        <h2 class="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+          <T en="2. Leaders Portal Privacy & Data Protection Policy" ar="٢. سياسة خصوصية وحماية بيانات بوابة القادة" />
+        </h2>
+      </div>
+
+      <div class="bg-stone-50 border border-stone-200 rounded-2xl p-4 sm:p-6 space-y-3 text-xs sm:text-sm text-stone-700">
+        <div class="font-bold text-stone-900 text-sm">
+          <T en="Confidentiality Agreement for Chefs & Cheftaines" ar="ميثاق السرية الخاص بالقادة والقائدات" />
+        </div>
+        <p class="leading-relaxed">
+          <T 
+            en="The Leader Portal is a restricted administrative system accessible solely to authenticated Maitrise members, Unit Leaders, and Chefs of Scout Des Cèdres Saint Jean Marc. Access is a privilege governed by scout honor and confidentiality laws."
+            ar="تعد بوابة القادة نظاماً إدارياً مغلقاً مخصصاً حصراً لأعضاء مجلس قيادة الفوج وقادة الوحدات ومساعديهم المعتمدين. يعد استخدام البوابة أمانة كشفية تخضع لسرية المهنة وأخلاقيات الكشفية."
+          />
+        </p>
+      </div>
+
+      <div class="space-y-3 text-stone-700 text-sm leading-relaxed">
+        <h3 class="text-base font-bold text-stone-900 pt-2">
+          <T en="A. Scope of Portal Data" ar="أ. نطاق البيانات المودعة في البوابة" />
+        </h3>
+        <ul class="list-disc pl-5 rtl:pl-0 rtl:pr-5 space-y-1.5 text-xs sm:text-sm">
+          <li>
+            <T 
+              en="Rosters & Family Contacts: Scout names, birth dates, section assignments (Louveteaux, Eclaireurs, Caravelles, Routiers), and parent emergency contact numbers."
+              ar="لوائح الفروع وبيانات الاتصال: أسماء الكشافة وتواريخ ميلادهم وتوزيعهم في الطلائع والفرق، بالإضافة إلى أرقام طوارئ أولياء الأمور."
+            />
+          </li>
+          <li>
+            <T 
+              en="Camp Health & Dietary Records: Confidential health notes provided by parents for camp safety (allergies, chronic conditions, emergency medical contacts). Accessible strictly by Red Cross certified leaders on duty."
+              ar="السجلات الصحية والغذائية للمخيمات: الملاحظات الطبية السرية المودعة من الأهالي (الحساسية، الأدوية، أرقام الطوارئ) للاعتناء بسلامة الكشاف، ويطّلع عليها حصراً مسؤولو الإسعاف المعتمدون."
+            />
+          </li>
+          <li>
+            <T 
+              en="Attendance & Badge Progress: Weekly Saturday meeting attendance and scout skill progression logs."
+              ar="سجلات الحضور والتقدم الكشفي: متابعة حضور لقاءات السبت وسجل نيل الشارات والترقي الكشفي."
+            />
+          </li>
+        </ul>
+
+        <h3 class="text-base font-bold text-stone-900 pt-2">
+          <T en="B. Leader Security & Data Obligations" ar="ب. واجبات ومسؤوليات القادة" />
+        </h3>
+        <ul class="list-disc pl-5 rtl:pl-0 rtl:pr-5 space-y-1.5 text-xs sm:text-sm">
+          <li>
+            <T 
+              en="Credential Confidentiality: Leaders must never share portal login credentials, temporary tokens, or leave active sessions open on shared or public computers."
+              ar="حظر مشاركة الحسابات: يمنع منعاً باتاً مشاركة كلمات المرور أو فتح جلسات البوابة على أجهزة عامة دون تسجيل خروج."
+            />
+          </li>
+          <li>
+            <T 
+              en="No Unauthorized Exporting: Exporting, photographing, screenshotting, or distributing scout rosters or medical data outside troop leadership activities is strictly prohibited."
+              ar="منع تصدير أو تصوير البيانات: يحظر تصدير أو تصوير شاشات أو نشر أي لائحة كشفية أو سجل طبي خارج نطاق الواجب الكشفي الميداني للفوج."
+            />
+          </li>
+          <li>
+            <T 
+              en="Revocation Upon Departure: When a chef or cheftaine steps down from active leadership, their portal access is immediately decommissioned by the Chef de Groupe."
+              ar="إلغاء الصلاحيات فور انتهاء الخدمة: يتم إلغاء حساب القائد فور انتهاء فترة خدمته أو تسليمه لمهامه من قِبل قيادة الفوج."
+            />
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 3: TERMS OF SERVICE -->
+    <section id="terms-of-service" class="space-y-4 pt-8 border-t border-stone-200">
+      <div class="flex items-center gap-2.5 text-stone-900">
+        <FileText class="w-6 h-6 text-stone-700" />
+        <h2 class="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+          <T en="3. Terms of Service & Website Use" ar="٣. شروط الاستخدام والخدمة" />
+        </h2>
+      </div>
+
+      <div class="space-y-3 text-stone-700 text-sm leading-relaxed">
+        <p>
+          <T 
+            en="By accessing sdcsaintjeanmarc.org, you agree to comply with all applicable Lebanese laws and respect the community norms of the scout movement."
+            ar="باستخدامكم لهذا الموقع، فإنكم توافقون على الالتزام بالقوانين اللبنانية المرعية الإجراء واحترام قيم الحركة الكشفية العالمية."
+          />
+        </p>
+
+        <ul class="list-disc pl-5 rtl:pl-0 rtl:pr-5 space-y-2 text-xs sm:text-sm">
+          <li>
+            <strong><T en="Intellectual Property:" ar="الملكية الفكرية:" /></strong>
+            <T 
+              en="All logos, insignia, foulard designs, historical archive texts, and photography are the intellectual property of Scout Des Cèdres – Groupe Saint Jean Marc Byblos or used with licensed permission. Reproduction without prior written authorization is prohibited."
+              ar="جميع الشعارات والأوسمة وألوان المنديل الكشفي والنصوص الأرشيفية والصور هي ملك لفوج القديس يوحنا مرقس جبيل أو مستخدمة بإذن رسمي. يمنع نسخها دون إذن خطي مسبق."
+            />
+          </li>
+          <li>
+            <strong><T en="Meeting & Event Information:" ar="معلومات النشاطات واللقاءات:" /></strong>
+            <T 
+              en="Gathering dates, outdoor trek locations, and schedules are published for family convenience. In the event of adverse weather or safety updates, verified notices are broadcast directly to registered parents via official troop WhatsApp channels."
+              ar="تنشر مواعيد اللقاءات وتفاصيل المسارات لخدمة الأهالي. في حال تقلبات الطقس أو الظروف الطارئة، يتم إرسال التحديثات المعتمدة مباشرة إلى أولياء الأمور عبر قنوات واتساب الرسمية."
+            />
+          </li>
+          <li>
+            <strong><T en="Disclaimer & Community Nature:" ar="إخلاء المسؤولية وطبيعة النشاط:" /></strong>
+            <T 
+              en="Scouting activities involve physical movement, camping, and hiking in natural environments. Participation implies adherence to leader instructions and standard scout safety rules."
+              ar="تتضمن الأنشطة الكشفية الحركة والمسير والتخييم في الطبيعة. وتقتضي المشاركة الالتزام بتوجيهات القادة وقواعد السلامة الكشفية المعتمدة."
+            />
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CONTACT & DATA INQUIRIES -->
+    <section id="contact-data" class="space-y-4 pt-8 border-t border-stone-200">
+      <div class="flex items-center gap-2.5 text-stone-900">
+        <Mail class="w-6 h-6 text-stone-700" />
+        <h2 class="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+          <T en="4. Data Protection Inquiries & Rights" ar="٤. الاستفسارات وحقوق أصحاب البيانات" />
+        </h2>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-stone-200 p-5 sm:p-7 space-y-3 text-xs sm:text-sm text-stone-700 shadow-sm">
+        <p>
+          <T 
+            en="If you have questions regarding your family's data, wish to update emergency contact details, or request the removal of a photograph, please contact the Maitrise de Groupe directly:"
+            ar="إذا كان لديكم أي استفسار بشأن بيانات عائلتكم، أو رغبتم في تحديث أرقام الطوارئ، أو طلب حذف صورة، يرجى التواصل مباشرة مع قيادة الفوج:"
+          />
+        </p>
+
+        <div class="space-y-1.5 pt-2 text-xs sm:text-sm font-medium">
+          <div class="flex items-center gap-2">
+            <span class="text-stone-500"><T en="Organization:" ar="الجهة:" /></span>
+            <span class="font-bold text-stone-900">{siteConfig.groupName} – Paroisse Saint Jean Marc</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-stone-500"><T en="Location:" ar="المقر:" /></span>
+            <span>{siteConfig.meetingSchedule.locationDetails}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-stone-500"><T en="Email:" ar="البريد الإلكتروني:" /></span>
+            <a href={`mailto:${siteConfig.contact.email}`} class="text-cedar-850 hover:underline font-bold">{siteConfig.contact.email}</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-stone-500"><T en="WhatsApp Hotline:" ar="واتساب الفوج:" /></span>
+            <a href={`https://wa.me/${siteConfig.contact.phoneRaw}`} target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline font-bold font-mono">
+              {siteConfig.contact.phoneDisplay}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
