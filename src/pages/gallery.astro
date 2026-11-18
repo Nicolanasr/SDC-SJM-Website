@@ -2,290 +2,128 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import T from '../components/T.astro';
-import { galleryAlbums } from '../data/gallery';
+import { galleryPhotos } from '../data/gallery';
 import { siteConfig } from '../data/siteConfig';
-import { ArrowRight } from 'lucide-astro';
 ---
 
 <Layout 
-  title={`Photo Albums & Archives – ${siteConfig.groupName} Byblos`}
-  titleAr="أرشيف الصور والمخيمات – كشافة الأرز جبيل"
-  description="Browse curated photo albums from Scout Des Cèdres Saint Jean Marc: Grand Camps, pioneering woodcraft, mountain hikes, and parish celebrations in Byblos."
-  descriptionAr="تصفحوا أرشيف صور ومخيمات فوج القديس يوحنا مرقس جبيل: المخيمات الصيفية الكبرى، ريادة الخلاء، مسارات الجبال، والاحتفالات الرعوية في جبيل."
+  title={`Photo Album & Memories – ${siteConfig.groupName} Byblos`}
+  titleAr="ألبوم الصور والذكريات – كشافة الأرز جبيل"
+  description="Explore moments from Scout Des Cèdres Saint Jean Marc in Byblos: mountain camps, pioneering woodcraft, hikes, and parish celebrations."
+  descriptionAr="شاهدوا لقطات من أنشطة ومخيمات فوج القديس يوحنا مرقس – كشافة الأرز جبيل: مخيمات الجبال، ريادة الخلاء، ومسيرات الرعية في جبيل."
 >
   <PageHeader 
-    badge="PHOTO ARCHIVES"
-    badgeAr="أرشيف الصور والذكريات"
-    title="Curated Scout Albums"
-    titleAr="ألبومات وذكريات الفوج"
-    description="Explore our photo collections from the mountains of Lebanon and the historic streets of Byblos. Click on any album to view the full photo gallery."
-    descriptionAr="تصفحوا مجموعات صور الفوج من جبال لبنان وشوارع جبيل القديمة. اضغطوا على أي ألبوم للاطلاع على الصور بالكامل."
+    badge="PHOTO ALBUM"
+    badgeAr="ألبوم الصور والميدان"
+    title="Moments of Adventure"
+    titleAr="سجل الذكريات والمغامرة"
+    description="Photographs from our weekly Saturday meetings, high mountain camps, and parish celebrations in Byblos."
+    descriptionAr="لقطات توثيقية من لقاءات السبت الأسبوعية، المخيمات الجبلية، واحتفالات الرعية في جبيل القديمة."
   />
 
-  <!-- MULTISELECT FILTER TOOLBAR -->
-  <section class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-8 sm:mb-12">
-    <div class="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-stone-200/90 shadow-xl space-y-5">
+  <!-- FILTER CHIPS -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-8 sm:mb-12">
+    <div class="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3 sm:p-5 border border-stone-200/90 shadow-sm flex flex-wrap items-center justify-between gap-3">
       
-      <!-- Top Status Header -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-stone-100">
-        <div class="flex items-center gap-2.5">
-          <span class="flex h-2.5 w-2.5 relative">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
-          </span>
-          <h3 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-stone-900 flex items-center gap-2">
-            <span><T en="Filter Collections" ar="تصفية المجموعات الكشفية" /></span>
-          </h3>
-          <span id="filter-result-count" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-stone-100 text-stone-700 font-mono border border-stone-200">
-            <T en="4 collections" ar="٤ مجموعات" />
-          </span>
-        </div>
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2" id="gallery-filters">
         <button 
-          id="filter-reset-btn" 
           type="button" 
-          class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-800 hover:text-amber-950 px-2.5 py-1 rounded-lg hover:bg-amber-50 transition-colors self-start sm:self-auto cursor-pointer"
+          data-category="all"
+          class="gallery-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-cedar-800 text-white transition-all shadow-xs cursor-pointer"
         >
-          <span>↺</span>
-          <T en="Reset Filters" ar="إعادة الضبط" />
+          <T en="All Photos" ar="جميع الصور" /> ({galleryPhotos.length})
+        </button>
+        <button 
+          type="button" 
+          data-category="summer-camps"
+          class="gallery-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-stone-100 text-stone-700 hover:bg-stone-200 transition-all cursor-pointer"
+        >
+          <T en="⛺ Camps" ar="⛺ المخيمات" />
+        </button>
+        <button 
+          type="button" 
+          data-category="pioneering"
+          class="gallery-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-stone-100 text-stone-700 hover:bg-stone-200 transition-all cursor-pointer"
+        >
+          <T en="🪵 Woodcraft" ar="🪵 ريادة الخلاء" />
+        </button>
+        <button 
+          type="button" 
+          data-category="hikes-expeditions"
+          class="gallery-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-stone-100 text-stone-700 hover:bg-stone-200 transition-all cursor-pointer"
+        >
+          <T en="🧭 Hikes" ar="🧭 رحلات الجبال" />
+        </button>
+        <button 
+          type="button" 
+          data-category="parish-ceremonies"
+          class="gallery-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-stone-100 text-stone-700 hover:bg-stone-200 transition-all cursor-pointer"
+        >
+          <T en="⛪ Parish" ar="⛪ مناسبات الرعية" />
         </button>
       </div>
 
-      <!-- 3-Column Modern Control Deck -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-        
-        <!-- Filter 1: Activity Type -->
-        <div class="space-y-2.5">
-          <div class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-stone-500">
-            <span>🏷️</span>
-            <span><T en="1. Activity Type" ar="١. نوع النشاط" /></span>
-          </div>
-          <div class="flex flex-wrap gap-1.5 sm:gap-2" id="type-filters">
-            <button 
-              type="button" 
-              data-filter-type="camps" 
-              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
-            >
-              <span>⛺</span>
-              <span><T en="Camps" ar="مخيمات" /></span>
-            </button>
-            <button 
-              type="button" 
-              data-filter-type="woodcraft" 
-              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
-            >
-              <span>🪵</span>
-              <span><T en="Woodcraft" ar="ريادة الخلاء" /></span>
-            </button>
-            <button 
-              type="button" 
-              data-filter-type="hikes" 
-              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
-            >
-              <span>🥾</span>
-              <span><T en="Hikes" ar="رحلات مسير" /></span>
-            </button>
-            <button 
-              type="button" 
-              data-filter-type="ceremonies" 
-              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
-            >
-              <span>⚜️</span>
-              <span><T en="Ceremonies" ar="احتفالات" /></span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Filter 2: Sections -->
-        <div class="space-y-2.5">
-          <div class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-stone-500">
-            <span>👥</span>
-            <span><T en="2. Scout Branch" ar="٢. الفرع الكشفي" /></span>
-          </div>
-          <div class="flex flex-wrap gap-1.5 sm:gap-2" id="section-filters">
-            <button 
-              type="button" 
-              data-filter-section="louveteaux" 
-              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
-            >
-              <span>🐺</span>
-              <span><T en="Cubs (4–11)" ar="الجراميز (٤–١١)" /></span>
-            </button>
-            <button 
-              type="button" 
-              data-filter-section="scouts" 
-              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
-            >
-              <span>🏕️</span>
-              <span><T en="Scouts (11–16)" ar="الكشافة (١١–١٦)" /></span>
-            </button>
-            <button 
-              type="button" 
-              data-filter-section="routiers" 
-              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
-            >
-              <span>⛰️</span>
-              <span><T en="Rovers (16–24)" ar="الجوالة (١٦–٢٤)" /></span>
-            </button>
-            <button 
-              type="button" 
-              data-filter-section="group" 
-              class="filter-chip px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200/90 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:border-stone-400 cursor-pointer transition-all duration-150 flex items-center gap-1.5 shadow-2xs"
-            >
-              <span>🏛️</span>
-              <span><T en="Full Group" ar="الفوج كاملاً" /></span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Filter 3: Date (From–To Year Range) -->
-        <div class="space-y-2.5">
-          <div class="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-stone-500">
-            <span>📅</span>
-            <span><T en="3. Year Timeline" ar="٣. الخط الزمني" /></span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="relative flex-1">
-              <span class="absolute inset-y-0 left-2.5 rtl:left-auto rtl:right-2.5 flex items-center text-[10px] font-bold text-stone-400 uppercase pointer-events-none">From</span>
-              <input 
-                type="number" 
-                id="year-from" 
-                min="1977" 
-                max="2026" 
-                value="1977" 
-                class="w-full text-xs font-bold font-mono pl-10 pr-2.5 rtl:pl-2.5 rtl:pr-10 py-2 rounded-xl border border-stone-300 bg-stone-50 text-stone-900 focus:outline-none focus:ring-2 focus:ring-cedar-800/20 focus:border-cedar-800 transition-all shadow-2xs"
-                aria-label="From Year"
-              />
-            </div>
-            <span class="text-stone-300 font-bold text-xs">–</span>
-            <div class="relative flex-1">
-              <span class="absolute inset-y-0 left-2.5 rtl:left-auto rtl:right-2.5 flex items-center text-[10px] font-bold text-stone-400 uppercase pointer-events-none">To</span>
-              <input 
-                type="number" 
-                id="year-to" 
-                min="1977" 
-                max="2026" 
-                value="2026" 
-                class="w-full text-xs font-bold font-mono pl-7 pr-2.5 rtl:pl-2.5 rtl:pr-7 py-2 rounded-xl border border-stone-300 bg-stone-50 text-stone-900 focus:outline-none focus:ring-2 focus:ring-cedar-800/20 focus:border-cedar-800 transition-all shadow-2xs"
-                aria-label="To Year"
-              />
-            </div>
-          </div>
-          <div class="flex items-center gap-1.5 pt-0.5">
-            <button 
-              type="button" 
-              data-range="all" 
-              class="quick-year-btn text-[10px] font-bold px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200/80 cursor-pointer transition-colors"
-            >
-              <T en="All (1977–2026)" ar="الكل (١٩٧٧–٢٠٢٦)" />
-            </button>
-            <button 
-              type="button" 
-              data-range="recent" 
-              class="quick-year-btn text-[10px] font-bold px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200/80 cursor-pointer transition-colors"
-            >
-              <T en="2020–2026" ar="٢٠٢٠–٢٠٢٦" />
-            </button>
-          </div>
-        </div>
-
-      </div>
-
+      <span id="gallery-count" class="text-xs font-mono font-semibold text-stone-500 hidden sm:inline">
+        {galleryPhotos.length} <T en="memories" ar="صورة" />
+      </span>
     </div>
   </section>
 
-  <!-- ALBUMS GRID (ALBUM VIEW FIRST) -->
-  <section class="py-4 sm:py-12 max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
-    
-    <!-- Empty State -->
-    <div id="no-results-msg" class="hidden text-center py-16 bg-white rounded-3xl border border-stone-200 p-8 space-y-3">
-      <div class="text-3xl">🔍</div>
-      <h3 class="text-lg font-bold text-stone-800">
-        <T en="No collections match your filter selection" ar="لم يتم العثور على مجموعات تطابق خيارات التصفية" />
-      </h3>
-      <p class="text-xs sm:text-sm text-stone-500 max-w-md mx-auto">
-        <T 
-          en="Try deselecting some branch tags or expanding the year range to see more photo albums." 
-          ar="جرب إلغاء تحديد بعض الفروع أو توسيع النطاق الزمني للاطلاع على المزيد من الألبومات." 
-        />
-      </p>
-      <button 
-        id="empty-reset-btn" 
-        type="button" 
-        class="btn-scout-primary text-xs uppercase tracking-wider !py-2 !px-4 mt-2"
-      >
-        <T en="Clear All Filters" ar="إلغاء جميع الفلاتر" />
-      </button>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-10" id="albums-container">
-      {galleryAlbums.map(album => (
-        <a 
-          href={`/gallery/${album.id}`}
-          class="album-card group rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-stone-200 shadow-sm hover:shadow-xl hover:border-emerald-700 transition-all duration-300 flex flex-col justify-between"
-          data-category={album.category}
-          data-sections={album.sections.join(',')}
-          data-year-from={album.yearRange.from}
-          data-year-to={album.yearRange.to}
+  <!-- PHOTOS GRID -->
+  <section class="py-4 sm:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="photos-grid">
+      {galleryPhotos.map((photo, index) => (
+        <div 
+          class="photo-card group cursor-pointer relative overflow-hidden rounded-3xl bg-white border border-stone-200 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          data-album={photo.albumId}
+          data-full-img={photo.imageUrl}
+          data-title={photo.title}
+          data-title-ar={photo.titleAr}
+          data-location={photo.location}
+          data-location-ar={photo.locationAr}
+          data-year={photo.year}
+          data-index={index}
         >
-          <!-- Cover Image (or placeholder) with photo count badge -->
-          <div class="aspect-[16/10] w-full overflow-hidden bg-stone-900 relative flex items-center justify-center">
-            {album.coverImage ? (
+          <div class="aspect-[4/3] w-full overflow-hidden bg-stone-100 flex items-center justify-center">
+            {photo.imageUrl ? (
               <img 
-                src={album.coverImage} 
-                alt={album.name} 
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-95"
-                loading="lazy"
+                src={photo.imageUrl} 
+                alt={photo.title} 
+                loading="lazy" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             ) : (
-              <div class="w-full h-full bg-gradient-to-br from-stone-900 via-stone-850 to-stone-950 flex flex-col items-center justify-center p-6 text-center">
-                <span class="text-[9px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/80 px-2.5 py-0.5 rounded-full border border-amber-500/30 mb-2">
-                  Album Cover Needed
+              <div class="w-full h-full bg-stone-100 flex flex-col items-center justify-center p-4 text-center">
+                <span class="text-[9px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full mb-1">
+                  Photo Needed
                 </span>
-                <p class="text-sm font-bold text-white max-w-xs">
-                  <T en={album.name} ar={album.nameAr} />
+                <p class="text-xs font-bold text-stone-800 line-clamp-2">
+                  <T en={photo.title} ar={photo.titleAr} />
+                </p>
+                <p class="text-[10px] text-stone-500 mt-0.5">
+                  <T en={photo.location} ar={photo.locationAr} /> • {photo.year}
                 </p>
               </div>
             )}
-            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent"></div>
+          </div>
+
+          <div class="p-4 bg-white flex items-center justify-between border-t border-stone-100">
+            <div>
+              <h3 class="font-bold text-sm text-stone-900 group-hover:text-cedar-800 transition-colors">
+                <T en={photo.title} ar={photo.titleAr} />
+              </h3>
+              <p class="text-xs text-stone-500 mt-0.5">
+                <T en={photo.location} ar={photo.locationAr} /> • <span class="font-medium text-amber-700">{photo.year}</span>
+              </p>
+            </div>
             
-            <div class="absolute bottom-3.5 right-3.5 rtl:right-auto rtl:left-3.5 bg-stone-900/85 backdrop-blur-sm text-sand-50 text-xs font-bold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
-              <T en={`${album.count} Photographs`} ar={`${album.count} صور`} />
-            </div>
-
-            <!-- Year Badge -->
-            <div class="absolute top-3.5 left-3.5 rtl:left-auto rtl:right-3.5 bg-stone-900/85 backdrop-blur-sm text-amber-300 text-[10px] font-bold px-2.5 py-1 rounded-md border border-white/10">
-              {album.yearRange.from}–{album.yearRange.to}
+            <div class="w-8 h-8 rounded-full bg-stone-100 group-hover:bg-cedar-800 group-hover:text-white transition-colors flex items-center justify-center shrink-0 text-stone-500">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
             </div>
           </div>
-
-          <!-- Album Meta & Descriptions -->
-          <div class="p-4 sm:p-8 space-y-3">
-            <div class="flex items-center gap-2">
-              <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-900">
-                {album.category}
-              </span>
-              <span class="text-xs text-stone-400">•</span>
-              <span class="text-[11px] text-stone-500 font-semibold uppercase tracking-wider">
-                {album.sections.join(' • ')}
-              </span>
-            </div>
-
-            <h2 class="text-xl sm:text-2xl font-black text-stone-900 group-hover:text-emerald-800 transition-colors tracking-tight leading-snug">
-              <T en={album.name} ar={album.nameAr} />
-            </h2>
-
-            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              <T en={album.description} ar={album.descriptionAr} />
-            </p>
-
-            <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-emerald-800 group-hover:text-emerald-950">
-              <span>
-                <T en="Open Album" ar="فتح الألبوم" />
-              </span>
-              <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform rtl:rotate-180" />
-            </div>
-          </div>
-        </a>
+        </div>
       ))}
     </div>
 
@@ -308,124 +146,153 @@ import { ArrowRight } from 'lucide-astro';
     </div>
   </section>
 
+  <!-- Interactive Lightbox Modal -->
+  <div 
+    id="lightbox-modal" 
+    class="fixed inset-0 z-50 bg-stone-950/95 backdrop-blur-md hidden flex items-center justify-center p-4"
+  >
+    <div class="relative max-w-5xl w-full flex flex-col items-center">
+      <button 
+        id="lightbox-close" 
+        type="button" 
+        class="absolute -top-12 right-0 text-stone-400 hover:text-white text-3xl font-bold p-2 cursor-pointer focus:outline-none"
+        aria-label="Close image preview"
+      >
+        ✕
+      </button>
+
+      <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl border border-stone-800 bg-stone-950">
+        <img 
+          id="lightbox-img" 
+          src="" 
+          alt="" 
+          class="max-h-[75vh] w-auto max-w-full object-contain"
+        />
+        <div id="lightbox-placeholder" class="hidden p-12 text-center text-white">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-600 mb-2">Photo Needed</span>
+          <p id="lightbox-ph-title" class="text-lg font-bold"></p>
+        </div>
+      </div>
+
+      <div class="w-full max-w-2xl text-center mt-4 space-y-1">
+        <h4 id="lightbox-title" class="text-white text-base sm:text-xl font-bold"></h4>
+        <p id="lightbox-subtitle" class="text-stone-400 text-xs sm:text-sm"></p>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <div class="flex items-center gap-4 mt-4">
+        <button 
+          id="lightbox-prev" 
+          type="button" 
+          class="px-4 py-2 rounded-full bg-stone-900 border border-stone-700 text-white hover:bg-stone-800 text-xs uppercase tracking-wider font-bold cursor-pointer"
+        >
+          <T en="← Previous" ar="← السابق" />
+        </button>
+        <button 
+          id="lightbox-next" 
+          type="button" 
+          class="px-4 py-2 rounded-full bg-stone-900 border border-stone-700 text-white hover:bg-stone-800 text-xs uppercase tracking-wider font-bold cursor-pointer"
+        >
+          <T en="Next →" ar="التالي ←" />
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    let selectedTypes: string[] = [];
-    let selectedSections: string[] = [];
-    const yearFromInput = document.getElementById('year-from') as HTMLInputElement | null;
-    const yearToInput = document.getElementById('year-to') as HTMLInputElement | null;
-    const albumCards = document.querySelectorAll<HTMLElement>('.album-card');
-    const resultCount = document.getElementById('filter-result-count');
-    const noResultsMsg = document.getElementById('no-results-msg');
-    const resetBtn = document.getElementById('filter-reset-btn');
-    const emptyResetBtn = document.getElementById('empty-reset-btn');
+    // Category Filtering
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.gallery-filter-btn');
+    const photoCards = document.querySelectorAll<HTMLElement>('.photo-card');
+    const countDisplay = document.getElementById('gallery-count');
 
-    function updateFilters() {
-      const fromYear = parseInt(yearFromInput?.value || '1977', 10);
-      const toYear = parseInt(yearToInput?.value || '2026', 10);
-      let visibleCount = 0;
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.category || 'all';
 
-      albumCards.forEach(card => {
-        const category = card.dataset.category || '';
-        const sections = (card.dataset.sections || '').split(',');
-        const cardFrom = parseInt(card.dataset.yearFrom || '1977', 10);
-        const cardTo = parseInt(card.dataset.yearTo || '2026', 10);
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-cedar-800', 'text-white');
+          b.classList.add('bg-stone-100', 'text-stone-700');
+        });
+        btn.classList.remove('bg-stone-100', 'text-stone-700');
+        btn.classList.add('bg-cedar-800', 'text-white');
 
-        const matchesType = selectedTypes.length === 0 || selectedTypes.includes(category);
-        const matchesSection = selectedSections.length === 0 || sections.some(s => selectedSections.includes(s));
-        const matchesYear = !(cardTo < fromYear || cardFrom > toYear);
+        let visible = 0;
+        photoCards.forEach(card => {
+          if (cat === 'all' || card.dataset.album === cat) {
+            card.classList.remove('hidden');
+            visible++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
 
-        if (matchesType && matchesSection && matchesYear) {
-          card.style.display = '';
-          visibleCount++;
-        } else {
-          card.style.display = 'none';
+        if (countDisplay) {
+          countDisplay.textContent = `${visible} memories`;
         }
       });
+    });
 
-      if (resultCount) {
-        const isAr = document.documentElement.lang === 'ar';
-        resultCount.textContent = isAr ? `(${visibleCount} مجموعات)` : `(${visibleCount} collections)`;
+    // Lightbox Functionality
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const modalPlaceholder = document.getElementById('lightbox-placeholder');
+    const modalPhTitle = document.getElementById('lightbox-ph-title');
+    const modalTitle = document.getElementById('lightbox-title');
+    const modalSubtitle = document.getElementById('lightbox-subtitle');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    let currentIdx = 0;
+    const items = Array.from(photoCards);
+
+    function showPhoto(idx: number) {
+      if (idx < 0) idx = items.length - 1;
+      if (idx >= items.length) idx = 0;
+      currentIdx = idx;
+
+      const item = items[currentIdx];
+      const imgUrl = item.dataset.fullImg || '';
+      const isArabic = document.documentElement.lang === 'ar';
+      const title = (isArabic ? item.dataset.titleAr : item.dataset.title) || item.dataset.title || '';
+      const location = (isArabic ? item.dataset.locationAr : item.dataset.location) || item.dataset.location || '';
+      const year = item.dataset.year || '';
+
+      if (imgUrl) {
+        modalImg.src = imgUrl;
+        modalImg.alt = title;
+        modalImg.classList.remove('hidden');
+        modalPlaceholder?.classList.add('hidden');
+      } else {
+        modalImg.classList.add('hidden');
+        modalPlaceholder?.classList.remove('hidden');
+        if (modalPhTitle) modalPhTitle.textContent = title;
       }
 
-      if (noResultsMsg) {
-        if (visibleCount === 0) {
-          noResultsMsg.classList.remove('hidden');
-        } else {
-          noResultsMsg.classList.add('hidden');
-        }
-      }
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalSubtitle) modalSubtitle.textContent = `${location} • ${year}`;
     }
 
-    // Type chips
-    document.querySelectorAll<HTMLButtonElement>('[data-filter-type]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const val = btn.dataset.filterType || '';
-        if (selectedTypes.includes(val)) {
-          selectedTypes = selectedTypes.filter(t => t !== val);
-          btn.classList.remove('bg-cedar-900', 'text-gold-300', 'border-cedar-950', 'ring-2', 'ring-gold-400/30');
-          btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
-        } else {
-          selectedTypes.push(val);
-          btn.classList.add('bg-cedar-900', 'text-gold-300', 'border-cedar-950', 'ring-2', 'ring-gold-400/30');
-          btn.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
-        }
-        updateFilters();
+    photoCards.forEach((item, idx) => {
+      item.addEventListener('click', () => {
+        showPhoto(idx);
+        modal?.classList.remove('hidden');
       });
     });
 
-    // Section chips
-    document.querySelectorAll<HTMLButtonElement>('[data-filter-section]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const val = btn.dataset.filterSection || '';
-        if (selectedSections.includes(val)) {
-          selectedSections = selectedSections.filter(s => s !== val);
-          btn.classList.remove('bg-amber-700', 'text-white', 'border-amber-800', 'ring-2', 'ring-amber-400/30');
-          btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
-        } else {
-          selectedSections.push(val);
-          btn.classList.add('bg-amber-700', 'text-white', 'border-amber-800', 'ring-2', 'ring-amber-400/30');
-          btn.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
-        }
-        updateFilters();
-      });
+    closeBtn?.addEventListener('click', () => modal?.classList.add('hidden'));
+    prevBtn?.addEventListener('click', () => showPhoto(currentIdx - 1));
+    nextBtn?.addEventListener('click', () => showPhoto(currentIdx + 1));
+
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
     });
 
-    // Year inputs
-    yearFromInput?.addEventListener('input', updateFilters);
-    yearToInput?.addEventListener('input', updateFilters);
-
-    // Quick year presets
-    document.querySelectorAll<HTMLButtonElement>('.quick-year-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const range = btn.dataset.range;
-        if (range === 'all' && yearFromInput && yearToInput) {
-          yearFromInput.value = '1977';
-          yearToInput.value = '2026';
-        } else if (range === 'recent' && yearFromInput && yearToInput) {
-          yearFromInput.value = '2020';
-          yearToInput.value = '2026';
-        }
-        updateFilters();
-      });
+    document.addEventListener('keydown', (e) => {
+      if (modal?.classList.contains('hidden')) return;
+      if (e.key === 'Escape') modal.classList.add('hidden');
+      if (e.key === 'ArrowLeft') showPhoto(currentIdx - 1);
+      if (e.key === 'ArrowRight') showPhoto(currentIdx + 1);
     });
-
-    function resetFilters() {
-      selectedTypes = [];
-      selectedSections = [];
-      document.querySelectorAll<HTMLButtonElement>('[data-filter-type]').forEach(btn => {
-        btn.classList.remove('bg-cedar-900', 'text-gold-300', 'border-cedar-950', 'ring-2', 'ring-gold-400/30');
-        btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
-      });
-      document.querySelectorAll<HTMLButtonElement>('[data-filter-section]').forEach(btn => {
-        btn.classList.remove('bg-amber-700', 'text-white', 'border-amber-800', 'ring-2', 'ring-amber-400/30');
-        btn.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200/90');
-      });
-      if (yearFromInput) yearFromInput.value = '1977';
-      if (yearToInput) yearToInput.value = '2026';
-      updateFilters();
-    }
-
-    resetBtn?.addEventListener('click', resetFilters);
-    emptyResetBtn?.addEventListener('click', resetFilters);
   </script>
 </Layout>
